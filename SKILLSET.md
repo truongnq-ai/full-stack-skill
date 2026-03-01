@@ -33,3 +33,6 @@
 - worker/
 - monorepo/
 - mobile/
+
+## Security
+- secure-secrets-manager/
