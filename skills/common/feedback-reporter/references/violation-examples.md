@@ -26,7 +26,7 @@ Container(
 **Feedback Command**:
 
 ```bash
-npx agent-skills-standard feedback \
+npx @truongnq-ai/full-stack-skill feedback \
   --skill="flutter/theme-system" \
   --issue="Used hardcoded hex color instead of theme" \
   --skill-instruction="Use theme colors, not hardcoded values" \
@@ -83,7 +83,7 @@ class MyComponent extends React.Component {
 **Feedback Command**:
 
 ```bash
-npx agent-skills-standard feedback \
+npx @truongnq-ai/full-stack-skill feedback \
   --skill="react/hooks" \
   --issue="Created class component instead of function component" \
   --skill-instruction="Use function components with hooks" \
@@ -137,7 +137,7 @@ useEffect(() => {
 **Feedback Command**:
 
 ```bash
-npx agent-skills-standard feedback \
+npx @truongnq-ai/full-stack-skill feedback \
   --skill="skill-creator" \
   --issue="SKILL.md exceeds 100 line limit (105 lines)" \
   --skill-instruction="SKILL.md total: 100 lines max" \

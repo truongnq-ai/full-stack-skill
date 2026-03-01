@@ -7,7 +7,7 @@ import { InitAnswers, InitService } from '../services/InitService';
 import { RegistryService } from '../services/RegistryService';
 
 /**
- * Command for initializing the agent-skills-standard configuration in a project.
+ * Command for initializing the full-stack-skill configuration in a project.
  * It guides the user through environment detection and creates the `.skillsrc` file.
  */
 export class InitCommand {
@@ -81,7 +81,7 @@ export class InitCommand {
     console.log(pc.gray(`   Selected framework: ${answers.framework}`));
     console.log(
       pc.cyan(
-        '\nNext step: Run `agent-skills-standard sync` to generate rule files.',
+        '\nNext step: Run `full-stack-skill sync` to generate rule files.',
       ),
     );
   }

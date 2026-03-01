@@ -48,7 +48,7 @@ Before file write?
 ## Command (Copy-Paste)
 
 ```bash
-npx agent-skills-standard feedback \
+npx @truongnq-ai/full-stack-skill feedback \
   --skill="[skill-id]" \
   --issue="[violation]" \
   --skill-instruction="[exact rule]" \

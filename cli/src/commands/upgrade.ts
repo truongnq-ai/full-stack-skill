@@ -3,7 +3,7 @@ import pc from 'picocolors';
 import pkg from '../../package.json';
 
 /**
- * Command for upgrading the `agent-skills-standard` CLI to the latest version.
+ * Command for upgrading the `full-stack-skill` CLI to the latest version.
  * It checks the latest version on npm and performs the upgrade using the detected package manager.
  */
 export class UpgradeCommand {
@@ -18,7 +18,7 @@ export class UpgradeCommand {
     let latestVersion: string | null = null;
 
     try {
-      latestVersion = execSync('npm view agent-skills-standard version', {
+      latestVersion = execSync('npm view @truongnq-ai/full-stack-skill version', {
         encoding: 'utf8',
       }).trim();
     } catch {
@@ -92,11 +92,11 @@ export class UpgradeCommand {
   private getUpgradeCommand(pm: 'npm' | 'pnpm' | 'yarn'): string {
     switch (pm) {
       case 'pnpm':
-        return 'pnpm add -g agent-skills-standard@latest';
+        return 'pnpm add -g @truongnq-ai/full-stack-skill@latest';
       case 'yarn':
-        return 'yarn global add agent-skills-standard@latest';
+        return 'yarn global add @truongnq-ai/full-stack-skill@latest';
       default:
-        return 'npm install -g agent-skills-standard@latest';
+        return 'npm install -g @truongnq-ai/full-stack-skill@latest';
     }
   }
 
@@ -119,11 +119,11 @@ export class UpgradeCommand {
     if (pm !== 'npm') {
       console.log(pc.gray('\nAlternative (npm):'));
       console.log(
-        pc.gray(`  ${sudoPrefix}npm install -g agent-skills-standard@latest`),
+        pc.gray(`  ${sudoPrefix}npm install -g @truongnq-ai/full-stack-skill@latest`),
       );
     }
 
     console.log(pc.gray('\nOr run via npx (no install required):'));
-    console.log(pc.gray(`  npx agent-skills-standard@latest sync`));
+    console.log(pc.gray(`  npx @truongnq-ai/full-stack-skill@latest sync`));
   }
 }

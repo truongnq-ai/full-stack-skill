@@ -272,11 +272,11 @@ describe('GithubService', () => {
   describe('parseGitHubUrl', () => {
     it('should correctly parse valid GitHub URLs', () => {
       const result = GithubService.parseGitHubUrl(
-        'https://github.com/HoangNguyen0403/agent-skills-standard',
+        'https://github.com/truongnq-ai/full-stack-skill',
       );
       expect(result).toEqual({
-        owner: 'HoangNguyen0403',
-        repo: 'agent-skills-standard',
+        owner: 'truongnq-ai',
+        repo: 'full-stack-skill',
       });
     });
 

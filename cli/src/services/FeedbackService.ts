@@ -54,7 +54,7 @@ export class FeedbackService {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'User-Agent': 'agent-skills-standard-cli',
+          'User-Agent': 'full-stack-skill-cli',
         },
         body: JSON.stringify(data),
       });

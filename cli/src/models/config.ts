@@ -18,7 +18,7 @@ export interface SkillEntry {
 export type CategoryConfig = SkillEntry;
 
 /**
- * The main configuration structure for agent-skills-standard (usually .skillsrc).
+ * The main configuration structure for full-stack-skill (usually .skillsrc).
  */
 export interface SkillConfig {
   /** Registry URL to sync from */
