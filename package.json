@@ -10,10 +10,11 @@
     "format": "pnpm -r format",
     "test": "pnpm --filter ./cli test",
     "validate": "pnpm --filter ./cli validate",
-    "validate:all": "pnpm --filter ./cli validate:all",
     "calculate-tokens": "tsx scripts/calculate-tokens.ts",
     "generate-indices": "tsx scripts/generate-indices.ts",
-    "release-skill": "tsx scripts/release-skill.ts"
+    "release-skill": "tsx scripts/release-skill.ts",
+    "audit-skills": "tsx scripts/audit-skills.ts",
+    "docs:scan": "tsx scripts/scan-docs.ts"
   },
   "engines": {
     "node": ">=20.0.0"

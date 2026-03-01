@@ -3,25 +3,25 @@ name: Publish Process
 on:
   push:
     tags:
-      - 'cli-v*'
-      - 'flutter-v*'
-      - 'dart-v*'
-      - 'nestjs-v*'
-      - 'nextjs-v*'
-      - 'angular-v*'
-      - 'golang-v*'
-      - 'typescript-v*'
-      - 'javascript-v*'
-      - 'common-v*'
-      - 'react-v*'
-      - 'react-native-v*'
-      - 'java-v*'
-      - 'kotlin-v*'
-      - 'spring-boot-v*'
-      - 'android-v*'
-      - 'ios-v*'
-      - 'swift-v*'
-      - 'php-v*'
+      - "cli-v*"
+      - "flutter-v*"
+      - "dart-v*"
+      - "nestjs-v*"
+      - "nextjs-v*"
+      - "angular-v*"
+      - "golang-v*"
+      - "typescript-v*"
+      - "javascript-v*"
+      - "common-v*"
+      - "react-v*"
+      - "react-native-v*"
+      - "java-v*"
+      - "kotlin-v*"
+      - "spring-boot-v*"
+      - "android-v*"
+      - "ios-v*"
+      - "swift-v*"
+      - "php-v*"
 
 permissions:
   contents: write
@@ -35,8 +35,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
-          registry-url: 'https://registry.npmjs.org'
+          node-version: "20.x"
+          registry-url: "https://registry.npmjs.org"
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -104,12 +104,12 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
-          name: '${{ steps.tag_info.outputs.category }} ${{ steps.tag_info.outputs.version }}'
+          name: "${{ steps.tag_info.outputs.category }} ${{ steps.tag_info.outputs.version }}"
           body: |
             New skills update for **${{ steps.tag_info.outputs.category }}**.
 
             Checkout the changelog or sync in your project:
             ```bash
-            agent-skills-standard sync
+            full-stack-skill sync
             ```
           generate_release_notes: true
