@@ -16,7 +16,7 @@ export const FRONTEND_REACT_FRAMEWORKS: Framework[] = [
 ];
 
 export const DEFAULT_REGISTER =
-  'https://github.com/truongnq0509/full-stack-skill';
+  'https://github.com/truongnq-ai/full-stack-skill';
 
 export const DEFAULT_WORKFLOWS = [
   'code-review',

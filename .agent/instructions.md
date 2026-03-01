@@ -52,4 +52,4 @@ full-stack-skill feedback    # Report skill improvements
 
 ## ⚠️ Registry URL
 
-The skills registry points to: `https://github.com/truongnq0509/full-stack-skill`
+The skills registry points to: `https://github.com/truongnq-ai/full-stack-skill`
