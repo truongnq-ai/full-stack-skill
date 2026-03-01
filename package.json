@@ -1,0 +1,35 @@
+{
+  "name": "@truongnq-ai/full-stack-skill",
+  "version": "2026.03.01",
+  "description": "Full-stack skills kit for AI IDE/agents — language, framework, database, architecture and templates",
+  "bin": {
+    "full-stack-skill": "bin/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "files": [
+    "bin",
+    "docs",
+    "language",
+    "framework",
+    "infra",
+    "architecture",
+    "templates",
+    "README.md",
+    "VERSION"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "ai-agent",
+    "skill",
+    "full-stack",
+    "react",
+    "flutter",
+    "nestjs"
+  ],
+  "license": "MIT"
+}
