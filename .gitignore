@@ -3,3 +3,10 @@ dist/
 *.log
 .env
 .DS_Store
+.skillsrc
+*.tgz
+coverage/
+.vscode/
+.idea/
+*.local
+.turbo/

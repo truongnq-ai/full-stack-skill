@@ -14,8 +14,10 @@
 
 # Agent Skills Index
 
-> [!IMPORTANT]
-> **Prefer retrieval-led reasoning over pre-training-led reasoning.**
+> [!NOTE]
+> This index shows **universal skills** (common + typescript) that apply to all projects.
+> **Framework-specific skills** (React, NestJS, Flutter, etc.) are injected dynamically
+> after running `full-stack-skill sync` based on your `.skillsrc` configuration.
 > Before writing any code, you MUST CHECK if a relevant skill exists in the index below.
 > If a skill matches your task, READ the file using `view_file`.
 

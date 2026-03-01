@@ -16,7 +16,7 @@ const program = new Command();
 program
   .name('full-stack-skill')
   .description(
-    'A CLI to manage and sync full-stack AI agent skills for Cursor, Claude, Copilot, Windsurf, Antigravity, and more.',
+    'A CLI to manage and sync full-stack AI agent skills for Cursor, Claude, Copilot, Windsurf, Antigravity, and more.\n\n  Shorthand: use "fss" instead of "full-stack-skill" for all commands.',
   )
   .version('2026.03.01');
 
