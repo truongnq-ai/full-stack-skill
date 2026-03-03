@@ -17,40 +17,25 @@
 const { google } = require('googleapis');
 const path = require('path');
 const fs = require('fs');
+const { getDriveClient } = require('./auth');
 
 // Cấu hình Cây thư mục cần khởi tạo
-// ➡️ Chỉnh sửa mảng modules theo nghiệp vụ dự án của bạn
 const WORKSPACE_TREE = {
-    rootName: 'MY_PROJECT_STORAGE_ROOT',
-    environments: ['dev', 'uat', 'prod'],
-    modules: ['avatars', 'documents', 'invoices', 'temp']
+    rootName: 'personal_workspace',
+    environments: ['prod'], // Chỉ tạo 1 level thôi cho Drive cá nhân
+    modules: ['documents', 'library', 'company_archives', 'media', 'private', 'setups', 'unsorted']
 };
 
-// Chế độ: Shared Drive (nếu có env) hoặc My Drive
 const SHARED_DRIVE_ID = process.env.SHARED_DRIVE_ID || null;
-
-// Đường dẫn File Service Account JSON — KHÔNG BAO GIỜ PUSH LÊN GIT
-const CREDENTIALS_PATH = path.join(__dirname, 'credentials.json');
-
-// Params bắt buộc để làm việc với Shared Drive (xem references/google-drive-limits.md)
 const SHARED_DRIVE_PARAMS = SHARED_DRIVE_ID
     ? { supportsAllDrives: true, includeItemsFromAllDrives: true, corpora: 'drive', driveId: SHARED_DRIVE_ID }
     : {};
 
 async function initializeWorkspace() {
-    if (!fs.existsSync(CREDENTIALS_PATH)) {
-        console.error(`❌ Không tìm thấy '${CREDENTIALS_PATH}'. Tải Service Account JSON từ Google Cloud Console.`);
-        process.exit(1);
-    }
-
-    const auth = new google.auth.GoogleAuth({
-        keyFile: CREDENTIALS_PATH,
-        scopes: ['https://www.googleapis.com/auth/drive'],
-    });
-    const drive = google.drive({ version: 'v3', auth });
+    const drive = await getDriveClient();
 
     const mode = SHARED_DRIVE_ID ? `Shared Drive (ID: ${SHARED_DRIVE_ID})` : 'My Drive';
-    console.log(`🚀 Kết nối Service Account — Mode: ${mode}`);
+    console.log(`🚀 Kết nối Google Drive — Mode: ${mode}`);
 
     try {
         // 1. Tạo/lấy Thư mục Gốc

@@ -51,3 +51,4 @@ src/
 - [Download Strategies](references/download-strategies.md)
 - [Permissions Model](references/permissions-model.md)
 - [Quota Monitoring](references/quota-monitoring.md)
+- [Migration Strategy](references/migration-strategy.md)
