@@ -1,0 +1,19 @@
+# Sensitive files - NEVER commit
+client_secret*.json
+token.json
+credentials.json
+*.env
+
+# Migration data files (large, 1-time use)
+dry_run_plan_*.json
+migration_log_*.json
+sort_log_*.json
+audit_report_*.csv
+migration.config.json
+
+# Node modules
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
