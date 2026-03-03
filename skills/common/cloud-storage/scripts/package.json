@@ -1,0 +1,16 @@
+{
+    "name": "cloud-storage-scripts",
+    "version": "1.0.0",
+    "description": "Utility scripts for Google Drive / Cloud Storage integration (see skill references for context)",
+    "private": true,
+    "scripts": {
+        "init:drive": "node init_google_drive_folder_structure.js",
+        "upload:test": "node upload_stream_boilerplate.js"
+    },
+    "dependencies": {
+        "googleapis": "^144.0.0"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    }
+}
