@@ -49,7 +49,15 @@ Core language idioms and patterns.
 - [**Best Practices**](dart/best-practices/SKILL.md) (P1) - Scoping, Imports, Config.
 - [**Tooling**](dart/tooling/SKILL.md) (P1) - Linting, Formatting, Analysis.
 
-### 🔷 TypeScript (Language)
+### 🐍 Python (Language)
+
+Modern Python 3.12+ standards for type safety, async patterns, and production services.
+
+- [**Language Patterns**](python/language/SKILL.md) (P0) - Type Hints, Dataclasses, Async, Pydantic v2.
+- [**Best Practices**](python/best-practices/SKILL.md) (P0) - FastAPI/Django/Flask Selection, Project Structure.
+- [**Security**](python/security/SKILL.md) (P0) - Injection Prevention, Secrets, Auth, OWASP.
+- [**Tooling**](python/tooling/SKILL.md) (P1) - uv, ruff, mypy, pytest, pyproject.toml.
+
 
 Modern TypeScript standards for type-safe development.
 

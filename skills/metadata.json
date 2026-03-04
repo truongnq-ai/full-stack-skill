@@ -234,6 +234,17 @@
         "avg_tokens_per_skill": 664,
         "largest_skill": "postgresql (791 tokens)"
       }
+    },
+    "python": {
+      "version": "1.0.0",
+      "last_updated": "2026-03-04",
+      "tag_prefix": "python-v",
+      "token_metrics": {
+        "total_skills": 4,
+        "total_tokens": 1750,
+        "avg_tokens_per_skill": 437,
+        "largest_skill": "language (480 tokens)"
+      }
     }
   }
 }
