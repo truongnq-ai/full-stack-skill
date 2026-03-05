@@ -1,6 +1,6 @@
-import { Agent, Framework } from './enums';
+import { Agent, Framework, Language } from './enums';
 
-export { Agent, Framework };
+export { Agent, Framework, Language };
 
 export const UNIVERSAL_SKILLS = ['common'];
 export const BACKEND_FRAMEWORKS: Framework[] = [
@@ -295,6 +295,100 @@ export const SUPPORTED_AGENTS: AgentDefinition[] =
 export const SUPPORTED_FRAMEWORKS: FrameworkDefinition[] = Object.values(
   Framework,
 ).map(getFrameworkDefinition);
+
+export interface LanguageDefinition {
+  id: Language;
+  name: string;
+  /** Skill categories to sync when this language is chosen (e.g. ['python'], ['typescript', 'javascript']) */
+  skillCategories: string[];
+  /** Frameworks available for this language */
+  frameworks: Framework[];
+  /** Files that indicate this language is used in the project */
+  detectionFiles: string[];
+}
+
+export const getLanguageDefinition = (id: Language): LanguageDefinition => {
+  switch (id) {
+    case Language.TypeScriptJavaScript:
+      return {
+        id,
+        name: 'TypeScript / JavaScript',
+        skillCategories: ['typescript', 'javascript'],
+        frameworks: [
+          Framework.NestJS,
+          Framework.NextJS,
+          Framework.React,
+          Framework.Angular,
+          Framework.ReactNative,
+        ],
+        detectionFiles: ['tsconfig.json', 'jsconfig.json', 'package.json'],
+      };
+    case Language.Python:
+      return {
+        id,
+        name: 'Python',
+        skillCategories: ['python'],
+        frameworks: [],
+        detectionFiles: [
+          'requirements.txt',
+          'pyproject.toml',
+          'setup.py',
+          'Pipfile',
+          'manage.py',
+        ],
+      };
+    case Language.Dart:
+      return {
+        id,
+        name: 'Dart',
+        skillCategories: ['dart'],
+        frameworks: [Framework.Flutter],
+        detectionFiles: ['pubspec.yaml'],
+      };
+    case Language.JavaKotlin:
+      return {
+        id,
+        name: 'Java / Kotlin',
+        skillCategories: ['java', 'kotlin'],
+        frameworks: [Framework.SpringBoot, Framework.Android],
+        detectionFiles: [
+          'pom.xml',
+          'build.gradle',
+          'build.gradle.kts',
+          'src/main/java',
+          'src/main/kotlin',
+        ],
+      };
+    case Language.Swift:
+      return {
+        id,
+        name: 'Swift',
+        skillCategories: ['swift'],
+        frameworks: [Framework.iOS],
+        detectionFiles: ['Package.swift', 'Podfile', 'project.pbxproj'],
+      };
+    case Language.PHP:
+      return {
+        id,
+        name: 'PHP',
+        skillCategories: ['php'],
+        frameworks: [Framework.Laravel],
+        detectionFiles: ['composer.json', 'artisan'],
+      };
+    case Language.Go:
+      return {
+        id,
+        name: 'Go',
+        skillCategories: ['golang'],
+        frameworks: [Framework.Golang],
+        detectionFiles: ['go.mod'],
+      };
+  }
+};
+
+export const SUPPORTED_LANGUAGES: LanguageDefinition[] = Object.values(
+  Language,
+).map(getLanguageDefinition);
 
 export { SKILL_DETECTION_REGISTRY } from './skills';
 export type { SkillDetection } from './skills';

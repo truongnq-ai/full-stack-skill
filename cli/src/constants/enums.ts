@@ -25,3 +25,13 @@ export enum Framework {
   iOS = 'ios',
   Laravel = 'laravel',
 }
+
+export enum Language {
+  TypeScriptJavaScript = 'ts-js',
+  Python = 'python',
+  Dart = 'dart',
+  JavaKotlin = 'java-kotlin',
+  Swift = 'swift',
+  PHP = 'php',
+  Go = 'go',
+}

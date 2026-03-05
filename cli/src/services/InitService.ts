@@ -6,8 +6,10 @@ import {
   Agent,
   DEFAULT_WORKFLOWS,
   Framework,
+  Language,
   SUPPORTED_AGENTS,
   SUPPORTED_FRAMEWORKS,
+  SUPPORTED_LANGUAGES,
 } from '../constants';
 import { RegistryMetadata } from '../models/types';
 import { ConfigService } from './ConfigService';
@@ -21,11 +23,15 @@ export interface InitContext {
   frameworkDetection: Record<string, boolean>;
   /** Map of agent IDs and whether they were detected in the workspace */
   agentDetection: Record<string, boolean>;
+  /** Map of language IDs and whether they were detected in the workspace */
+  languageDetection: Record<string, boolean>;
 }
 /**
  * User responses gathered from the initialization prompt.
  */
 export interface InitAnswers {
+  /** List of language group IDs chosen by the user */
+  languages: string[];
   /** List of framework IDs chosen by the user */
   frameworks: string[];
   /** List of AI agents to enable for the project */
@@ -43,7 +49,7 @@ export class InitService {
   private configService = new ConfigService();
 
   /**
-   * Performs environmental discovery to identify existing frameworks and agents.
+   * Performs environmental discovery to identify existing frameworks, agents, and languages.
    * @returns An InitContext containing detection results
    */
   async getInitializationContext(): Promise<InitContext> {
@@ -52,71 +58,96 @@ export class InitService {
       this.detectionService.detectAgents(),
     ]);
 
-    return { frameworkDetection, agentDetection };
+    // Detect languages by checking detection files
+    const languageDetection: Record<string, boolean> = {};
+    for (const lang of SUPPORTED_LANGUAGES) {
+      const fileChecks = lang.detectionFiles.map((file) =>
+        fs.pathExists(path.join(process.cwd(), file)),
+      );
+      const results = await Promise.all(fileChecks);
+      languageDetection[lang.id] = results.some((exists) => exists);
+    }
+
+    return { frameworkDetection, agentDetection, languageDetection };
   }
 
   /**
-   * Transforms the initialization context and registry metadata into choices for the interactive prompt.
-   * @param context The discovered initialization context
-   * @param supportedCategories List of categories currently supported by the registry
-   * @returns Formatted choices grouped by category and the default frameworks
+   * Generates language choices for the first prompt step.
    */
-  getPromptChoices(context: InitContext, supportedCategories: string[]) {
-    const MOBILE_FRAMEWORKS = [
-      Framework.Flutter,
-      Framework.ReactNative,
-      Framework.Android,
-      Framework.iOS,
-    ];
-    const BACKEND_FRAMEWORKS = [
-      Framework.NestJS,
-      Framework.SpringBoot,
-      Framework.Golang,
-      Framework.Laravel,
-    ];
-    const FRONTEND_FRAMEWORKS = [
-      Framework.NextJS,
-      Framework.React,
-      Framework.Angular,
-    ];
+  getLanguageChoices(context: InitContext) {
+    const languageChoices = SUPPORTED_LANGUAGES.map((lang) => ({
+      name:
+        lang.frameworks.length > 0
+          ? `${lang.name} (${lang.frameworks.map((f) => {
+            const fw = SUPPORTED_FRAMEWORKS.find((sf) => sf.id === f);
+            return fw?.name || f;
+          }).join(', ')})`
+          : lang.name,
+      value: lang.id,
+      checked: context.languageDetection[lang.id] ?? false,
+    }));
 
-    const makeChoice = (f: (typeof SUPPORTED_FRAMEWORKS)[number]) => ({
-      name: supportedCategories.includes(f.id)
-        ? f.name
-        : `${f.name} (Coming Soon)`,
-      value: f.id,
-      checked: context.frameworkDetection[f.id] ?? false,
-    });
+    return languageChoices;
+  }
 
-    const getGroup = (ids: Framework[]) =>
-      SUPPORTED_FRAMEWORKS.filter((f) =>
-        ids.includes(f.id as Framework),
-      ).map(makeChoice);
+  /**
+   * Generates framework choices filtered by selected languages.
+   * Only returns frameworks that belong to the selected language groups.
+   */
+  getFrameworkChoices(
+    selectedLanguages: string[],
+    context: InitContext,
+    supportedCategories: string[],
+  ) {
+    // Gather all frameworks from selected languages
+    const availableFrameworks = new Set<Framework>();
+    for (const langId of selectedLanguages) {
+      const langDef = SUPPORTED_LANGUAGES.find((l) => l.id === langId);
+      if (langDef) {
+        langDef.frameworks.forEach((f) => availableFrameworks.add(f));
+      }
+    }
 
-    const frameworkChoices: (ReturnType<typeof makeChoice> | inquirer.Separator)[] = [
-      new inquirer.Separator('── 📱 Mobile ──'),
-      ...getGroup(MOBILE_FRAMEWORKS),
-      new inquirer.Separator('── 🖥️  Backend ──'),
-      ...getGroup(BACKEND_FRAMEWORKS),
-      new inquirer.Separator('── 🌐 Frontend ──'),
-      ...getGroup(FRONTEND_FRAMEWORKS),
-    ];
+    if (availableFrameworks.size === 0) return [];
 
-    const agentChoices = SUPPORTED_AGENTS.map((a) => ({
+    // Build choices grouped by language
+    const choices: (
+      | { name: string; value: string; checked: boolean }
+      | inquirer.Separator
+    )[] = [];
+
+    for (const langId of selectedLanguages) {
+      const langDef = SUPPORTED_LANGUAGES.find((l) => l.id === langId);
+      if (!langDef || langDef.frameworks.length === 0) continue;
+
+      choices.push(new inquirer.Separator(`── ${langDef.name} ──`));
+
+      for (const fwId of langDef.frameworks) {
+        const fwDef = SUPPORTED_FRAMEWORKS.find((f) => f.id === fwId);
+        if (!fwDef) continue;
+
+        choices.push({
+          name: supportedCategories.includes(fwDef.id)
+            ? fwDef.name
+            : `${fwDef.name} (Coming Soon)`,
+          value: fwDef.id,
+          checked: context.frameworkDetection[fwDef.id] ?? false,
+        });
+      }
+    }
+
+    return choices;
+  }
+
+  /**
+   * Generates agent choices for the prompt.
+   */
+  getAgentChoices(context: InitContext) {
+    return SUPPORTED_AGENTS.map((a) => ({
       name: `${a.name} (${a.path}/)`,
       value: a.id,
       checked: context.agentDetection[a.id] ?? false,
     }));
-
-    const defaultFrameworks = SUPPORTED_FRAMEWORKS
-      .filter((f) => context.frameworkDetection[f.id])
-      .map((f) => f.id);
-
-    return {
-      frameworkChoices,
-      agentChoices,
-      defaultFrameworks,
-    };
   }
 
   /**
@@ -130,22 +161,37 @@ export class InitService {
     metadata: Partial<RegistryMetadata>,
     cwd: string = process.cwd(),
   ) {
-    const frameworkIds = answers.frameworks;
+    // Collect language skill categories from selected languages
+    const languageSkillCategories = new Set<string>();
+    for (const langId of answers.languages) {
+      const langDef = SUPPORTED_LANGUAGES.find((l) => l.id === langId);
+      if (langDef) {
+        langDef.skillCategories.forEach((cat) =>
+          languageSkillCategories.add(cat),
+        );
+      }
+    }
 
-    // Detect languages from all selected frameworks and merge unique
-    const allLanguages = new Set<string>();
-    for (const fwId of frameworkIds) {
+    // Detect detailed languages from selected frameworks (for TS vs JS, Java vs Kotlin)
+    const detectedLanguages = new Set<string>();
+    for (const fwId of answers.frameworks) {
       const frameworkDef = SUPPORTED_FRAMEWORKS.find((f) => f.id === fwId);
       if (frameworkDef) {
         const langs = await this.detectionService.detectLanguages(frameworkDef);
-        langs.forEach((l) => allLanguages.add(l));
+        langs.forEach((l) => detectedLanguages.add(l));
       }
     }
+
+    // Merge: language skill categories + detected languages
+    const allLanguages = new Set([
+      ...languageSkillCategories,
+      ...detectedLanguages,
+    ]);
 
     const includeWorkflows = answers.agents.includes(Agent.Antigravity);
 
     const config = this.configService.buildInitialConfig(
-      frameworkIds,
+      answers.frameworks,
       answers.agents,
       answers.registry,
       metadata,

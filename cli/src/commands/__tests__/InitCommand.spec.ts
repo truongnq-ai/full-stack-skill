@@ -27,12 +27,14 @@ describe('InitCommand', () => {
     vi.clearAllMocks();
     mockInitService = {
       initializeProject: vi.fn().mockResolvedValue(true),
-      getInitializationContext: vi.fn().mockResolvedValue({}),
-      getPromptChoices: vi.fn().mockReturnValue({
-        frameworkChoices: [],
-        agentChoices: [],
-        defaultFramework: 'none',
+      getInitializationContext: vi.fn().mockResolvedValue({
+        frameworkDetection: {},
+        agentDetection: {},
+        languageDetection: {},
       }),
+      getLanguageChoices: vi.fn().mockReturnValue([]),
+      getFrameworkChoices: vi.fn().mockReturnValue([]),
+      getAgentChoices: vi.fn().mockReturnValue([]),
       buildAndSaveConfig: vi.fn().mockResolvedValue(undefined),
     } as unknown as Mocked<InitService>;
     mockRegistryService = {
@@ -41,7 +43,7 @@ describe('InitCommand', () => {
         .mockResolvedValue({ categories: [], metadata: {} }),
     } as unknown as Mocked<RegistryService>;
 
-    // Explicitly pass undefined to cover constructor 14-15
+    // Explicitly pass undefined to cover constructor
     command = new InitCommand(undefined, undefined);
 
     // Patch the instances after constructor runs to use our mocks
@@ -53,14 +55,19 @@ describe('InitCommand', () => {
     vi.spyOn(console, 'log').mockImplementation(() => { });
 
     vi.spyOn(fs, 'pathExists').mockResolvedValue(false as never);
-    vi.mocked(inquirer.prompt).mockResolvedValue({
-      frameworks: ['react'],
-      agents: ['cursor'],
-      registry: 'reg',
-    });
+    // Mock 3 sequential prompts: languages, frameworks, agents+registry
+    vi.mocked(inquirer.prompt)
+      .mockResolvedValueOnce({ languages: ['ts-js'] })
+      .mockResolvedValueOnce({ frameworks: ['react'] })
+      .mockResolvedValueOnce({ agents: ['cursor'], registry: 'reg' });
   });
 
   it('should initialize project from scratch', async () => {
+    // getFrameworkChoices returns some choices so step 2 will be prompted
+    mockInitService.getFrameworkChoices.mockReturnValue([
+      { name: 'React', value: 'react', checked: false },
+    ]);
+
     await command.run();
     expect(mockInitService.buildAndSaveConfig).toHaveBeenCalled();
     expect(console.log).toHaveBeenCalledWith(
@@ -70,6 +77,7 @@ describe('InitCommand', () => {
 
   it('should handle existing config and abort if requested', async () => {
     vi.spyOn(fs, 'pathExists').mockResolvedValue(true as never);
+    vi.mocked(inquirer.prompt).mockReset();
     vi.mocked(inquirer.prompt).mockResolvedValue({ overwrite: false });
 
     await command.run();
@@ -81,16 +89,33 @@ describe('InitCommand', () => {
 
   it('should handle existing config and overwrite if requested', async () => {
     vi.spyOn(fs, 'pathExists').mockResolvedValue(true as never);
-    // Sequence for multiple prompts
+    // getFrameworkChoices returns some choices so step 2 will be prompted
+    mockInitService.getFrameworkChoices.mockReturnValue([
+      { name: 'React', value: 'react', checked: false },
+    ]);
+    vi.mocked(inquirer.prompt).mockReset();
+    // Sequence: overwrite, languages, frameworks, agents+registry
     vi.mocked(inquirer.prompt)
       .mockResolvedValueOnce({ overwrite: true })
-      .mockResolvedValueOnce({
-        frameworks: ['react'],
-        agents: ['cursor'],
-        registry: 'reg',
-      });
+      .mockResolvedValueOnce({ languages: ['ts-js'] })
+      .mockResolvedValueOnce({ frameworks: ['react'] })
+      .mockResolvedValueOnce({ agents: ['cursor'], registry: 'reg' });
 
     await command.run();
     expect(mockInitService.buildAndSaveConfig).toHaveBeenCalled();
+  });
+
+  it('should skip framework prompt when no frameworks available for selected languages', async () => {
+    // Python has no frameworks
+    mockInitService.getFrameworkChoices.mockReturnValue([]);
+    vi.mocked(inquirer.prompt).mockReset();
+    vi.mocked(inquirer.prompt)
+      .mockResolvedValueOnce({ languages: ['python'] })
+      .mockResolvedValueOnce({ agents: ['cursor'], registry: 'reg' });
+
+    await command.run();
+    expect(mockInitService.buildAndSaveConfig).toHaveBeenCalled();
+    // Only 2 prompts: languages + agents/registry (no frameworks prompt)
+    expect(inquirer.prompt).toHaveBeenCalledTimes(2);
   });
 });
