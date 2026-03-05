@@ -105,7 +105,7 @@ describe('ConfigService', () => {
       };
 
       const config = configService.buildInitialConfig(
-        'flutter',
+        ['flutter'],
         [Agent.Cursor],
         'https://registry.com',
         metadata,
@@ -126,7 +126,7 @@ describe('ConfigService', () => {
       };
 
       const config = configService.buildInitialConfig(
-        'flutter',
+        ['flutter'],
         [Agent.Cursor],
         'https://registry.com',
         metadata,
@@ -145,7 +145,7 @@ describe('ConfigService', () => {
       };
 
       const config = configService.buildInitialConfig(
-        'flutter',
+        ['flutter'],
         [Agent.Cursor],
         'https://registry.com',
         metadata,
@@ -166,7 +166,7 @@ describe('ConfigService', () => {
       };
 
       const config = configService.buildInitialConfig(
-        'flutter',
+        ['flutter'],
         [Agent.Cursor],
         'https://registry.com',
         metadata,
@@ -180,13 +180,13 @@ describe('ConfigService', () => {
 
     it('should handle missing categories or framework in registry metadata', () => {
       // Missing categories entirely
-      const config1 = configService.buildInitialConfig('f', [], 'url', {}, []);
+      const config1 = configService.buildInitialConfig(['f'], [], 'url', {}, []);
       expect(Object.keys(config1.skills)).toHaveLength(1);
       expect(config1.skills.f.ref).toBe('main');
 
       // Category missing for primary framework
       const config2 = configService.buildInitialConfig(
-        'f',
+        ['f'],
         [],
         'url',
         { categories: {} },
@@ -199,7 +199,7 @@ describe('ConfigService', () => {
     it('should fallback to empty registry in buildInitialConfig if not provided (branch coverage)', () => {
       // Branch check for line 108 if framework detections are missing
       const config = configService.buildInitialConfig(
-        'unknown',
+        ['unknown'],
         [],
         'url',
         {},
@@ -218,7 +218,7 @@ describe('ConfigService', () => {
       };
 
       const config = configService.buildInitialConfig(
-        'react-native',
+        ['react-native'],
         [Agent.Cursor],
         'https://registry.com',
         metadata,
@@ -237,7 +237,7 @@ describe('ConfigService', () => {
       };
 
       const config = configService.buildInitialConfig(
-        'nestjs',
+        ['nestjs'],
         [Agent.Cursor],
         'https://registry.com',
         metadata,
@@ -249,7 +249,7 @@ describe('ConfigService', () => {
 
     it('should include workflows in initial config if provided', () => {
       const config = configService.buildInitialConfig(
-        'flutter',
+        ['flutter'],
         [],
         'url',
         {},

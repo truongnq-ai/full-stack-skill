@@ -1,9 +1,11 @@
 import fs from 'fs-extra';
+import inquirer from 'inquirer';
 import yaml from 'js-yaml';
 import path from 'path';
 import {
   Agent,
   DEFAULT_WORKFLOWS,
+  Framework,
   SUPPORTED_AGENTS,
   SUPPORTED_FRAMEWORKS,
 } from '../constants';
@@ -24,8 +26,8 @@ export interface InitContext {
  * User responses gathered from the initialization prompt.
  */
 export interface InitAnswers {
-  /** The primary framework ID chosen by the user */
-  framework: string;
+  /** List of framework IDs chosen by the user */
+  frameworks: string[];
   /** List of AI agents to enable for the project */
   agents: Agent[];
   /** The URL of the skill registry to use */
@@ -57,15 +59,48 @@ export class InitService {
    * Transforms the initialization context and registry metadata into choices for the interactive prompt.
    * @param context The discovered initialization context
    * @param supportedCategories List of categories currently supported by the registry
-   * @returns Formatted choices and the default framework ID
+   * @returns Formatted choices grouped by category and the default frameworks
    */
   getPromptChoices(context: InitContext, supportedCategories: string[]) {
-    const frameworkChoices = SUPPORTED_FRAMEWORKS.map((f) => ({
+    const MOBILE_FRAMEWORKS = [
+      Framework.Flutter,
+      Framework.ReactNative,
+      Framework.Android,
+      Framework.iOS,
+    ];
+    const BACKEND_FRAMEWORKS = [
+      Framework.NestJS,
+      Framework.SpringBoot,
+      Framework.Golang,
+      Framework.Laravel,
+    ];
+    const FRONTEND_FRAMEWORKS = [
+      Framework.NextJS,
+      Framework.React,
+      Framework.Angular,
+    ];
+
+    const makeChoice = (f: (typeof SUPPORTED_FRAMEWORKS)[number]) => ({
       name: supportedCategories.includes(f.id)
         ? f.name
         : `${f.name} (Coming Soon)`,
       value: f.id,
-    }));
+      checked: context.frameworkDetection[f.id] ?? false,
+    });
+
+    const getGroup = (ids: Framework[]) =>
+      SUPPORTED_FRAMEWORKS.filter((f) =>
+        ids.includes(f.id as Framework),
+      ).map(makeChoice);
+
+    const frameworkChoices: (ReturnType<typeof makeChoice> | inquirer.Separator)[] = [
+      new inquirer.Separator('── 📱 Mobile ──'),
+      ...getGroup(MOBILE_FRAMEWORKS),
+      new inquirer.Separator('── 🖥️  Backend ──'),
+      ...getGroup(BACKEND_FRAMEWORKS),
+      new inquirer.Separator('── 🌐 Frontend ──'),
+      ...getGroup(FRONTEND_FRAMEWORKS),
+    ];
 
     const agentChoices = SUPPORTED_AGENTS.map((a) => ({
       name: `${a.name} (${a.path}/)`,
@@ -73,14 +108,14 @@ export class InitService {
       checked: context.agentDetection[a.id] ?? false,
     }));
 
-    const defaultFramework =
-      SUPPORTED_FRAMEWORKS.find((f) => context.frameworkDetection[f.id])?.id ||
-      'flutter';
+    const defaultFrameworks = SUPPORTED_FRAMEWORKS
+      .filter((f) => context.frameworkDetection[f.id])
+      .map((f) => f.id);
 
     return {
       frameworkChoices,
       agentChoices,
-      defaultFramework,
+      defaultFrameworks,
     };
   }
 
@@ -95,21 +130,26 @@ export class InitService {
     metadata: Partial<RegistryMetadata>,
     cwd: string = process.cwd(),
   ) {
-    const frameworkId = answers.framework;
-    const frameworkDef = SUPPORTED_FRAMEWORKS.find((f) => f.id === frameworkId);
+    const frameworkIds = answers.frameworks;
 
-    const languages = frameworkDef
-      ? await this.detectionService.detectLanguages(frameworkDef)
-      : [];
+    // Detect languages from all selected frameworks and merge unique
+    const allLanguages = new Set<string>();
+    for (const fwId of frameworkIds) {
+      const frameworkDef = SUPPORTED_FRAMEWORKS.find((f) => f.id === fwId);
+      if (frameworkDef) {
+        const langs = await this.detectionService.detectLanguages(frameworkDef);
+        langs.forEach((l) => allLanguages.add(l));
+      }
+    }
 
     const includeWorkflows = answers.agents.includes(Agent.Antigravity);
 
     const config = this.configService.buildInitialConfig(
-      frameworkId,
+      frameworkIds,
       answers.agents,
       answers.registry,
       metadata,
-      languages,
+      Array.from(allLanguages),
       includeWorkflows ? DEFAULT_WORKFLOWS : [],
     );
 

@@ -50,11 +50,11 @@ describe('InitCommand', () => {
     // @ts-expect-error - testing private instance patching
     command.registryService = mockRegistryService;
 
-    vi.spyOn(console, 'log').mockImplementation(() => {});
+    vi.spyOn(console, 'log').mockImplementation(() => { });
 
     vi.spyOn(fs, 'pathExists').mockResolvedValue(false as never);
     vi.mocked(inquirer.prompt).mockResolvedValue({
-      framework: 'react',
+      frameworks: ['react'],
       agents: ['cursor'],
       registry: 'reg',
     });
@@ -85,7 +85,7 @@ describe('InitCommand', () => {
     vi.mocked(inquirer.prompt)
       .mockResolvedValueOnce({ overwrite: true })
       .mockResolvedValueOnce({
-        framework: 'react',
+        frameworks: ['react'],
         agents: ['cursor'],
         registry: 'reg',
       });

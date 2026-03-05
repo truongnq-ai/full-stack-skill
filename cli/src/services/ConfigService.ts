@@ -87,7 +87,7 @@ export class ConfigService {
    * @returns A fresh SkillConfig object
    */
   buildInitialConfig(
-    framework: string,
+    frameworks: string[],
     agents: Agent[],
     registry: string,
     metadata: Partial<RegistryMetadata>,
@@ -96,16 +96,18 @@ export class ConfigService {
   ): SkillConfig {
     const skills: Record<string, CategoryConfig> = {};
 
-    // Add main framework
-    skills[framework] = {
-      ref: metadata.categories?.[framework]?.version
-        ? `${metadata.categories[framework].tag_prefix || ''}${metadata.categories[framework].version}`
-        : 'main',
-    };
+    // Add all selected frameworks
+    for (const framework of frameworks) {
+      skills[framework] = {
+        ref: metadata.categories?.[framework]?.version
+          ? `${metadata.categories[framework].tag_prefix || ''}${metadata.categories[framework].version}`
+          : 'main',
+      };
+    }
 
     // Specialized Logic: Frontend React-based projects must inherently sync the React category natively.
     if (
-      FRONTEND_REACT_FRAMEWORKS.includes(framework as Framework) &&
+      frameworks.some((fw) => FRONTEND_REACT_FRAMEWORKS.includes(fw as Framework)) &&
       metadata.categories?.['react']
     ) {
       skills['react'] = {
@@ -133,7 +135,7 @@ export class ConfigService {
 
     // Add database category for backend frameworks
     if (
-      BACKEND_FRAMEWORKS.includes(framework as Framework) &&
+      frameworks.some((fw) => BACKEND_FRAMEWORKS.includes(fw as Framework)) &&
       metadata.categories?.['database']
     ) {
       skills['database'] = {

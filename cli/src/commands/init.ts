@@ -48,17 +48,18 @@ export class InitCommand {
       await this.registryService.discoverRegistry(DEFAULT_REGISTER);
 
     // 3. Prepare Choices
-    const { frameworkChoices, agentChoices, defaultFramework } =
+    const { frameworkChoices, agentChoices } =
       this.initService.getPromptChoices(context, categories);
 
     // 4. Prompt User
     const answers = await inquirer.prompt<InitAnswers>([
       {
-        type: 'list',
-        name: 'framework',
-        message: 'Select Framework:',
+        type: 'checkbox',
+        name: 'frameworks',
+        message: 'Select Frameworks (Space to toggle, Enter to confirm):',
         choices: frameworkChoices,
-        default: defaultFramework,
+        validate: (ans: string[]) =>
+          ans.length > 0 || 'Please select at least one framework.',
       },
       {
         type: 'checkbox',
@@ -78,7 +79,7 @@ export class InitCommand {
     await this.initService.buildAndSaveConfig(answers, metadata);
 
     console.log(pc.green('\n✅ Initialized .skillsrc with your preferences!'));
-    console.log(pc.gray(`   Selected framework: ${answers.framework}`));
+    console.log(pc.gray(`   Selected frameworks: ${answers.frameworks.join(', ')}`));
     console.log(
       pc.cyan(
         '\nNext step: Run `full-stack-skill sync` to generate rule files.',

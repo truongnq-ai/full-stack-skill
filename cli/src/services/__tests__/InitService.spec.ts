@@ -56,13 +56,25 @@ describe('InitService', () => {
 
       const choices = initService.getPromptChoices(context, supported);
 
-      expect(choices.defaultFramework).toBe('flutter');
+      expect(choices.defaultFrameworks).toContain('flutter');
+      expect(choices.defaultFrameworks).not.toContain('nestjs');
+
+      // Framework choices now include Separators, so filter them out for assertions
+      const fwItems = choices.frameworkChoices.filter(
+        (c: any) => c.value !== undefined,
+      );
       expect(
-        choices.frameworkChoices.find((f) => f.value === 'flutter')?.name,
+        fwItems.find((f: any) => f.value === 'flutter')?.name,
       ).not.toContain('Soon');
       expect(
-        choices.frameworkChoices.find((f) => f.value === 'nestjs')?.name,
+        fwItems.find((f: any) => f.value === 'flutter')?.checked,
+      ).toBe(true);
+      expect(
+        fwItems.find((f: any) => f.value === 'nestjs')?.name,
       ).toContain('Soon');
+      expect(
+        fwItems.find((f: any) => f.value === 'nestjs')?.checked,
+      ).toBe(false);
 
       const agentChoiceCursor = choices.agentChoices.find(
         (a) => a.value === 'cursor',
@@ -94,12 +106,21 @@ describe('InitService', () => {
       expect(kiroChoice).toBeDefined();
       expect(kiroChoice?.checked).toBe(true);
     });
+
+    it('should return defaultFrameworks as empty array when no framework detected', () => {
+      const context = {
+        frameworkDetection: { flutter: false, nestjs: false },
+        agentDetection: {},
+      };
+      const choices = initService.getPromptChoices(context, []);
+      expect(choices.defaultFrameworks).toEqual([]);
+    });
   });
 
   describe('buildAndSaveConfig', () => {
     it('should build, refine, and save configuration to disk', async () => {
       const answers: InitAnswers = {
-        framework: 'flutter',
+        frameworks: ['flutter'],
         agents: [Agent.Cursor],
         registry: 'https://github.com/owner/repo',
       };
@@ -117,13 +138,13 @@ describe('InitService', () => {
 
     it('should include workflows if Antigravity agent is selected', async () => {
       const answers: InitAnswers = {
-        framework: 'flutter',
+        frameworks: ['flutter'],
         agents: [Agent.Antigravity],
         registry: 'url',
       };
       await initService.buildAndSaveConfig(answers, {}, '/tmp');
       expect(mockConfigService.buildInitialConfig).toHaveBeenCalledWith(
-        expect.any(String),
+        expect.any(Array),
         expect.any(Array),
         expect.any(String),
         expect.any(Object),
@@ -132,21 +153,40 @@ describe('InitService', () => {
       );
     });
 
-    it('should handle unsupported framework by defaulting languages to empty (line 75 coverage)', async () => {
+    it('should handle unsupported framework by defaulting languages to empty', async () => {
       const answers: InitAnswers = {
-        framework: 'unsupported-framework',
+        frameworks: ['unsupported-framework'],
         agents: [Agent.Cursor],
         registry: 'url',
       };
       await initService.buildAndSaveConfig(answers, {}, '/tmp');
       expect(mockDetectionService.detectLanguages).not.toHaveBeenCalled();
       expect(mockConfigService.buildInitialConfig).toHaveBeenCalledWith(
-        'unsupported-framework',
+        ['unsupported-framework'],
         expect.any(Array),
         expect.any(String),
         expect.any(Object),
         [], // Empty languages
         [], // Empty workflows
+      );
+    });
+
+    it('should merge languages from multiple selected frameworks', async () => {
+      const answers: InitAnswers = {
+        frameworks: ['flutter', 'nestjs'],
+        agents: [Agent.Cursor],
+        registry: 'url',
+      };
+      await initService.buildAndSaveConfig(answers, {}, '/tmp');
+      // detectLanguages should be called for each supported framework
+      expect(mockDetectionService.detectLanguages).toHaveBeenCalledTimes(2);
+      expect(mockConfigService.buildInitialConfig).toHaveBeenCalledWith(
+        ['flutter', 'nestjs'],
+        expect.any(Array),
+        expect.any(String),
+        expect.any(Object),
+        expect.any(Array),
+        expect.any(Array),
       );
     });
   });
