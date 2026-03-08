@@ -1,0 +1,269 @@
+{
+  "id": "workflow-1772990421932",
+  "name": "software-development-workflow",
+  "description": "software-development-workflow",
+  "version": "1.0.0",
+  "nodes": [
+    {
+      "id": "start-node-default",
+      "type": "start",
+      "name": "start-node-default",
+      "position": {
+        "x": -285,
+        "y": -345
+      },
+      "data": {
+        "label": "Start"
+      }
+    },
+    {
+      "id": "end-node-default",
+      "type": "end",
+      "name": "end-node-default",
+      "position": {
+        "x": 1260,
+        "y": 60
+      },
+      "data": {
+        "label": "End"
+      }
+    },
+    {
+      "id": "question-1772988166337",
+      "type": "askUserQuestion",
+      "name": "question-for-user",
+      "position": {
+        "x": 600,
+        "y": -60
+      },
+      "data": {
+        "questionText": "Có vấn đề chưa rõ ràng, vui lòng chọn theo option",
+        "options": [],
+        "outputPorts": 0,
+        "useAiSuggestions": true,
+        "multiSelect": false,
+        "name": "question-for-user"
+      }
+    },
+    {
+      "id": "agent-1772988204505",
+      "type": "subAgent",
+      "name": "BA-Node",
+      "position": {
+        "x": -90,
+        "y": -270
+      },
+      "data": {
+        "description": "BA",
+        "prompt": "Bạn là một Business Analyst (Chuyên viên Phân tích Nghiệp vụ) chuyên nghiệp. Nhiệm vụ của bạn là:\n1. Tiếp nhận Scope of Work từ PM Agent.\n2. Giao tiếp với người dùng (người chịu trách nhiệm nghiệp vụ) để làm rõ từng Use Case, User Story, và Acceptance Criteria.\n3. Phác thảo kiến trúc thông tin, luồng dữ liệu (Data Flow) và yêu cầu phi chức năng (Security, Performance).\n4. Đóng gói thành tài liệu PRD (Product Requirement Document) sắc nét để bàn giao cho DEV.\nLuôn xác thực lại với người dùng trước khi chốt tài liệu.",
+        "model": "sonnet",
+        "outputPorts": 1,
+        "name": "BA-Node",
+        "memory": "user",
+        "tools": "Read, Write, Bash",
+        "color": "purple"
+      }
+    },
+    {
+      "id": "switch-1772988307060",
+      "type": "switch",
+      "name": "switch-for-clarify-requirement",
+      "position": {
+        "x": 240,
+        "y": -150
+      },
+      "data": {
+        "evaluationTarget": "Không còn bất kỳ vấn đề nào chưa rõ ràng",
+        "branches": [
+          {
+            "label": "OK, đã clear hết yêu cầu",
+            "condition": "Không còn bất kỳ vấn đề gì chưa rõ ràng",
+            "isDefault": false,
+            "id": "branch_1772988307062_yv88ekw"
+          },
+          {
+            "id": "branch_1772988354691_no7zpx2",
+            "label": "NOT-OK, vẫn còn bất kỳ vấn đề nào đó chưa rõ ràng",
+            "condition": "Vẫn còn bất kỳ vấn đề nào đó chưa rõ ràng, hãy dừng lại hỏi user",
+            "isDefault": false
+          },
+          {
+            "label": "default",
+            "condition": "Other cases",
+            "isDefault": true,
+            "id": "branch_1772988307062_4k49rob"
+          }
+        ],
+        "outputPorts": 3,
+        "name": "switch-for-clarify-requirement"
+      }
+    },
+    {
+      "id": "agent-1772988573915",
+      "type": "subAgent",
+      "name": "dev-node",
+      "position": {
+        "x": 840,
+        "y": -240
+      },
+      "data": {
+        "description": "DEV node",
+        "prompt": "Bạn là một Senior Full-Stack Developer. Nhiệm vụ của bạn:\n1. Đọc hiểu tài liệu PRD từ BA Agent.\n2. Lên kế hoạch thực thi (Implementation Plan) chia theo từng module nhỏ.\n3. Viết code sạch, tuân thủ nghiêm ngặt các nguyên tắc SOLID, DRY, KISS và các rule của dự án.\n4. Báo cáo tiến độ và kết quả mã nguồn đầu ra cho các bước tiếp theo.\nThực thi kỷ luật: Luôn phân tích trước khi code.",
+        "model": "sonnet",
+        "outputPorts": 1,
+        "name": "dev-node",
+        "memory": "user"
+      }
+    },
+    {
+      "id": "subagentflow-1772990094767",
+      "type": "subAgentFlow",
+      "name": "subagentflow-1772990094767",
+      "position": {
+        "x": 350,
+        "y": 200
+      },
+      "data": {
+        "subAgentFlowId": "subagentflow_1772989540595_o8tk27v",
+        "label": "subagentflow-1",
+        "description": "",
+        "outputPorts": 1
+      }
+    }
+  ],
+  "connections": [
+    {
+      "id": "reactflow__edge-start-node-defaultout-agent-1772988204505input",
+      "from": "start-node-default",
+      "to": "agent-1772988204505",
+      "fromPort": "out",
+      "toPort": "input"
+    },
+    {
+      "id": "reactflow__edge-agent-1772988204505output-switch-1772988307060input",
+      "from": "agent-1772988204505",
+      "to": "switch-1772988307060",
+      "fromPort": "output",
+      "toPort": "input"
+    },
+    {
+      "id": "reactflow__edge-switch-1772988307060branch-1-question-1772988166337input",
+      "from": "switch-1772988307060",
+      "to": "question-1772988166337",
+      "fromPort": "branch-1",
+      "toPort": "input"
+    },
+    {
+      "id": "reactflow__edge-switch-1772988307060branch-2-question-1772988166337input",
+      "from": "switch-1772988307060",
+      "to": "question-1772988166337",
+      "fromPort": "branch-2",
+      "toPort": "input"
+    },
+    {
+      "id": "reactflow__edge-question-1772988166337output-agent-1772988204505input",
+      "from": "question-1772988166337",
+      "to": "agent-1772988204505",
+      "fromPort": "output",
+      "toPort": "input"
+    },
+    {
+      "id": "reactflow__edge-switch-1772988307060branch-0-agent-1772988573915input",
+      "from": "switch-1772988307060",
+      "to": "agent-1772988573915",
+      "fromPort": "branch-0",
+      "toPort": "input"
+    },
+    {
+      "id": "reactflow__edge-agent-1772988573915output-end-node-defaultin",
+      "from": "agent-1772988573915",
+      "to": "end-node-default",
+      "fromPort": "output",
+      "toPort": "in"
+    }
+  ],
+  "createdAt": "2026-03-08T17:20:21.932Z",
+  "updatedAt": "2026-03-08T17:20:21.932Z",
+  "subAgentFlows": [
+    {
+      "id": "subagentflow_1772989540595_o8tk27v",
+      "name": "subagentflow-1",
+      "description": "",
+      "nodes": [
+        {
+          "id": "start-1772989540595",
+          "name": "Start",
+          "type": "start",
+          "position": {
+            "x": 30,
+            "y": 210
+          },
+          "data": {
+            "label": "Start"
+          }
+        },
+        {
+          "id": "end-1772989540596",
+          "name": "End",
+          "type": "end",
+          "position": {
+            "x": 600,
+            "y": 200
+          },
+          "data": {
+            "label": "End"
+          }
+        },
+        {
+          "id": "ifelse-1772990109619",
+          "name": "ifelse-1772990109619",
+          "type": "ifElse",
+          "position": {
+            "x": 195,
+            "y": 135
+          },
+          "data": {
+            "evaluationTarget": "",
+            "branches": [
+              {
+                "label": "True",
+                "condition": "Đã có yêu cầu từ Product Owner (user)",
+                "id": "ifelse_0_1772990109621"
+              },
+              {
+                "label": "False",
+                "condition": "Chưa có yêu cầu từ Product Owner (user)",
+                "id": "ifelse_1_1772990109621"
+              }
+            ],
+            "outputPorts": 2,
+            "name": "if-else-have-requirement"
+          }
+        },
+        {
+          "id": "prompt-1772990197999",
+          "name": "New Prompt",
+          "type": "prompt",
+          "position": {
+            "x": 450,
+            "y": 255
+          },
+          "data": {
+            "label": "New Prompt",
+            "prompt": "Enter your prompt here.\n\nYou can use variables like {{variableName}}.",
+            "variables": {}
+          }
+        }
+      ],
+      "connections": [
+        {
+          "id": "reactflow__edge-start-1772989540595out-ifelse-1772990109619input",
+          "from": "start-1772989540595",
+          "to": "ifelse-1772990109619",
+          "fromPort": "out",
+          "toPort": "input"
+        }
+      ]
+    }
+  ]
+}

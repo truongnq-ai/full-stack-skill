@@ -49,4 +49,9 @@
 - **[typescript/security]**: 🚨 Secure coding practices for TypeScript. (triggers: \*_/_.ts, validate, sanitize, xss, injection, auth)
 - **[typescript/tooling]**: Dev tools, linting, and build configuration. (triggers: tsconfig.json, eslint, prettier, jest, vitest)
 
+### Business Analysis Skills (IT)
+- **[it/ba/requirements-elicitation]**: 🚨 Expert process for BAs to gather, clarify, and formulate robust business and technical requirements from stakeholders. (triggers: PRD.md, requirements.md, gather requirements, interview, clarify scope, ba, business analyst)
+- **[it/ba/story-splitting]**: Rules for translating high-level PRDs into actionable, development-ready User Stories using the INVEST principle and BDD acceptance criteria. (triggers: user-stories.md, backlog.md, user story, break down, acceptance criteria, bdd, scrum, agile)
+- **[it/ba/system-modeling]**: Standards for Business Analysts to create visual diagrams (Data Flow, State, Use Case) using Mermaid.js syntax to clarify system behavior for developers. (triggers: system-model.md, architecture.md, *.mermaid, data flow, system model, use case diagram, mermaid, state machine, sequence diagram)
+
 <!-- SKILLS_INDEX_END -->
