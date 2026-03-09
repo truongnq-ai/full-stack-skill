@@ -2,19 +2,26 @@
 name: React Native Navigation
 description: Navigation and deep linking for React Native using React Navigation.
 metadata:
-  labels: [react-native, navigation, routing, deep-linking, react-navigation]
+  labels:
+    - react-native
+    - navigation
+    - routing
+    - deep-linking
+    - react-navigation
+    - react-native-navigation
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/App.tsx', '**/*Navigator.tsx', '**/*Screen.tsx']
+    files:
+      - '**/App.tsx'
+      - '**/*Navigator.tsx'
+      - '**/*Screen.tsx'
     keywords:
-      [
-        NavigationContainer,
-        createStackNavigator,
-        createBottomTabNavigator,
-        linking,
-        deep link,
-      ]
+      - NavigationContainer
+      - createStackNavigator
+      - createBottomTabNavigator
+      - linking
+      - deep link
 workflow_ref: performance
 ---
 

@@ -2,12 +2,26 @@
 name: Flutter Networking (Retrofit & Dio)
 description: HTTP networking standards using Dio and Retrofit with Auth interceptors.
 metadata:
-  labels: [networking, retrofit, dio]
+  labels:
+    - networking
+    - retrofit
+    - dio
+    - flutter
+    - retrofit-networking
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/data_sources/**', '**/api/**']
-    keywords: [Retrofit, Dio, RestClient, GET, POST, Interceptor, refreshing]
+    files:
+      - '**/data_sources/**'
+      - '**/api/**'
+    keywords:
+      - Retrofit
+      - Dio
+      - RestClient
+      - GET
+      - POST
+      - Interceptor
+      - refreshing
 workflow_ref: ui-ux-pro-max
 ---
 

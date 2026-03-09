@@ -2,19 +2,24 @@
 name: iOS App Lifecycle
 description: Standards for AppDelegate, SceneDelegate, Deep Linking, and Background Tasks.
 metadata:
-  labels: [ios, lifecycle, scenedelegate, background-tasks]
+  labels:
+    - ios
+    - lifecycle
+    - scenedelegate
+    - background-tasks
+    - app-lifecycle
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['AppDelegate.swift', 'SceneDelegate.swift']
+    files:
+      - AppDelegate.swift
+      - SceneDelegate.swift
     keywords:
-      [
-        didFinishLaunchingWithOptions,
-        willConnectTo,
-        backgroundTask,
-        Shortcut,
-        UserActivity,
-      ]
+      - didFinishLaunchingWithOptions
+      - willConnectTo
+      - backgroundTask
+      - Shortcut
+      - UserActivity
 workflow_ref: smart-release
 ---
 

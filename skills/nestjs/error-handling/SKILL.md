@@ -2,12 +2,21 @@
 name: NestJS Error Handling
 description: Global Exception Filters and standard error formats.
 metadata:
-  labels: [nestjs, errors, filters]
+  labels:
+    - nestjs
+    - errors
+    - filters
+    - error-handling
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*.filter.ts', 'main.ts']
-    keywords: [ExceptionFilter, Catch, HttpException]
+    files:
+      - '**/*.filter.ts'
+      - main.ts
+    keywords:
+      - ExceptionFilter
+      - Catch
+      - HttpException
 workflow_ref: deep-security-audit
 ---
 

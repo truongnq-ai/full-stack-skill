@@ -2,12 +2,29 @@
 name: Cloud Storage Integration
 description: Universal standards and patterns for integrating with cloud storage providers (Google Drive, AWS S3, etc.)
 metadata:
-  labels: [cloud, storage, google-drive, aws-s3, file-management, oauth2]
+  labels:
+    - cloud
+    - storage
+    - google-drive
+    - aws-s3
+    - file-management
+    - oauth2
+    - common
+    - cloud-storage
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['*storage*', '*drive*', '*upload*', '*download*']
-    keywords: [google drive, s3, file upload, cloud storage, file management]
+    files:
+      - '*storage*'
+      - '*drive*'
+      - '*upload*'
+      - '*download*'
+    keywords:
+      - google drive
+      - s3
+      - file upload
+      - cloud storage
+      - file management
 workflow_ref: ui-ux-pro-max
 ---
 

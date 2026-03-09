@@ -2,14 +2,29 @@
 name: Architecture Audit
 description: Protocol for auditing structural debt, logic leakage, and fragmentation across Web, Mobile, and Backend.
 metadata:
-  labels: [architecture, tech-debt, logic-leakage, refactoring, code-quality]
+  labels:
+    - architecture
+    - tech-debt
+    - logic-leakage
+    - refactoring
+    - code-quality
+    - common
+    - architecture-audit
   triggers:
     priority: medium
     confidence: 0.7
     files:
-      ['package.json', 'pubspec.yaml', 'go.mod', 'pom.xml', 'nest-cli.json']
+      - package.json
+      - pubspec.yaml
+      - go.mod
+      - pom.xml
+      - nest-cli.json
     keywords:
-      [architecture audit, code review, tech debt, logic leakage, refactor]
+      - architecture audit
+      - code review
+      - tech debt
+      - logic leakage
+      - refactor
 workflow_ref: codebase-review
 ---
 

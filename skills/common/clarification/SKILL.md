@@ -2,12 +2,23 @@
 name: Clarification Hard Stop
 description: HARD STOP when ambiguity is detected — never auto-decide on the user's behalf.
 metadata:
-  labels: [clarification, safety, decision]
+  labels:
+    - clarification
+    - safety
+    - decision
+    - common
   triggers:
     priority: medium
     confidence: 0.7
-    keywords: [clarify, ambiguity, options, decision, choose]
-    task_types: [analysis, planning]
+    keywords:
+      - clarify
+      - ambiguity
+      - options
+      - decision
+      - choose
+    task_types:
+      - analysis
+      - planning
 workflow_ref: smart-release
 ---
 

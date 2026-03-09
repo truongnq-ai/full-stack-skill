@@ -2,12 +2,24 @@
 name: Error Recovery FSM
 description: FSM error handling for AI agents — classify errors as Recoverable, Needs Input, or Critical.
 metadata:
-  labels: [error-handling, recovery, safety]
+  labels:
+    - error-handling
+    - recovery
+    - safety
+    - common
+    - error-recovery
   triggers:
     priority: medium
     confidence: 0.7
-    keywords: [error, failure, retry, recovery, rollback]
-    task_types: [debugging, implementation]
+    keywords:
+      - error
+      - failure
+      - retry
+      - recovery
+      - rollback
+    task_types:
+      - debugging
+      - implementation
 workflow_ref: smart-release
 ---
 

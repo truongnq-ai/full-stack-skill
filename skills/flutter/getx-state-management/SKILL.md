@@ -2,13 +2,27 @@
 name: Flutter GetX State Management
 description: Simple and powerful reactive state management using GetX.
 metadata:
-  labels: [flutter, state-management, getx, controller, reactive]
+  labels:
+    - flutter
+    - state-management
+    - getx
+    - controller
+    - reactive
+    - getx-state-management
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**_controller.dart', '**/bindings/*.dart']
+    files:
+      - '**_controller.dart'
+      - '**/bindings/*.dart'
     keywords:
-      [GetxController, Obx, GetBuilder, .obs, Get.put, Get.find, Get.lazyPut]
+      - GetxController
+      - Obx
+      - GetBuilder
+      - .obs
+      - Get.put
+      - Get.find
+      - Get.lazyPut
 workflow_ref: ui-ux-pro-max
 ---
 

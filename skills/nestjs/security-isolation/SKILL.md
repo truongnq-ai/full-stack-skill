@@ -2,12 +2,27 @@
 name: Data Isolation & RLS Security
 description: Standards for enforcing multi-tenant isolation and PostgreSQL Row Level Security (RLS) across child-centric domains.
 metadata:
-  labels: [security, rls, isolation, authorization, postgresql]
+  labels:
+    - security
+    - rls
+    - isolation
+    - authorization
+    - postgresql
+    - nestjs
+    - security-isolation
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['src/modules/**', 'SECURITY.md', 'src/migrations/**']
-    keywords: [RLS, Row Level Security, childId, isolation, access policy]
+    files:
+      - src/modules/**
+      - SECURITY.md
+      - src/migrations/**
+    keywords:
+      - RLS
+      - Row Level Security
+      - childId
+      - isolation
+      - access policy
 workflow_ref: deep-security-audit
 ---
 

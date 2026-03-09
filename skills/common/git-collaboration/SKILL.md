@@ -1,12 +1,25 @@
 ---
 name: Git & Collaboration Standards
-description: "🚨 Universal standards for version control, branching, PR workflows, and merge strategies. Never push directly to protected branches."
+description: >-
+  🚨 Universal standards for version control, branching, PR workflows, and merge strategies. Never push directly to
+  protected branches.
 metadata:
-  labels: [git, collaboration, commits, branching]
+  labels:
+    - git
+    - collaboration
+    - commits
+    - branching
+    - common
+    - git-collaboration
   triggers:
     priority: medium
     confidence: 0.7
-    keywords: [commit, branch, merge, pull-request, git]
+    keywords:
+      - commit
+      - branch
+      - merge
+      - pull-request
+      - git
 workflow_ref: deep-security-audit
 ---
 

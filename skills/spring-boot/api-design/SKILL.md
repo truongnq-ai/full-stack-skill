@@ -2,12 +2,22 @@
 name: Spring Boot API Design
 description: Standards for OpenAPI, Versioning, and Global Error Handling
 metadata:
-  labels: [spring-boot, api, openapi, swagger]
+  labels:
+    - spring-boot
+    - api
+    - openapi
+    - swagger
+    - api-design
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*Controller.java']
-    keywords: [openapi, swagger, versioning, problemdetails]
+    files:
+      - '**/*Controller.java'
+    keywords:
+      - openapi
+      - swagger
+      - versioning
+      - problemdetails
 workflow_ref: deep-security-audit
 ---
 

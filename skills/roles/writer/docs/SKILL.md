@@ -4,12 +4,23 @@ url: https://github.com/truongnq-ai/full-stack-skill/tree/master/skills/roles/wr
 description: Technical documentation standards and structure.
 category: roles
 metadata:
-  labels: [writer, documentation, docs]
+  labels:
+    - writer
+    - documentation
+    - docs
+    - roles
   triggers:
     priority: medium
     confidence: 0.7
-    keywords: [documentation, readme, guide, how-to, docs]
-    files: ['README.md', '**/docs/**/*.md']
+    keywords:
+      - documentation
+      - readme
+      - guide
+      - how-to
+      - docs
+    files:
+      - README.md
+      - '**/docs/**/*.md'
 workflow_ref: update-docs
 ---
 

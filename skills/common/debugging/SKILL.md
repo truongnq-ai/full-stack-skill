@@ -2,11 +2,22 @@
 name: Debugging Expert
 description: Systematic troubleshooting using the Scientific Method (Observe, Hypothesize, Experiment, Fix).
 metadata:
-  labels: [debugging, troubleshooting, bug-fixing, root-cause]
+  labels:
+    - debugging
+    - troubleshooting
+    - bug-fixing
+    - root-cause
+    - common
   triggers:
     priority: medium
     confidence: 0.7
-    keywords: [debug, fix bug, crash, error, exception, troubleshooting]
+    keywords:
+      - debug
+      - fix bug
+      - crash
+      - error
+      - exception
+      - troubleshooting
 workflow_ref: smart-release
 ---
 

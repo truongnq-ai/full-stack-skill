@@ -2,12 +2,25 @@
 name: Global Guardrails
 description: Global safety rules for all agent actions — scope, confirmation, and data protection.
 metadata:
-  labels: [guardrails, safety, global]
+  labels:
+    - guardrails
+    - safety
+    - global
+    - common
   triggers:
     priority: medium
     confidence: 0.7
-    keywords: [guardrail, safety, confirm, risk, production]
-    task_types: [implementation, refactor, debugging, ops]
+    keywords:
+      - guardrail
+      - safety
+      - confirm
+      - risk
+      - production
+    task_types:
+      - implementation
+      - refactor
+      - debugging
+      - ops
 workflow_ref: smart-release
 ---
 

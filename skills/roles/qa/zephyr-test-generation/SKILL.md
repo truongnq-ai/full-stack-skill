@@ -2,13 +2,24 @@
 name: Zephyr Test Generation
 description: Workflow for generating or updating Zephyr Scale Test Cases from requirements.
 metadata:
-  labels: [zephyr, test-generation, jira, regression-analysis]
+  labels:
+    - zephyr
+    - test-generation
+    - jira
+    - regression-analysis
+    - roles
+    - zephyr-test-generation
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*.feature', '**/user_story.md']
+    files:
+      - '**/*.feature'
+      - '**/user_story.md'
     keywords:
-      [generate test cases, update zephyr, jira validation, impact analysis]
+      - generate test cases
+      - update zephyr
+      - jira validation
+      - impact analysis
 workflow_ref: smart-release
 ---
 

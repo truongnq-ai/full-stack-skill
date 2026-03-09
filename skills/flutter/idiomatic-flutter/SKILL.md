@@ -2,12 +2,22 @@
 name: Idiomatic Flutter
 description: Modern layout and widget composition standards.
 metadata:
-  labels: [flutter, clean-code, widgets]
+  labels:
+    - flutter
+    - clean-code
+    - widgets
+    - idiomatic-flutter
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['lib/presentation/**/*.dart']
-    keywords: [context.mounted, SizedBox, Gap, composition, shrink]
+    files:
+      - lib/presentation/**/*.dart
+    keywords:
+      - context.mounted
+      - SizedBox
+      - Gap
+      - composition
+      - shrink
 workflow_ref: performance
 ---
 

@@ -2,11 +2,21 @@
 name: Security Standards
 description: Universal security protocols for building safe and resilient software.
 metadata:
-  labels: [security, encryption, authentication, authorization]
+  labels:
+    - security
+    - encryption
+    - authentication
+    - authorization
+    - common
+    - security-standards
   triggers:
     priority: medium
     confidence: 0.7
-    keywords: [security, encrypt, authenticate, authorize]
+    keywords:
+      - security
+      - encrypt
+      - authenticate
+      - authorize
 workflow_ref: deep-security-audit
 ---
 

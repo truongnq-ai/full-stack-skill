@@ -2,12 +2,22 @@
 name: NestJS API Standards
 description: Response wrapping, pagination, and error standardization.
 metadata:
-  labels: [nestjs, api, pagination, response]
+  labels:
+    - nestjs
+    - api
+    - pagination
+    - response
+    - api-standards
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*.controller.ts', '**/*.dto.ts']
-    keywords: [ApiResponse, Pagination, TransformInterceptor]
+    files:
+      - '**/*.controller.ts'
+      - '**/*.dto.ts'
+    keywords:
+      - ApiResponse
+      - Pagination
+      - TransformInterceptor
 workflow_ref: update-docs
 ---
 

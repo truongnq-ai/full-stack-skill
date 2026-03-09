@@ -2,12 +2,23 @@
 name: Research Standard
 description: Evidence-based research — choose the right tool, cite sources, distinguish fact from inference.
 metadata:
-  labels: [research, sources, citations]
+  labels:
+    - research
+    - sources
+    - citations
+    - common
   triggers:
     priority: medium
     confidence: 0.7
-    keywords: [research, sources, citations, verify, fact check]
-    task_types: [research, analysis]
+    keywords:
+      - research
+      - sources
+      - citations
+      - verify
+      - fact check
+    task_types:
+      - research
+      - analysis
 workflow_ref: update-docs
 ---
 
@@ -47,45 +58,6 @@ What information do you need?
 ├─ Page needs login / JS / visual?
 │   └─→ browser_subagent (heaviest, use last)
 │
-├─ Search within codebase?
-│   └─→ grep_search, find_by_name, view_file_outline
-│
-└─ Search past conversations/knowledge?
-    └─→ KI system (knowledge items)
-```
-
-## Output Format
-
-```markdown
-## Question
-
-<reformulated, verifiable question>
-
-## Results
-
-### Facts (sourced)
-
-- <content> — [Source: <name>](url)
-
-### Analysis / Inference
-
-- <content> _(no direct source, based on reasoning)_
-
-## Conclusion
-
-<concise, actionable summary>
-```
-
-## Rules
-
-1. **No hallucination** — if no source found → say "No source found to confirm this"
-2. **Cite specific URLs**, not just "according to documentation"
-3. **Note access date** when info may expire (API versions, pricing)
-4. **Don't use info older than 2 years** for frameworks/cloud services
-5. **Reliability tiers**: official docs > GitHub main > dated blog posts
-6. **Read 2-3 search results** minimum before concluding
-
-
 ## References
-
 - [Examples (Input/Output)](references/examples.md)
+- [Notes](references/notes.md)

@@ -4,12 +4,24 @@ url: https://github.com/truongnq-ai/full-stack-skill/tree/master/skills/roles/de
 description: Monitoring and alerting standards for services and infrastructure.
 category: roles
 metadata:
-  labels: [devops, monitoring, alerting]
+  labels:
+    - devops
+    - monitoring
+    - alerting
+    - roles
   triggers:
     priority: high
     confidence: 0.8
-    keywords: [monitoring, alert, prometheus, grafana, logs, metrics]
-    files: ['**/alerts/*.yml', '**/grafana/*.json']
+    keywords:
+      - monitoring
+      - alert
+      - prometheus
+      - grafana
+      - logs
+      - metrics
+    files:
+      - '**/alerts/*.yml'
+      - '**/grafana/*.json'
 workflow_ref: orchestrate
 ---
 

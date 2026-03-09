@@ -2,12 +2,23 @@
 name: Language
 description: Core idioms, style guides, and best practices for writing idiomatic Go code.
 metadata:
-  labels: [golang, style, idioms, best-practices]
+  labels:
+    - golang
+    - style
+    - idioms
+    - best-practices
+    - language
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*.go', 'go.mod']
-    keywords: [golang, go code, style, idiomatic]
+    files:
+      - '**/*.go'
+      - go.mod
+    keywords:
+      - golang
+      - go code
+      - style
+      - idiomatic
 workflow_ref: smart-release
 ---
 

@@ -2,12 +2,23 @@
 name: Angular Component Expert
 description: Standards for OnPush components and strict Signals usage.
 metadata:
-  labels: [angular, components, performance, frontend]
+  labels:
+    - angular
+    - components
+    - performance
+    - frontend
+    - component-patterns
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*.component.ts', '**/*.component.html']
-    keywords: [ChangeDetectionStrategy, OnPush, Input, Output]
+    files:
+      - '**/*.component.ts'
+      - '**/*.component.html'
+    keywords:
+      - ChangeDetectionStrategy
+      - OnPush
+      - Input
+      - Output
 workflow_ref: performance
 ---
 

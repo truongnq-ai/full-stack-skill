@@ -4,11 +4,19 @@ url: https://github.com/truongnq-ai/full-stack-skill/tree/master/skills/roles/re
 description: Audit content for accuracy, tone, and compliance.
 category: roles
 metadata:
-  labels: [reviewer, audit, content]
+  labels:
+    - reviewer
+    - audit
+    - content
+    - roles
+    - content-audit
   triggers:
     priority: medium
     confidence: 0.7
-    keywords: [audit, review content, compliance]
+    keywords:
+      - audit
+      - review content
+      - compliance
 workflow_ref: codebase-review
 ---
 

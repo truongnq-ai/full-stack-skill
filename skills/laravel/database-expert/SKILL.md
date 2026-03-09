@@ -2,12 +2,25 @@
 name: Laravel Database Expert
 description: Expert patterns for advanced queries, Redis caching, and database scalability.
 metadata:
-  labels: [laravel, database, redis, sql, performance]
+  labels:
+    - laravel
+    - database
+    - redis
+    - sql
+    - performance
+    - database-expert
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['config/database.php', 'database/migrations/*.php']
-    keywords: [join, aggregate, subquery, selectRaw, Cache]
+    files:
+      - config/database.php
+      - database/migrations/*.php
+    keywords:
+      - join
+      - aggregate
+      - subquery
+      - selectRaw
+      - Cache
 workflow_ref: performance
 ---
 

@@ -2,12 +2,24 @@
 name: Next.js Data Access Layer
 description: Secure, reusable data access patterns with DTOs and Taint checks.
 metadata:
-  labels: [nextjs, dal, architecture, security]
+  labels:
+    - nextjs
+    - dal
+    - architecture
+    - security
+    - data-access-layer
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/lib/data.ts', '**/services/*.ts', '**/dal/**']
-    keywords: [DAL, Data Access Layer, server-only, DTO]
+    files:
+      - '**/lib/data.ts'
+      - '**/services/*.ts'
+      - '**/dal/**'
+    keywords:
+      - DAL
+      - Data Access Layer
+      - server-only
+      - DTO
 workflow_ref: deep-security-audit
 ---
 

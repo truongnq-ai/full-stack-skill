@@ -2,12 +2,27 @@
 name: Flutter BLoC State Management
 description: Standards for predictable state management using flutter_bloc, freezed, and equatable.
 metadata:
-  labels: [flutter, state-management, bloc, cubit, freezed]
+  labels:
+    - flutter
+    - state-management
+    - bloc
+    - cubit
+    - freezed
+    - bloc-state-management
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**_bloc.dart', '**_cubit.dart', '**_state.dart', '**_event.dart']
-    keywords: [BlocProvider, BlocBuilder, BlocListener, Cubit, Emitter]
+    files:
+      - '**_bloc.dart'
+      - '**_cubit.dart'
+      - '**_state.dart'
+      - '**_event.dart'
+    keywords:
+      - BlocProvider
+      - BlocBuilder
+      - BlocListener
+      - Cubit
+      - Emitter
 workflow_ref: ui-ux-pro-max
 ---
 

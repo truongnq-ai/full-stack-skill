@@ -4,12 +4,24 @@ url: https://github.com/truongnq-ai/full-stack-skill/tree/master/skills/roles/de
 description: CI/CD pipeline standards for build, test, and deployment automation.
 category: roles
 metadata:
-  labels: [devops, ci-cd, pipelines]
+  labels:
+    - devops
+    - ci-cd
+    - pipelines
+    - roles
   triggers:
     priority: high
     confidence: 0.8
-    keywords: [pipeline, ci, cd, build, deploy, workflow]
-    files: ['.github/workflows/*.yml', '.gitlab-ci.yml']
+    keywords:
+      - pipeline
+      - ci
+      - cd
+      - build
+      - deploy
+      - workflow
+    files:
+      - .github/workflows/*.yml
+      - .gitlab-ci.yml
 workflow_ref: smart-release
 ---
 

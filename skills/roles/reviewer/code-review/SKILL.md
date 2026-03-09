@@ -4,11 +4,18 @@ url: https://github.com/truongnq-ai/full-stack-skill/tree/master/skills/roles/re
 description: Structured code review standards for correctness, security, and maintainability.
 category: roles
 metadata:
-  labels: [reviewer, code-review, quality]
+  labels:
+    - reviewer
+    - code-review
+    - quality
+    - roles
   triggers:
     priority: high
     confidence: 0.8
-    keywords: [review, code review, pr review]
+    keywords:
+      - review
+      - code review
+      - pr review
 workflow_ref: code-review
 ---
 

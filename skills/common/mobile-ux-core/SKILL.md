@@ -1,21 +1,34 @@
 ---
 name: Mobile UX Core
-description: Universal mobile UX principles for touch-first interfaces. Enforces touch targets, safe areas, and mobile-specific interaction patterns.
+description: >-
+  Universal mobile UX principles for touch-first interfaces. Enforces touch targets, safe areas, and mobile-specific
+  interaction patterns.
 metadata:
-  labels: [mobile, ux, design, accessibility, cross-platform]
+  labels:
+    - mobile
+    - ux
+    - design
+    - accessibility
+    - cross-platform
+    - common
+    - mobile-ux-core
   triggers:
     priority: medium
     confidence: 0.7
     files:
-      [
-        '**/*_page.dart',
-        '**/*_screen.dart',
-        '**/*_view.dart',
-        '**/*.swift',
-        '**/*Activity.kt',
-        '**/*Screen.tsx',
-      ]
-    keywords: [mobile, responsive, SafeArea, touch, gesture, viewport]
+      - '**/*_page.dart'
+      - '**/*_screen.dart'
+      - '**/*_view.dart'
+      - '**/*.swift'
+      - '**/*Activity.kt'
+      - '**/*Screen.tsx'
+    keywords:
+      - mobile
+      - responsive
+      - SafeArea
+      - touch
+      - gesture
+      - viewport
 workflow_ref: performance
 ---
 

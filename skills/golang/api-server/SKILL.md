@@ -2,12 +2,25 @@
 name: API Server
 description: Standards for building HTTP services, REST APIs, and middleware in Golang.
 metadata:
-  labels: [golang, http, api, rest, middleware]
+  labels:
+    - golang
+    - http
+    - api
+    - rest
+    - middleware
+    - api-server
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['cmd/server/*.go', 'internal/adapter/handler/**']
-    keywords: [http server, rest api, gin, echo, middleware]
+    files:
+      - cmd/server/*.go
+      - internal/adapter/handler/**
+    keywords:
+      - http server
+      - rest api
+      - gin
+      - echo
+      - middleware
 workflow_ref: performance
 ---
 

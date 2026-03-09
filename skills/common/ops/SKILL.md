@@ -2,12 +2,25 @@
 name: Ops Incident Response
 description: Incident response FSM for system operations — always read logs first, assess risk before changing anything.
 metadata:
-  labels: [ops, incident, reliability]
+  labels:
+    - ops
+    - incident
+    - reliability
+    - common
   triggers:
     priority: medium
     confidence: 0.7
-    keywords: [incident, outage, restart, production, downtime]
-    files: ['Dockerfile', 'docker-compose.yml', '*.service', '*.conf']
+    keywords:
+      - incident
+      - outage
+      - restart
+      - production
+      - downtime
+    files:
+      - Dockerfile
+      - docker-compose.yml
+      - '*.service'
+      - '*.conf'
 workflow_ref: smart-release
 ---
 

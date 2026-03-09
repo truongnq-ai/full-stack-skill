@@ -2,13 +2,24 @@
 name: Next.js Server Components
 description: RSC usage, "use client" directive, and Component Purity.
 metadata:
-  labels: [nextjs, rsc, components]
+  labels:
+    - nextjs
+    - rsc
+    - components
+    - server-components
   triggers:
     priority: medium
     confidence: 0.7
     files:
-      ['app/**/*.tsx', 'src/app/**/*.tsx', 'app/**/*.jsx', 'src/app/**/*.jsx']
-    keywords: [use client, Server Component, Client Component, hydration]
+      - app/**/*.tsx
+      - src/app/**/*.tsx
+      - app/**/*.jsx
+      - src/app/**/*.jsx
+    keywords:
+      - use client
+      - Server Component
+      - Client Component
+      - hydration
 workflow_ref: orchestrate
 ---
 

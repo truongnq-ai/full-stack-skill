@@ -2,12 +2,25 @@
 name: React Native State Management
 description: Local and global state patterns with Context, Zustand, and Redux Toolkit.
 metadata:
-  labels: [react-native, state, redux, zustand, context]
+  labels:
+    - react-native
+    - state
+    - redux
+    - zustand
+    - context
+    - state-management
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*.tsx', '**/*.ts']
-    keywords: [useState, useContext, zustand, redux, state-management]
+    files:
+      - '**/*.tsx'
+      - '**/*.ts'
+    keywords:
+      - useState
+      - useContext
+      - zustand
+      - redux
+      - state-management
 workflow_ref: ui-ux-pro-max
 ---
 

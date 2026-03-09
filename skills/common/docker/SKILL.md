@@ -2,12 +2,24 @@
 name: Docker Safe Operations
 description: Safe Docker container management — never delete volumes without backup, always distinguish dev from production.
 metadata:
-  labels: [docker, devops, safety]
+  labels:
+    - docker
+    - devops
+    - safety
+    - common
   triggers:
     priority: medium
     confidence: 0.7
-    keywords: [docker, docker-compose, container, image, volume]
-    files: ['Dockerfile', 'docker-compose*.yml', '.dockerignore']
+    keywords:
+      - docker
+      - docker-compose
+      - container
+      - image
+      - volume
+    files:
+      - Dockerfile
+      - docker-compose*.yml
+      - .dockerignore
 workflow_ref: ui-ux-pro-max
 ---
 

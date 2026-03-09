@@ -2,12 +2,27 @@
 name: Architecture Diagramming
 description: Standards for creating clear, effective, and formalized software architecture diagrams (C4, UML).
 metadata:
-  labels: [architecture, diagram, c4-model, documentation, best-practices]
+  labels:
+    - architecture
+    - diagram
+    - c4-model
+    - documentation
+    - best-practices
+    - common
+    - architecture-diagramming
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['ARCHITECTURE.md', '**/*.mermaid', '**/*.drawio']
-    keywords: [diagram, architecture, c4, system design, mermaid]
+    files:
+      - ARCHITECTURE.md
+      - '**/*.mermaid'
+      - '**/*.drawio'
+    keywords:
+      - diagram
+      - architecture
+      - c4
+      - system design
+      - mermaid
 workflow_ref: plan-feature
 ---
 

@@ -2,11 +2,20 @@
 name: Documentation Standards
 description: Essential rules for code comments, READMEs, and technical documentation.
 metadata:
-  labels: [documentation, comments, docstrings, readme]
+  labels:
+    - documentation
+    - comments
+    - docstrings
+    - readme
+    - common
   triggers:
     priority: medium
     confidence: 0.7
-    keywords: [comment, docstring, readme, documentation]
+    keywords:
+      - comment
+      - docstring
+      - readme
+      - documentation
 workflow_ref: update-docs
 ---
 

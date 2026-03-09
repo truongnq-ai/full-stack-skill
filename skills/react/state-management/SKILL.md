@@ -2,12 +2,25 @@
 name: React State Management
 description: Standards for managing local, global, and server state.
 metadata:
-  labels: [react, state, redux, zustand, context]
+  labels:
+    - react
+    - state
+    - redux
+    - zustand
+    - context
+    - state-management
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*.tsx', '**/*.jsx']
-    keywords: [state, useReducer, context, store, props]
+    files:
+      - '**/*.tsx'
+      - '**/*.jsx'
+    keywords:
+      - state
+      - useReducer
+      - context
+      - store
+      - props
 workflow_ref: performance
 ---
 

@@ -2,12 +2,25 @@
 name: Laravel Sessions & Middleware
 description: Expert standards for session drivers, security headers, and middleware logic.
 metadata:
-  labels: [laravel, session, middleware, security, high-density]
+  labels:
+    - laravel
+    - session
+    - middleware
+    - security
+    - high-density
+    - sessions-middleware
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['app/Http/Middleware/**/*.php', 'config/session.php']
-    keywords: [session, driver, handle, headers, csrf]
+    files:
+      - app/Http/Middleware/**/*.php
+      - config/session.php
+    keywords:
+      - session
+      - driver
+      - handle
+      - headers
+      - csrf
 workflow_ref: deep-security-audit
 ---
 

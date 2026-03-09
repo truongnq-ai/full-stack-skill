@@ -2,12 +2,23 @@
 name: File Safety Guardrails
 description: Never create/modify files outside approved scope — protect codebase integrity.
 metadata:
-  labels: [file-safety, guardrails, scope]
+  labels:
+    - file-safety
+    - guardrails
+    - scope
+    - common
   triggers:
     priority: medium
     confidence: 0.7
-    keywords: [file scope, modify files, delete, overwrite, destructive]
-    task_types: [implementation, refactor]
+    keywords:
+      - file scope
+      - modify files
+      - delete
+      - overwrite
+      - destructive
+    task_types:
+      - implementation
+      - refactor
 workflow_ref: update-docs
 ---
 

@@ -2,12 +2,24 @@
 name: Jira Integration
 description: Standards for retrieving Jira issue details and linking Zephyr test cases back to Jira.
 metadata:
-  labels: [jira, zephyr, integration, traceability]
+  labels:
+    - jira
+    - zephyr
+    - integration
+    - traceability
+    - roles
+    - jira-integration
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/jira_*.xml', '**/test_case.json']
-    keywords: [jira issue, link zephyr, jira details, jira mcp]
+    files:
+      - '**/jira_*.xml'
+      - '**/test_case.json'
+    keywords:
+      - jira issue
+      - link zephyr
+      - jira details
+      - jira mcp
 workflow_ref: deep-security-audit
 ---
 

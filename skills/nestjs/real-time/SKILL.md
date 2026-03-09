@@ -2,12 +2,23 @@
 name: NestJS Real-Time
 description: WebSocket and SSE selection strategies and scaling.
 metadata:
-  labels: [nestjs, websockets, sse, socket.io]
+  labels:
+    - nestjs
+    - websockets
+    - sse
+    - socket.io
+    - real-time
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*.gateway.ts', '**/*.controller.ts']
-    keywords: [WebSocketGateway, SubscribeMessage, Sse, Socket.io]
+    files:
+      - '**/*.gateway.ts'
+      - '**/*.controller.ts'
+    keywords:
+      - WebSocketGateway
+      - SubscribeMessage
+      - Sse
+      - Socket.io
 workflow_ref: deep-security-audit
 ---
 

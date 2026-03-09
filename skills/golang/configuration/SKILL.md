@@ -2,12 +2,23 @@
 name: Configuration
 description: Standards for application configuration using environment variables and libraries.
 metadata:
-  labels: [golang, config, env, viper]
+  labels:
+    - golang
+    - config
+    - env
+    - viper
+    - configuration
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['configs/**', 'cmd/**']
-    keywords: [configuration, env var, viper, koanf]
+    files:
+      - configs/**
+      - cmd/**
+    keywords:
+      - configuration
+      - env var
+      - viper
+      - koanf
 workflow_ref: smart-release
 ---
 

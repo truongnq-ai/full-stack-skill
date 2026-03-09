@@ -2,12 +2,22 @@
 name: NestJS Controllers & Services
 description: Controller/Service separation and Custom Decorators.
 metadata:
-  labels: [nestjs, controller, service]
+  labels:
+    - nestjs
+    - controller
+    - service
+    - controllers-services
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*.controller.ts', '**/*.service.ts']
-    keywords: [Controller, Injectable, ExecutionContext, createParamDecorator]
+    files:
+      - '**/*.controller.ts'
+      - '**/*.service.ts'
+    keywords:
+      - Controller
+      - Injectable
+      - ExecutionContext
+      - createParamDecorator
 workflow_ref: update-docs
 ---
 

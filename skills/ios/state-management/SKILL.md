@@ -2,17 +2,25 @@
 name: iOS State Management
 description: Standards for Combine, Observation, and Reactive Programming.
 metadata:
-  labels: [ios, state, combine, observation, reactive, observation-framework]
+  labels:
+    - ios
+    - state
+    - combine
+    - observation
+    - reactive
+    - observation-framework
+    - state-management
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*.swift']
+    files:
+      - '**/*.swift'
     keywords:
-      - "Observable"
-      - "@Published"
-      - "PassthroughSubject"
-      - "@Observable"
-      - "@Namespace"
+      - Observable
+      - '@Published'
+      - PassthroughSubject
+      - '@Observable'
+      - '@Namespace'
 workflow_ref: ui-ux-pro-max
 ---
 

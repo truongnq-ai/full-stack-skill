@@ -2,12 +2,25 @@
 name: iOS UI & Layout
 description: Standards for UIKit, Auto Layout, and Apple Human Interface Guidelines.
 metadata:
-  labels: [ios, uikit, autolayout, snapkit, layouts]
+  labels:
+    - ios
+    - uikit
+    - autolayout
+    - snapkit
+    - layouts
+    - ui-navigation
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*View.swift', '**/*.xib', '**/*.storyboard']
-    keywords: [NSLayoutConstraint, UIStackView, SnapKit, layoutSubviews]
+    files:
+      - '**/*View.swift'
+      - '**/*.xib'
+      - '**/*.storyboard'
+    keywords:
+      - NSLayoutConstraint
+      - UIStackView
+      - SnapKit
+      - layoutSubviews
 workflow_ref: ui-ux-pro-max
 ---
 

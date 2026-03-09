@@ -1,13 +1,28 @@
 ---
 name: Workflow Writing Standard
-description: Rules for writing concise, token-efficient workflow and skill files. Prevents over-building that requires costly optimization passes.
+description: >-
+  Rules for writing concise, token-efficient workflow and skill files. Prevents over-building that requires costly
+  optimization passes.
 metadata:
-  labels: [meta, standard, workflow, token-economy, conciseness]
+  labels:
+    - meta
+    - standard
+    - workflow
+    - token-economy
+    - conciseness
+    - common
+    - workflow-writing
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['.agent/workflows/*.md', 'SKILL.md']
-    keywords: [create workflow, write workflow, new skill, new workflow]
+    files:
+      - .agent/workflows/*.md
+      - SKILL.md
+    keywords:
+      - create workflow
+      - write workflow
+      - new skill
+      - new workflow
 workflow_ref: deep-security-audit
 ---
 

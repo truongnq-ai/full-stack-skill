@@ -2,12 +2,23 @@
 name: Product Requirements
 description: Expert process for gathering requirements and drafting PRDs (Iterative Discovery).
 metadata:
-  labels: [prd, requirements, planning, product]
+  labels:
+    - prd
+    - requirements
+    - planning
+    - product
+    - common
+    - product-requirements
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['PRD.md', 'specs/*.md']
-    keywords: [create prd, draft requirements, new feature spec]
+    files:
+      - PRD.md
+      - specs/*.md
+    keywords:
+      - create prd
+      - draft requirements
+      - new feature spec
 workflow_ref: plan-feature
 ---
 

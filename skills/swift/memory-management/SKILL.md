@@ -2,12 +2,24 @@
 name: Swift Memory Management
 description: Standards for ARC, Weak/Unowned References, and Capture Lists
 metadata:
-  labels: [swift, memory, arc, weak, unowned]
+  labels:
+    - swift
+    - memory
+    - arc
+    - weak
+    - unowned
+    - memory-management
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*.swift']
-    keywords: ['weak', 'unowned', 'capture', 'deinit', 'retain']
+    files:
+      - '**/*.swift'
+    keywords:
+      - weak
+      - unowned
+      - capture
+      - deinit
+      - retain
 workflow_ref: smart-release
 ---
 

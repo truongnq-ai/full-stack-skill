@@ -2,12 +2,25 @@
 name: React Component Patterns
 description: Modern React component architecture and composition patterns.
 metadata:
-  labels: [react, components, composition, patterns]
+  labels:
+    - react
+    - components
+    - composition
+    - patterns
+    - component-patterns
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*.jsx', '**/*.tsx']
-    keywords: [component, props, children, composition, hoc, render-props]
+    files:
+      - '**/*.jsx'
+      - '**/*.tsx'
+    keywords:
+      - component
+      - props
+      - children
+      - composition
+      - hoc
+      - render-props
 workflow_ref: performance
 ---
 

@@ -2,12 +2,21 @@
 name: Dart Best Practices
 description: General purity standards for Dart development.
 metadata:
-  labels: [dart, clean-code]
+  labels:
+    - dart
+    - clean-code
+    - best-practices
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*.dart']
-    keywords: [import, final, const, var, global]
+    files:
+      - '**/*.dart'
+    keywords:
+      - import
+      - final
+      - const
+      - var
+      - global
 workflow_ref: ui-ux-pro-max
 ---
 

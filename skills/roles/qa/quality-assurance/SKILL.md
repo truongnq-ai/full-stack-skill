@@ -2,24 +2,34 @@
 name: Quality Assurance
 description: Standards for creating high-quality, granular manual test cases and QA processes.
 metadata:
-  labels: [qa, testing, best-practices]
+  labels:
+    - qa
+    - testing
+    - best-practices
+    - roles
+    - quality-assurance
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*.feature', '**/*.test.ts', '**/test_plan.md']
+    files:
+      - '**/*.feature'
+      - '**/*.test.ts'
+      - '**/test_plan.md'
     keywords:
-      [
-        test case,
-        qa,
-        bug report,
-        testing standard,
-        zephyr,
-        jira ticket,
-        acceptance criteria,
-        test scenario,
-        manual test,
-      ]
-    exclude: ['src/**/*.ts', 'src/**/*.js', 'src/**/*.tsx', 'src/**/*.jsx']
+      - test case
+      - qa
+      - bug report
+      - testing standard
+      - zephyr
+      - jira ticket
+      - acceptance criteria
+      - test scenario
+      - manual test
+    exclude:
+      - src/**/*.ts
+      - src/**/*.js
+      - src/**/*.tsx
+      - src/**/*.jsx
 workflow_ref: battle-test
 ---
 

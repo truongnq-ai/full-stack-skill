@@ -2,12 +2,24 @@
 name: Next.js State Management
 description: Best practices for managing state (Server URL vs Client Hooks).
 metadata:
-  labels: [nextjs, state, zustand, context]
+  labels:
+    - nextjs
+    - state
+    - zustand
+    - context
+    - state-management
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/hooks/*.ts', '**/store.ts', '**/components/*.tsx']
-    keywords: [useState, useContext, zustand, redux]
+    files:
+      - '**/hooks/*.ts'
+      - '**/store.ts'
+      - '**/components/*.tsx'
+    keywords:
+      - useState
+      - useContext
+      - zustand
+      - redux
 workflow_ref: smart-release
 ---
 

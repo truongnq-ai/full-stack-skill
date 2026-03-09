@@ -2,18 +2,25 @@
 name: Business Analysis
 description: Standard for deep requirement investigation, logic validation, and technical impact mapping.
 metadata:
-  labels: [ba, requirement-analysis, logic-validation, technical-impact]
+  labels:
+    - ba
+    - requirement-analysis
+    - logic-validation
+    - technical-impact
+    - roles
+    - business-analysis
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/user_story.md', '**/requirements.md', '**/jira_*.xml']
+    files:
+      - '**/user_story.md'
+      - '**/requirements.md'
+      - '**/jira_*.xml'
     keywords:
-      [
-        analyze requirements,
-        scenario decomposition,
-        logic conflict,
-        technical impact,
-      ]
+      - analyze requirements
+      - scenario decomposition
+      - logic conflict
+      - technical impact
 workflow_ref: smart-release
 ---
 

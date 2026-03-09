@@ -2,18 +2,30 @@
 name: Flutter CI/CD
 description: Continuous Integration and Deployment standards for Flutter apps.
 metadata:
-  labels: [cicd, github-actions, automation, codemagic, fastlane]
+  labels:
+    - cicd
+    - github-actions
+    - automation
+    - codemagic
+    - fastlane
+    - flutter
   triggers:
     priority: medium
     confidence: 0.7
     files:
-      [
-        '.github/workflows/**.yml',
-        'fastlane/**',
-        'android/fastlane/**',
-        'ios/fastlane/**',
-      ]
-    keywords: [ci, cd, pipeline, build, deploy, release, action, workflow]
+      - .github/workflows/**.yml
+      - fastlane/**
+      - android/fastlane/**
+      - ios/fastlane/**
+    keywords:
+      - ci
+      - cd
+      - pipeline
+      - build
+      - deploy
+      - release
+      - action
+      - workflow
 workflow_ref: battle-test
 ---
 

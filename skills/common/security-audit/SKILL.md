@@ -2,19 +2,31 @@
 name: Security Audit
 description: Adversarial security probing and vulnerability assessments across Node, Go, Dart, Java, Python, and Rust.
 metadata:
-  labels: [security, audit, pentest, vulnerability, cve, secrets, injection]
+  labels:
+    - security
+    - audit
+    - pentest
+    - vulnerability
+    - cve
+    - secrets
+    - injection
+    - common
+    - security-audit
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['package.json', 'go.mod', 'pubspec.yaml', 'pom.xml', 'Dockerfile']
+    files:
+      - package.json
+      - go.mod
+      - pubspec.yaml
+      - pom.xml
+      - Dockerfile
     keywords:
-      [
-        security audit,
-        vulnerability scan,
-        secrets detection,
-        injection probe,
-        pentest,
-      ]
+      - security audit
+      - vulnerability scan
+      - secrets detection
+      - injection probe
+      - pentest
 workflow_ref: deep-security-audit
 ---
 

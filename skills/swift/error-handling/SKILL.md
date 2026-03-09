@@ -2,12 +2,23 @@
 name: Swift Error Handling
 description: Standards for Throwing Functions, Result Type, and Never
 metadata:
-  labels: [swift, errors, throws, result]
+  labels:
+    - swift
+    - errors
+    - throws
+    - result
+    - error-handling
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*.swift']
-    keywords: ['throws', 'try', 'catch', 'Result', 'Error']
+    files:
+      - '**/*.swift'
+    keywords:
+      - throws
+      - try
+      - catch
+      - Result
+      - Error
 workflow_ref: smart-release
 ---
 

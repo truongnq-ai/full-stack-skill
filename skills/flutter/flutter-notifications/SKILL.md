@@ -2,19 +2,26 @@
 name: Flutter Notifications
 description: Push notifications and local notifications for Flutter using Firebase Cloud Messaging and flutter_local_notifications.
 metadata:
-  labels: [flutter, notifications, fcm, firebase, push, local-notifications]
+  labels:
+    - flutter
+    - notifications
+    - fcm
+    - firebase
+    - push
+    - local-notifications
+    - flutter-notifications
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*notification*.dart', '**/main.dart']
+    files:
+      - '**/*notification*.dart'
+      - '**/main.dart'
     keywords:
-      [
-        FirebaseMessaging,
-        FlutterLocalNotificationsPlugin,
-        FCM,
-        notification,
-        push,
-      ]
+      - FirebaseMessaging
+      - FlutterLocalNotificationsPlugin
+      - FCM
+      - notification
+      - push
 workflow_ref: smart-release
 ---
 

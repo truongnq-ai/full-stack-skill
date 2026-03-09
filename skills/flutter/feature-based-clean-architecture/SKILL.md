@@ -2,13 +2,26 @@
 name: Flutter Feature-Based Clean Architecture
 description: Standards for organizing code by feature at the root level to improve scalability and maintainability.
 metadata:
-  labels: [architecture, clean-architecture, feature-driven, ddd, modularity]
+  labels:
+    - architecture
+    - clean-architecture
+    - feature-driven
+    - ddd
+    - modularity
+    - flutter
+    - feature-based-clean-architecture
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['lib/features/**']
+    files:
+      - lib/features/**
     keywords:
-      [feature, domain, infrastructure, application, presentation, modular]
+      - feature
+      - domain
+      - infrastructure
+      - application
+      - presentation
+      - modular
 workflow_ref: smart-release
 ---
 

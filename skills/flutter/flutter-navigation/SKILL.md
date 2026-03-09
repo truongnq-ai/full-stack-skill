@@ -2,12 +2,27 @@
 name: Flutter Navigation
 description: Flutter navigation patterns including go_router, deep linking, and named routes for Flutter apps.
 metadata:
-  labels: [flutter, navigation, routing, deep-linking, go-router]
+  labels:
+    - flutter
+    - navigation
+    - routing
+    - deep-linking
+    - go-router
+    - flutter-navigation
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*_route.dart', '**/*_router.dart', '**/main.dart']
-    keywords: [Navigator, GoRouter, routes, deep link, go_router, AutoRoute]
+    files:
+      - '**/*_route.dart'
+      - '**/*_router.dart'
+      - '**/main.dart'
+    keywords:
+      - Navigator
+      - GoRouter
+      - routes
+      - deep link
+      - go_router
+      - AutoRoute
 workflow_ref: ui-ux-pro-max
 ---
 

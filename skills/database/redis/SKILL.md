@@ -2,12 +2,24 @@
 name: Redis Best Practices
 description: Expert rules for caching, key management, and performance in Redis.
 metadata:
-  labels: [redis, cache, key-value, performance]
+  labels:
+    - redis
+    - cache
+    - key-value
+    - performance
+    - database
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*.ts', '**/*.js', '**/redis.config.ts']
-    keywords: [redis, cache, ttl, eviction]
+    files:
+      - '**/*.ts'
+      - '**/*.js'
+      - '**/redis.config.ts'
+    keywords:
+      - redis
+      - cache
+      - ttl
+      - eviction
 workflow_ref: deep-security-audit
 ---
 

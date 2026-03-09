@@ -2,12 +2,25 @@
 name: Coding Discipline FSM
 description: Disciplined coding FSM — analyze first, execute second. 7-step workflow with mandatory checkpoints.
 metadata:
-  labels: [workflow, discipline, process]
+  labels:
+    - workflow
+    - discipline
+    - process
+    - common
+    - coding-discipline
   triggers:
     priority: medium
     confidence: 0.7
-    keywords: [plan, scope, clarify, coding discipline, workflow]
-    task_types: [implementation, refactor, debugging]
+    keywords:
+      - plan
+      - scope
+      - clarify
+      - coding discipline
+      - workflow
+    task_types:
+      - implementation
+      - refactor
+      - debugging
 workflow_ref: update-docs
 ---
 

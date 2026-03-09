@@ -2,18 +2,24 @@
 name: Next.js Server Actions
 description: Mutations, Form handling, and RPC-style calls.
 metadata:
-  labels: [nextjs, actions, mutations]
+  labels:
+    - nextjs
+    - actions
+    - mutations
+    - server-actions
   triggers:
     priority: medium
     confidence: 0.7
     files:
-      [
-        'app/**/actions.ts',
-        'src/app/**/actions.ts',
-        'app/**/*.tsx',
-        'src/app/**/*.tsx',
-      ]
-    keywords: [use server, Server Action, revalidatePath, useFormStatus]
+      - app/**/actions.ts
+      - src/app/**/actions.ts
+      - app/**/*.tsx
+      - src/app/**/*.tsx
+    keywords:
+      - use server
+      - Server Action
+      - revalidatePath
+      - useFormStatus
 workflow_ref: ui-ux-pro-max
 ---
 

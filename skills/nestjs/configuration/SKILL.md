@@ -2,12 +2,22 @@
 name: NestJS Configuration
 description: Environment variables validation and ConfigModule setup.
 metadata:
-  labels: [nestjs, config, env]
+  labels:
+    - nestjs
+    - config
+    - env
+    - configuration
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['.env', 'app.module.ts', '**/config.ts']
-    keywords: [ConfigModule, Joi, env]
+    files:
+      - .env
+      - app.module.ts
+      - '**/config.ts'
+    keywords:
+      - ConfigModule
+      - Joi
+      - env
 workflow_ref: smart-release
 ---
 

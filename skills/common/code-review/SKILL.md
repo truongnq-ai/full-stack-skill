@@ -2,11 +2,20 @@
 name: Code Review Expert
 description: Standards for high-quality, persona-driven code reviews.
 metadata:
-  labels: [common, review, quality, best-practices]
+  labels:
+    - common
+    - review
+    - quality
+    - best-practices
+    - code-review
   triggers:
     priority: medium
     confidence: 0.7
-    keywords: [review, pr, critique, analyze code]
+    keywords:
+      - review
+      - pr
+      - critique
+      - analyze code
 workflow_ref: code-review
 ---
 

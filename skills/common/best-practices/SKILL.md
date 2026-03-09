@@ -2,11 +2,22 @@
 name: Global Best Practices
 description: Universal principles for clean, maintainable, and robust code across all environments.
 metadata:
-  labels: [best-practices, solid, clean-code, architecture]
+  labels:
+    - best-practices
+    - solid
+    - clean-code
+    - architecture
+    - common
   triggers:
     priority: medium
     confidence: 0.7
-    keywords: [solid, kiss, dry, yagni, naming, conventions]
+    keywords:
+      - solid
+      - kiss
+      - dry
+      - yagni
+      - naming
+      - conventions
 workflow_ref: deep-security-audit
 ---
 

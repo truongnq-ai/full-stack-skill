@@ -2,12 +2,21 @@
 name: Angular Style Guide
 description: Naming conventions, file structure, and coding standards for Angular projects.
 metadata:
-  labels: [angular, style, naming, structure]
+  labels:
+    - angular
+    - style
+    - naming
+    - structure
+    - style-guide
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*.ts']
-    keywords: [angular style, naming convention, file structure]
+    files:
+      - '**/*.ts'
+    keywords:
+      - angular style
+      - naming convention
+      - file structure
 workflow_ref: smart-release
 ---
 

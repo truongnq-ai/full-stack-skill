@@ -2,12 +2,24 @@
 name: Flutter Dependency Injection (Injectable)
 description: Standards for automated service locator setup using injectable and get_it.
 metadata:
-  labels: [dependency-injection, injectable, get_it]
+  labels:
+    - dependency-injection
+    - injectable
+    - get_it
+    - flutter
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/injection.dart', '**/locator.dart']
-    keywords: [GetIt, injectable, singleton, module, lazySingleton, factory]
+    files:
+      - '**/injection.dart'
+      - '**/locator.dart'
+    keywords:
+      - GetIt
+      - injectable
+      - singleton
+      - module
+      - lazySingleton
+      - factory
 workflow_ref: battle-test
 ---
 

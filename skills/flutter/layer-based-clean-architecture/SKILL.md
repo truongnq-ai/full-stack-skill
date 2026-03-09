@@ -2,13 +2,28 @@
 name: Flutter Layer-based Clean Architecture + DDD
 description: Standards for separation of concerns, layer dependency rules, and DDD in Flutter.
 metadata:
-  labels: [architecture, clean-architecture, layers, ddd]
+  labels:
+    - architecture
+    - clean-architecture
+    - layers
+    - ddd
+    - flutter
+    - layer-based-clean-architecture
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['lib/domain/**', 'lib/infrastructure/**', 'lib/application/**']
+    files:
+      - lib/domain/**
+      - lib/infrastructure/**
+      - lib/application/**
     keywords:
-      [domain, infrastructure, application, presentation, layers, dto, mapper]
+      - domain
+      - infrastructure
+      - application
+      - presentation
+      - layers
+      - dto
+      - mapper
 workflow_ref: smart-release
 ---
 

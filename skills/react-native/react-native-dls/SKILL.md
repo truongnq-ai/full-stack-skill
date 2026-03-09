@@ -2,13 +2,27 @@
 name: React Native Design System
 description: Enforce design token usage in React Native. Prevents hardcoded styles, encourages theme and design system consistency.
 metadata:
-  labels: [react-native, dls, design-tokens, theme, styling]
+  labels:
+    - react-native
+    - dls
+    - design-tokens
+    - theme
+    - styling
+    - react-native-dls
   triggers:
     priority: medium
     confidence: 0.7
     files:
-      ['**/*Screen.tsx', '**/*Component.tsx', '**/theme/**', '**/styles/**']
-    keywords: [StyleSheet, styled-components, theme, colors, spacing]
+      - '**/*Screen.tsx'
+      - '**/*Component.tsx'
+      - '**/theme/**'
+      - '**/styles/**'
+    keywords:
+      - StyleSheet
+      - styled-components
+      - theme
+      - colors
+      - spacing
 workflow_ref: performance
 ---
 

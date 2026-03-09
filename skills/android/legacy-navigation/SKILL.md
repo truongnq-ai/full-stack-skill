@@ -2,12 +2,21 @@
 name: Android Legacy Navigation
 description: Standards for Jetpack Navigation Component (XML) and SafeArgs
 metadata:
-  labels: [android, navigation, xml, safeargs]
+  labels:
+    - android
+    - navigation
+    - xml
+    - safeargs
+    - legacy-navigation
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['navigation/*.xml']
-    keywords: ['findNavController', 'NavDirections', 'navArgs']
+    files:
+      - navigation/*.xml
+    keywords:
+      - findNavController
+      - NavDirections
+      - navArgs
 workflow_ref: smart-release
 ---
 

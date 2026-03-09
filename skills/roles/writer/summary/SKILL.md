@@ -4,11 +4,19 @@ url: https://github.com/truongnq-ai/full-stack-skill/tree/master/skills/roles/wr
 description: Summarize long content into concise bullet points.
 category: roles
 metadata:
-  labels: [writer, summary, distillation]
+  labels:
+    - writer
+    - summary
+    - distillation
+    - roles
   triggers:
     priority: medium
     confidence: 0.7
-    keywords: [summary, summarize, tl;dr, digest]
+    keywords:
+      - summary
+      - summarize
+      - tl;dr
+      - digest
 workflow_ref: update-docs
 ---
 

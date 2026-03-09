@@ -1,13 +1,32 @@
 ---
 name: IT System Modeling for BA
-description: Standards for Business Analysts to create visual diagrams (Data Flow, State, Use Case) using Mermaid.js syntax to clarify system behavior for developers.
+description: >-
+  Standards for Business Analysts to create visual diagrams (Data Flow, State, Use Case) using Mermaid.js syntax to
+  clarify system behavior for developers.
 metadata:
-  labels: [ba, architecture, modeling, mermaid, dfd, use-case]
+  labels:
+    - ba
+    - architecture
+    - modeling
+    - mermaid
+    - dfd
+    - use-case
+    - roles
+    - system-modeling
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['system-model.md', 'architecture.md', '*.mermaid']
-    keywords: [data flow, system model, use case diagram, mermaid, state machine, sequence diagram]
+    files:
+      - system-model.md
+      - architecture.md
+      - '*.mermaid'
+    keywords:
+      - data flow
+      - system model
+      - use case diagram
+      - mermaid
+      - state machine
+      - sequence diagram
 workflow_ref: smart-release
 ---
 

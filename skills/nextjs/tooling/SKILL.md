@@ -2,12 +2,26 @@
 name: Next.js Tooling
 description: Ecosystem optimization, deployment, and developer flow.
 metadata:
-  labels: [nextjs, turbopack, deployment, ci, vercel]
+  labels:
+    - nextjs
+    - turbopack
+    - deployment
+    - ci
+    - vercel
+    - tooling
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['next.config.js', 'package.json', 'Dockerfile']
-    keywords: [turbopack, output, standalone, lint, telemetry]
+    files:
+      - next.config.js
+      - package.json
+      - Dockerfile
+    keywords:
+      - turbopack
+      - output
+      - standalone
+      - lint
+      - telemetry
 workflow_ref: smart-release
 ---
 

@@ -1,29 +1,33 @@
 ---
 name: Flutter Design System
-description: Enforce strict Design Language System (DLS) adherence. Prevents hardcoded colors, spacing, and typography. Detects and uses project tokens.
+description: >-
+  Enforce strict Design Language System (DLS) adherence. Prevents hardcoded colors, spacing, and typography. Detects and
+  uses project tokens.
 metadata:
-  labels: [flutter, dls, design-tokens, theme, styling]
+  labels:
+    - flutter
+    - dls
+    - design-tokens
+    - theme
+    - styling
+    - flutter-design-system
   triggers:
     priority: medium
     confidence: 0.7
     files:
-      [
-        '**/theme/**',
-        '**/*_theme.dart',
-        '**/*_colors.dart',
-        '**/*_dls/**',
-        '**/foundation/**',
-      ]
+      - '**/theme/**'
+      - '**/*_theme.dart'
+      - '**/*_colors.dart'
+      - '**/*_dls/**'
+      - '**/foundation/**'
     keywords:
-      [
-        ThemeData,
-        ColorScheme,
-        AppColors,
-        VColors,
-        VSpacing,
-        AppTheme,
-        design token,
-      ]
+      - ThemeData
+      - ColorScheme
+      - AppColors
+      - VColors
+      - VSpacing
+      - AppTheme
+      - design token
 workflow_ref: smart-release
 ---
 

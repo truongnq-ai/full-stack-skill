@@ -2,12 +2,23 @@
 name: Android XML Views
 description: Standards for ViewBinding, RecyclerView, and XML Layouts
 metadata:
-  labels: [android, xml, views, viewbinding]
+  labels:
+    - android
+    - xml
+    - views
+    - viewbinding
+    - xml-views
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['layout/*.xml', '**/*Binding.java', '**/*Binding.kt']
-    keywords: ['ViewBinding', 'ConstraintLayout', 'RecyclerView']
+    files:
+      - layout/*.xml
+      - '**/*Binding.java'
+      - '**/*Binding.kt'
+    keywords:
+      - ViewBinding
+      - ConstraintLayout
+      - RecyclerView
 workflow_ref: performance
 ---
 

@@ -2,13 +2,27 @@
 name: React Native Notifications
 description: Push notifications for React Native using React Native Firebase or Expo Notifications.
 metadata:
-  labels: [react-native, notifications, fcm, push, expo, firebase]
+  labels:
+    - react-native
+    - notifications
+    - fcm
+    - push
+    - expo
+    - firebase
+    - react-native-notifications
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*notification*.ts', '**/*notification*.tsx', '**/App.tsx']
+    files:
+      - '**/*notification*.ts'
+      - '**/*notification*.tsx'
+      - '**/App.tsx'
     keywords:
-      [Notifications, messaging, FCM, expo-notifications, react-native-firebase]
+      - Notifications
+      - messaging
+      - FCM
+      - expo-notifications
+      - react-native-firebase
 workflow_ref: ui-ux-pro-max
 ---
 

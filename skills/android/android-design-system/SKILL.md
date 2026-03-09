@@ -2,12 +2,26 @@
 name: Android Design System (Jetpack Compose)
 description: Enforce Material Design 3 and design token usage in Jetpack Compose apps.
 metadata:
-  labels: [android, compose, dls, material-design, design-tokens]
+  labels:
+    - android
+    - compose
+    - dls
+    - material-design
+    - design-tokens
+    - android-design-system
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*Screen.kt', '**/ui/theme/**', '**/compose/**']
-    keywords: [MaterialTheme, Color, Typography, Modifier, Composable]
+    files:
+      - '**/*Screen.kt'
+      - '**/ui/theme/**'
+      - '**/compose/**'
+    keywords:
+      - MaterialTheme
+      - Color
+      - Typography
+      - Modifier
+      - Composable
 workflow_ref: smart-release
 ---
 

@@ -2,13 +2,24 @@
 name: iOS Notifications
 description: Push notifications for iOS using UserNotifications framework and APNS.
 metadata:
-  labels: [ios, apns, notifications, push, user-notifications]
+  labels:
+    - ios
+    - apns
+    - notifications
+    - push
+    - user-notifications
+    - ios-notifications
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*Notification*.swift', '**/*AppDelegate.swift']
+    files:
+      - '**/*Notification*.swift'
+      - '**/*AppDelegate.swift'
     keywords:
-      [UNUserNotificationCenter, APNS, UNNotificationRequest, deviceToken]
+      - UNUserNotificationCenter
+      - APNS
+      - UNNotificationRequest
+      - deviceToken
 workflow_ref: ui-ux-pro-max
 ---
 

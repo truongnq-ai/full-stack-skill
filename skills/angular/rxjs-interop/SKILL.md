@@ -2,12 +2,22 @@
 name: RxJS Interop
 description: Bridging Observables and Signals using toSignal and toObservable.
 metadata:
-  labels: [angular, rxjs, signals, interop]
+  labels:
+    - angular
+    - rxjs
+    - signals
+    - interop
+    - rxjs-interop
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*.ts']
-    keywords: [toSignal, toObservable, takeUntilDestroyed, rxjs angular]
+    files:
+      - '**/*.ts'
+    keywords:
+      - toSignal
+      - toObservable
+      - takeUntilDestroyed
+      - rxjs angular
 workflow_ref: smart-release
 ---
 

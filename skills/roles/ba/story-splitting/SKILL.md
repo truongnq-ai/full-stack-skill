@@ -1,13 +1,31 @@
 ---
 name: IT Story Splitting & BDD
-description: Rules for translating high-level PRDs into actionable, development-ready User Stories using the INVEST principle and BDD acceptance criteria.
+description: >-
+  Rules for translating high-level PRDs into actionable, development-ready User Stories using the INVEST principle and
+  BDD acceptance criteria.
 metadata:
-  labels: [ba, agile, user-story, bdd, invest, acceptance-criteria]
+  labels:
+    - ba
+    - agile
+    - user-story
+    - bdd
+    - invest
+    - acceptance-criteria
+    - roles
+    - story-splitting
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['user-stories.md', 'backlog.md']
-    keywords: [user story, break down, acceptance criteria, bdd, scrum, agile]
+    files:
+      - user-stories.md
+      - backlog.md
+    keywords:
+      - user story
+      - break down
+      - acceptance criteria
+      - bdd
+      - scrum
+      - agile
 workflow_ref: performance
 ---
 

@@ -2,19 +2,27 @@
 name: Flutter Riverpod State Management
 description: Reactive state management using Riverpod 2.0 with code generation.
 metadata:
-  labels: [flutter, state-management, riverpod, dependency-injection, reactive]
+  labels:
+    - flutter
+    - state-management
+    - riverpod
+    - dependency-injection
+    - reactive
+    - riverpod-state-management
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**_provider.dart', '**_notifier.dart']
+    files:
+      - '**_provider.dart'
+      - '**_notifier.dart'
     keywords:
-      - "riverpod"
-      - "ProviderScope"
-      - "ConsumerWidget"
-      - "Notifier"
-      - "AsyncValue"
-      - "ref.watch"
-      - "@riverpod"
+      - riverpod
+      - ProviderScope
+      - ConsumerWidget
+      - Notifier
+      - AsyncValue
+      - ref.watch
+      - '@riverpod'
 workflow_ref: battle-test
 ---
 

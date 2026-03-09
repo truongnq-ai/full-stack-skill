@@ -2,12 +2,20 @@
 name: Android Background Work
 description: Standards for WorkManager and Background Processing
 metadata:
-  labels: [android, background, workmanager]
+  labels:
+    - android
+    - background
+    - workmanager
+    - background-work
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*Worker.kt']
-    keywords: ['CoroutineWorker', 'WorkManager', 'doWork']
+    files:
+      - '**/*Worker.kt'
+    keywords:
+      - CoroutineWorker
+      - WorkManager
+      - doWork
 workflow_ref: smart-release
 ---
 

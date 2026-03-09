@@ -2,12 +2,26 @@
 name: IT Requirements Elicitation
 description: Expert process for BAs to gather, clarify, and formulate robust business and technical requirements from stakeholders.
 metadata:
-  labels: [ba, prd, requirements, interview, elicitation]
+  labels:
+    - ba
+    - prd
+    - requirements
+    - interview
+    - elicitation
+    - roles
+    - requirements-elicitation
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['PRD.md', 'requirements.md']
-    keywords: [gather requirements, interview, clarify scope, ba, business analyst]
+    files:
+      - PRD.md
+      - requirements.md
+    keywords:
+      - gather requirements
+      - interview
+      - clarify scope
+      - ba
+      - business analyst
 workflow_ref: deep-security-audit
 ---
 

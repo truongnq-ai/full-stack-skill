@@ -2,11 +2,20 @@
 name: System Design & Architecture Standards
 description: Universal architectural standards for building robust, scalable, and maintainable systems.
 metadata:
-  labels: [system-design, architecture, scalability, reliability]
+  labels:
+    - system-design
+    - architecture
+    - scalability
+    - reliability
+    - common
   triggers:
     priority: medium
     confidence: 0.7
-    keywords: [architecture, design, system, scalability]
+    keywords:
+      - architecture
+      - design
+      - system
+      - scalability
 workflow_ref: update-docs
 ---
 

@@ -2,12 +2,22 @@
 name: Flutter UI Widgets
 description: Principles for maintainable UI components.
 metadata:
-  labels: [ui, widgets]
+  labels:
+    - ui
+    - widgets
+    - flutter
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**_page.dart', '**_screen.dart', '**/widgets/**']
-    keywords: [StatelessWidget, const, Theme, ListView]
+    files:
+      - '**_page.dart'
+      - '**_screen.dart'
+      - '**/widgets/**'
+    keywords:
+      - StatelessWidget
+      - const
+      - Theme
+      - ListView
 workflow_ref: performance
 ---
 

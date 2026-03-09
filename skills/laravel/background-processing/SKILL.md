@@ -2,13 +2,26 @@
 name: Laravel Background Processing
 description: Scalable asynchronous workflows using Queues, Jobs, and Events.
 metadata:
-  labels: [laravel, queue, job, events, horizon]
+  labels:
+    - laravel
+    - queue
+    - job
+    - events
+    - horizon
+    - background-processing
   triggers:
     priority: medium
     confidence: 0.7
     files:
-      ['app/Jobs/**/*.php', 'app/Events/**/*.php', 'app/Listeners/**/*.php']
-    keywords: [ShouldQueue, dispatch, batch, chain, listener]
+      - app/Jobs/**/*.php
+      - app/Events/**/*.php
+      - app/Listeners/**/*.php
+    keywords:
+      - ShouldQueue
+      - dispatch
+      - batch
+      - chain
+      - listener
 workflow_ref: smart-release
 ---
 

@@ -2,12 +2,25 @@
 name: NestJS Notification System
 description: Standards for defining Notification Types, Service Architecture, and FCM Integration.
 metadata:
-  labels: [nestjs, notification, fcm, firebase, typeorm]
+  labels:
+    - nestjs
+    - notification
+    - fcm
+    - firebase
+    - typeorm
+    - nestjs-notification
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['notification.service.ts', 'notification.entity.ts']
-    keywords: [notification, push, fcm, alert, reminder]
+    files:
+      - notification.service.ts
+      - notification.entity.ts
+    keywords:
+      - notification
+      - push
+      - fcm
+      - alert
+      - reminder
 workflow_ref: ui-ux-pro-max
 ---
 

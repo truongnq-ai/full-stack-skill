@@ -2,11 +2,19 @@
 name: tdd
 description: Enforces Test-Driven Development (Red-Green-Refactor) for rigorous code quality.
 metadata:
-  labels: [tdd, testing, quality]
+  labels:
+    - tdd
+    - testing
+    - quality
+    - common
   triggers:
     priority: medium
     confidence: 0.7
-    keywords: [tdd, test-driven, red green refactor, test first]
+    keywords:
+      - tdd
+      - test-driven
+      - red green refactor
+      - test first
 workflow_ref: battle-test
 ---
 

@@ -2,12 +2,25 @@
 name: AI Feedback Reporter
 description: CRITICAL - Before ANY file write, audit loaded skills for violations. Auto-report via feedback command.
 metadata:
-  labels: [meta, feedback, quality, monitoring]
+  labels:
+    - meta
+    - feedback
+    - quality
+    - monitoring
+    - common
+    - feedback-reporter
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*']
-    keywords: [write, edit, create, generate, skill, violation]
+    files:
+      - '**/*'
+    keywords:
+      - write
+      - edit
+      - create
+      - generate
+      - skill
+      - violation
 workflow_ref: ui-ux-pro-max
 ---
 
@@ -45,43 +58,6 @@ next_checks: ["<check 1>"]
 ```
 Before file write?
 ├─ Check file extension → Identify loaded skills
-├─ Review skill anti-patterns/rules
-├─ Code matches anti-pattern?
-│  ├─ YES → 🚨 VIOLATION → feedback command
-│  └─ NO → ✅ Proceed
-└─ No skills loaded → ✅ Proceed
-```
-
-## Examples (Quick Reference)
-
-**Flutter**: `color: Colors.blue` → Rule: No hardcoded colors → Report + use theme
-
-**React**: `class MyComponent extends...` → Rule: Use functions → Report + convert
-
-**SKILL.md**: 105 lines → Rule: ≤100 lines max → Report + extract to references/
-
-[More examples →](references/violation-examples.md)
-
-## Command (Copy-Paste)
-
-```bash
-npx @truongnq-ai/full-stack-skill feedback \
-  --skill="[skill-id]" \
-  --issue="[violation]" \
-  --skill-instruction="[exact rule]" \
-  --actual-action="[what I did]"
-```
-
-## Pre-Completion Check
-
-Before `notify_user` or task completion:
-
-**Did I write code?** YES → **Did I audit skills?** NO → Audit now
-
-- **No "I'll check later"**: Check before writing, not after
-- **No "minor change skip"**: Every write needs check
-- **No "user waiting skip"**: 10-second check > pattern violation
-
 ## References
-
 - [Examples (Input/Output)](references/examples.md)
+- [Notes](references/notes.md)

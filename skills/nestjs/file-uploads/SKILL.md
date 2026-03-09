@@ -2,12 +2,22 @@
 name: NestJS File Uploads
 description: Secure file handling, Validation, and S3 streaming.
 metadata:
-  labels: [nestjs, upload, multer, s3]
+  labels:
+    - nestjs
+    - upload
+    - multer
+    - s3
+    - file-uploads
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*.controller.ts']
-    keywords: [FileInterceptor, Multer, S3, UploadedFile]
+    files:
+      - '**/*.controller.ts'
+    keywords:
+      - FileInterceptor
+      - Multer
+      - S3
+      - UploadedFile
 workflow_ref: plan-feature
 ---
 

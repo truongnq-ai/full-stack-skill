@@ -2,12 +2,22 @@
 name: HTTP Client
 description: Best practices for HttpClient, Interceptors, and API interactions.
 metadata:
-  labels: [angular, http, api, interceptors]
+  labels:
+    - angular
+    - http
+    - api
+    - interceptors
+    - http-client
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*.service.ts', '**/*.interceptor.ts']
-    keywords: [HttpClient, HttpInterceptorFn, withInterceptors]
+    files:
+      - '**/*.service.ts'
+      - '**/*.interceptor.ts'
+    keywords:
+      - HttpClient
+      - HttpInterceptorFn
+      - withInterceptors
 workflow_ref: smart-release
 ---
 

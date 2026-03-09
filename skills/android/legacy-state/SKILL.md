@@ -2,12 +2,21 @@
 name: Android Legacy State
 description: Standards for State integration with Views using Coroutines and Lifecycle
 metadata:
-  labels: [android, state, views, lifecycle]
+  labels:
+    - android
+    - state
+    - views
+    - lifecycle
+    - legacy-state
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*Fragment.kt', '**/*Activity.kt']
-    keywords: ['repeatOnLifecycle', 'launchWhenStarted']
+    files:
+      - '**/*Fragment.kt'
+      - '**/*Activity.kt'
+    keywords:
+      - repeatOnLifecycle
+      - launchWhenStarted
 workflow_ref: ui-ux-pro-max
 ---
 

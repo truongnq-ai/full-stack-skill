@@ -1,28 +1,33 @@
 ---
 name: Mobile Animation
-description: Motion design principles for mobile apps. Covers timing curves, transitions, gestures, and performance-conscious animations.
+description: >-
+  Motion design principles for mobile apps. Covers timing curves, transitions, gestures, and performance-conscious
+  animations.
 metadata:
-  labels: [mobile, animation, motion, transitions, ux]
+  labels:
+    - mobile
+    - animation
+    - motion
+    - transitions
+    - ux
+    - common
+    - mobile-animation
   triggers:
     priority: medium
     confidence: 0.7
     files:
-      [
-        '**/*_page.dart',
-        '**/*_screen.dart',
-        '**/*.swift',
-        '**/*Activity.kt',
-        '**/*Screen.tsx',
-      ]
+      - '**/*_page.dart'
+      - '**/*_screen.dart'
+      - '**/*.swift'
+      - '**/*Activity.kt'
+      - '**/*Screen.tsx'
     keywords:
-      [
-        Animation,
-        AnimationController,
-        Animated,
-        MotionLayout,
-        transition,
-        gesture,
-      ]
+      - Animation
+      - AnimationController
+      - Animated
+      - MotionLayout
+      - transition
+      - gesture
 workflow_ref: performance
 ---
 

@@ -2,12 +2,23 @@
 name: Spring Boot Data Access
 description: Best practices for JPA, Hibernate, and Database interactions in Spring Boot
 metadata:
-  labels: [spring-boot, jpa, hibernate, database]
+  labels:
+    - spring-boot
+    - jpa
+    - hibernate
+    - database
+    - data-access
   triggers:
     priority: medium
     confidence: 0.7
-    files: ['**/*Repository.java', '**/*Entity.java']
-    keywords: [jpa-repository, entity-graph, transactional, n-plus-1]
+    files:
+      - '**/*Repository.java'
+      - '**/*Entity.java'
+    keywords:
+      - jpa-repository
+      - entity-graph
+      - transactional
+      - n-plus-1
 workflow_ref: ui-ux-pro-max
 ---
 
