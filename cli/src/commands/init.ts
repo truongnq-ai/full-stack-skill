@@ -19,22 +19,6 @@ export class InitCommand {
     this.registryService = registryService || new RegistryService();
   }
 
-  /**
-   * Executes the initialization flow.
-   * Checks for existing config, discovers the environment, prompts the user, and saves the configuration.
-   */
-  private async getSuggestedPresets(languages: string[], frameworks: string[]) {
-    const suggestedPresets: string[] = [];
-    if (frameworks.some((f) => ['nextjs','react','angular','nestjs'].includes(f))) suggestedPresets.push('stack:web');
-    if (frameworks.some((f) => ['android','ios','flutter','react-native'].includes(f))) suggestedPresets.push('stack:mobile');
-    if (frameworks.some((f) => ['nestjs','spring-boot','golang','laravel','java'].includes(f))) suggestedPresets.push('stack:backend');
-    if (languages.some((l) => ['python','javascript','typescript'].includes(l))) suggestedPresets.push('stack:frontend');
-
-    if (await this.initService.detectionService.detectFiles(['**/jira_*.xml','**/test_plan.md','**/*.feature'])) suggestedPresets.push('role:qa');
-    if (await this.initService.detectionService.detectFiles(['**/docs/**/*.md','README.md'])) suggestedPresets.push('role:writer');
-    if (await this.initService.detectionService.detectFiles(['Dockerfile','docker-compose*.yml','**/*.helm/*','**/kustomization.yaml'])) suggestedPresets.push('role:devops');
-    return Array.from(new Set(suggestedPresets));
-  }
 
   async run() {
     const configPath = path.join(process.cwd(), '.skillsrc');
@@ -57,7 +41,7 @@ export class InitCommand {
 
     // 2. Gather context data
     const context = await this.initService.getInitializationContext();
-    const { categories, metadata } =
+    const { categories, metadata, presets } =
       await this.registryService.discoverRegistry(DEFAULT_REGISTER);
 
     // 3. Step 1 — Select Languages
@@ -98,17 +82,11 @@ export class InitCommand {
 
     // 5. Step 3 — Select Role & Stack Presets (optional)
     const suggestedPresets: string[] = [];
-    if (frameworks.some((f) => ['nextjs','react','angular','nestjs'].includes(f))) suggestedPresets.push('stack:web');
-    if (frameworks.some((f) => ['android','ios','flutter','react-native'].includes(f))) suggestedPresets.push('stack:mobile');
-    if (frameworks.some((f) => ['nestjs','spring-boot','golang','laravel','java'].includes(f))) suggestedPresets.push('stack:backend');
-    if (languages.some((l) => ['python','javascript','typescript'].includes(l))) suggestedPresets.push('stack:frontend');
-    if (await fs.pathExists('**/jira_*.xml')) suggestedPresets.push('role:qa');
-    if (await fs.pathExists('**/docs/**/*.md')) suggestedPresets.push('role:writer');
-    // Auto-suggest presets based on detection
-    const presetsPath = path.join(process.cwd(), 'skills', 'presets.json');
-    const presets = (await fs.pathExists(presetsPath))
-      ? (JSON.parse(await fs.readFile(presetsPath, 'utf8')) as Record<string, string[]>)
-      : {};
+    if (frameworks.some((f) => ['nextjs', 'react', 'angular', 'nestjs'].includes(f))) suggestedPresets.push('stack:web');
+    if (frameworks.some((f) => ['android', 'ios', 'flutter', 'react-native'].includes(f))) suggestedPresets.push('stack:mobile');
+    if (frameworks.some((f) => ['nestjs', 'spring-boot', 'golang', 'laravel', 'java'].includes(f))) suggestedPresets.push('stack:backend');
+    if (languages.some((l) => ['python', 'javascript', 'typescript'].includes(l))) suggestedPresets.push('stack:frontend');
+
     const roleChoices = this.initService.getRoleChoices(presets);
     const stackChoices = this.initService.getStackChoices(presets);
     const { roles, stacks } = await inquirer.prompt<{ roles: string[]; stacks: string[] }>([
@@ -117,7 +95,7 @@ export class InitCommand {
         name: 'roles',
         message: 'Select role presets (optional):',
         choices: roleChoices,
-        default: suggestedPresets.filter(p=>p.startsWith("role:")),
+        default: suggestedPresets.filter(p => p.startsWith("role:")),
         pageSize: 10,
       },
       {
@@ -125,7 +103,7 @@ export class InitCommand {
         name: 'stacks',
         message: 'Select stack presets (optional):',
         choices: stackChoices,
-        default: suggestedPresets.filter(p=>p.startsWith("stack:")),
+        default: suggestedPresets.filter(p => p.startsWith("stack:")),
         pageSize: 10,
       },
     ]);
@@ -161,7 +139,7 @@ export class InitCommand {
       registry,
     };
 
-    await this.initService.buildAndSaveConfig(answers, metadata);
+    await this.initService.buildAndSaveConfig(answers, metadata, presets);
 
     console.log(pc.green('\n✅ Initialized .skillsrc with your preferences!'));
     if (languages.length > 0) {

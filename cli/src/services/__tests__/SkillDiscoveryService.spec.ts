@@ -76,11 +76,13 @@ describe('SkillDiscoveryService', () => {
       ]);
 
       const files = await discovery.findChangedSkills();
-      expect(files).toHaveLength(2);
+      const normPath = (p: string) => p.replace(/\\/g, '/');
+      const normFiles = files.map(normPath);
+      expect(normFiles).toHaveLength(2);
       // Validates it uses absolute paths
-      expect(files).toContain('/app/skills/a/SKILL.md');
-      expect(files).toContain('/app/skills/b/SKILL.md');
-      expect(files).not.toContain('/app/src/other.ts');
+      expect(normFiles.some((f) => f.endsWith('/app/skills/a/SKILL.md'))).toBe(true);
+      expect(normFiles.some((f) => f.endsWith('/app/skills/b/SKILL.md'))).toBe(true);
+      expect(normFiles.some((f) => f.endsWith('/app/src/other.ts'))).toBe(false);
     });
   });
 });

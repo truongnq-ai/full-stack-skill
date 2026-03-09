@@ -47,7 +47,7 @@ export interface InitAnswers {
  * Handles environment discovery, prompt choice generation, and initial config creation.
  */
 export class InitService {
-  private detectionService = new DetectionService();
+  public detectionService = new DetectionService();
   private configService = new ConfigService();
 
   /**
@@ -173,12 +173,9 @@ export class InitService {
   async buildAndSaveConfig(
     answers: InitAnswers,
     metadata: Partial<RegistryMetadata>,
+    presets: Record<string, string[]> = {},
     cwd: string = process.cwd(),
   ) {
-    const presetsPath = path.join(process.cwd(), 'skills', 'presets.json');
-    const presets = (await fs.pathExists(presetsPath))
-      ? (JSON.parse(await fs.readFile(presetsPath, 'utf8')) as Record<string, string[]>)
-      : {};
 
     const roleCategories = new Set<string>();
     for (const role of answers.roles || []) {

@@ -73,8 +73,8 @@ describe('SyncService', () => {
     (syncService as any).configService = mockConfigService;
     (syncService as any).detectionService = mockDetectionService;
 
-    vi.spyOn(console, 'log').mockImplementation(() => {});
-    vi.spyOn(console, 'error').mockImplementation(() => {});
+    vi.spyOn(console, 'log').mockImplementation(() => { });
+    vi.spyOn(console, 'error').mockImplementation(() => { });
   });
 
   describe('reconcileConfig', () => {
@@ -749,7 +749,7 @@ describe('SyncService', () => {
       process.env.DEBUG = 'true';
       const config = { registry: 'https://github.com/o/r' } as any;
       mockGithubService.getRepoInfo.mockRejectedValue(new Error('Fatal'));
-      const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+      const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => { });
 
       const result = await syncService.checkForUpdates(config);
       expect(result).toBeNull();
@@ -782,7 +782,7 @@ describe('SyncService', () => {
       ] as any[];
       await syncService.writeWorkflows(workflows, {} as any);
       expect(fs.outputFile).toHaveBeenCalledWith(
-        expect.stringContaining('.agent/workflows/w1.md'),
+        expect.stringMatching(/\.agent[\/\\]workflows[\/\\]w1\.md/),
         'content',
       );
     });

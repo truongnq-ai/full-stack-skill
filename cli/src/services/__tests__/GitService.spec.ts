@@ -32,11 +32,12 @@ describe('GitService', () => {
     });
 
     it('should traverse up', () => {
+      const normP = (p: any) => String(p).replace(/\\/g, '/');
       vi.mocked(fs.existsSync).mockImplementation(
-        (p: any) => p === '/fake/pnpm-workspace.yaml',
+        (p: any) => normP(p) === '/fake/pnpm-workspace.yaml',
       );
       const root = gitService.findProjectRoot('/fake/dir/path');
-      expect(root).toBe('/fake');
+      expect(normP(root)).toBe('/fake');
     });
     it('should fall back to startDir if no root found', () => {
       vi.mocked(fs.existsSync).mockReturnValue(false);
@@ -110,7 +111,7 @@ describe('GitService', () => {
       process.env.DEBUG = '1';
       const consoleWarnSpy = vi
         .spyOn(console, 'warn')
-        .mockImplementation(() => {});
+        .mockImplementation(() => { });
       vi.mocked(execSync).mockImplementation(() => {
         throw new Error('Git fail');
       });
@@ -153,7 +154,7 @@ describe('GitService', () => {
       process.env.DEBUG = '1';
       const consoleWarnSpy = vi
         .spyOn(console, 'warn')
-        .mockImplementation(() => {});
+        .mockImplementation(() => { });
       vi.mocked(execSync).mockImplementation(() => {
         throw new Error('Git fail');
       });

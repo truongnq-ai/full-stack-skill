@@ -181,12 +181,13 @@ describe('InitService', () => {
       const answers: InitAnswers = {
         languages: [Language.Dart],
         frameworks: ['flutter'],
+        roles: [],
         agents: [Agent.Cursor],
         registry: 'https://github.com/owner/repo',
       };
       const metadata = { categories: { flutter: { version: '1.0.0' } } };
 
-      await initService.buildAndSaveConfig(answers, metadata, '/tmp');
+      await initService.buildAndSaveConfig(answers, metadata, {}, '/tmp');
 
       expect(mockConfigService.buildInitialConfig).toHaveBeenCalled();
       expect(mockConfigService.applyDependencyExclusions).toHaveBeenCalled();
@@ -200,10 +201,11 @@ describe('InitService', () => {
       const answers: InitAnswers = {
         languages: [Language.Python],
         frameworks: [],
+        roles: [],
         agents: [Agent.Cursor],
         registry: 'url',
       };
-      await initService.buildAndSaveConfig(answers, {}, '/tmp');
+      await initService.buildAndSaveConfig(answers, {}, {}, '/tmp');
       // detectLanguages should NOT be called since no frameworks selected
       expect(mockDetectionService.detectLanguages).not.toHaveBeenCalled();
       // buildInitialConfig should receive python in languages
@@ -221,10 +223,11 @@ describe('InitService', () => {
       const answers: InitAnswers = {
         languages: [Language.Dart],
         frameworks: ['flutter'],
+        roles: [],
         agents: [Agent.Antigravity],
         registry: 'url',
       };
-      await initService.buildAndSaveConfig(answers, {}, '/tmp');
+      await initService.buildAndSaveConfig(answers, {}, {}, '/tmp');
       expect(mockConfigService.buildInitialConfig).toHaveBeenCalledWith(
         expect.any(Array),
         expect.any(Array),
@@ -239,13 +242,14 @@ describe('InitService', () => {
       const answers: InitAnswers = {
         languages: [Language.TypeScriptJavaScript],
         frameworks: ['nestjs'],
+        roles: [],
         agents: [Agent.Cursor],
         registry: 'url',
       };
 
       // detectLanguages for nestjs will return ['dart'] from mock
       // but language skill categories will include ['typescript', 'javascript']
-      await initService.buildAndSaveConfig(answers, {}, '/tmp');
+      await initService.buildAndSaveConfig(answers, {}, {}, '/tmp');
 
       const languagesArg =
         mockConfigService.buildInitialConfig.mock.calls[0][4];

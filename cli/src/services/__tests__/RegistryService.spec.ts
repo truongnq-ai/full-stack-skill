@@ -35,6 +35,7 @@ describe('RegistryService', () => {
       GithubService.parseGitHubUrl.mockReturnValueOnce(null);
       const result = await service.discoverRegistry('invalid');
       expect(result.categories).toEqual(['flutter', 'dart']);
+      expect(result.presets).toEqual({});
     });
 
     it('should discover categories and metadata successfully (lines 25-36 coverage)', async () => {
@@ -44,13 +45,14 @@ describe('RegistryService', () => {
       mockGithub.getRepoTree.mockResolvedValue({
         tree: [{ path: 'skills/react', type: 'tree' }],
       });
-      mockGithub.getRawFile.mockResolvedValueOnce(
-        JSON.stringify({ categories: { react: {} } }),
-      );
+      mockGithub.getRawFile
+        .mockResolvedValueOnce(JSON.stringify({ categories: { react: {} } })) // metadata
+        .mockResolvedValueOnce(null); // presets (null → keep default)
 
       const result = await service.discoverRegistry('url');
       expect(result.categories).toContain('react');
       expect(mockGithub.getRepoTree).toHaveBeenCalledWith('o', 'r', 'develop');
+      expect(result.presets).toEqual({});
     });
 
     it('should discover workflows from .agent/workflows/ path (line 66 coverage)', async () => {
@@ -89,7 +91,7 @@ describe('RegistryService', () => {
 
     it('should handle discovery failure with DEBUG=true', async () => {
       process.env.DEBUG = 'true';
-      const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+      const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => { });
       mockGithub.getRepoTree.mockRejectedValue(new Error('Fatal'));
 
       await service.discoverRegistry('url');
@@ -104,6 +106,20 @@ describe('RegistryService', () => {
       mockGithub.getRawFile.mockResolvedValue('invalid json');
       const result = await service.discoverRegistry('url');
       expect(result.metadata).toEqual({});
+      expect(result.presets).toEqual({});
+    });
+
+    it('should fetch and parse presets.json from registry', async () => {
+      const mockPresets = { 'role:ba': ['roles'], 'stack:web': ['frontend', 'common'] };
+      mockGithub.getRepoTree.mockResolvedValue({
+        tree: [{ path: 'skills/react', type: 'tree' }],
+      });
+      mockGithub.getRawFile
+        .mockResolvedValueOnce(null)                          // metadata
+        .mockResolvedValueOnce(JSON.stringify(mockPresets));  // presets
+
+      const result = await service.discoverRegistry('url');
+      expect(result.presets).toEqual(mockPresets);
     });
 
     it('should handle missing repoInfo (line 25 fallback branch)', async () => {

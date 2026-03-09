@@ -33,11 +33,12 @@ describe('AgentBridgeService', () => {
 
       await service.bridge(rootDir, agents);
 
-      // Helper to find call for a specific path
+      // Helper to find call for a specific path (normalize separators for cross-platform)
+      const normalizeSep = (p: string) => p.replace(/\\/g, '/');
       const findCall = (pathPart: string) =>
         vi
           .mocked(fs.outputFile)
-          .mock.calls.find((call) => (call[0] as string).includes(pathPart));
+          .mock.calls.find((call) => normalizeSep(call[0] as string).includes(pathPart));
 
       // Cursor
       const cursorCall = findCall(
@@ -84,7 +85,7 @@ describe('AgentBridgeService', () => {
       await service.bridge(rootDir, agents);
 
       expect(fs.outputFile).toHaveBeenCalledWith(
-        expect.stringContaining('.cursor/rules/agent-skill-standard-rule.mdc'),
+        expect.stringMatching(/\.cursor[\/\\]rules[\/\\]agent-skill-standard-rule\.mdc/),
         expect.any(String),
       );
     });

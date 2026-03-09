@@ -45,7 +45,7 @@ describe('InitCommand', () => {
     mockRegistryService = {
       discoverRegistry: vi
         .fn()
-        .mockResolvedValue({ categories: [], metadata: {} }),
+        .mockResolvedValue({ categories: [], metadata: {}, presets: {} }),
     } as unknown as Mocked<RegistryService>;
 
     // Explicitly pass undefined to cover constructor
@@ -61,7 +61,6 @@ describe('InitCommand', () => {
 
     vi.spyOn(fs, 'pathExists').mockImplementation(async (p: any) => {
       if (String(p).endsWith('.skillsrc')) return false;
-      if (String(p).includes('presets.json')) return false;
       return false;
     });
     vi.spyOn(fs, 'readFile').mockResolvedValue('{}' as never);
@@ -89,7 +88,6 @@ describe('InitCommand', () => {
   it('should handle existing config and abort if requested', async () => {
     vi.spyOn(fs, 'pathExists').mockImplementation(async (p: any) => {
       if (String(p).endsWith('.skillsrc')) return true;
-      if (String(p).includes('presets.json')) return false;
       return false;
     });
     vi.spyOn(fs, 'readFile').mockResolvedValue('{}' as never);
@@ -106,7 +104,6 @@ describe('InitCommand', () => {
   it('should handle existing config and overwrite if requested', async () => {
     vi.spyOn(fs, 'pathExists').mockImplementation(async (p: any) => {
       if (String(p).endsWith('.skillsrc')) return true;
-      if (String(p).includes('presets.json')) return false;
       return false;
     });
     vi.spyOn(fs, 'readFile').mockResolvedValue('{}' as never);
@@ -132,7 +129,6 @@ describe('InitCommand', () => {
     mockInitService.getFrameworkChoices.mockReturnValue([]);
     vi.spyOn(fs, 'pathExists').mockImplementation(async (p: any) => {
       if (String(p).endsWith('.skillsrc')) return false;
-      if (String(p).includes('presets.json')) return false;
       return false;
     });
     vi.spyOn(fs, 'readFile').mockResolvedValue('{}' as never);

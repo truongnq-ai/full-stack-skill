@@ -23,9 +23,11 @@ export class RegistryService {
     categories: string[];
     metadata: Partial<RegistryMetadata>;
     workflows: string[];
+    presets: Record<string, string[]>;
   }> {
     let categories: string[] = ['flutter', 'dart'];
     let metadata: Partial<RegistryMetadata> = {};
+    let presets: Record<string, string[]> = {};
 
     try {
       const parsed = GithubService.parseGitHubUrl(registryUrl);
@@ -65,17 +67,28 @@ export class RegistryService {
             )
             .map((f) => path.basename(f.path, '.md'));
 
-          const metaContent = await this.githubService.getRawFile(
-            parsed.owner,
-            parsed.repo,
-            branch,
-            'skills/metadata.json',
-          );
+          const [metaContent, presetsContent] = await Promise.all([
+            this.githubService.getRawFile(
+              parsed.owner,
+              parsed.repo,
+              branch,
+              'skills/metadata.json',
+            ),
+            this.githubService.getRawFile(
+              parsed.owner,
+              parsed.repo,
+              branch,
+              'skills/presets.json',
+            ),
+          ]);
           if (metaContent) {
-            metadata = JSON.parse(metaContent) as RegistryMetadata;
+            try { metadata = JSON.parse(metaContent) as RegistryMetadata; } catch { /* keep default */ }
+          }
+          if (presetsContent) {
+            try { presets = JSON.parse(presetsContent) as Record<string, string[]>; } catch { /* keep default */ }
           }
 
-          return { categories, metadata, workflows };
+          return { categories, metadata, workflows, presets };
         }
       }
     } catch (error) {
@@ -84,7 +97,7 @@ export class RegistryService {
       }
     }
 
-    return { categories, metadata, workflows: [] };
+    return { categories, metadata, workflows: [], presets };
   }
 
   /**

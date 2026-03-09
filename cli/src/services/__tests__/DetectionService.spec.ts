@@ -223,7 +223,8 @@ dependencies {
       });
 
       vi.mocked(fs.readFile).mockImplementation((path: any) => {
-        if (path.endsWith('app/build.gradle')) {
+        const norm = (p: string) => p.replace(/\\/g, '/');
+        if (norm(path).endsWith('app/build.gradle')) {
           return Promise.resolve(mockAppGradle as unknown as Buffer);
         }
         return Promise.resolve(mockRootGradle as unknown as Buffer);
@@ -310,8 +311,9 @@ room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
           java: ['src/main/java'],
         },
       };
+      const normKotlin = (p: string) => p.replace(/\\/g, '/');
       vi.mocked(fs.pathExists).mockImplementation((p: string) => {
-        return Promise.resolve(p.endsWith('src/main/kotlin'));
+        return Promise.resolve(normKotlin(p).endsWith('src/main/kotlin'));
       });
 
       const langs = await detectionService.detectLanguages(framework);
@@ -329,8 +331,9 @@ room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
           java: ['src/main/java'],
         },
       };
+      const norm = (p: string) => p.replace(/\\/g, '/');
       vi.mocked(fs.pathExists).mockImplementation((p: string) => {
-        return Promise.resolve(p.endsWith('src/main/java'));
+        return Promise.resolve(norm(p).endsWith('src/main/java'));
       });
 
       const langs = await detectionService.detectLanguages(framework);
@@ -398,7 +401,7 @@ room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 
     beforeEach(() => {
       process.env = { ...originalEnv };
-      vi.spyOn(console, 'debug').mockImplementation(() => {});
+      vi.spyOn(console, 'debug').mockImplementation(() => { });
     });
 
     afterEach(() => {
