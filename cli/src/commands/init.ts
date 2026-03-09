@@ -83,18 +83,26 @@ export class InitCommand {
       frameworks = fwAnswers.frameworks;
     }
 
-    // 5. Step 3 — Select Role Presets (optional)
+    // 5. Step 3 — Select Role & Stack Presets (optional)
     const presetsPath = path.join(process.cwd(), 'skills', 'presets.json');
     const presets = (await fs.pathExists(presetsPath))
       ? (JSON.parse(await fs.readFile(presetsPath, 'utf8')) as Record<string, string[]>)
       : {};
     const roleChoices = this.initService.getRoleChoices(presets);
-    const { roles } = await inquirer.prompt<{ roles: string[] }>([
+    const stackChoices = this.initService.getStackChoices(presets);
+    const { roles, stacks } = await inquirer.prompt<{ roles: string[]; stacks: string[] }>([
       {
         type: 'checkbox',
         name: 'roles',
         message: 'Select role presets (optional):',
         choices: roleChoices,
+        pageSize: 10,
+      },
+      {
+        type: 'checkbox',
+        name: 'stacks',
+        message: 'Select stack presets (optional):',
+        choices: stackChoices,
         pageSize: 10,
       },
     ]);
@@ -125,7 +133,7 @@ export class InitCommand {
     const answers: InitAnswers = {
       languages,
       frameworks,
-      roles,
+      roles: [...roles, ...stacks],
       agents: agents as any[],
       registry,
     };

@@ -150,6 +150,12 @@ export class InitService {
       .map((k) => ({ name: k.replace('role:', '').toUpperCase(), value: k }));
   }
 
+  getStackChoices(presets: Record<string, string[]>) {
+    return Object.keys(presets)
+      .filter((k) => k.startsWith('stack:'))
+      .map((k) => ({ name: k.replace('stack:', '').toUpperCase(), value: k }));
+  }
+
   getAgentChoices(context: InitContext) {
     return SUPPORTED_AGENTS.map((a) => ({
       name: `${a.name} (${a.path}/)`,

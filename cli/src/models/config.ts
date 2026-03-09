@@ -31,6 +31,8 @@ export interface SkillConfig {
   };
   /** Whether to sync workflows, or a specific list of workflow names */
   workflows?: boolean | string[];
+  presets?: string[];
+  presets?: string[];
   /** List of file paths to PROTECT from being overwritten by sync */
   custom_overrides?: string[];
 }
