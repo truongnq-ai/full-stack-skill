@@ -23,3 +23,22 @@ Available roles: BA, QA, DevOps, Writer, Reviewer.
 - stack:data → data + common
 - stack:platform → platform + common
 
+## Example .skillsrc (presets-first)
+```yaml
+registry: https://github.com/truongnq-ai/full-stack-skill
+agents: [cursor, copilot]
+presets:
+  - role:qa
+  - stack:web
+```
+
+## Example .skillsrc (explicit categories)
+```yaml
+registry: https://github.com/truongnq-ai/full-stack-skill
+agents: [cursor]
+skills:
+  common: { ref: common-v1.5.4 }
+  roles: { ref: roles-v1.0.0, include: [qa] }
+  frontend: { ref: frontend-v0.1.0 }
+  backend: { ref: backend-v0.1.0 }
+```

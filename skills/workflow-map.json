@@ -212,6 +212,8 @@
   "roles/ba/requirements-elicitation": "deep-security-audit",
   "roles/ba/story-splitting": "performance",
   "roles/ba/system-modeling": "smart-release",
+  "roles/devops/ci-cd": "smart-release",
+  "roles/devops/monitoring": "orchestrate",
   "roles/qa/business-analysis": "smart-release",
   "roles/qa/jira-integration": "deep-security-audit",
   "roles/qa/quality-assurance": "battle-test",

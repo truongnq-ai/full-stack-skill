@@ -47,6 +47,35 @@ export class ConfigService {
     return CATEGORY_ALIASES[category] || [category];
   }
 
+  private migratePresets(config: SkillConfig) {
+    if (config.presets && config.presets.length > 0) return config;
+    const presets: string[] = [];
+    const skills = Object.keys(config.skills || {});
+
+    const hasAny = (set: string[]) => skills.some((s) => set.includes(s));
+
+    if (skills.includes('roles') || skills.includes('roles/qa') || skills.includes('quality-engineering')) {
+      presets.push('role:qa');
+    }
+    if (skills.includes('roles/ba')) {
+      presets.push('role:ba');
+    }
+
+    if (hasAny(['react', 'nextjs', 'angular'])) presets.push('stack:frontend');
+    if (hasAny(['nestjs', 'spring-boot', 'golang', 'laravel', 'java'])) presets.push('stack:backend');
+    if (hasAny(['android', 'ios', 'flutter', 'react-native', 'swift'])) presets.push('stack:mobile');
+    if (skills.includes('database')) presets.push('stack:data');
+
+    if (presets.length > 0) {
+      config.presets = Array.from(new Set(presets));
+    }
+    return config;
+  }
+
+  private dedupeArray(values?: string[]) {
+    return values ? Array.from(new Set(values)) : values;
+  }
+
   private expandPresets(config: SkillConfig) {
     if (!config.presets || config.presets.length === 0) return config;
     const presetsPath = path.join(process.cwd(), 'skills', 'presets.json');
@@ -57,6 +86,9 @@ export class ConfigService {
       cats.forEach((cat) => {
         if (!config.skills[cat]) {
           config.skills[cat] = { ref: 'main' };
+        } else {
+          config.skills[cat].include = this.dedupeArray(config.skills[cat].include);
+          config.skills[cat].exclude = this.dedupeArray(config.skills[cat].exclude);
         }
       });
     }
@@ -86,7 +118,7 @@ export class ConfigService {
         throw new Error(`Invalid .skillsrc format: ${parsed.error.message}`);
       }
 
-      return this.expandPresets(parsed.data as SkillConfig);
+      return this.expandPresets(this.migratePresets(parsed.data as SkillConfig));
     } catch (error) {
       throw new Error(`Failed to load config: ${error}`);
     }
