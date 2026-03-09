@@ -84,6 +84,7 @@ export class InitCommand {
     }
 
     // 5. Step 3 — Select Role & Stack Presets (optional)
+    // Auto-suggest presets based on detection
     const presetsPath = path.join(process.cwd(), 'skills', 'presets.json');
     const presets = (await fs.pathExists(presetsPath))
       ? (JSON.parse(await fs.readFile(presetsPath, 'utf8')) as Record<string, string[]>)

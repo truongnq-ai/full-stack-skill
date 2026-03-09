@@ -97,12 +97,19 @@ export class ConfigService {
    * @param config The configuration to save
    * @param cwd Current working directory
    */
+  private expandPresetsAndWriteBack(config: SkillConfig) {
+    const expanded = this.expandPresets(config);
+    // write-back expanded categories for transparency
+    return expanded;
+  }
+
   async saveConfig(
     config: SkillConfig,
     cwd: string = process.cwd(),
   ): Promise<void> {
     const configPath = path.join(cwd, '.skillsrc');
-    await fs.outputFile(configPath, yaml.dump(config));
+    const expanded = this.expandPresetsAndWriteBack(config);
+    await fs.outputFile(configPath, yaml.dump(expanded));
   }
 
   /**
