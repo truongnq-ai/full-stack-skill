@@ -84,6 +84,13 @@ export class InitCommand {
     }
 
     // 5. Step 3 — Select Role & Stack Presets (optional)
+    const suggestedPresets: string[] = [];
+    if (frameworks.some((f) => ['nextjs','react','angular','nestjs'].includes(f))) suggestedPresets.push('stack:web');
+    if (frameworks.some((f) => ['android','ios','flutter','react-native'].includes(f))) suggestedPresets.push('stack:mobile');
+    if (frameworks.some((f) => ['nestjs','spring-boot','golang','laravel','java'].includes(f))) suggestedPresets.push('stack:backend');
+    if (languages.some((l) => ['python','javascript','typescript'].includes(l))) suggestedPresets.push('stack:frontend');
+    if (await fs.pathExists('**/jira_*.xml')) suggestedPresets.push('role:qa');
+    if (await fs.pathExists('**/docs/**/*.md')) suggestedPresets.push('role:writer');
     // Auto-suggest presets based on detection
     const presetsPath = path.join(process.cwd(), 'skills', 'presets.json');
     const presets = (await fs.pathExists(presetsPath))
@@ -97,6 +104,7 @@ export class InitCommand {
         name: 'roles',
         message: 'Select role presets (optional):',
         choices: roleChoices,
+        default: suggestedPresets.filter(p=>p.startsWith("role:")),
         pageSize: 10,
       },
       {
@@ -104,6 +112,7 @@ export class InitCommand {
         name: 'stacks',
         message: 'Select stack presets (optional):',
         choices: stackChoices,
+        default: suggestedPresets.filter(p=>p.startsWith("stack:")),
         pageSize: 10,
       },
     ]);
