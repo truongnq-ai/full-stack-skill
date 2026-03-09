@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.java']
     keywords: [thread, async, future, executor, synchronized, lock, await]
+workflow_ref: smart-release
 ---
 
 # Java Concurrency
@@ -48,3 +49,8 @@ try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
 ## Related Topics
 
 language | best-practices
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

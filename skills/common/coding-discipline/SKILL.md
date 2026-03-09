@@ -1,9 +1,17 @@
 ---
-description: "🚨 Disciplined coding FSM — analyze first, execute second. 7-step workflow with mandatory checkpoints."
-globs: "**/*"
+name: Coding Discipline FSM
+description: Disciplined coding FSM — analyze first, execute second. 7-step workflow with mandatory checkpoints.
+metadata:
+  labels: [workflow, discipline, process]
+  triggers:
+    keywords: [plan, scope, clarify, coding discipline, workflow]
+    task_types: [implementation, refactor, debugging]
+workflow_ref: update-docs
 ---
 
 # Coding Discipline — 7-Step FSM
+
+## **Priority: P1 (OPERATIONAL)**
 
 ## Context
 
@@ -53,3 +61,8 @@ Every coding task must follow a disciplined workflow. Never skip analysis or exe
 - ❌ Auto-create documentation files not requested
 - ❌ Rename/delete/move files not in the plan
 - ❌ Run side-effect commands (DB migrate, deploy, restart) without confirmation
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

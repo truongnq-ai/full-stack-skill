@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*Dao.kt', '**/*Database.kt', '**/*Entity.kt']
     keywords: ['@Dao', '@Entity', 'RoomDatabase']
+workflow_ref: ui-ux-pro-max
 ---
 
 # Android Persistence Standards
@@ -33,3 +34,8 @@ metadata:
 ## References
 
 - [DAO Templates](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

@@ -13,6 +13,7 @@ metadata:
         injection probe,
         pentest,
       ]
+workflow_ref: deep-security-audit
 ---
 
 # Security Audit
@@ -87,3 +88,8 @@ grep -rE "^FROM .+:latest|^USER root|curl.*sh.*|ADD http" . --include="Dockerfil
 ## 📚 Reference Links
 
 - [Vulnerability Remediation Protocols](references/REMEDIATION.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

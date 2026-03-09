@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['cmd/server/*.go', 'internal/adapter/handler/**']
     keywords: [http server, rest api, gin, echo, middleware]
+workflow_ref: performance
 ---
 
 # Golang API Server Standards
@@ -40,3 +41,4 @@ metadata:
 
 - [Middleware Patterns](references/middleware-patterns.md)
 - [Graceful Shutdown](references/graceful-shutdown.md)
+- [Examples (Input/Output)](references/examples.md)

@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/page.tsx', '**/layout.tsx']
     keywords: [generateStaticParams, dynamic, dynamicParams, PPR, streaming]
+workflow_ref: ui-ux-pro-max
 ---
 
 # Rendering Strategies (App Router)
@@ -39,3 +40,8 @@ Choose rendering strategy based on data freshness and scaling needs. See [Strate
 - [Strategy Selection Matrix](references/strategy-matrix.md)
 - [Implementation Details](references/implementation-details.md)
 - [Scaling Patterns](references/scaling-patterns.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

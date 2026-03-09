@@ -1,6 +1,12 @@
 ---
 name: Flutter Testing Standards
 description: Core standards for unit, widget, and integration testing in Flutter.
+metadata:
+  labels: [flutter, testing, quality]
+  triggers:
+    keywords: [flutter test, widget test, unit test, integration test, mocking]
+    files: ['**/test/**', '**/*test.dart']
+workflow_ref: battle-test
 ---
 
 # Flutter Testing Standards
@@ -42,3 +48,8 @@ test/
 - **No Flaky Tests**: Avoid `Future.delayed` or reliance on external state.
 - **No Local Mocks**: See [Mocking Standards](references/mocking_standards.md).
 - **No Unsafe Matchers**: Avoid `any()` (use specific types/matchers) and `registerFallbackValue`.
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

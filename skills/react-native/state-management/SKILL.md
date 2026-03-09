@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.tsx', '**/*.ts']
     keywords: [useState, useContext, zustand, redux, state-management]
+workflow_ref: ui-ux-pro-max
 ---
 
 # React Native State Management
@@ -58,3 +59,8 @@ See [references/REFERENCE.md](references/REFERENCE.md).
 ## Related Topics
 
 react/state-management | react/hooks
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

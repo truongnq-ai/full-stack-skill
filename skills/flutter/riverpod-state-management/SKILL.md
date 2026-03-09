@@ -5,7 +5,15 @@ metadata:
   labels: [flutter, state-management, riverpod, dependency-injection, reactive]
   triggers:
     files: ['**_provider.dart', '**_notifier.dart']
-    keywords: [riverpod, ProviderScope, ConsumerWidget, Notifier, AsyncValue, ref.watch, @riverpod]
+    keywords:
+      - "riverpod"
+      - "ProviderScope"
+      - "ConsumerWidget"
+      - "Notifier"
+      - "AsyncValue"
+      - "ref.watch"
+      - "@riverpod"
+workflow_ref: battle-test
 ---
 
 # Riverpod State Management
@@ -45,3 +53,8 @@ lib/
 ## Related Topics
 
 layer-based-clean-architecture | dependency-injection | testing
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

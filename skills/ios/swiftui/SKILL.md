@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*View.swift']
     keywords: [View, State, Binding, EnvironmentObject]
+workflow_ref: ui-ux-pro-max
 ---
 
 # SwiftUI Expert
@@ -33,3 +34,8 @@ metadata:
 - **No Logic in Body**: Move calculations to ViewModel or computed vars.
 - **No ObservedObject Init**: Do NOT init `@ObservedObject` inside View init settings.
 - **No Hardcoded Sizes**: Use flexible frames and spacers.
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

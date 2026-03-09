@@ -18,6 +18,7 @@ metadata:
         manual test,
       ]
     exclude: ['src/**/*.ts', 'src/**/*.js', 'src/**/*.tsx', 'src/**/*.jsx']
+workflow_ref: battle-test
 ---
 
 # Quality Assurance Standards
@@ -46,3 +47,4 @@ metadata:
 ## 4. References
 
 - [Detailed Examples](references/test_case_standards.md)
+- [Examples (Input/Output)](references/examples.md)

@@ -17,6 +17,7 @@ metadata:
         react-native,
         mobile architecture,
       ]
+workflow_ref: smart-release
 ---
 
 # React Native Architecture
@@ -80,3 +81,8 @@ See [references/folder-structure.md](references/folder-structure.md) for full di
 ## Related Topics
 
 common/system-design | components | navigation | react/hooks | react/component-patterns
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['app/Http/Middleware/**/*.php', 'config/session.php']
     keywords: [session, driver, handle, headers, csrf]
+workflow_ref: deep-security-audit
 ---
 
 # Laravel Sessions & Middleware
@@ -39,3 +40,8 @@ app/Http/
 ## References
 
 - [Advanced Middleware Patterns](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

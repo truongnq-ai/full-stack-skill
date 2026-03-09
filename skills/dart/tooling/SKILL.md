@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['analysis_options.yaml', 'pubspec.yaml', 'build.yaml']
     keywords: [analysis_options, lints, format, build_runner, cider, husky]
+workflow_ref: update-docs
 ---
 
 # Tooling & CI
@@ -45,3 +46,8 @@ linter:
 ## Related Topics
 
 language | testing
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

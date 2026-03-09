@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.swift']
     keywords: ['weak', 'unowned', 'capture', 'deinit', 'retain']
+workflow_ref: smart-release
 ---
 
 # Swift Memory Management
@@ -41,3 +42,8 @@ metadata:
 ## References
 
 - [Capture Lists & Retain Cycles](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

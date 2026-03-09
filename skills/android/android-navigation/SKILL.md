@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*Screen.kt', '**/*Activity.kt', '**/NavGraph.kt']
     keywords: [NavController, NavHost, composable, navArgument, deepLinks]
+workflow_ref: ui-ux-pro-max
 ---
 
 # Android Navigation (Jetpack Compose)
@@ -32,3 +33,8 @@ Navigation and deep linking using Jetpack Compose Navigation.
 ## Related Topics
 
 android-design-system | android-notifications | mobile-ux-core
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

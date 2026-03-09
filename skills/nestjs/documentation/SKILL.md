@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['main.ts', '**/*.dto.ts']
     keywords: [DocumentBuilder, SwaggerModule, ApiProperty, ApiResponse]
+workflow_ref: deep-security-audit
 ---
 
 # OpenAPI & Documentation
@@ -64,3 +65,8 @@ Automated API documentation and OpenAPI standards.
   - **Code**: `@ApiProperty({ enum: MyEnum, enumName: 'MyEnum' })`.
 - **Grouping**: Segregate public vs. internal docs.
   - **Setup**: `SwaggerModule.createDocument(app, config, { include: [AdminModule] })`.
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

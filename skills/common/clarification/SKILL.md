@@ -1,9 +1,17 @@
 ---
-description: "🚨 HARD STOP when ambiguity is detected — NEVER auto-decide on the user's behalf. Essential for Auto-Accept mode safety."
-globs: "**/*"
+name: Clarification Hard Stop
+description: HARD STOP when ambiguity is detected — never auto-decide on the user's behalf.
+metadata:
+  labels: [clarification, safety, decision]
+  triggers:
+    keywords: [clarify, ambiguity, options, decision, choose]
+    task_types: [analysis, planning]
+workflow_ref: smart-release
 ---
 
 # Clarification — The Only Stop Mechanism
+
+## **Priority: P1 (OPERATIONAL)**
 
 ## Context
 
@@ -53,3 +61,8 @@ When Auto-Accept mode is enabled, the AI agent can execute many steps without co
 - **Never self-decide then execute** — even if an option seems "obvious"
 - **After receiving decision** → confirm briefly before executing
 - **Don't ask what you can find yourself** — exhaust `view_file`, `grep_search`, `find_by_name` first
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

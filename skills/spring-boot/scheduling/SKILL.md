@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*Scheduler.java', '**/*Job.java']
     keywords: [scheduled, shedlock, cron]
+workflow_ref: ui-ux-pro-max
 ---
 
 # Spring Boot Scheduling Standards
@@ -34,3 +35,8 @@ metadata:
 ## References
 
 - [Implementation Examples](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

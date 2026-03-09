@@ -7,6 +7,7 @@ metadata:
     files: ['**/*.swift']
     keywords:
       [SecItemAdd, kSecClassGenericPassword, LAContext, LocalAuthentication]
+workflow_ref: deep-security-audit
 ---
 
 # iOS Security Standards
@@ -40,6 +41,7 @@ metadata:
 ## References
 
 - [Keychain & Biometrics Implementation](references/implementation.md)
+- [Examples (Input/Output)](references/examples.md)
 
 ## Related Topics
 

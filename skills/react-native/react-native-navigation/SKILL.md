@@ -13,6 +13,7 @@ metadata:
         linking,
         deep link,
       ]
+workflow_ref: performance
 ---
 
 # React Native Navigation
@@ -39,3 +40,8 @@ Navigation and deep linking using React Navigation.
 ## Related Topics
 
 react-native-dls | react-native-notifications | mobile-ux-core
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

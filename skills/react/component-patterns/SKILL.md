@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.jsx', '**/*.tsx']
     keywords: [component, props, children, composition, hoc, render-props]
+workflow_ref: performance
 ---
 
 # React Component Patterns
@@ -43,3 +44,8 @@ See [references/patterns.md](references/patterns.md) for Composition, Compound C
 ## Related Topics
 
 hooks | state-management | performance
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

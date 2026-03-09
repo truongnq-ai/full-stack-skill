@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.php']
     keywords: [declare, readonly, match, constructor, promotion, types]
+workflow_ref: ui-ux-pro-max
 ---
 
 # PHP Language Standards
@@ -40,3 +41,8 @@ src/
 ## References
 
 - [Modern PHP Patterns](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

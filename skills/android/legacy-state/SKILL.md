@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*Fragment.kt', '**/*Activity.kt']
     keywords: ['repeatOnLifecycle', 'launchWhenStarted']
+workflow_ref: ui-ux-pro-max
 ---
 
 # Android Legacy State Standards
@@ -32,3 +33,8 @@ metadata:
 ## References
 
 - [Flow Consumption Template](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

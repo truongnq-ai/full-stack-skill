@@ -1,5 +1,6 @@
 import fs from 'fs-extra';
 import path from 'path';
+import yaml from 'js-yaml';
 import { RuleResult, ValidationRule } from './types';
 
 /**
@@ -42,24 +43,104 @@ export class FrontmatterRule implements ValidationRule {
       };
     }
 
-    const frontmatter = frontmatterMatch[1];
+    const frontmatterRaw = frontmatterMatch[1];
+    let frontmatter: any = null;
 
-    if (!frontmatter.includes('name:')) {
+    try {
+      frontmatter = yaml.load(frontmatterRaw);
+    } catch (error) {
+      return {
+        passed: false,
+        errors: [
+          `Invalid frontmatter YAML: ${error instanceof Error ? error.message : error}`,
+        ],
+        warnings: [],
+      };
+    }
+
+    if (!frontmatter || typeof frontmatter !== 'object') {
+      return {
+        passed: false,
+        errors: ['Frontmatter must be a valid YAML object'],
+        warnings: [],
+      };
+    }
+
+    if (typeof frontmatter.name !== 'string' || frontmatter.name.trim() === '') {
       result.errors.push('Missing "name" field in frontmatter');
       result.passed = false;
     }
 
-    if (!frontmatter.includes('description:')) {
+    if (
+      typeof frontmatter.description !== 'string' ||
+      frontmatter.description.trim() === ''
+    ) {
       result.errors.push('Missing "description" field in frontmatter');
       result.passed = false;
+    } else if (frontmatter.description.length > 200) {
+      result.errors.push(
+        `Description too long (${frontmatter.description.length} chars > 200 limit)`,
+      );
+      result.passed = false;
+    }
+
+    const metadata = frontmatter.metadata;
+    if (!metadata || typeof metadata !== 'object') {
+      result.errors.push('Missing "metadata" block in frontmatter');
+      result.passed = false;
     } else {
-      const descMatch = frontmatter.match(/description:\s*(.+)/);
-      if (descMatch && descMatch[1].length > 200) {
-        result.errors.push(
-          `Description too long (${descMatch[1].length} chars > 200 limit)`,
-        );
+      const labels = metadata.labels;
+      if (!Array.isArray(labels) || labels.length === 0) {
+        result.errors.push('Missing "metadata.labels" array in frontmatter');
+        result.passed = false;
+      } else if (labels.some((label: unknown) => typeof label !== 'string')) {
+        result.errors.push('All "metadata.labels" values must be strings');
         result.passed = false;
       }
+
+      const triggers = metadata.triggers;
+      if (!triggers || typeof triggers !== 'object') {
+        result.errors.push('Missing "metadata.triggers" block in frontmatter');
+        result.passed = false;
+      } else {
+        const keywords = (triggers as any).keywords;
+        const files = (triggers as any).files;
+        const taskTypes = (triggers as any).task_types;
+
+        const hasKeywords = Array.isArray(keywords) && keywords.length > 0;
+        const hasFiles = Array.isArray(files) && files.length > 0;
+        const hasTaskTypes = Array.isArray(taskTypes) && taskTypes.length > 0;
+
+        if (!hasKeywords && !hasFiles && !hasTaskTypes) {
+          result.errors.push(
+            'metadata.triggers must include at least one of: keywords, files, task_types',
+          );
+          result.passed = false;
+        }
+
+        if (Array.isArray(keywords) && keywords.some((k) => typeof k !== 'string')) {
+          result.errors.push('All "metadata.triggers.keywords" values must be strings');
+          result.passed = false;
+        }
+
+        if (Array.isArray(files) && files.some((f) => typeof f !== 'string')) {
+          result.errors.push('All "metadata.triggers.files" values must be strings');
+          result.passed = false;
+        }
+
+        if (Array.isArray(taskTypes) && taskTypes.some((t) => typeof t !== 'string')) {
+          result.errors.push('All "metadata.triggers.task_types" values must be strings');
+          result.passed = false;
+        }
+      }
+    }
+
+    if (!frontmatter.workflow_ref) {
+      result.errors.push('Missing "workflow_ref" in frontmatter');
+      result.passed = false;
+    } else if (typeof frontmatter.workflow_ref !== 'string') {
+      result.errors.push('"workflow_ref" must be a string');
+      result.passed = false;
     }
 
     return result;

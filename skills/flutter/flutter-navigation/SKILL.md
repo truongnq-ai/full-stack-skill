@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*_route.dart', '**/*_router.dart', '**/main.dart']
     keywords: [Navigator, GoRouter, routes, deep link, go_router, AutoRoute]
+workflow_ref: ui-ux-pro-max
 ---
 
 # Flutter Navigation
@@ -33,3 +34,8 @@ Navigation and routing for Flutter apps using `go_router` or named routes.
 ## Related Topics
 
 flutter-design-system | flutter-notifications | mobile-ux-core
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

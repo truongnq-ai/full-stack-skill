@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['*.log', 'chat-history.json']
     keywords: [reduce tokens, optimize context, summarize history, clear output]
+workflow_ref: performance
 ---
 
 ## **Priority: P1 (OPTIMIZATION)**
@@ -45,3 +46,8 @@ Manage the Attention Budget. Treat context as a scarce resource.
 
 - [Observation Masking Patterns](references/masking.md)
 - [Compaction Algorithms](references/compaction.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

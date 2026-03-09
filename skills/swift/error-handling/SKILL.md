@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.swift']
     keywords: ['throws', 'try', 'catch', 'Result', 'Error']
+workflow_ref: smart-release
 ---
 
 # Swift Error Handling
@@ -40,3 +41,8 @@ metadata:
 ## References
 
 - [Error Types & Result](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

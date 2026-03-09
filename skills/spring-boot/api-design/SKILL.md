@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*Controller.java']
     keywords: [openapi, swagger, versioning, problemdetails]
+workflow_ref: deep-security-audit
 ---
 
 # Spring Boot API Design Standards
@@ -40,3 +41,8 @@ metadata:
 ## References
 
 - [Implementation Examples](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

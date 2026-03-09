@@ -22,6 +22,7 @@ metadata:
         AppTheme,
         design token,
       ]
+workflow_ref: smart-release
 ---
 
 # Flutter Design System Enforcement
@@ -60,3 +61,8 @@ Before any UI refactoring, you MUST identify the project's Theme Archetype:
 ## Related Topics
 
 mobile-ux-core | flutter/widgets | idiomatic-flutter
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

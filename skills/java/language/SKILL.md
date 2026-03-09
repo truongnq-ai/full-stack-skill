@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.java', 'pom.xml', 'build.gradle']
     keywords: [record, switch, sealed, var, virtual thread, stream, optional]
+workflow_ref: battle-test
 ---
 
 # Java Language Patterns
@@ -57,6 +58,10 @@ try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
     scope.join().throwIfFailed(); // Wait for both
 }
 ```
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)
 
 ## Related Topics
 

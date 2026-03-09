@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.controller.ts', '**/*.service.ts']
     keywords: [Controller, Injectable, ExecutionContext, createParamDecorator]
+workflow_ref: update-docs
 ---
 
 # NestJS Controllers & Services Standards
@@ -69,3 +70,7 @@ findOne(@Param('id', ParseIntPipe) id: number) { ... }
 
 - **Init**: Use `OnModuleInit` for connection setup.
 - **Destroy**: Use `OnApplicationShutdown` for cleanup. (Requires `enableShutdownHooks()`).
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

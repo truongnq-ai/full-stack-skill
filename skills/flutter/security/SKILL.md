@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['lib/infrastructure/**', 'pubspec.yaml']
     keywords: [secure_storage, obfuscate, jailbreak, pinning, PII, OWASP]
+workflow_ref: deep-security-audit
 ---
 
 # Mobile Security
@@ -27,6 +28,7 @@ Standards for basic mobile security and PII protection.
 
 For SSL Pinning and Secure Storage implementation details:
 See [references/REFERENCE.md](references/REFERENCE.md).
+See [references/examples.md](references/examples.md).
 
 ## Related Topics
 

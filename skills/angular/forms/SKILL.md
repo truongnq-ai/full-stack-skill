@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.ts', '**/*.html']
     keywords: [FormBuilder, FormGroup, FormControl, Validators]
+workflow_ref: smart-release
 ---
 
 # Forms
@@ -26,3 +27,8 @@ metadata:
 ## References
 
 - [Typed Forms](references/typed-forms.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

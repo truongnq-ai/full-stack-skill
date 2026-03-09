@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['tsconfig.json', '.eslintrc.*', 'jest.config.*', 'package.json']
     keywords: [eslint, prettier, jest, vitest, build, compile, lint]
+workflow_ref: battle-test
 ---
 
 # TypeScript Tooling
@@ -81,3 +82,8 @@ See [references/REFERENCE.md](references/REFERENCE.md).
 ## Related Topics
 
 best-practices | language
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

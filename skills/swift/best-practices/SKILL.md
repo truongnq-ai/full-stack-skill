@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.swift']
     keywords: ['guard', 'let', 'struct', 'final']
+workflow_ref: ui-ux-pro-max
 ---
 
 # Swift Best Practices
@@ -41,3 +42,8 @@ metadata:
 ## References
 
 - [Guard Patterns & Immutability](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

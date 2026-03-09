@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['tests/**/*.php', 'phpunit.xml']
     keywords: [phpunit, pest, mock, assert, tdd]
+workflow_ref: battle-test
 ---
 
 # PHP Testing
@@ -40,3 +41,8 @@ tests/
 ## References
 
 - [Testing Patterns & Mocks](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

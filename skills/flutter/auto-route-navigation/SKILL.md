@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/router.dart', '**/app_router.dart']
     keywords: [AutoRoute, AutoRouter, router, guards, navigate, push]
+workflow_ref: ui-ux-pro-max
 ---
 
 # AutoRoute Navigation
@@ -41,3 +42,8 @@ See [references/REFERENCE.md](references/REFERENCE.md).
 ## Related Topics
 
 go-router-navigation | layer-based-clean-architecture
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

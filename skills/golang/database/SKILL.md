@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['internal/adapter/repository/**']
     keywords: [database, sql, postgres, gorm, sqlc, pgx]
+workflow_ref: performance
 ---
 
 # Golang Database Standards
@@ -35,3 +36,8 @@ metadata:
 
 - [Repository Pattern Implementation](references/repository-pattern.md)
 - [Connection Tuning](references/connection-tuning.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

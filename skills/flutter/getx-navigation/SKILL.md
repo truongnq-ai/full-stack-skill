@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/app_pages.dart', '**/app_routes.dart']
     keywords: [GetPage, Get.to, Get.off, Get.offAll, Get.toNamed, GetMiddleware]
+workflow_ref: ui-ux-pro-max
 ---
 
 # GetX Navigation
@@ -55,3 +56,8 @@ void logout() => Get.offAllNamed(Routes.LOGIN);
 ## Related Topics
 
 getx-state-management | feature-based-clean-architecture
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

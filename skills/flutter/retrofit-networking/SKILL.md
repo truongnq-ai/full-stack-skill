@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/data_sources/**', '**/api/**']
     keywords: [Retrofit, Dio, RestClient, GET, POST, Interceptor, refreshing]
+workflow_ref: ui-ux-pro-max
 ---
 
 # Retrofit & Dio Networking
@@ -51,3 +52,8 @@ See [references/REFERENCE.md](references/REFERENCE.md).
 ## Related Topics
 
 feature-based-clean-architecture | error-handling
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

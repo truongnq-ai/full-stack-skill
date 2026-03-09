@@ -7,6 +7,7 @@ metadata:
     files: ['**/*Notification*.swift', '**/*AppDelegate.swift']
     keywords:
       [UNUserNotificationCenter, APNS, UNNotificationRequest, deviceToken]
+workflow_ref: ui-ux-pro-max
 ---
 
 # iOS Notifications
@@ -34,3 +35,8 @@ Push notifications using UserNotifications framework and APNs.
 ## Related Topics
 
 ios-navigation | ios-design-system | mobile-ux-core
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['app/Policies/**/*.php', 'config/*.php']
     keywords: [policy, gate, authorize, env, config]
+workflow_ref: deep-security-audit
 ---
 
 # Laravel Security
@@ -40,3 +41,4 @@ app/
 ## References
 
 - [Policy & Env Best Practices](references/implementation.md)
+- [Examples (Input/Output)](references/examples.md)

@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*Api.kt', '**/*Service.kt', '**/*Client.kt']
     keywords: ['Retrofit', 'OkHttpClient', '@GET', '@POST']
+workflow_ref: smart-release
 ---
 
 # Android Networking Standards
@@ -35,3 +36,8 @@ metadata:
 ## References
 
 - [Setup & Wrappers](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

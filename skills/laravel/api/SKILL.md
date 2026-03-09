@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['routes/api.php', 'app/Http/Resources/**/*.php']
     keywords: [resource, collection, sanctum, passport, cors]
+workflow_ref: smart-release
 ---
 
 # Laravel API
@@ -41,3 +42,8 @@ app/
 ## References
 
 - [API Resource Patterns](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

@@ -5,7 +5,14 @@ metadata:
   labels: [ios, di, dependency-injection, injection, modularity]
   triggers:
     files: ['**/*.swift']
-    keywords: [@Injected, Resolver, Container, Swinject, register, resolve]
+    keywords:
+      - "@Injected"
+      - "Resolver"
+      - "Container"
+      - "Swinject"
+      - "register"
+      - "resolve"
+workflow_ref: battle-test
 ---
 
 # iOS Dependency Injection Standards
@@ -40,3 +47,8 @@ metadata:
 ## References
 
 - [Manual & Library DI Setup](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

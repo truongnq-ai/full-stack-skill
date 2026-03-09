@@ -17,6 +17,7 @@ metadata:
         protocol,
         TypeVar,
       ]
+workflow_ref: deep-security-audit
 ---
 
 # Python Language Patterns
@@ -65,38 +66,11 @@ metadata:
 - **No `global`**: Use dependency injection or class attributes.
 - **No `print` in production**: Use `logging` module.
 
-## Code
-
-```python
-# Type alias + Protocol
-type UserId = int
-from typing import Protocol
-
-class Readable(Protocol):
-    def read(self) -> bytes: ...
-
-# Pydantic v2
-from pydantic import BaseModel, ConfigDict
-
-class UserCreate(BaseModel):
-    model_config = ConfigDict(frozen=True)
-    name: str
-    email: str
-
-# Async gather
-async def fetch_all(ids: list[int]) -> list[dict]:
-    return await asyncio.gather(*[fetch(id) for id in ids])
-
-# Pattern matching
-match command:
-    case {"action": "create", "name": str(name)}: ...
-    case {"action": "delete", "id": int(id)}: ...
-```
-
 ## Reference & Examples
 
 Advanced types, generics, Protocol patterns:
 See [references/REFERENCE.md](references/REFERENCE.md).
+See [references/examples.md](references/examples.md).
 
 ## Related Topics
 

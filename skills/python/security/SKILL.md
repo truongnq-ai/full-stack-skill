@@ -17,6 +17,7 @@ metadata:
         SQL,
         OWASP,
       ]
+workflow_ref: deep-security-audit
 ---
 
 # Python Security
@@ -30,33 +31,10 @@ metadata:
 - Use `model_validator` for cross-field validation.
 - Reject unexpected fields: `model_config = ConfigDict(extra="forbid")`.
 
-```python
-from pydantic import BaseModel, EmailStr, ConfigDict, field_validator
-
-class UserCreate(BaseModel):
-    model_config = ConfigDict(extra="forbid")
-    email: EmailStr
-    username: str
-
-    @field_validator("username")
-    @classmethod
-    def no_special_chars(cls, v: str) -> str:
-        if not v.isalnum():
-            raise ValueError("alphanumeric only")
-        return v
-```
-
 ## SQL Injection Prevention
 
 - Use ORM (SQLAlchemy, Tortoise, Django ORM) — never string-concatenated SQL.
 - Raw SQL: **parameterized queries only**. Never f-string SQL.
-
-```python
-# ❌ NEVER
-cursor.execute(f"SELECT * FROM users WHERE id = {user_id}")
-# ✅ ALWAYS
-cursor.execute("SELECT * FROM users WHERE id = %s", (user_id,))
-```
 
 ## Secrets Management
 
@@ -64,15 +42,6 @@ cursor.execute("SELECT * FROM users WHERE id = %s", (user_id,))
 - Never hardcode secrets. Never commit `.env` files.
 - Use `python-dotenv` locally. Use system env / secrets manager in prod.
 - Rotate secrets periodically. Log access, not values.
-
-```python
-from pydantic_settings import BaseSettings
-
-class Settings(BaseSettings):
-    database_url: str
-    secret_key: str
-    class Config: env_file = ".env"
-```
 
 ## Authentication & Passwords
 
@@ -102,6 +71,7 @@ class Settings(BaseSettings):
 
 OWASP Top 10 Python checklist, JWT implementation patterns:
 See [references/REFERENCE.md](references/REFERENCE.md).
+See [references/examples.md](references/examples.md).
 
 ## Related Topics
 

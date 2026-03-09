@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.filter.ts', 'main.ts']
     keywords: [ExceptionFilter, Catch, HttpException]
+workflow_ref: deep-security-audit
 ---
 
 # NestJS Error Handling Standards
@@ -55,3 +56,8 @@ Global error handling and exception management patterns.
 
 - **Production**: **NEVER** expose stack traces in HTTP responses (`process.env.NODE_ENV === 'production'`).
 - **Sanitization**: Ensure `ApiException` payloads do not leak internal file paths or raw variable dumps.
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

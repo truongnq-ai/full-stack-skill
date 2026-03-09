@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/router.dart', '**/app_router.dart']
     keywords: [GoRouter, GoRoute, StatefulShellRoute, redirection, typed-routes]
+workflow_ref: deep-security-audit
 ---
 
 # GoRouter Navigation
@@ -55,3 +56,8 @@ final router = GoRouter(
 ## Related Topics
 
 layer-based-clean-architecture | auto-route-navigation | security
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

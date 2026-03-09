@@ -12,6 +12,7 @@ metadata:
         'src/app/**/*.tsx',
       ]
     keywords: [use server, Server Action, revalidatePath, useFormStatus]
+workflow_ref: ui-ux-pro-max
 ---
 
 # Server Actions
@@ -76,3 +77,8 @@ Use `useActionState` (React 19/Next.js 15+) for state handling and `useFormStatu
 
 - **Closures**: Avoid defining actions inside components to prevent hidden closure encryption overhead and serialization bugs.
 - **Redirection**: Use `redirect()` for success navigation; it throws an error that Next.js catches to handle the redirect.
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

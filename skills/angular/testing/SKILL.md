@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.spec.ts']
     keywords: [TestBed, ComponentFixture, TestHarness, provideHttpClientTesting]
+workflow_ref: battle-test
 ---
 
 # Testing
@@ -26,3 +27,8 @@ metadata:
 ## References
 
 - [Harness Pattern](references/harness-pattern.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

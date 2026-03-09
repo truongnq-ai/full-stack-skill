@@ -12,6 +12,7 @@ metadata:
         'ios/fastlane/**',
       ]
     keywords: [ci, cd, pipeline, build, deploy, release, action, workflow]
+workflow_ref: battle-test
 ---
 
 # CI/CD Standards
@@ -46,3 +47,8 @@ Automates code quality checks, testing, and deployment to prevent regressions an
 ## Related Topics
 
 flutter/testing | dart/tooling
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

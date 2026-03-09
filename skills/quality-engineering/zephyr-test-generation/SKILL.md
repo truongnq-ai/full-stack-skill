@@ -7,6 +7,7 @@ metadata:
     files: ['**/*.feature', '**/user_story.md']
     keywords:
       [generate test cases, update zephyr, jira validation, impact analysis]
+workflow_ref: smart-release
 ---
 
 # Zephyr Test Generation Standards
@@ -46,3 +47,8 @@ metadata:
 - **Ghost Updates**: Changing code without updating the corresponding Zephyr TC.
 - **Duplicate Creation**: Creating a new TC for a logic shift when an update was more appropriate.
 - **Vague Steps**: `System works` -> `Expect Result: Banner 'Success' is visible`.
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

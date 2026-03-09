@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.module.ts', 'main.ts']
     keywords: [NestFactory, Module, Controller, Injectable]
+workflow_ref: smart-release
 ---
 
 # NestJS Architecture Expert
@@ -39,3 +40,4 @@ metadata:
 
 - [Advanced Patterns](references/advanced-patterns.md)
 - [Dynamic Modules](references/dynamic-module.md)
+- [Examples (Input/Output)](references/examples.md)

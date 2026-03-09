@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.kt']
     keywords: [apply, let, run, also, with, backing property, collection]
+workflow_ref: ui-ux-pro-max
 ---
 
 # Kotlin Best Practices
@@ -60,3 +61,8 @@ class ViewModel {
 ## Related Topics
 
 language | coroutines
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

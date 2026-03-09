@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*Screen.kt', '**/ui/theme/**', '**/compose/**']
     keywords: [MaterialTheme, Color, Typography, Modifier, Composable]
+workflow_ref: smart-release
 ---
 
 # Android Design System (Jetpack Compose)
@@ -58,3 +59,8 @@ Spacer(modifier = Modifier.height(16.dp)) // Use dp units
 ## Related Topics
 
 mobile-ux-core | android/compose
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

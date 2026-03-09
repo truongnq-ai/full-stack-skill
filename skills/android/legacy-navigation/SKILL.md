@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['navigation/*.xml']
     keywords: ['findNavController', 'NavDirections', 'navArgs']
+workflow_ref: smart-release
 ---
 
 # Android Legacy Navigation Standards
@@ -32,3 +33,8 @@ metadata:
 ## References
 
 - [XML Graph & SafeArgs](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

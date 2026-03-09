@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.component.ts', '**/*.component.html']
     keywords: [ChangeDetectionStrategy, OnPush, Input, Output]
+workflow_ref: performance
 ---
 
 # Angular Component Expert
@@ -33,3 +34,8 @@ metadata:
 - **No Default Change Detection**: Eats performance. OnPush only.
 - **No Function Calls in Template**: `{{ calculate() }}` -> use `computed()`.
 - **No Manual Subscribe**: Use `async` pipe or `toSignal`.
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

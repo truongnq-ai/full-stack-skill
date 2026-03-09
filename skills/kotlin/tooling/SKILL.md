@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['build.gradle.kts', 'libs.versions.toml', 'detekt.yml']
     keywords: [gradle, kts, detekt, mockk, junit]
+workflow_ref: battle-test
 ---
 
 # Kotlin Tooling Standards
@@ -47,3 +48,8 @@ verify(exactly = 1) { repo.getUser("1") }
 ## Related Topics
 
 best-practices | testing
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

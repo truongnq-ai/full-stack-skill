@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.php']
     keywords: [try, catch, finally, Throwable, set_exception_handler]
+workflow_ref: smart-release
 ---
 
 # PHP Error Handling
@@ -41,3 +42,8 @@ src/
 ## References
 
 - [Exception & Logging Patterns](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

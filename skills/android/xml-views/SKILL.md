@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['layout/*.xml', '**/*Binding.java', '**/*Binding.kt']
     keywords: ['ViewBinding', 'ConstraintLayout', 'RecyclerView']
+workflow_ref: performance
 ---
 
 # Android XML Views Standards
@@ -38,3 +39,8 @@ metadata:
 ## References
 
 - [ViewBinding & Adapter](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

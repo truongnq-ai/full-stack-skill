@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['lib/presentation/**/*.dart']
     keywords: [context.mounted, SizedBox, Gap, composition, shrink]
+workflow_ref: performance
 ---
 
 # Idiomatic Flutter
@@ -28,3 +29,8 @@ Modern Flutter layout patterns and composition techniques.
 - **Missing Mounted Check**: `**No context usage after await**: Always check if (context.mounted).`
 - **Helper Methods for UI**: `**No Widget functions**: Use specialized Widget classes for better performance/profiling.`
 - **Direct Controller Access**: `**No UI-Logic coupling**: Use BLoC/Signals to decouple UI from State.`
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

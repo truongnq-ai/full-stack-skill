@@ -12,6 +12,7 @@ metadata:
         logic conflict,
         technical impact,
       ]
+workflow_ref: smart-release
 ---
 
 # Business Analysis Standards (Deep Analysis)
@@ -42,3 +43,8 @@ metadata:
 - **No Surface Reading**: investigate the _implications_, don't just restate.
 - **No Assumption**: Flag undefined states (e.g., Offline) as P0 blockers.
 - **No Loose Mapping**: Ensure AC aligns 100% with Technical Impact notes.
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

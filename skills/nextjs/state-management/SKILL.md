@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/hooks/*.ts', '**/store.ts', '**/components/*.tsx']
     keywords: [useState, useContext, zustand, redux]
+workflow_ref: smart-release
 ---
 
 # State Management
@@ -71,3 +72,8 @@ For specific state management patterns, see:
 
 - [references/redux.md](references/redux.md)
 - [references/zustand.md](references/zustand.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

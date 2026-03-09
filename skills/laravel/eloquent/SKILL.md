@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['app/Models/**/*.php']
     keywords: [scope, with, eager, chunk, model]
+workflow_ref: performance
 ---
 
 # Laravel Eloquent
@@ -40,3 +41,8 @@ app/
 ## References
 
 - [Eloquent Performance Guide](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

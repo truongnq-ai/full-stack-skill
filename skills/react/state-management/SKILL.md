@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.tsx', '**/*.jsx']
     keywords: [state, useReducer, context, store, props]
+workflow_ref: performance
 ---
 
 # React State Management
@@ -40,3 +41,8 @@ See [references/REFERENCE.md](references/REFERENCE.md).
 ## Related Topics
 
 hooks | component-patterns | performance
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

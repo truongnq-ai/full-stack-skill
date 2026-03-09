@@ -5,7 +5,18 @@ metadata:
   labels: [spring-boot, architecture, layering]
   triggers:
     files: ['pom.xml', 'build.gradle']
-    keywords: [structure, layering, dto, controller, @RestController, @Service, @Repository, @Entity, @Bean, @Configuration]
+    keywords:
+      - "structure"
+      - "layering"
+      - "dto"
+      - "controller"
+      - "@RestController"
+      - "@Service"
+      - "@Repository"
+      - "@Entity"
+      - "@Bean"
+      - "@Configuration"
+workflow_ref: smart-release
 ---
 
 # Spring Boot Architecture Standards
@@ -49,3 +60,4 @@ metadata:
 ## References
 
 - [Implementation Examples](references/implementation.md)
+- [Examples (Input/Output)](references/examples.md)

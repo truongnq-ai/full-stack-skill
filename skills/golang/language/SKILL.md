@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.go', 'go.mod']
     keywords: [golang, go code, style, idiomatic]
+workflow_ref: smart-release
 ---
 
 # Golang Language Standards
@@ -35,3 +36,8 @@ metadata:
 
 - [Idioms](references/idioms.md)
 - [Effective Go Summary](references/effective-go-summary.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['config/database.php', 'database/migrations/*.php']
     keywords: [join, aggregate, subquery, selectRaw, Cache]
+workflow_ref: performance
 ---
 
 # Laravel Database Expert
@@ -42,3 +43,8 @@ app/
 ## References
 
 - [Advanced SQL & Cache Patterns](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.service.ts', '**/*.ts']
     keywords: [angular inject, providedIn, injection token]
+workflow_ref: smart-release
 ---
 
 # Dependency Injection
@@ -31,3 +32,8 @@ metadata:
 ## References
 
 - [DI Patterns](references/di-patterns.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

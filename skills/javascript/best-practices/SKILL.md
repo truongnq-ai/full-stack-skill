@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.js', '**/*.mjs']
     keywords: [module, import, export, error, validation]
+workflow_ref: ui-ux-pro-max
 ---
 
 # JavaScript Best Practices
@@ -62,3 +63,8 @@ See [references/REFERENCE.md](references/REFERENCE.md).
 ## Related Topics
 
 language | tooling
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

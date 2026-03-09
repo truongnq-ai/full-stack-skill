@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['main.ts']
     keywords: [FastifyAdapter, compression, SINGLETON, REQUEST scope]
+workflow_ref: performance
 ---
 
 # Performance Tuning
@@ -64,3 +65,8 @@ High-performance patterns and optimization techniques for NestJS applications.
   - **API Overhead Baseline**: Excellent (< 20ms), Poor (> 100ms - implies heavy synchronous processing or serialization blocking Node's event loop).
 - **Offloading**: Move CPU-heavy tasks (Image processing, Crypto) to `worker_threads`.
 - **Clustering**: For non-containerized environments, use `ClusterModule` to utilize all CPU cores. In K8s, prefer ReplicaSets.
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

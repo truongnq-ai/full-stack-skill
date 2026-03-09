@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['go.mod', 'pkg/logger/**']
     keywords: [logging, slog, structured logging, zap]
+workflow_ref: performance
 ---
 
 # Golang Logging Standards
@@ -34,3 +35,8 @@ metadata:
 ## References
 
 - [Slog Patterns](references/slog-patterns.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*Test.java', '**/*IT.java']
     keywords: [test, assert, mock, verify, junit]
+workflow_ref: battle-test
 ---
 
 # Java Testing Standards
@@ -62,3 +63,8 @@ class UserServiceTest {
 ## Related Topics
 
 best-practices | quality-assurance
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

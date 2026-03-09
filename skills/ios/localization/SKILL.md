@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.stringcatalog', '**/*.xcassets', '**/*.strings']
     keywords: [LocalizedStringResource, NSLocalizedString, String(localized:)]
+workflow_ref: smart-release
 ---
 
 # iOS Localization & Assets Standards
@@ -41,3 +42,8 @@ metadata:
 ## References
 
 - [L10n & Asset Organization](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

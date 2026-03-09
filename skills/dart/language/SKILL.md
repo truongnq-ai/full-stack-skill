@@ -7,6 +7,7 @@ metadata:
     files: ['**/*.dart']
     keywords:
       [sealed, record, switch, pattern, extension, final, late, async, await]
+workflow_ref: performance
 ---
 
 # Dart Language Patterns
@@ -51,6 +52,10 @@ String message(Result r) => switch (r) {
   Failure() => "Error",
 };
 ```
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)
 
 ## Related Topics
 

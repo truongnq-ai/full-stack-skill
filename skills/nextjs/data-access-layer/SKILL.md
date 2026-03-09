@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/lib/data.ts', '**/services/*.ts', '**/dal/**']
     keywords: [DAL, Data Access Layer, server-only, DTO]
+workflow_ref: deep-security-audit
 ---
 
 # Data Access Layer (DAL)
@@ -31,3 +32,8 @@ Centralize all data access (Database & External APIs) to ensure consistent secur
 ## Limitations
 
 - **Client Components**: Cannot import DAL files. Must use Server Actions or Route Handlers as bridges.
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

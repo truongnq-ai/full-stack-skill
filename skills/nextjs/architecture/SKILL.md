@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['src/features/**', 'src/entities/**', 'src/widgets/**']
     keywords: [FSD, Feature Sliced Design, slices, segments]
+workflow_ref: update-docs
 ---
 
 # Architecture (Feature-Sliced Design)
@@ -52,3 +53,8 @@ For the specific directory layout and layer definitions, see the reference docum
 - **Server Actions**: Place them in the `model/` folder of a Feature (e.g., `features/auth/model/actions.ts`).
 - **Data Access (DAL)**: Place logic in the `model/` folder of an Entity (e.g., `entities/user/model/dal.ts`).
 - **UI Components**: Base UI (shadcn) belongs in `shared/ui`. Feature-specific UI belongs in `features/*/ui`.
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

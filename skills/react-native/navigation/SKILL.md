@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*Navigation*.tsx', 'src/navigation/**']
     keywords: [navigation, react-navigation, stack, tab, drawer, deep link]
+workflow_ref: smart-release
 ---
 
 # React Native Navigation
@@ -60,6 +61,7 @@ function HomeScreen({
 ## Reference & Examples
 
 See [references/deep-linking.md](references/deep-linking.md) for Universal Links, Nested Navigators, and State Persistence.
+See [references/examples.md](references/examples.md).
 
 ## Related Topics
 

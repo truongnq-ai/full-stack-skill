@@ -14,6 +14,7 @@ metadata:
         loadComponent,
         loadChildren,
       ]
+workflow_ref: smart-release
 ---
 
 # Angular Architecture
@@ -46,3 +47,4 @@ metadata:
 - [ ] **Signals**: Are you using Signals for local state where applicable (Angular 16+)?
 
 - [Folder Structure](references/folder-structure.md)
+- [Examples (Input/Output)](references/examples.md)

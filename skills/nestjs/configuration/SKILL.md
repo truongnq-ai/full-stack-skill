@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['.env', 'app.module.ts', '**/config.ts']
     keywords: [ConfigModule, Joi, env]
+workflow_ref: smart-release
 ---
 
 # NestJS Configuration Standards
@@ -52,3 +53,8 @@ When adding a new environment variable to the application, you **MUST** update a
 2. **`.env.example`**: Add a placeholder value so other developers know about it.
 3. **`.env.development` / `.env.test`**: Add the actual development values.
 4. **CI/CD Pipelines & Infrastructure**: You **MUST** map the new variable in your deployment scripts (e.g., `.github/workflows/*.yml`, `gitlab-ci.yml`, Terraform, or Azure Pipelines). Most modern cloud platforms (Cloud Run, ECS, Kubernetes) require explicit mapping of secrets/env-vars into the container runtime. Failure to do this will cause the production deployment to crash or silently fail.
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

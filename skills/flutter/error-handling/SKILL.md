@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['lib/domain/**', 'lib/infrastructure/**']
     keywords: [Either, fold, Left, Right, Failure, dartz]
+workflow_ref: smart-release
 ---
 
 # Error Handling
@@ -36,3 +37,8 @@ See [references/REFERENCE.md](references/REFERENCE.md).
 ## Related Topics
 
 layer-based-clean-architecture | bloc-state-management
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['.agent/workflows/*.md', 'SKILL.md']
     keywords: [create workflow, write workflow, new skill, new workflow]
+workflow_ref: deep-security-audit
 ---
 
 # Workflow Writing Standard
@@ -51,3 +52,8 @@ metadata:
 - [ ] Is every table row real structure, not example data?
 - [ ] Are there any paragraphs a bullet list could replace?
 - [ ] Would cutting this in half still give the agent enough to act on?
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

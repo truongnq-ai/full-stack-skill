@@ -1,9 +1,17 @@
 ---
-description: "Incident response FSM for system operations — always read logs first, assess risk before changing anything."
-globs: "Dockerfile, docker-compose.yml, *.service, *.conf"
+name: Ops Incident Response
+description: Incident response FSM for system operations — always read logs first, assess risk before changing anything.
+metadata:
+  labels: [ops, incident, reliability]
+  triggers:
+    keywords: [incident, outage, restart, production, downtime]
+    files: ['Dockerfile', 'docker-compose.yml', '*.service', '*.conf']
+workflow_ref: smart-release
 ---
 
 # Ops — Incident Response & System Operations
+
+## **Priority: P1 (OPERATIONAL)**
 
 ## Context
 
@@ -71,3 +79,8 @@ ss -tlnp / netstat -tlnp / lsof -i :<port>
 [ ] Have logs been checked for root cause?
 [ ] Is a backup needed first?
 ```
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

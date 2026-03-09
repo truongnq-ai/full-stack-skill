@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['app.json', 'eas.json', 'android/app/build.gradle', 'ios/**']
     keywords: [deployment, codepush, eas, release, build, fastlane]
+workflow_ref: deep-security-audit
 ---
 
 # React Native Deployment
@@ -66,3 +67,8 @@ See [references/codepush-setup.md](references/codepush-setup.md).
 ## Related Topics
 
 common/git-collaboration | security
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

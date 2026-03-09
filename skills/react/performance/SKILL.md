@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.tsx', '**/*.jsx']
     keywords: [waterfall, bundle, lazy, suspense, dynamic]
+workflow_ref: performance
 ---
 
 # React Performance
@@ -67,3 +68,7 @@ function Component() {
   return <div config={STATIC_CONFIG} />;
 }
 ```
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

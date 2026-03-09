@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.tsx', '**/service.ts']
     keywords: [fetch, revalidate, no-store, force-cache]
+workflow_ref: update-docs
 ---
 
 # Data Fetching (App Router)
@@ -44,4 +45,5 @@ Fetch data directly in Server Components using `async/await`.
 ## Examples & References
 
 - [Usage Examples](references/usage-examples.md)
+- [Examples (Input/Output)](references/examples.md)
 - [Caching Documentation](https://nextjs.org/docs/app/building-your-application/caching)

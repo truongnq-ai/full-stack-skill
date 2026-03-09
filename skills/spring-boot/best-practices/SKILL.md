@@ -7,6 +7,7 @@ metadata:
     files: ['application.properties', '**/*Service.java']
     keywords:
       [autowired, requiredargsconstructor, configuration-properties, slf4j]
+workflow_ref: smart-release
 ---
 
 # Spring Boot Best Practices
@@ -42,3 +43,8 @@ metadata:
 ## References
 
 - [Implementation Examples](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

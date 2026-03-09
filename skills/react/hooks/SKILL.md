@@ -17,6 +17,7 @@ metadata:
         useLayoutEffect,
         custom hook,
       ]
+workflow_ref: performance
 ---
 
 # React Hooks Expert
@@ -59,3 +60,4 @@ metadata:
 ## References
 
 - [Optimization Patterns](references/REFERENCE.md)
+- [Examples (Input/Output)](references/examples.md)

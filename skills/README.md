@@ -17,6 +17,7 @@ Cross-framework standards and best practices applicable to all development.
 - [**Code Review**](common/code-review/SKILL.md) (P1) - Principal Engineer review standards.
 - [**Security Standards**](common/security-standards/SKILL.md) (P0) - Universal security protocols.
 - [**System Design**](common/system-design/SKILL.md) (P0) - Architecture & scalability patterns.
+- [**Guardrails**](common/guardrails/SKILL.md) (P0) - Global safety rules for all actions.
 - [**Git Collaboration**](common/git-collaboration/SKILL.md) (P1) - Version control & team workflows.
 - [**Performance Engineering**](common/performance-engineering/SKILL.md) (P1) - Optimization & monitoring.
 - [**Quality Assurance**](common/quality-assurance/SKILL.md) (P1) - Code hygiene & testing standards.
@@ -171,7 +172,8 @@ To add or update a skill:
 2. **Progressive Disclosure**: Move all code samples > 10 lines to `references/REFERENCE.md` or specialized reference files.
 3. **Imperative Standards**: Use "Compressed Syntax" (starting with verbs, minimal articles) for 40% higher density.
 4. **Format Verification**: Ensure YAML frontmatter triggers are precise and categories are lowercase kebab-case.
-5. **Validation Checklist**:
+5. **Workflow Link**: Add `workflow_ref` when the skill aligns to a standard workflow in `.agent/workflows/`.
+6. **Validation Checklist**:
    - [ ] SKILL.md ≤ 100 lines (Ideal: 60-80)
    - [ ] No inline code blocks > 10 lines
    - [ ] No redundant frontmatter context in body

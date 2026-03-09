@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['middleware.ts', '**/auth.ts', '**/login/page.tsx']
     keywords: [cookie, jwt, session, localstorage, auth]
+workflow_ref: deep-security-audit
 ---
 
 # Authentication & Token Management
@@ -28,3 +29,8 @@ Use **HttpOnly Cookies** for token storage. **Never** use LocalStorage.
 ## Related Topics
 
 common/security-standards | server-components | app-router
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

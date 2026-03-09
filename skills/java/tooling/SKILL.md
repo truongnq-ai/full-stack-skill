@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['pom.xml', 'build.gradle', 'build.gradle.kts']
     keywords: [build, dependency, plugin, sdk, lint]
+workflow_ref: battle-test
 ---
 
 # Java Tooling Standards
@@ -54,3 +55,8 @@ spotless {
 ## Related Topics
 
 language | best-practices | testing
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

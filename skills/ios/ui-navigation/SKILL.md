@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*View.swift', '**/*.xib', '**/*.storyboard']
     keywords: [NSLayoutConstraint, UIStackView, SnapKit, layoutSubviews]
+workflow_ref: ui-ux-pro-max
 ---
 
 # iOS UI & Layout Standards
@@ -42,3 +43,8 @@ metadata:
 ## References
 
 - [Auto Layout & HIG Compliance](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

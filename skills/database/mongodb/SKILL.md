@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.ts', '**/*.js', '**/*.json']
     keywords: [mongo, mongoose, objectid, schema, model]
+workflow_ref: performance
 ---
 
 # MongoDB Best Practices
@@ -45,3 +46,4 @@ metadata:
 - [Best Practices Guide](references/best-practices.md)
 - [Anti-Patterns](references/anti-patterns.md)
 - [Postgres vs Mongo Comparison](references/postgres-comparison.md)
+- [Examples (Input/Output)](references/examples.md)

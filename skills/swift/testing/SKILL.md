@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*Tests.swift']
     keywords: ['XCTestCase', 'XCTestExpectation', 'XCTAssert']
+workflow_ref: battle-test
 ---
 
 # Swift Testing Standards
@@ -41,3 +42,8 @@ metadata:
 ## References
 
 - [XCTest Patterns & Async Tests](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

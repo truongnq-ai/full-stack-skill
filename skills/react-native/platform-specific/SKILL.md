@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.tsx', '**/*.ts', '**/*.ios.*', '**/*.android.*']
     keywords: [Platform, Platform.select, native-module, ios, android]
+workflow_ref: smart-release
 ---
 
 # React Native Platform-Specific Code
@@ -64,3 +65,8 @@ See [references/native-modules.md](references/native-modules.md) for Native Brid
 ## Related Topics
 
 components | styling
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

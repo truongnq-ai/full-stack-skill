@@ -5,6 +5,7 @@ metadata:
   labels: [documentation, comments, docstrings, readme]
   triggers:
     keywords: [comment, docstring, readme, documentation]
+workflow_ref: update-docs
 ---
 
 # Documentation Standards - High-Density Standards
@@ -42,3 +43,7 @@ Essential rules for maintaining proper code comments, READMEs, and technical doc
 - **Self-Documenting**: Use Swagger/OpenAPI for REST or specialized doc generators for your language.
 - **Examples**: Provide copy-pasteable examples for every major endpoint or utility.
 - **Contract First**: Define the interface before the implementation.
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*Client.java', '**/*Consumer.java']
     keywords: [feign-client, spring-cloud-stream, rabbitmq, resilience4j]
+workflow_ref: smart-release
 ---
 
 # Spring Boot Microservices Standards
@@ -36,3 +37,8 @@ metadata:
 ## References
 
 - [Implementation Examples](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

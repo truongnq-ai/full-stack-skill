@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['build.gradle.kts', 'settings.gradle.kts']
     keywords: [clean-architecture, module, layers, domain]
+workflow_ref: ui-ux-pro-max
 ---
 
 # Android Architecture Standards
@@ -49,3 +50,4 @@ metadata:
 
 - [Structure & Examples](references/implementation.md)
 - [Jetpack Compose Best Practices](references/compose-standards.md)
+- [Examples (Input/Output)](references/examples.md)

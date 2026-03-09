@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.entity.ts', 'prisma/schema.prisma']
     keywords: [TypeOrmModule, PrismaService, MongooseModule, Repository]
+workflow_ref: smart-release
 ---
 
 # NestJS Database Standards
@@ -46,3 +47,8 @@ See [references/persistence_strategy.md](references/persistence_strategy.md) for
 1. **Pagination**: Mandatory. Use limit/offset or cursor-based pagination.
 2. **Indexing**: Define indexes in code (decorators/schema) for frequently filtered columns (`where`, `order by`).
 3. **Transactions**: Use `QueryRunner` (TypeORM) or `$transaction` (Prisma) for all multi-step mutations to ensure atomicity.
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

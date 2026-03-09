@@ -15,6 +15,7 @@ metadata:
       ]
     keywords:
       [uv, ruff, mypy, pytest, pyproject, pre-commit, packaging, virtualenv]
+workflow_ref: deep-security-audit
 ---
 
 # Python Tooling
@@ -37,22 +38,7 @@ metadata:
 - `ruff check --fix` — lint and auto-fix.
 - `ruff format` — format code (black-compatible).
 
-```toml
-# pyproject.toml
-[tool.ruff]
-line-length = 88
-[tool.ruff.lint]
-select = ["E", "F", "I", "UP", "B", "SIM"]
-```
-
 ## Type Checking — mypy
-
-```toml
-[tool.mypy]
-python_version = "3.12"
-strict = true
-ignore_missing_imports = true
-```
 
 Run: `uv run mypy src/`
 
@@ -64,35 +50,9 @@ Run: `uv run mypy src/`
 - `pytest-cov` for coverage: `uv run pytest --cov=src --cov-report=term`.
 - Target: ≥ 80% coverage for business logic.
 
-```toml
-[tool.pytest.ini_options]
-asyncio_mode = "auto"
-testpaths = ["tests"]
-```
-
 ## pyproject.toml — Single Config
 
-```toml
-[project]
-name = "myapp"
-version = "0.1.0"
-requires-python = ">=3.12"
-dependencies = ["fastapi>=0.115", "pydantic>=2.0"]
-
-[project.optional-dependencies]
-dev = ["pytest", "pytest-asyncio", "ruff", "mypy"]
-```
-
 ## Pre-commit Hooks
-
-```yaml
-# .pre-commit-config.yaml
-repos:
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-    hooks: [{ id: ruff, args: [--fix] }, { id: ruff-format }]
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    hooks: [{ id: mypy }]
-```
 
 ## Anti-Patterns
 
@@ -106,6 +66,7 @@ repos:
 
 Full pyproject.toml template, CI/CD config:
 See [references/REFERENCE.md](references/REFERENCE.md).
+See [references/examples.md](references/examples.md).
 
 ## Related Topics
 

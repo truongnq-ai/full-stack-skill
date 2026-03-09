@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['composer.json']
     keywords: [composer, lock, phpstan, xdebug]
+workflow_ref: smart-release
 ---
 
 # PHP Tooling
@@ -49,3 +50,8 @@ project/
   }
 }
 ```
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

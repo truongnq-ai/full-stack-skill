@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.ts', '**/*.tsx']
     keywords: [class, function, module, import, export, async, promise]
+workflow_ref: deep-security-audit
 ---
 
 # TypeScript Best Practices

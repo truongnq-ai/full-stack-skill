@@ -5,7 +5,12 @@ metadata:
   labels: [angular, performance, optimization, onpush]
   triggers:
     files: ['**/*.ts', '**/*.html']
-    keywords: [ChangeDetectionStrategy.OnPush, @defer, NgOptimizedImage, runOutsideAngular]
+    keywords:
+      - "ChangeDetectionStrategy.OnPush"
+      - "@defer"
+      - "NgOptimizedImage"
+      - "runOutsideAngular"
+workflow_ref: performance
 ---
 
 # Performance
@@ -31,3 +36,8 @@ metadata:
 ## References
 
 - [Defer Usage](references/defer-usage.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

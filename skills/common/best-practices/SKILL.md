@@ -5,6 +5,7 @@ metadata:
   labels: [best-practices, solid, clean-code, architecture]
   triggers:
     keywords: [solid, kiss, dry, yagni, naming, conventions]
+workflow_ref: deep-security-audit
 ---
 
 # Global Best Practices
@@ -71,3 +72,4 @@ metadata:
 
 - [Code Structure & Modular Design Examples](references/CODE_STRUCTURE.md)
 - [Skill Token Economy & Effectiveness](references/EFFECTIVENESS.md)
+- [Examples (Input/Output)](references/examples.md)

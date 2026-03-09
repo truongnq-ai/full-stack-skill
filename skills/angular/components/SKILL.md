@@ -5,7 +5,14 @@ metadata:
   labels: [angular, components, standalone, signals, control-flow]
   triggers:
     files: ['**/*.component.ts', '**/*.html']
-    keywords: [angular component, standalone, input signal, output, @if, @for]
+    keywords:
+      - "angular component"
+      - "standalone"
+      - "input signal"
+      - "output"
+      - "@if"
+      - "@for"
+workflow_ref: smart-release
 ---
 
 # Angular Components
@@ -35,3 +42,8 @@ metadata:
 
 - [Standalone Pattern](references/standalone-pattern.md)
 - [Control Flow](references/control-flow.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

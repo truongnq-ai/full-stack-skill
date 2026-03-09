@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**_page.dart', '**_screen.dart', '**/widgets/**']
     keywords: [StatelessWidget, const, Theme, ListView]
+workflow_ref: performance
 ---
 
 # UI & Widgets
@@ -41,3 +42,8 @@ class AppButton extends StatelessWidget {
 ## Related Topics
 
 performance | testing
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

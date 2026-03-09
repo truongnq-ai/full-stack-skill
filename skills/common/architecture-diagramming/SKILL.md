@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['ARCHITECTURE.md', '**/*.mermaid', '**/*.drawio']
     keywords: [diagram, architecture, c4, system design, mermaid]
+workflow_ref: plan-feature
 ---
 
 # Architecture Diagramming Standard
@@ -41,3 +42,8 @@ metadata:
 - [C4 Model Guide](references/c4-model.md)
 - [Checklist](references/checklist.md)
 - [Best Practices](references/best-practices.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

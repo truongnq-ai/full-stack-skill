@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.php']
     keywords: [Fiber, suspend, resume, non-blocking, async]
+workflow_ref: smart-release
 ---
 
 # PHP Concurrency
@@ -39,3 +40,8 @@ src/
 ## References
 
 - [Fiber Implementation Guide](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

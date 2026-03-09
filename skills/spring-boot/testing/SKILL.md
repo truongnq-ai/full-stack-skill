@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*Test.java']
     keywords: [webmvctest, datajpatest, testcontainers, assertj]
+workflow_ref: battle-test
 ---
 
 # Spring Boot Testing Standards
@@ -41,3 +42,8 @@ metadata:
 ## References
 
 - [Implementation Examples](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

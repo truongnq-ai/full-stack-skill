@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['Fastfile', 'Appfile', 'Matchfile']
     keywords: [ios_bundle_id, provisioning_profile, testflight]
+workflow_ref: smart-release
 ---
 
 # iOS Deployment Standards
@@ -38,3 +39,8 @@ metadata:
 ## References
 
 - [Fastlane & Signing Setup](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

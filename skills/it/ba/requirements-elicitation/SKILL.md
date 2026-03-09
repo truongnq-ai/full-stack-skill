@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['PRD.md', 'requirements.md']
     keywords: [gather requirements, interview, clarify scope, ba, business analyst]
+workflow_ref: deep-security-audit
 ---
 
 # 🕵️ IT Business Analyst: Requirements Elicitation
@@ -42,6 +43,10 @@ The PRD MUST include:
 4. **Functional Requirements**: Clear, un-ambiguous list of features.
 5. **Non-Functional Requirements**: Explicitly stated performance, security, and infrastructure constraints.
 6. **Edge Cases / Rules**: Specific business logic and constraints.
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)
 
 ## 3. Anti-Patterns (What NOT to do)
 

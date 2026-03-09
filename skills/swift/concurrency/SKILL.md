@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.swift']
     keywords: ['async', 'await', 'actor', 'Task', 'MainActor']
+workflow_ref: ui-ux-pro-max
 ---
 
 # Swift Concurrency
@@ -41,3 +42,8 @@ metadata:
 ## References
 
 - [async/await & Actors](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

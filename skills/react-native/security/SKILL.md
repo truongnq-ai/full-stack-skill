@@ -7,6 +7,7 @@ metadata:
     files: ['**/*.tsx', '**/*.ts']
     keywords:
       [security, keychain, secure-storage, deep-link, certificate-pinning]
+workflow_ref: deep-security-audit
 ---
 
 # React Native Security
@@ -53,6 +54,7 @@ metadata:
 ## Reference & Examples
 
 See [references/keychain-usage.md](references/keychain-usage.md) for Keychain, Biometrics, SSL Pinning, and PII Masking.
+See [references/examples.md](references/examples.md).
 
 ## Related Topics
 

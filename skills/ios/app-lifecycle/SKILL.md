@@ -13,6 +13,7 @@ metadata:
         Shortcut,
         UserActivity,
       ]
+workflow_ref: smart-release
 ---
 
 # iOS App Lifecycle Standards
@@ -46,3 +47,8 @@ metadata:
 ## References
 
 - [Lifecycle & Background Tasks](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.spec.ts', 'test/**/*.e2e-spec.ts']
     keywords: [Test.createTestingModule, supertest, jest, beforeEach]
+workflow_ref: battle-test
 ---
 
 # NestJS Testing
@@ -44,3 +45,8 @@ test/**/*.e2e-spec.ts # E2E tests (full app flows)
 
 Setup examples, mocking patterns, E2E flows, test builders, coverage config:
 [references/patterns.md](references/patterns.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

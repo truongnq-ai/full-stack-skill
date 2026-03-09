@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['system-model.md', 'architecture.md', '*.mermaid']
     keywords: [data flow, system model, use case diagram, mermaid, state machine, sequence diagram]
+workflow_ref: smart-release
 ---
 
 # 📊 IT Business Analyst: System Modeling
@@ -55,3 +56,8 @@ When presenting a model, always provide:
 1. **Context/Purpose**: A 1-sentence explanation of what the diagram shows.
 2. **The Diagram**: The rendered Mermaid graph.
 3. **Data Dictionary**: A brief explanation of the key entities or states shown in the diagram to remove any ambiguity for the developer.
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

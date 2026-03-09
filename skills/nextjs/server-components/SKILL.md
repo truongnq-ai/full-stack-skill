@@ -7,6 +7,7 @@ metadata:
     files:
       ['app/**/*.tsx', 'src/app/**/*.tsx', 'app/**/*.jsx', 'src/app/**/*.jsx']
     keywords: [use client, Server Component, Client Component, hydration]
+workflow_ref: orchestrate
 ---
 
 # Server & Client Components
@@ -54,3 +55,8 @@ export default function ClientWrapper({ children }) {
 
 - **Poisoning**: Importing server-only secrets into Client Components (Use `server-only` package to prevent).
 - **Over-fetching**: Passing large data props to Client Components (Serialization cost). Only pass IDs if possible.
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

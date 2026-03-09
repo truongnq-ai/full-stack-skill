@@ -1,9 +1,17 @@
 ---
-description: "🚨 Never create/modify files outside approved scope — protect codebase integrity. Critical for Auto-Accept mode."
-globs: "**/*"
+name: File Safety Guardrails
+description: Never create/modify files outside approved scope — protect codebase integrity.
+metadata:
+  labels: [file-safety, guardrails, scope]
+  triggers:
+    keywords: [file scope, modify files, delete, overwrite, destructive]
+    task_types: [implementation, refactor]
+workflow_ref: update-docs
 ---
 
 # File Safety — Scope Protection
+
+## **Priority: P1 (OPERATIONAL)**
 
 ## Context
 
@@ -55,3 +63,8 @@ docker volume rm / docker system prune ← Lose container data
 
 - Only read/write within the current project workspace
 - Never touch: system directories, home directory, other projects
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

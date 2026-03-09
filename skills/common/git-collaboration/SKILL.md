@@ -5,9 +5,12 @@ metadata:
   labels: [git, collaboration, commits, branching]
   triggers:
     keywords: [commit, branch, merge, pull-request, git]
+workflow_ref: deep-security-audit
 ---
 
 # Git & Collaboration — Enhanced Standards
+
+## **Priority: P1 (OPERATIONAL)**
 
 ## Branch Convention (default)
 
@@ -80,3 +83,4 @@ These commands **MUST NOT auto-run** without explicit confirmation:
 ## References
 
 - [Clean Linear History & Rebase Examples](references/CLEAN_HISTORY.md)
+- [Examples (Input/Output)](references/examples.md)

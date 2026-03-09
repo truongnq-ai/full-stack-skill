@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['*.routes.ts']
     keywords: [angular router, loadComponent, canActivate, resolver]
+workflow_ref: smart-release
 ---
 
 # Routing
@@ -31,3 +32,8 @@ metadata:
 ## References
 
 - [Routing Patterns](references/routing-patterns.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

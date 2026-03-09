@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.go']
     keywords: [crypto/rand, sql, sanitize, jwt, bcrypt, validation]
+workflow_ref: deep-security-audit
 ---
 
 # Golang Security Standards
@@ -50,3 +51,8 @@ metadata:
 ## References
 
 - [Implementation Examples](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

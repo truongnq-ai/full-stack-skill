@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['build.gradle.kts', 'detekt.yml']
     keywords: ['detekt', 'ktlint', 'lint']
+workflow_ref: smart-release
 ---
 
 # Android Tooling Standards
@@ -33,3 +34,8 @@ metadata:
 ## References
 
 - [Configuration](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

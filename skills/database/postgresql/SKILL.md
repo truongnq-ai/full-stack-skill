@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.entity.ts', 'prisma/schema.prisma', '**/migrations/*.sql']
     keywords: [TypeOrmModule, PrismaService, PostgresModule, Repository]
+workflow_ref: deep-security-audit
 ---
 
 # PostgreSQL Database Standards
@@ -51,3 +52,9 @@ See [references/best-practices.md](references/best-practices.md) for database se
    - RLS adds a small overhead to _every_ query on the table because the database must evaluate the policy conditions (e.g., `WHERE tenant_id = current_setting('app.tenant_id')`).
    - **Mitigation**: ALWAYS create an index on the columns used in your RLS policies (usually `user_id` or `tenant_id`).
    - **Warning**: Avoid complex `JOIN`s or subqueries inside the RLS policy definition itself, as this can multiply execution time heavily. Keep policies simple (direct column comparisons).
+
+## References
+
+- [Best Practices Guide](references/best-practices.md)
+- [Anti-Patterns](references/anti-patterns.md)
+- [Examples (Input/Output)](references/examples.md)

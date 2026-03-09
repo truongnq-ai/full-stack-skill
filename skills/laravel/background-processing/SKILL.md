@@ -7,6 +7,7 @@ metadata:
     files:
       ['app/Jobs/**/*.php', 'app/Events/**/*.php', 'app/Listeners/**/*.php']
     keywords: [ShouldQueue, dispatch, batch, chain, listener]
+workflow_ref: smart-release
 ---
 
 # Laravel Background Processing
@@ -42,3 +43,8 @@ app/
 ## References
 
 - [Job Chaining & Event Patterns](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

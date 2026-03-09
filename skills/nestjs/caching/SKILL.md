@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.service.ts', '**/*.interceptor.ts']
     keywords: [CacheInterceptor, CacheTTL, Redis, stale-while-revalidate]
+workflow_ref: performance
 ---
 
 # Caching & Redis Standards
@@ -53,3 +54,8 @@ Caching strategies and Redis integration patterns for high-performance NestJS ap
 
 - **Jitter**: Add random variance to TTLs (e.g., 300s ± 10s) to prevent all keys expiring simultaneously.
 - **Locking**: If a key is missing, **one** process computes it while others wait or return stale. (Complex, often handled by `swr` libraries).
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

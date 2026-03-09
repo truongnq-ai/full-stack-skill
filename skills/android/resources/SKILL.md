@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['strings.xml', '**/*Screen.kt']
     keywords: ['stringResource', 'plurals', 'R.string']
+workflow_ref: ui-ux-pro-max
 ---
 
 # Android Resources Standards
@@ -33,3 +34,8 @@ metadata:
 ## References
 
 - [XML Structure](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

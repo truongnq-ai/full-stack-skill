@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['main.ts', '**/*.module.ts']
     keywords: [nestjs-pino, Prometheus, Logger, reqId]
+workflow_ref: deep-security-audit
 ---
 
 # Observability Standards
@@ -48,3 +49,8 @@ Logging, monitoring, and observability patterns for production applications.
 - **Terminus**: Implement explicit logic for "Liveness" (I'm alive) vs "Readiness" (I can take traffic).
   - **DB Check**: `TypeOrmHealthIndicator` / `PrismaHealthIndicator`.
   - **Memory Check**: Fail if Heap > 300MB (prevent crash loops).
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

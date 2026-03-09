@@ -8,6 +8,7 @@ metadata:
       ['package.json', 'pubspec.yaml', 'go.mod', 'pom.xml', 'nest-cli.json']
     keywords:
       [architecture audit, code review, tech debt, logic leakage, refactor]
+workflow_ref: codebase-review
 ---
 
 # Architecture Audit
@@ -78,3 +79,8 @@ Check for large metadata or constants impacting IDE performance and binary size.
 ## 📚 Reference Links
 
 - [Architecture Patterns & Remediation Protocols](references/PATTERNS.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

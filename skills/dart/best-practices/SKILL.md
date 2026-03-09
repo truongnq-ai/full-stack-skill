@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.dart']
     keywords: [import, final, const, var, global]
+workflow_ref: ui-ux-pro-max
 ---
 
 # Dart Best Practices
@@ -33,3 +34,8 @@ Best practices for writing clean, maintainable Dart code.
 import 'models/user.dart'; // Good
 import 'package:app/models/user.dart'; // Avoid local absolute
 ```
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

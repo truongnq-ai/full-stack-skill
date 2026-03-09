@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['app/**/page.tsx', 'app/**/layout.tsx', 'app/**/loading.tsx']
     keywords: [App Router, Layout, Route Group, parallel routes]
+workflow_ref: ui-ux-pro-max
 ---
 
 # Next.js App Router
@@ -58,3 +59,7 @@ const theme = cookieStore.get('theme');
 - **Colocation**: Keep component files, styles, and tests inside the route folder.
 - **Layouts**: Use Root Layout (`app/layout.tsx`) for `<html>` and `<body>` tags.
 - [**Self-Hosting Standard**](references/SELF_HOSTING.md)
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

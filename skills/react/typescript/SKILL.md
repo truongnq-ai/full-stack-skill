@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.tsx']
     keywords: [ReactNode, FC, PropsWithChildren, ComponentProps]
+workflow_ref: smart-release
 ---
 
 # React TypeScript
@@ -51,3 +52,8 @@ function List<T>({ items, render }: ListProps<T>) {
 // Hook Ref
 const inputRef = useRef<HTMLInputElement>(null);
 ```
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

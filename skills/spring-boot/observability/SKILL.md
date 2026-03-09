@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['logback-spring.xml', 'application.properties']
     keywords: [micrometer, tracing, correlation-id, mdc]
+workflow_ref: deep-security-audit
 ---
 
 # Spring Boot Observability
@@ -40,3 +41,8 @@ metadata:
 ## References
 
 - [Implementation Examples](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

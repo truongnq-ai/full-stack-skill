@@ -7,6 +7,7 @@ metadata:
     files: ['**/*.tsx', '**/*.jsx']
     keywords:
       [component, props, children, composition, presentational, container]
+workflow_ref: smart-release
 ---
 
 # React Native Components
@@ -65,3 +66,8 @@ See [references/patterns.md](references/patterns.md) for HOCs, Render Props, Com
 ## Related Topics
 
 react/component-patterns | react/hooks | styling
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

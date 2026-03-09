@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*Worker.kt']
     keywords: ['CoroutineWorker', 'WorkManager', 'doWork']
+workflow_ref: smart-release
 ---
 
 # Android Background Work Standards
@@ -32,3 +33,8 @@ metadata:
 ## References
 
 - [Worker Template](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

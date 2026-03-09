@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.test.tsx', '**/*.spec.tsx', '__tests__/**']
     keywords: [test, testing, jest, render, fireEvent, waitFor]
+workflow_ref: battle-test
 ---
 
 # React Native Testing
@@ -62,3 +63,8 @@ See [references/testing-library.md](references/testing-library.md) for RNTL Setu
 ## Related Topics
 
 common/quality-assurance | react/testing
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

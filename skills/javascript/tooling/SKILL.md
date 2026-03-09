@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['.eslintrc.*', 'jest.config.*', 'package.json']
     keywords: [eslint, prettier, jest, test, lint, build]
+workflow_ref: battle-test
 ---
 
 # JavaScript Tooling
@@ -58,3 +59,8 @@ See [references/REFERENCE.md](references/REFERENCE.md).
 ## Related Topics
 
 best-practices | language
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

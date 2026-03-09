@@ -11,6 +11,7 @@ metadata:
         'cleartextTrafficPermitted',
         'intent-filter',
       ]
+workflow_ref: deep-security-audit
 ---
 
 # Android Security Standards
@@ -42,6 +43,7 @@ metadata:
 ## References
 
 - [Setup Examples](references/implementation.md)
+- [Examples (Input/Output)](references/examples.md)
 
 ## Related Topics
 

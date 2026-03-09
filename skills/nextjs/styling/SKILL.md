@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.css', 'tailwind.config.ts', '**/components/ui/*.tsx']
     keywords: [tailwind, css modules, styled-components, clsx, cn]
+workflow_ref: performance
 ---
 
 # Styling & UI Performance
@@ -38,3 +39,8 @@ For specific library setups, see:
 2. **Font Optimization**: Use `next/font` to prevent Cumulative Layout Shift (CLS).
    - _Reference_: [Font Setup](references/implementation.md)
 3. **CLS Prevention**: Always specify `width`/`height` on images.
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

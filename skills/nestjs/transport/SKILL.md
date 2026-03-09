@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['main.ts', '**/*.controller.ts']
     keywords: [Transport.GRPC, Transport.RMQ, MicroserviceOptions]
+workflow_ref: plan-feature
 ---
 
 # Microservices & Transport Standards
@@ -45,3 +46,8 @@ Microservices communication patterns and transport layer standards.
 
 - **Message DTOs**: Use `class-validator` just like HTTP.
   - **Config**: Apply `useGlobalPipes(new ValidationPipe({ transform: true }))` in the `MicroserviceOptions` setup, not just HTTP app setup.
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

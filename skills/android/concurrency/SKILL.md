@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.kt']
     keywords: ['suspend', 'viewModelScope', 'lifecycleScope', 'Flow']
+workflow_ref: ui-ux-pro-max
 ---
 
 # Android Concurrency Standards
@@ -33,3 +34,8 @@ metadata:
 ## References
 
 - [Dispatcher Pattern](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

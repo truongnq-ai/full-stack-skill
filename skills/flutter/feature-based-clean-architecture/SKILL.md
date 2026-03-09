@@ -7,6 +7,7 @@ metadata:
     files: ['lib/features/**']
     keywords:
       [feature, domain, infrastructure, application, presentation, modular]
+workflow_ref: smart-release
 ---
 
 # Feature-Based Clean Architecture
@@ -37,3 +38,8 @@ See [references/REFERENCE.md](references/REFERENCE.md).
 ## Related Topics
 
 layer-based-clean-architecture | retrofit-networking | go-router-navigation | bloc-state-management | dependency-injection
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

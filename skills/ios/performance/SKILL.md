@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.swift']
     keywords: [Instruments, Allocations, Leaks, dequeueReusableCell]
+workflow_ref: performance
 ---
 
 # iOS Performance Standards
@@ -40,3 +41,8 @@ metadata:
 ## References
 
 - [Profiling & Optimization](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.ts', '**/*.html']
     keywords: [DomSanitizer, innerHTML, bypassSecurityTrust, CSP]
+workflow_ref: deep-security-audit
 ---
 
 # Security
@@ -31,3 +32,8 @@ metadata:
 ## Related Topics
 
 common/security-standards | components
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

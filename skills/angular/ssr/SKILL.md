@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.server.ts', 'server.ts']
     keywords: [hydration, transferState, afterNextRender, isPlatformServer]
+workflow_ref: smart-release
 ---
 
 # SSR (Server-Side Rendering)
@@ -26,3 +27,8 @@ metadata:
 ## References
 
 - [Hydration](references/hydration.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*ViewModel.kt', '**/*UiState.kt']
     keywords: [viewmodel, stateflow, livedata, uistate]
+workflow_ref: ui-ux-pro-max
 ---
 
 # Android State Management
@@ -39,3 +40,8 @@ metadata:
 ## References
 
 - [Templates](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

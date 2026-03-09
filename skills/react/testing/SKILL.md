@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.test.tsx', '**/*.spec.tsx']
     keywords: [render, screen, userEvent, expect]
+workflow_ref: battle-test
 ---
 
 # React Testing
@@ -43,3 +44,8 @@ test('submits form', async () => {
   expect(await screen.findByText(/welcome/i)).toBeInTheDocument();
 });
 ```
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

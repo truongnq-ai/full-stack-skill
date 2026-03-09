@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*Activity.kt', '**/*WebView*.kt', 'AndroidManifest.xml']
     keywords: ['Intent', 'WebView', 'FileProvider', 'javaScriptEnabled']
+workflow_ref: deep-security-audit
 ---
 
 # Android Legacy Security Standards
@@ -37,3 +38,8 @@ metadata:
 ## References
 
 - [Hardening Examples](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

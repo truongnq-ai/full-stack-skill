@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.php']
     keywords: [pdo, password_hash, htmlentities, filter_var]
+workflow_ref: deep-security-audit
 ---
 
 # PHP Security
@@ -41,3 +42,4 @@ src/
 ## References
 
 - [Secure Implementation Patterns](references/implementation.md)
+- [Examples (Input/Output)](references/examples.md)

@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.go']
     keywords: [error, fmt.errorf, errors.is, errors.as]
+workflow_ref: smart-release
 ---
 
 # Golang Error Handling Standards
@@ -34,3 +35,8 @@ metadata:
 ## References
 
 - [Error Wrapping Patterns](references/error-wrapping.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

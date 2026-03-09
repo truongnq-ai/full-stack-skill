@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.service.ts', '**/*.interceptor.ts']
     keywords: [HttpClient, HttpInterceptorFn, withInterceptors]
+workflow_ref: smart-release
 ---
 
 # HTTP Client
@@ -27,3 +28,8 @@ metadata:
 ## References
 
 - [Interceptors](references/interceptors.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

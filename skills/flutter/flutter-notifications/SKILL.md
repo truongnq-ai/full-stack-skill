@@ -13,6 +13,7 @@ metadata:
         notification,
         push,
       ]
+workflow_ref: smart-release
 ---
 
 # Flutter Notifications
@@ -41,3 +42,8 @@ Push and local notifications interactions.
 ## Related Topics
 
 flutter-navigation | mobile-ux-core | firebase/fcm
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

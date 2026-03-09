@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['src/modules/**', 'SECURITY.md', 'src/migrations/**']
     keywords: [RLS, Row Level Security, childId, isolation, access policy]
+workflow_ref: deep-security-audit
 ---
 
 ## **Priority: P0 (CRITICAL)**
@@ -39,3 +40,8 @@ Strict multi-tenant isolation. All child-centric data must be secured via Postgr
 - [Implementation Patterns](references/implementation-patterns.md)
 - [RLS Migration Patterns](references/rls-patterns.md)
 - [Centralized Auth Logic](references/auth-logic.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

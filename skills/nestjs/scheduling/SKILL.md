@@ -5,7 +5,11 @@ metadata:
   labels: [nestjs, cron, scheduling, redis]
   triggers:
     files: ['**/*.service.ts']
-    keywords: [@Cron, CronExpression, ScheduleModule]
+    keywords:
+      - "@Cron"
+      - "CronExpression"
+      - "ScheduleModule"
+workflow_ref: ui-ux-pro-max
 ---
 
 # Task Scheduling & Jobs
@@ -39,3 +43,8 @@ Background job processing and scheduled task patterns.
   - **Pattern**: Cron -> Push Job ID to Queue (BullMQ) -> Worker processes it.
   - **Why**: Cron schedulers can get blocked by the Event Loop; Workers are scalable.
 - **Error Handling**: Wrap ALL cron logic in `try/catch`. Uncaught exceptions in a Cron job can crash the entire Node process.
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

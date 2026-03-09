@@ -13,6 +13,7 @@ metadata:
         universalLink,
         NSUserActivity,
       ]
+workflow_ref: smart-release
 ---
 
 # iOS Navigation (SwiftUI)
@@ -39,3 +40,8 @@ SwiftUI path-based navigation and deep linking.
 ## Related Topics
 
 ios-design-system | ios-notifications | mobile-ux-core
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*_test.go']
     keywords: [testing, unit tests, go test, mocking, testify]
+workflow_ref: battle-test
 ---
 
 # Golang Testing Standards
@@ -57,3 +58,8 @@ See [Table-Driven Tests](references/table-driven-tests.md) for full template.
 
 - [Table-Driven Tests](references/table-driven-tests.md)
 - [Mocking Strategies](references/mocking-strategies.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

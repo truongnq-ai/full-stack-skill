@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['*storage*', '*drive*', '*upload*', '*download*']
     keywords: [google drive, s3, file upload, cloud storage, file management]
+workflow_ref: ui-ux-pro-max
 ---
 
 # Cloud Storage Integration
@@ -52,3 +53,8 @@ src/
 - [Permissions Model](references/permissions-model.md)
 - [Quota Monitoring](references/quota-monitoring.md)
 - [Migration Strategy](references/migration-strategy.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

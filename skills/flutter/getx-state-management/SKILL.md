@@ -7,6 +7,7 @@ metadata:
     files: ['**_controller.dart', '**/bindings/*.dart']
     keywords:
       [GetxController, Obx, GetBuilder, .obs, Get.put, Get.find, Get.lazyPut]
+workflow_ref: ui-ux-pro-max
 ---
 
 # GetX State Management
@@ -67,3 +68,8 @@ class UserView extends GetView<UserController> {
 ## Related Topics
 
 getx-navigation | layer-based-clean-architecture | dependency-injection
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

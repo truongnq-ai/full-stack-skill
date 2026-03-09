@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.swift']
     keywords: ['@State', '@Binding', '@ObservedObject', 'View', 'body']
+workflow_ref: performance
 ---
 
 # SwiftUI Standards
@@ -43,3 +44,8 @@ metadata:
 ## References
 
 - [State & Binding](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

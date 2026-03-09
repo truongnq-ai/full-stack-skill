@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['Dockerfile', 'compose.yml']
     keywords: [docker-layer, native-image, graceful-shutdown]
+workflow_ref: deep-security-audit
 ---
 
 # Spring Boot Deployment Standards
@@ -40,3 +41,8 @@ metadata:
 ## References
 
 - [Implementation Examples](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

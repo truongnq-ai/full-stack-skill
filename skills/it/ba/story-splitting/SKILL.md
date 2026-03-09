@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['user-stories.md', 'backlog.md']
     keywords: [user story, break down, acceptance criteria, bdd, scrum, agile]
+workflow_ref: performance
 ---
 
 # ✂️ IT Business Analyst: User Story Splitting & BDD
@@ -71,3 +72,8 @@ Provide a common Definition of Done for the stories, such as:
 - Unit tests cover the Acceptance Criteria (>80% coverage).
 - UI matches the design (Figma).
 - No console errors or performance regressions.
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

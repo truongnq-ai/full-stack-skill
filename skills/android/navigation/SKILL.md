@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*NavHost.kt', '**/*Graph.kt']
     keywords: ['NavHost', 'navController', '@Serializable']
+workflow_ref: ui-ux-pro-max
 ---
 
 # Android Navigation Standards
@@ -33,3 +34,8 @@ metadata:
 ## References
 
 - [Route Definitions](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

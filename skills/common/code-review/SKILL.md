@@ -5,6 +5,7 @@ metadata:
   labels: [common, review, quality, best-practices]
   triggers:
     keywords: [review, pr, critique, analyze code]
+workflow_ref: code-review
 ---
 
 # Code Review Expert
@@ -28,6 +29,7 @@ metadata:
 - [ ] **Clean Code**: DRY? SOLID? Intent-revealing names?
 
 See [references/checklist.md](references/checklist.md) for detailed inspection points.
+See [references/examples.md](references/examples.md) for sample outputs.
 
 ## Output Format (Strict)
 

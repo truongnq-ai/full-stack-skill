@@ -5,7 +5,15 @@ metadata:
   labels: [kotlin, language, idioms, null-safety]
   triggers:
     files: ['**/*.kt', '**/*.kts']
-    keywords: [val, var, null, extension, data class, sealed, when]
+    keywords:
+      - "val"
+      - "var"
+      - "null"
+      - "extension"
+      - "data class"
+      - "sealed"
+      - "when"
+workflow_ref: smart-release
 ---
 
 # Kotlin Language Patterns
@@ -50,6 +58,10 @@ fun render(state: UiState) = when (state) {
 // Extension Function
 private fun String.toSlug(): String = this.lowercase().replace(" ", "-")
 ```
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)
 
 ## Related Topics
 

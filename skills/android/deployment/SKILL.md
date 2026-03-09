@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['build.gradle.kts', 'proguard-rules.pro']
     keywords: ['signingConfigs', 'proguard', 'minifyEnabled', '.aab']
+workflow_ref: smart-release
 ---
 
 # Android Deployment Standards
@@ -33,3 +34,8 @@ metadata:
 ## References
 
 - [Signing & R8](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

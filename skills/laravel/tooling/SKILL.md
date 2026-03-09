@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['package.json', 'composer.json', 'vite.config.js']
     keywords: [artisan, vite, horizon, pint, blade]
+workflow_ref: ui-ux-pro-max
 ---
 
 # Laravel Tooling
@@ -40,3 +41,8 @@ project/
 ## References
 
 - [Artisan & Vite Patterns](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

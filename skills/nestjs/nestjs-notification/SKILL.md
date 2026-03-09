@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['notification.service.ts', 'notification.entity.ts']
     keywords: [notification, push, fcm, alert, reminder]
+workflow_ref: ui-ux-pro-max
 ---
 
 # NestJS Notification Architecture
@@ -43,3 +44,8 @@ src/modules/notification/
 
 - **Service Pattern (Dual-Write)**: [references/service.md](references/service.md)
 - **Type Definitions**: [references/types.md](references/types.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

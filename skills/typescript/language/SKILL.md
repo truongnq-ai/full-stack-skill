@@ -17,6 +17,7 @@ metadata:
         const,
         namespace,
       ]
+workflow_ref: deep-security-audit
 ---
 
 # TypeScript Language Patterns
@@ -74,3 +75,8 @@ See [references/REFERENCE.md](references/REFERENCE.md).
 ## Related Topics
 
 best-practices | security | tooling
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

@@ -7,6 +7,7 @@ metadata:
     files: ['go.mod', 'internal/**']
     keywords:
       [architecture, structure, folder layout, clean arch, dependency injection]
+workflow_ref: smart-release
 ---
 
 # Golang Architecture Standards
@@ -47,3 +48,8 @@ See [Standard Project Layout](references/project-layout.md) for directory tree.
 
 - [Standard Project Layout](references/project-layout.md)
 - [Clean Architecture Layers](references/clean-arch.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

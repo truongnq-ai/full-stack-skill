@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.tsx', '**/*.ts']
     keywords: [StyleSheet, style, theme, responsive, flexbox]
+workflow_ref: smart-release
 ---
 
 # React Native Styling
@@ -62,3 +63,8 @@ See [references/theming.md](references/theming.md) for Design Tokens, Theme Syst
 ## Related Topics
 
 common/best-practices | components
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

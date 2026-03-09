@@ -5,6 +5,7 @@ metadata:
   labels: [security, encryption, authentication, authorization]
   triggers:
     keywords: [security, encrypt, authenticate, authorize]
+workflow_ref: deep-security-audit
 ---
 
 # Security Standards - High-Density Standards
@@ -45,3 +46,4 @@ Universal security protocols for building safe and resilient software.
 
 - [Injection Testing Protocols (SQLi/HTMLi)](references/INJECTION_TESTING.md)
 - [Vulnerability Remediation & Secure Patterns](references/VULNERABILITY_REMEDIATION.md)
+- [Examples (Input/Output)](references/examples.md)

@@ -5,6 +5,7 @@ metadata:
   labels: [system-design, architecture, scalability, reliability]
   triggers:
     keywords: [architecture, design, system, scalability]
+workflow_ref: update-docs
 ---
 
 # System Design & Architecture Standards
@@ -43,3 +44,7 @@ metadata:
 - **Design Docs**: Write specs before major implementations.
 - **Versioning**: Version APIs/schemas for backward compatibility.
 - **Extensibility**: Use Strategy/Factory for future changes.
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

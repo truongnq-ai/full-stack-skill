@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.go']
     keywords: [goroutine, go keyword, channel, mutex, waitgroup, context]
+workflow_ref: smart-release
 ---
 
 # Golang Concurrency Standards
@@ -37,3 +38,8 @@ metadata:
 
 - [Concurrency Patterns](references/concurrency-patterns.md)
 - [Context Usage](references/context-usage.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

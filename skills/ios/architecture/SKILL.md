@@ -11,6 +11,7 @@ metadata:
         '**/*ViewController.swift',
       ]
     keywords: [MVVM, Coordinator, ViewState, Output, Input]
+workflow_ref: smart-release
 ---
 
 # iOS Architecture Standards
@@ -50,4 +51,7 @@ metadata:
 - [ ] **Deallocation**: Are child coordinators correctly removed from the parent's collection on finish?
 - [ ] **VIP Unidirection**: Is the data flow unidirectional (View -> Interactor -> Presenter -> View)?
 
+## References
+
 - [MVVM-C & VIP Implementation](references/implementation.md)
+- [Examples (Input/Output)](references/examples.md)

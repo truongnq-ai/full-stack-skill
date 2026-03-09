@@ -5,7 +5,13 @@ metadata:
   labels: [ios, state, combine, observation, reactive, observation-framework]
   triggers:
     files: ['**/*.swift']
-    keywords: [Observable, @Published, PassthroughSubject, @Observable, @Namespace]
+    keywords:
+      - "Observable"
+      - "@Published"
+      - "PassthroughSubject"
+      - "@Observable"
+      - "@Namespace"
+workflow_ref: ui-ux-pro-max
 ---
 
 # iOS State Management Standards
@@ -40,3 +46,8 @@ metadata:
 ## References
 
 - [Combine & Observation Setup](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

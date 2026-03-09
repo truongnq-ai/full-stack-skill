@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/layout.tsx', '**/page.tsx']
     keywords: [next/image, next/font, metadata, generateMetadata]
+workflow_ref: performance
 ---
 
 # Optimization
@@ -64,3 +65,8 @@ Before applying optimizations, identify bottlenecks using:
 - **Loading Strategy**: Control when 3rd party scripts load.
   - `strategy="afterInteractive"` (Default): Google Analytics.
   - `strategy="lazyOnload"`: Chat widgets, low priority.
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

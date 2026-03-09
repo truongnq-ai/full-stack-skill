@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['next.config.js', 'package.json', 'Dockerfile']
     keywords: [turbopack, output, standalone, lint, telemetry]
+workflow_ref: smart-release
 ---
 
 # Next.js Tooling
@@ -40,3 +41,8 @@ project/
 ## References
 
 - [CI/CD & Deployment Guide](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

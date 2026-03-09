@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.php']
     keywords: [psr-12, camelCase, PascalCase, dry, solid]
+workflow_ref: smart-release
 ---
 
 # PHP Best Practices
@@ -41,3 +42,8 @@ src/
 ## References
 
 - [Clean Code Patterns](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

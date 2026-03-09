@@ -7,6 +7,7 @@ metadata:
     files: ['**/*.ts', '**/*.tsx']
     keywords:
       [validate, sanitize, xss, injection, auth, password, secret, token]
+workflow_ref: deep-security-audit
 ---
 
 # TypeScript Security
@@ -57,3 +58,8 @@ See [references/REFERENCE.md](references/REFERENCE.md).
 ## Related Topics
 
 common/security-standards | best-practices | language
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

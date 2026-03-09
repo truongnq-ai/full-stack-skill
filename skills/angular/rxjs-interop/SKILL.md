@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.ts']
     keywords: [toSignal, toObservable, takeUntilDestroyed, rxjs angular]
+workflow_ref: smart-release
 ---
 
 # RxJS Interop
@@ -29,3 +30,8 @@ metadata:
 ## References
 
 - [Signals vs Observables](references/observables-vs-signals.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

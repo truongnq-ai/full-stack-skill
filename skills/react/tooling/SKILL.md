@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['package.json']
     keywords: [devtool, bundle, strict mode, profile]
+workflow_ref: performance
 ---
 
 # React Tooling
@@ -37,3 +38,8 @@ if (process.env.NODE_ENV === 'development') {
   });
 }
 ```
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

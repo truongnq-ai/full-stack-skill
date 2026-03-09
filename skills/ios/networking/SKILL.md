@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*Service.swift', '**/*API.swift', '**/*Client.swift']
     keywords: [URLSession, Alamofire, Moya, URLRequest, URLComponents, Codable]
+workflow_ref: deep-security-audit
 ---
 
 # iOS Networking Standards
@@ -41,3 +42,8 @@ metadata:
 ## References
 
 - [Native & Alamofire Implementation](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

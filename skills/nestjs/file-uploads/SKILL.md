@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.controller.ts']
     keywords: [FileInterceptor, Multer, S3, UploadedFile]
+workflow_ref: plan-feature
 ---
 
 # File Upload Patterns
@@ -35,3 +36,8 @@ Secure file upload handling with validation and storage patterns.
   1. Upload file.
   2. Push `FileUploadedEvent` to Queue (BullMQ).
   3. Worker downloads, resizes/converts, and re-uploads.
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

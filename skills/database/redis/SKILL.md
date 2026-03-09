@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.ts', '**/*.js', '**/redis.config.ts']
     keywords: [redis, cache, ttl, eviction]
+workflow_ref: deep-security-audit
 ---
 
 # Redis Best Practices
@@ -45,3 +46,4 @@ metadata:
 
 - [Best Practices Guide](references/best-practices.md)
 - [Checklist](references/checklist.md)
+- [Examples (Input/Output)](references/examples.md)

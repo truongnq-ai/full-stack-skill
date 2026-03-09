@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.directive.ts', '**/*.pipe.ts']
     keywords: [hostDirectives, PipeTransform, pure]
+workflow_ref: smart-release
 ---
 
 # Directives & Pipes
@@ -26,3 +27,8 @@ metadata:
 ## References
 
 - [Composition](references/composition.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

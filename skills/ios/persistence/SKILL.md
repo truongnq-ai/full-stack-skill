@@ -14,6 +14,7 @@ metadata:
         ModelContainer,
         Repository,
       ]
+workflow_ref: smart-release
 ---
 
 # iOS Persistence Standards
@@ -49,3 +50,8 @@ metadata:
 ## References
 
 - [SwiftData & Core Data Implementation](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

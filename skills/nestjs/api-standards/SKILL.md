@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.controller.ts', '**/*.dto.ts']
     keywords: [ApiResponse, Pagination, TransformInterceptor]
+workflow_ref: update-docs
 ---
 
 # NestJS API Standards & Common Patterns
@@ -49,3 +50,8 @@ Standardized API response patterns and common NestJS conventions.
   ```
 
 - **Docs**: Apply `@ApiBadRequestResponse({ type: ApiErrorResponse })` globally or per controller.
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

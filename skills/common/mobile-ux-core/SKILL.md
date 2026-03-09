@@ -14,6 +14,7 @@ metadata:
         '**/*Screen.tsx',
       ]
     keywords: [mobile, responsive, SafeArea, touch, gesture, viewport]
+workflow_ref: performance
 ---
 
 # Mobile UX Core
@@ -50,3 +51,8 @@ Icon(Icons.close, size: 16)
 ## Related Topics
 
 mobile-accessibility | mobile-performance | flutter-design-system | react-native-dls
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

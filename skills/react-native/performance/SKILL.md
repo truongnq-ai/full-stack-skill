@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.tsx', '**/*.ts']
     keywords: [FlatList, memo, useMemo, useCallback, performance, optimization]
+workflow_ref: performance
 ---
 
 # React Native Performance
@@ -58,3 +59,8 @@ See [references/optimization-guide.md](references/optimization-guide.md) for Fla
 ## Related Topics
 
 react/performance | common/performance-engineering
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

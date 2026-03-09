@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.java']
     keywords: [refactor, clean code, smells, patterns, design]
+workflow_ref: smart-release
 ---
 
 # Java Best Practices
@@ -59,6 +60,10 @@ public class Service {
   }
 }
 ```
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)
 
 ## Related Topics
 

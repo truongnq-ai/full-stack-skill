@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/jira_*.xml', '**/test_case.json']
     keywords: [jira issue, link zephyr, jira details, jira mcp]
+workflow_ref: deep-security-audit
 ---
 
 # Jira Integration Standards
@@ -43,3 +44,8 @@ metadata:
 - **No Ghosting**: Create tests then link to Jira (Traceability).
 - **No Spam**: Post single comment per link.
 - **No Missing Labels**: Update Jira labels after linking.
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

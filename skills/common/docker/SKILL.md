@@ -1,9 +1,17 @@
 ---
-description: "Safe Docker container management — never delete volumes without backup, always distinguish dev from production."
-globs: "Dockerfile, docker-compose*.yml, .dockerignore"
+name: Docker Safe Operations
+description: Safe Docker container management — never delete volumes without backup, always distinguish dev from production.
+metadata:
+  labels: [docker, devops, safety]
+  triggers:
+    keywords: [docker, docker-compose, container, image, volume]
+    files: ['Dockerfile', 'docker-compose*.yml', '.dockerignore']
+workflow_ref: ui-ux-pro-max
 ---
 
 # Docker — Safe Container Management
+
+## **Priority: P1 (OPERATIONAL)**
 
 ## Context
 
@@ -51,3 +59,8 @@ docker exec -it <container> bash     # Shell into running container
 docker exec <container> env | grep <key>  # Check env vars
 docker run --rm -it <image> bash     # Temp container for debugging
 ```
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

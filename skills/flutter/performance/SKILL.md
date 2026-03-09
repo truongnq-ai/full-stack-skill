@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['lib/presentation/**', 'pubspec.yaml']
     keywords: [const, buildWhen, ListView.builder, Isolate, RepaintBoundary]
+workflow_ref: performance
 ---
 
 # Performance
@@ -37,3 +38,8 @@ BlocBuilder<UserBloc, UserState>(
   builder: (context, state) => Text(state.name),
 )
 ```
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

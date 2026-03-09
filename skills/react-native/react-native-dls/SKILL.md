@@ -7,6 +7,7 @@ metadata:
     files:
       ['**/*Screen.tsx', '**/*Component.tsx', '**/theme/**', '**/styles/**']
     keywords: [StyleSheet, styled-components, theme, colors, spacing]
+workflow_ref: performance
 ---
 
 # React Native Design System
@@ -32,3 +33,8 @@ Enforce design token usage in React Native apps.
 ## Related Topics
 
 mobile-ux-core | react-native/performance
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

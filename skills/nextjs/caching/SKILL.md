@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/page.tsx', '**/layout.tsx', '**/action.ts']
     keywords: [unstable_cache, revalidateTag, Router Cache, Data Cache]
+workflow_ref: smart-release
 ---
 
 # Caching Architecture
@@ -39,3 +40,8 @@ Next.js has 4 distinct caching layers. Understanding them prevents stale data bu
 ## **Implementation Details**
 
 See [Cache Components & PPR](references/CACHE_COMPONENTS.md) for detailed key generation, closure constraints, and invalidation strategies.
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

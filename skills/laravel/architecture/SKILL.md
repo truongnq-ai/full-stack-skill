@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['app/Http/Controllers/**/*.php', 'routes/*.php']
     keywords: [controller, service, action, request, container]
+workflow_ref: smart-release
 ---
 
 # Laravel Architecture
@@ -42,3 +43,8 @@ app/
 ## References
 
 - [Slim Controller Patterns](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

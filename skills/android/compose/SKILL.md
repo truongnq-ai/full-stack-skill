@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.kt']
     keywords: ['@Composable', 'Modifier', 'Column', 'Row']
+workflow_ref: performance
 ---
 
 # Jetpack Compose Expert
@@ -38,3 +39,8 @@ metadata:
 ## References
 
 - [Optimization Patterns](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

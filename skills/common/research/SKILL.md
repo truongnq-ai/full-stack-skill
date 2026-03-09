@@ -1,9 +1,17 @@
 ---
-description: "Evidence-based research — choose the right tool, cite sources, distinguish fact from inference."
-globs: "**/*"
+name: Research Standard
+description: Evidence-based research — choose the right tool, cite sources, distinguish fact from inference.
+metadata:
+  labels: [research, sources, citations]
+  triggers:
+    keywords: [research, sources, citations, verify, fact check]
+    task_types: [research, analysis]
+workflow_ref: update-docs
 ---
 
 # Research — Source-Backed Knowledge
+
+## **Priority: P1 (OPERATIONAL)**
 
 ## Context
 
@@ -60,3 +68,8 @@ What information do you need?
 4. **Don't use info older than 2 years** for frameworks/cloud services
 5. **Reliability tiers**: official docs > GitHub main > dated blog posts
 6. **Read 2-3 search results** minimum before concluding
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

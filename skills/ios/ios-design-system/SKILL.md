@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*View.swift', '**/Theme/**', '**/DesignSystem/**']
     keywords: [Color, Font, SwiftUI, ViewModifier, Theme]
+workflow_ref: smart-release
 ---
 
 # iOS Design System (SwiftUI)
@@ -61,3 +62,8 @@ Text("Title").font(.appTitle)
 ## Related Topics
 
 mobile-ux-core | ios/swiftui
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

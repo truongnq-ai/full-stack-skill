@@ -5,6 +5,7 @@ metadata:
   labels: [debugging, troubleshooting, bug-fixing, root-cause]
   triggers:
     keywords: [debug, fix bug, crash, error, exception, troubleshooting]
+workflow_ref: smart-release
 ---
 
 # Debugging Expert
@@ -40,3 +41,4 @@ Systematic, evidence-based troubleshooting. Do not guess; prove.
 ## 📚 References
 
 - [Bug Report Template](references/bug-report-template.md)
+- [Examples (Input/Output)](references/examples.md)

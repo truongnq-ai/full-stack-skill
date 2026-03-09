@@ -15,6 +15,7 @@ metadata:
         easy_localization,
         sheet_loader,
       ]
+workflow_ref: ui-ux-pro-max
 ---
 
 # Localization
@@ -71,3 +72,8 @@ See [references/REFERENCE.md](references/REFERENCE.md).
 ## Related Topics
 
 idiomatic-flutter | widgets
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

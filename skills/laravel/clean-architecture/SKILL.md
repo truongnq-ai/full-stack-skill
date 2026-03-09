@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['app/Domains/**/*.php', 'app/Providers/*.php']
     keywords: [domain, dto, repository, contract, adapter]
+workflow_ref: battle-test
 ---
 
 # Laravel Clean Architecture
@@ -43,3 +44,8 @@ app/
 ## References
 
 - [DDD & Repository Patterns](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

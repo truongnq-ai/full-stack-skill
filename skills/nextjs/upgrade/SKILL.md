@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['package.json']
     keywords: [next upgrade, migration guide, codemod]
+workflow_ref: battle-test
 ---
 
 # Next.js Upgrade Protocol
@@ -55,3 +56,8 @@ npm install --save-dev @types/react@latest @types/react-dom@latest
 
 - Run `npm run build` immediately after codemods and package updates.
 - Check for "Hydration failed" or "Turbopack" compatibility errors if using `--turbo`.
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

@@ -7,6 +7,7 @@ metadata:
     files: ['pages/**/*.tsx', 'pages/**/*.ts']
     keywords:
       [Pages Router, getServerSideProps, getStaticProps, _app, useRouter, FSD]
+workflow_ref: smart-release
 ---
 
 # Next.js Pages Router (Legacy)
@@ -81,3 +82,4 @@ For dynamic data fetching from the client side, rely on **SWR**, **React Query**
 ## Reference & Examples
 
 For feature-sliced design (FSD) implementation: [references/feature-sliced-design-pages.md](references/feature-sliced-design-pages.md)
+See [references/examples.md](references/examples.md).

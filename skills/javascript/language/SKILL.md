@@ -7,6 +7,7 @@ metadata:
     files: ['**/*.js', '**/*.mjs', '**/*.cjs']
     keywords:
       [const, let, arrow, async, await, promise, destructuring, spread, class]
+workflow_ref: ui-ux-pro-max
 ---
 
 # JavaScript Language Patterns
@@ -58,6 +59,7 @@ class Service {
 
 For advanced patterns and functional programming:
 See [references/REFERENCE.md](references/REFERENCE.md).
+See [references/examples.md](references/examples.md).
 
 ## Related Topics
 

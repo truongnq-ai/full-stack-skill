@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['package.json', '**/*.module.ts']
     keywords: [queue, backlog, background job, async task, worker]
+workflow_ref: smart-release
 ---
 
 # NestJS BullMQ Implementation
@@ -42,3 +43,8 @@ src/modules/{feature}/
 ## Reference & Examples
 
 For complete code patterns: [references/patterns.md](references/patterns.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

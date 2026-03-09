@@ -15,6 +15,7 @@ metadata:
         SOLID,
         dependency injection,
       ]
+workflow_ref: deep-security-audit
 ---
 
 # Python Best Practices
@@ -87,6 +88,7 @@ src/myapp/
 
 Detailed project templates, FastAPI/Django structure examples:
 See [references/REFERENCE.md](references/REFERENCE.md).
+See [references/examples.md](references/examples.md).
 
 ## Related Topics
 

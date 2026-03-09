@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*']
     keywords: [write, edit, create, generate, skill, violation]
+workflow_ref: ui-ux-pro-max
 ---
 
 # Feedback Reporter
@@ -66,3 +67,8 @@ Before `notify_user` or task completion:
 - **No "I'll check later"**: Check before writing, not after
 - **No "minor change skip"**: Every write needs check
 - **No "user waiting skip"**: 10-second check > pattern violation
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

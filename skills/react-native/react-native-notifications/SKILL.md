@@ -7,6 +7,7 @@ metadata:
     files: ['**/*notification*.ts', '**/*notification*.tsx', '**/App.tsx']
     keywords:
       [Notifications, messaging, FCM, expo-notifications, react-native-firebase]
+workflow_ref: ui-ux-pro-max
 ---
 
 # React Native Notifications
@@ -33,3 +34,8 @@ Push notifications using React Native Firebase or Expo Notifications.
 ## Related Topics
 
 react-native-navigation | react-native-dls | mobile-ux-core
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

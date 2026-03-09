@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['PRD.md', 'specs/*.md']
     keywords: [create prd, draft requirements, new feature spec]
+workflow_ref: plan-feature
 ---
 
 # Product Requirements Expert
@@ -48,3 +49,8 @@ metadata:
 
 - [Full PRD Template](references/prd-template.md)
 - [Validation Checklist](references/checklist.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

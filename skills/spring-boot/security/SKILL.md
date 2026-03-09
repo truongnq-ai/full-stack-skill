@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*SecurityConfig.java', '**/*Filter.java']
     keywords: [security-filter-chain, lambda-dsl, csrf, cors]
+workflow_ref: deep-security-audit
 ---
 
 # Spring Boot Security Standards
@@ -54,6 +55,7 @@ See [Security Configuration](references/implementation.md) for full `SecurityFil
 ## References
 
 - [Implementation Examples](references/implementation.md)
+- [Examples (Input/Output)](references/examples.md)
 
 ## Related Topics
 

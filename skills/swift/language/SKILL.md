@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.swift']
     keywords: ['protocol', 'extension', 'optional', 'guard', 'enum']
+workflow_ref: smart-release
 ---
 
 # Swift Language Standards
@@ -41,3 +42,4 @@ metadata:
 ## References
 
 - [Optionals & Protocols](references/implementation.md)
+- [Examples (Input/Output)](references/examples.md)

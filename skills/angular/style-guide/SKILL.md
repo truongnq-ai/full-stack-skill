@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.ts']
     keywords: [angular style, naming convention, file structure]
+workflow_ref: smart-release
 ---
 
 # Angular Style Guide
@@ -37,3 +38,8 @@ metadata:
 ## References
 
 - [Naming Conventions](references/naming-convention.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

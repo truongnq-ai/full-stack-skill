@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['configs/**', 'cmd/**']
     keywords: [configuration, env var, viper, koanf]
+workflow_ref: smart-release
 ---
 
 # Golang Configuration Standards
@@ -37,3 +38,8 @@ metadata:
 ## References
 
 - [Config Pattern](references/config-patterns.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

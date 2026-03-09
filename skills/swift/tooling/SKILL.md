@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['Package.swift', '.swiftlint.yml']
     keywords: ['package', 'target', 'dependency']
+workflow_ref: update-docs
 ---
 
 # Swift Tooling Standards
@@ -41,3 +42,8 @@ metadata:
 ## References
 
 - [SPM Setup & Build Configs](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

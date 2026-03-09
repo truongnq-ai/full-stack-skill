@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*Test.kt', '**/*Rule.kt']
     keywords: ['@Test', 'runTest', 'composeTestRule']
+workflow_ref: battle-test
 ---
 
 # Android Testing Standards
@@ -34,3 +35,8 @@ metadata:
 ## References
 
 - [Test Rules](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

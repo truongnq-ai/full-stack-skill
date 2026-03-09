@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*Repository.java', '**/*Entity.java']
     keywords: [jpa-repository, entity-graph, transactional, n-plus-1]
+workflow_ref: ui-ux-pro-max
 ---
 
 # Spring Boot Data Access
@@ -35,3 +36,8 @@ metadata:
 ## References
 
 - [Implementation Examples](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

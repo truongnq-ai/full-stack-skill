@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/injection.dart', '**/locator.dart']
     keywords: [GetIt, injectable, singleton, module, lazySingleton, factory]
+workflow_ref: battle-test
 ---
 
 # Dependency Injection
@@ -40,3 +41,8 @@ See [references/REFERENCE.md](references/REFERENCE.md).
 ## Related Topics
 
 layer-based-clean-architecture | testing
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

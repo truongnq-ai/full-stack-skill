@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.guard.ts', '**/*.strategy.ts', '**/auth/**']
     keywords: [Passport, JWT, AuthGuard, CSRF, Helmet]
+workflow_ref: deep-security-audit
 ---
 
 # NestJS Security Standards
@@ -55,6 +56,11 @@ metadata:
 - **No SSRF**: Allowlist domains for all outgoing HTTP requests.
 - **No SQLi**: Use ORM; avoid raw `query()` with string concatenation.
 - **No XSS**: Sanitize HTML input with `dompurify`.
+
+## References
+
+- [Implementation Patterns](references/implementation.md)
+- [Examples (Input/Output)](references/examples.md)
 
 ## Related Topics
 

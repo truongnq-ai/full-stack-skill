@@ -7,6 +7,7 @@ metadata:
     files: ['lib/domain/**', 'lib/infrastructure/**', 'lib/application/**']
     keywords:
       [domain, infrastructure, application, presentation, layers, dto, mapper]
+workflow_ref: smart-release
 ---
 
 # Layer-Based Clean Architecture
@@ -49,3 +50,8 @@ See [references/REFERENCE.md](references/REFERENCE.md).
 ## Related Topics
 
 feature-based-clean-architecture | bloc-state-management | dependency-injection | error-handling
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

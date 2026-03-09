@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*Notification*.kt', '**/MainActivity.kt']
     keywords: [FirebaseMessaging, NotificationCompat, NotificationChannel, FCM]
+workflow_ref: smart-release
 ---
 
 # Android Notifications
@@ -33,3 +34,8 @@ Push notifications using Firebase Cloud Messaging.
 ## Related Topics
 
 android-navigation | android-design-system | mobile-ux-core
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

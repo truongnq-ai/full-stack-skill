@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['tests/**/*.php', 'phpunit.xml']
     keywords: [feature, unit, mock, factory, sqlite]
+workflow_ref: battle-test
 ---
 
 # Laravel Testing
@@ -40,3 +41,8 @@ tests/
 ## References
 
 - [Testing & Mocking Guide](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.store.ts', '**/state/**']
     keywords: [angular signals, signal store, computed, effect]
+workflow_ref: smart-release
 ---
 
 # State Management
@@ -32,3 +33,8 @@ metadata:
 ## References
 
 - [Signal Store Pattern](references/signal-store.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

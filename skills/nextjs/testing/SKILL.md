@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.test.{ts,tsx}', 'cypress/**', 'tests/**']
     keywords: [vitest, playwright, msw, testing-library]
+workflow_ref: battle-test
 ---
 
 # Next.js Testing
@@ -40,3 +41,8 @@ tests/
 ## References
 
 - [Next.js Test Patterns](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

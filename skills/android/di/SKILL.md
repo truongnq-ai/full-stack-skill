@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*Module.kt', '**/*Component.kt']
     keywords: ['@HiltAndroidApp', '@Inject', '@Provides', '@Binds']
+workflow_ref: smart-release
 ---
 
 # Android Dependency Injection (Hilt)
@@ -37,3 +38,8 @@ metadata:
 ## References
 
 - [Module Templates](references/files.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

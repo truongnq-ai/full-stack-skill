@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**_bloc.dart', '**_cubit.dart', '**_state.dart', '**_event.dart']
     keywords: [BlocProvider, BlocBuilder, BlocListener, Cubit, Emitter]
+workflow_ref: ui-ux-pro-max
 ---
 
 # BLoC State Management
@@ -44,3 +45,4 @@ metadata:
 ## References
 
 - [Templates](references/bloc_templates.md)
+- [Examples (Input/Output)](references/examples.md)

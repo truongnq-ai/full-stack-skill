@@ -1,9 +1,17 @@
 ---
-description: "🚨 FSM error handling for AI agents — classify errors as Recoverable, Needs Input, or Critical. Retry ≤2 times then escalate."
-globs: "**/*"
+name: Error Recovery FSM
+description: FSM error handling for AI agents — classify errors as Recoverable, Needs Input, or Critical.
+metadata:
+  labels: [error-handling, recovery, safety]
+  triggers:
+    keywords: [error, failure, retry, recovery, rollback]
+    task_types: [debugging, implementation]
+workflow_ref: smart-release
 ---
 
 # Error Recovery — Agent Error Handling FSM
+
+## **Priority: P1 (OPERATIONAL)**
 
 ## Context
 
@@ -69,3 +77,8 @@ When an agent encounters an error mid-execution, it must classify the error and 
 3. **Never change approach** mid-execution without user approval
 4. **Check rollback before retry** — avoid duplicates (double insert, double create)
 5. **Never continue to next step** when current step failed
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

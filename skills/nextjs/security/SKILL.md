@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['app/**/actions.ts', 'middleware.ts']
     keywords: [action, boundary, sanitize, auth, jose]
+workflow_ref: deep-security-audit
 ---
 
 # Next.js Security
@@ -40,3 +41,4 @@ app/
 ## References
 
 - [Secure App Router Patterns](references/implementation.md)
+- [Examples (Input/Output)](references/examples.md)

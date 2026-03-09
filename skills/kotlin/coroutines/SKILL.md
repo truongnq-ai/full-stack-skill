@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.kt']
     keywords: [suspend, CoroutineScope, launch, async, Flow]
+workflow_ref: ui-ux-pro-max
 ---
 
 # Kotlin Coroutines Expert
@@ -37,3 +38,8 @@ metadata:
 ## References
 
 [references/advanced-patterns.md](references/advanced-patterns.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

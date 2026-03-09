@@ -21,6 +21,7 @@ metadata:
         transition,
         gesture,
       ]
+workflow_ref: performance
 ---
 
 # Mobile Animation
@@ -55,3 +56,8 @@ Native-feeling motion design. Optimize for 60fps and platform conventions.
 ## Related Topics
 
 mobile-ux-core | mobile-performance | flutter/animations
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)

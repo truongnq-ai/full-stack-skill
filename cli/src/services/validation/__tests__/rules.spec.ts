@@ -29,7 +29,15 @@ describe('Validation Rules', () => {
   describe('FrontmatterRule', () => {
     it('should pass with valid frontmatter', async () => {
       const rule = new FrontmatterRule();
-      const content = '---\nname: Test\ndescription: A test\n---\nbody';
+      const content = `---
+name: Test
+description: A test
+metadata:
+  labels: [test]
+  triggers:
+    keywords: [sample]
+---
+body`;
       const result = await rule.validate(content);
       expect(result.passed).toBe(true);
     });

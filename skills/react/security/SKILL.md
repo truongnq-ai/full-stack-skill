@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*.tsx', '**/*.jsx']
     keywords: [dangerouslySetInnerHTML, token, auth, xss]
+workflow_ref: deep-security-audit
 ---
 
 # React Security
@@ -44,6 +45,10 @@ function SafeHtml({ content }) {
 const safeUrl = url.startsWith('javascript:') ? '#' : url;
 <a href={safeUrl}>Link</a>;
 ```
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)
 
 ## Related Topics
 

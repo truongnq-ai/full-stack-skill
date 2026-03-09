@@ -6,6 +6,7 @@ metadata:
   triggers:
     files: ['**/*Benchmark.kt', '**/*Initializer.kt']
     keywords: ['BaselineProfile', 'JankStats', 'recomposition']
+workflow_ref: performance
 ---
 
 # Android Performance Standards
@@ -33,3 +34,8 @@ metadata:
 ## References
 
 - [Baseline & Startup](references/implementation.md)
+
+
+## References
+
+- [Examples (Input/Output)](references/examples.md)
