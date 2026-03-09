@@ -23,6 +23,19 @@ export class InitCommand {
    * Executes the initialization flow.
    * Checks for existing config, discovers the environment, prompts the user, and saves the configuration.
    */
+  private async getSuggestedPresets(languages: string[], frameworks: string[]) {
+    const suggestedPresets: string[] = [];
+    if (frameworks.some((f) => ['nextjs','react','angular','nestjs'].includes(f))) suggestedPresets.push('stack:web');
+    if (frameworks.some((f) => ['android','ios','flutter','react-native'].includes(f))) suggestedPresets.push('stack:mobile');
+    if (frameworks.some((f) => ['nestjs','spring-boot','golang','laravel','java'].includes(f))) suggestedPresets.push('stack:backend');
+    if (languages.some((l) => ['python','javascript','typescript'].includes(l))) suggestedPresets.push('stack:frontend');
+
+    if (await this.initService.detectionService.detectFiles(['**/jira_*.xml','**/test_plan.md','**/*.feature'])) suggestedPresets.push('role:qa');
+    if (await this.initService.detectionService.detectFiles(['**/docs/**/*.md','README.md'])) suggestedPresets.push('role:writer');
+    if (await this.initService.detectionService.detectFiles(['Dockerfile','docker-compose*.yml','**/*.helm/*','**/kustomization.yaml'])) suggestedPresets.push('role:devops');
+    return Array.from(new Set(suggestedPresets));
+  }
+
   async run() {
     const configPath = path.join(process.cwd(), '.skillsrc');
 

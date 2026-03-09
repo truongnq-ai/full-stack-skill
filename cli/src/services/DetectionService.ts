@@ -1,4 +1,5 @@
 import fs from 'fs-extra';
+import fg from 'fast-glob';
 import path from 'path';
 import {
   FrameworkDefinition,
@@ -11,6 +12,10 @@ import {
  * It uses a combination of file existence checks and package metadata analysis.
  */
 export class DetectionService {
+  async detectFiles(globs: string[]) {
+    const matches = await fg(globs, { dot: true });
+    return matches.length > 0;
+  }
   /**
    * Detects supported frameworks based on characteristic files and dependencies.
    * @returns A record of framework IDs and their detection status (boolean)
