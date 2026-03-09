@@ -13,13 +13,13 @@ import {
 import { CategoryConfig, SkillConfig } from '../models/config';
 import { RegistryMetadata } from '../models/types';
 
-const CATEGORY_ALIASES: Record<string, string> = {
-  'quality-engineering': 'roles',
-  'frontend': 'react',
-  'backend': 'nestjs',
-  'mobile': 'flutter',
-  'data': 'database',
-  'platform': 'common',
+const CATEGORY_ALIASES: Record<string, string[]> = {
+  'quality-engineering': ['roles'],
+  'frontend': ['react', 'nextjs', 'angular'],
+  'backend': ['nestjs', 'spring-boot', 'golang', 'laravel', 'java'],
+  'mobile': ['android', 'ios', 'flutter', 'react-native', 'swift'],
+  'data': ['database'],
+  'platform': ['roles'],
 };
 
 const SkillConfigSchema = z.object({
@@ -44,7 +44,7 @@ const SkillConfigSchema = z.object({
  */
 export class ConfigService {
   private resolveCategoryAlias(category: string) {
-    return CATEGORY_ALIASES[category] || category;
+    return CATEGORY_ALIASES[category] || [category];
   }
 
   private expandPresets(config: SkillConfig) {
@@ -197,9 +197,9 @@ export class ConfigService {
     const depsArray = Array.from(projectDeps);
 
     for (const categoryId in config.skills) {
-      const resolvedCategoryId = this.resolveCategoryAlias(categoryId);
+      const resolvedCategoryIds = this.resolveCategoryAlias(categoryId);
       const category = config.skills[categoryId];
-      const detections = SKILL_DETECTION_REGISTRY[resolvedCategoryId] || [];
+      const detections = resolvedCategoryIds.flatMap((id) => SKILL_DETECTION_REGISTRY[id] || []);
       if (detections.length === 0) continue;
 
       const exclusions = new Set<string>(category.exclude || []);
@@ -233,7 +233,7 @@ export class ConfigService {
 
     for (const categoryId of allKnownCategories) {
       let category = config.skills[categoryId];
-      const detections = SKILL_DETECTION_REGISTRY[categoryId] || [];
+      const detections = this.resolveCategoryAlias(categoryId).flatMap((id) => SKILL_DETECTION_REGISTRY[id] || []);
       if (detections.length === 0) continue;
 
       const isNewCategory = !category;

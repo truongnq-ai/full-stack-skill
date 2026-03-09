@@ -9,7 +9,7 @@ This registry provides domain skills for AI agents. Use categories to compose an
 - backend (alias → nestjs, spring-boot, golang, laravel, java)
 - mobile (alias → android, ios, flutter, react-native, swift)
 - data (alias → database)
-- platform (alias → common for now)
+- platform (alias → roles/devops)
 
 ## Role Presets
 Use `full-stack-skill init` to select a role preset.
