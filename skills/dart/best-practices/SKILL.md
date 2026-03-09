@@ -4,6 +4,8 @@ description: General purity standards for Dart development.
 metadata:
   labels: [dart, clean-code]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.dart']
     keywords: [import, final, const, var, global]
 workflow_ref: ui-ux-pro-max

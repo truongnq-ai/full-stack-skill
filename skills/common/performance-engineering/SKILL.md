@@ -4,6 +4,8 @@ description: Universal standards for high-performance software development acros
 metadata:
   labels: [performance, optimization, scalability, profiling]
   triggers:
+    priority: medium
+    confidence: 0.7
     keywords: [performance, optimize, profile, scalability]
 workflow_ref: performance
 ---

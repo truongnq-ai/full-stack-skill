@@ -4,6 +4,8 @@ description: Response wrapping, pagination, and error standardization.
 metadata:
   labels: [nestjs, api, pagination, response]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.controller.ts', '**/*.dto.ts']
     keywords: [ApiResponse, Pagination, TransformInterceptor]
 workflow_ref: update-docs

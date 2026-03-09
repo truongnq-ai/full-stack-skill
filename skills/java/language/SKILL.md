@@ -4,6 +4,8 @@ description: Modern Java standards (21+) including Records, Pattern Matching, an
 metadata:
   labels: [java, language, jdk21, modern-java]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.java', 'pom.xml', 'build.gradle']
     keywords: [record, switch, sealed, var, virtual thread, stream, optional]
 workflow_ref: battle-test

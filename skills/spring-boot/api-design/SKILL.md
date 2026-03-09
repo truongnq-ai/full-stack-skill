@@ -4,6 +4,8 @@ description: Standards for OpenAPI, Versioning, and Global Error Handling
 metadata:
   labels: [spring-boot, api, openapi, swagger]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*Controller.java']
     keywords: [openapi, swagger, versioning, problemdetails]
 workflow_ref: deep-security-audit

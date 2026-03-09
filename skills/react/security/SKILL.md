@@ -4,6 +4,8 @@ description: Security practices for React (XSS, Auth, Dependencies).
 metadata:
   labels: [react, security, xss, auth]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.tsx', '**/*.jsx']
     keywords: [dangerouslySetInnerHTML, token, auth, xss]
 workflow_ref: deep-security-audit

@@ -4,6 +4,8 @@ description: Standards for Instruments, Memory Management, and Optimization.
 metadata:
   labels: [ios, performance, instruments, leaks]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.swift']
     keywords: [Instruments, Allocations, Leaks, dequeueReusableCell]
 workflow_ref: performance

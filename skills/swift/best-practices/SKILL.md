@@ -4,6 +4,8 @@ description: Standards for Guard, Value Types, Immutability, and Naming
 metadata:
   labels: [swift, best-practices, guard, immutability]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.swift']
     keywords: ['guard', 'let', 'struct', 'final']
 workflow_ref: ui-ux-pro-max

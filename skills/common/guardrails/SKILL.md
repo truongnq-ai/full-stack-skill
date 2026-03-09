@@ -4,6 +4,8 @@ description: Global safety rules for all agent actions — scope, confirmation, 
 metadata:
   labels: [guardrails, safety, global]
   triggers:
+    priority: medium
+    confidence: 0.7
     keywords: [guardrail, safety, confirm, risk, production]
     task_types: [implementation, refactor, debugging, ops]
 workflow_ref: smart-release

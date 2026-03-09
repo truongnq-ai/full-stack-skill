@@ -4,6 +4,8 @@ description: Global Exception Filters and standard error formats.
 metadata:
   labels: [nestjs, errors, filters]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.filter.ts', 'main.ts']
     keywords: [ExceptionFilter, Catch, HttpException]
 workflow_ref: deep-security-audit

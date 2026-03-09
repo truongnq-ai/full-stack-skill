@@ -4,6 +4,8 @@ description: Multi-level caching, Invalidation patterns, and Stampede protection
 metadata:
   labels: [nestjs, caching, redis, performance]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.service.ts', '**/*.interceptor.ts']
     keywords: [CacheInterceptor, CacheTTL, Redis, stale-while-revalidate]
 workflow_ref: performance

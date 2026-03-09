@@ -4,6 +4,8 @@ description: "🚨 Universal standards for version control, branching, PR workfl
 metadata:
   labels: [git, collaboration, commits, branching]
   triggers:
+    priority: medium
+    confidence: 0.7
     keywords: [commit, branch, merge, pull-request, git]
 workflow_ref: deep-security-audit
 ---

@@ -4,6 +4,8 @@ description: Standards for predictable state management using flutter_bloc, free
 metadata:
   labels: [flutter, state-management, bloc, cubit, freezed]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**_bloc.dart', '**_cubit.dart', '**_state.dart', '**_event.dart']
     keywords: [BlocProvider, BlocBuilder, BlocListener, Cubit, Emitter]
 workflow_ref: ui-ux-pro-max

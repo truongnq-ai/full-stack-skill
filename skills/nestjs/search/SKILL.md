@@ -4,6 +4,8 @@ description: Elasticsearch integration and Sync patterns.
 metadata:
   labels: [nestjs, search, elasticsearch, cqrs]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.service.ts', '**/search/**']
     keywords: [Elasticsearch, CQRS, Synchronization]
 workflow_ref: update-docs

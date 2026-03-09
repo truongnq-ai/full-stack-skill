@@ -4,6 +4,8 @@ description: Best practices for JPA, Hibernate, and Database interactions in Spr
 metadata:
   labels: [spring-boot, jpa, hibernate, database]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*Repository.java', '**/*Entity.java']
     keywords: [jpa-repository, entity-graph, transactional, n-plus-1]
 workflow_ref: ui-ux-pro-max

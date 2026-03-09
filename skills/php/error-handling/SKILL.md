@@ -4,6 +4,8 @@ description: Modern PHP error and exception handling standards.
 metadata:
   labels: [php, exceptions, error-handling, psr-3]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.php']
     keywords: [try, catch, finally, Throwable, set_exception_handler]
 workflow_ref: smart-release

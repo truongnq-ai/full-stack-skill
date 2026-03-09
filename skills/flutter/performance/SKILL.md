@@ -4,6 +4,8 @@ description: Optimization standards for rebuilds and memory.
 metadata:
   labels: [performance]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['lib/presentation/**', 'pubspec.yaml']
     keywords: [const, buildWhen, ListView.builder, Isolate, RepaintBoundary]
 workflow_ref: performance

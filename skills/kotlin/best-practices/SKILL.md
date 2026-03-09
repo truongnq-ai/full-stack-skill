@@ -4,6 +4,8 @@ description: Core patterns for robust Kotlin code (Scope Functions, Backing Prop
 metadata:
   labels: [kotlin, best-practices, clean-code]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.kt']
     keywords: [apply, let, run, also, with, backing property, collection]
 workflow_ref: ui-ux-pro-max

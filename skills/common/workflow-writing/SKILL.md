@@ -4,6 +4,8 @@ description: Rules for writing concise, token-efficient workflow and skill files
 metadata:
   labels: [meta, standard, workflow, token-economy, conciseness]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['.agent/workflows/*.md', 'SKILL.md']
     keywords: [create workflow, write workflow, new skill, new workflow]
 workflow_ref: deep-security-audit

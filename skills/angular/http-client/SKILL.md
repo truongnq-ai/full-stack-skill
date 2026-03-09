@@ -4,6 +4,8 @@ description: Best practices for HttpClient, Interceptors, and API interactions.
 metadata:
   labels: [angular, http, api, interceptors]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.service.ts', '**/*.interceptor.ts']
     keywords: [HttpClient, HttpInterceptorFn, withInterceptors]
 workflow_ref: smart-release

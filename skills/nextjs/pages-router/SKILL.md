@@ -4,6 +4,8 @@ description: Legacy routing, getServerSideProps conventions, and strict architec
 metadata:
   labels: [nextjs, routing, pages-router, architecture, legacy, react]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['pages/**/*.tsx', 'pages/**/*.ts']
     keywords:
       [Pages Router, getServerSideProps, getStaticProps, _app, useRouter, FSD]

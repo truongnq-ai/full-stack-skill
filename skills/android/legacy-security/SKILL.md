@@ -4,6 +4,8 @@ description: Standards for Intents, WebViews, and FileProvider
 metadata:
   labels: [android, security, legacy, intents]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*Activity.kt', '**/*WebView*.kt', 'AndroidManifest.xml']
     keywords: ['Intent', 'WebView', 'FileProvider', 'javaScriptEnabled']
 workflow_ref: deep-security-audit

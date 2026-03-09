@@ -4,6 +4,8 @@ description: Idiomatic JavaScript patterns and conventions for maintainable code
 metadata:
   labels: [javascript, best-practices, conventions, code-quality]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.js', '**/*.mjs']
     keywords: [module, import, export, error, validation]
 workflow_ref: ui-ux-pro-max

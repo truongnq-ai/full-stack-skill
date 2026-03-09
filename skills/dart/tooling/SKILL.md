@@ -4,6 +4,8 @@ description: Standards for analysis, linting, formatting, and automation.
 metadata:
   labels: [tooling, linting, automation]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['analysis_options.yaml', 'pubspec.yaml', 'build.yaml']
     keywords: [analysis_options, lints, format, build_runner, cider, husky]
 workflow_ref: update-docs

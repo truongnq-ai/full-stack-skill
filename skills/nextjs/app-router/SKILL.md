@@ -4,6 +4,8 @@ description: File-system routing, Layouts, and Route Groups.
 metadata:
   labels: [nextjs, routing, app-router]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['app/**/page.tsx', 'app/**/layout.tsx', 'app/**/loading.tsx']
     keywords: [App Router, Layout, Route Group, parallel routes]
 workflow_ref: ui-ux-pro-max

@@ -4,6 +4,8 @@ description: SSG, SSR, ISR, Streaming, and Partial Prerendering (PPR).
 metadata:
   labels: [nextjs, rendering, isr, ssr, ssg]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/page.tsx', '**/layout.tsx']
     keywords: [generateStaticParams, dynamic, dynamicParams, PPR, streaming]
 workflow_ref: ui-ux-pro-max

@@ -4,6 +4,8 @@ description: Standards for Data Encryption, Network Security, and Permissions
 metadata:
   labels: [android, security, encryption]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['network_security_config.xml', 'AndroidManifest.xml']
     keywords:
       [

@@ -4,6 +4,8 @@ description: Enforce Material Design 3 and design token usage in Jetpack Compose
 metadata:
   labels: [android, compose, dls, material-design, design-tokens]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*Screen.kt', '**/ui/theme/**', '**/compose/**']
     keywords: [MaterialTheme, Color, Typography, Modifier, Composable]
 workflow_ref: smart-release

@@ -4,6 +4,8 @@ description: Distributed cron jobs and locking patterns.
 metadata:
   labels: [nestjs, cron, scheduling, redis]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.service.ts']
     keywords:
       - "@Cron"

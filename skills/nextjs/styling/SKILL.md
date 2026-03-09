@@ -4,6 +4,8 @@ description: Zero-runtime CSS strategies (Tailwind) and RSC compatibility.
 metadata:
   labels: [nextjs, styling, tailwind, css]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.css', 'tailwind.config.ts', '**/components/ui/*.tsx']
     keywords: [tailwind, css modules, styled-components, clsx, cn]
 workflow_ref: performance

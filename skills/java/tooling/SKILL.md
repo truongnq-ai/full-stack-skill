@@ -4,6 +4,8 @@ description: Standards for build tools (Maven/Gradle) and static analysis.
 metadata:
   labels: [java, tooling, maven, gradle, checkstyle]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['pom.xml', 'build.gradle', 'build.gradle.kts']
     keywords: [build, dependency, plugin, sdk, lint]
 workflow_ref: battle-test

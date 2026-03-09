@@ -4,6 +4,8 @@ description: Standards for error wrapping, checking, and definition in Golang.
 metadata:
   labels: [golang, error-handling, errors]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.go']
     keywords: [error, fmt.errorf, errors.is, errors.as]
 workflow_ref: smart-release

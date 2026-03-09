@@ -4,6 +4,8 @@ description: Core PHP language standards and modern 8.x features.
 metadata:
   labels: [php, language, 8.x]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.php']
     keywords: [declare, readonly, match, constructor, promotion, types]
 workflow_ref: ui-ux-pro-max

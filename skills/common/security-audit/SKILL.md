@@ -4,6 +4,8 @@ description: Adversarial security probing and vulnerability assessments across N
 metadata:
   labels: [security, audit, pentest, vulnerability, cve, secrets, injection]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['package.json', 'go.mod', 'pubspec.yaml', 'pom.xml', 'Dockerfile']
     keywords:
       [

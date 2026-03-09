@@ -4,6 +4,8 @@ description: Standards for GraalVM Native Images, Docker, and Graceful Shutdown
 metadata:
   labels: [spring-boot, deployment, docker, graalvm]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['Dockerfile', 'compose.yml']
     keywords: [docker-layer, native-image, graceful-shutdown]
 workflow_ref: deep-security-audit

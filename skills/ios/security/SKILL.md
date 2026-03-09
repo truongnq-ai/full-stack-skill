@@ -4,6 +4,8 @@ description: Standards for Keychain, Biometrics, and Data Protection.
 metadata:
   labels: [ios, security, keychain, encryption]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.swift']
     keywords:
       [SecItemAdd, kSecClassGenericPassword, LAContext, LocalAuthentication]

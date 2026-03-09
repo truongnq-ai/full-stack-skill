@@ -4,6 +4,8 @@ description: Standards for Business Analysts to create visual diagrams (Data Flo
 metadata:
   labels: [ba, architecture, modeling, mermaid, dfd, use-case]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['system-model.md', 'architecture.md', '*.mermaid']
     keywords: [data flow, system model, use case diagram, mermaid, state machine, sequence diagram]
 workflow_ref: smart-release

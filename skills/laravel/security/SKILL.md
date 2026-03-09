@@ -4,6 +4,8 @@ description: Security standards for hardening Laravel applications.
 metadata:
   labels: [laravel, security, audit, hardening]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['app/Policies/**/*.php', 'config/*.php']
     keywords: [policy, gate, authorize, env, config]
 workflow_ref: deep-security-audit

@@ -4,6 +4,8 @@ description: Structured logging (Pino) and Prometheus metrics.
 metadata:
   labels: [nestjs, logging, monitoring, pino]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['main.ts', '**/*.module.ts']
     keywords: [nestjs-pino, Prometheus, Logger, reqId]
 workflow_ref: deep-security-audit

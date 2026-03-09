@@ -4,6 +4,8 @@ description: Swagger automation and Generic response documentation.
 metadata:
   labels: [nestjs, swagger, openapi, docs]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['main.ts', '**/*.dto.ts']
     keywords: [DocumentBuilder, SwaggerModule, ApiProperty, ApiResponse]
 workflow_ref: deep-security-audit

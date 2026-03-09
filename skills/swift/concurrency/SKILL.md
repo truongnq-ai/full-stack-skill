@@ -4,6 +4,8 @@ description: Standards for async/await, Actors, Task Groups, and MainActor
 metadata:
   labels: [swift, concurrency, async, await, actor]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.swift']
     keywords: ['async', 'await', 'actor', 'Task', 'MainActor']
 workflow_ref: ui-ux-pro-max

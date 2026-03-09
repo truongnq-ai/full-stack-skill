@@ -4,6 +4,8 @@ description: Standards for structural design, Clean Architecture, and project la
 metadata:
   labels: [golang, architecture, clean-arch, project-layout, ddd]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['go.mod', 'internal/**']
     keywords:
       [architecture, structure, folder layout, clean arch, dependency injection]

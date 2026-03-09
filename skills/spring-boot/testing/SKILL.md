@@ -4,6 +4,8 @@ description: Standards for unit, integration, and slice testing in Spring Boot 3
 metadata:
   labels: [spring-boot, testing, junit, testcontainers]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*Test.java']
     keywords: [webmvctest, datajpatest, testcontainers, assertj]
 workflow_ref: battle-test

@@ -4,6 +4,8 @@ description: Enforce design token usage in React Native. Prevents hardcoded styl
 metadata:
   labels: [react-native, dls, design-tokens, theme, styling]
   triggers:
+    priority: medium
+    confidence: 0.7
     files:
       ['**/*Screen.tsx', '**/*Component.tsx', '**/theme/**', '**/styles/**']
     keywords: [StyleSheet, styled-components, theme, colors, spacing]

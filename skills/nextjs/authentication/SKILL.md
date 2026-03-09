@@ -4,6 +4,8 @@ description: Secure token storage (HttpOnly Cookies) and Middleware patterns.
 metadata:
   labels: [nextjs, auth, security, cookies]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['middleware.ts', '**/auth.ts', '**/login/page.tsx']
     keywords: [cookie, jwt, session, localstorage, auth]
 workflow_ref: deep-security-audit

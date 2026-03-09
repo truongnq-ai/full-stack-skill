@@ -4,6 +4,8 @@ description: Standards for WorkManager and Background Processing
 metadata:
   labels: [android, background, workmanager]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*Worker.kt']
     keywords: ['CoroutineWorker', 'WorkManager', 'doWork']
 workflow_ref: smart-release

@@ -4,6 +4,8 @@ description: SwiftUI navigation and deep linking using NavigationStack and Unive
 metadata:
   labels: [ios, swiftui, navigation, deep-linking, universal-links]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*View.swift', '**/*App.swift']
     keywords:
       [

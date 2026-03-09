@@ -4,6 +4,8 @@ description: Standards for ViewModel, StateFlow, and UI State Patterns
 metadata:
   labels: [android, state, viewmodel, flow]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*ViewModel.kt', '**/*UiState.kt']
     keywords: [viewmodel, stateflow, livedata, uistate]
 workflow_ref: ui-ux-pro-max

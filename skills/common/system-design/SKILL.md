@@ -4,6 +4,8 @@ description: Universal architectural standards for building robust, scalable, an
 metadata:
   labels: [system-design, architecture, scalability, reliability]
   triggers:
+    priority: medium
+    confidence: 0.7
     keywords: [architecture, design, system, scalability]
 workflow_ref: update-docs
 ---

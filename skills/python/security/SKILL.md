@@ -4,6 +4,8 @@ description: Production security standards for Python — input validation, inje
 metadata:
   labels: [python, security, owasp, injection, auth, secrets, pydantic]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ["**/*.py", ".env", "pyproject.toml", "requirements.txt"]
     keywords:
       [

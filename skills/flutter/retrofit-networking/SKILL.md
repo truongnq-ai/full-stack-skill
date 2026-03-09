@@ -4,6 +4,8 @@ description: HTTP networking standards using Dio and Retrofit with Auth intercep
 metadata:
   labels: [networking, retrofit, dio]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/data_sources/**', '**/api/**']
     keywords: [Retrofit, Dio, RestClient, GET, POST, Interceptor, refreshing]
 workflow_ref: ui-ux-pro-max

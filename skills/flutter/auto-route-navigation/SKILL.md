@@ -4,6 +4,8 @@ description: Typed routing, nested routes, and guards using auto_route.
 metadata:
   labels: [navigation, auto-route, routing]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/router.dart', '**/app_router.dart']
     keywords: [AutoRoute, AutoRouter, router, guards, navigate, push]
 workflow_ref: ui-ux-pro-max

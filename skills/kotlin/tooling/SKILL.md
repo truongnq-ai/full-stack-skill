@@ -4,6 +4,8 @@ description: Build tools (Gradle KTS), Static Analysis (Detekt), and Testing sta
 metadata:
   labels: [kotlin, tooling, gradle, detekt, ktlint, testing]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['build.gradle.kts', 'libs.versions.toml', 'detekt.yml']
     keywords: [gradle, kts, detekt, mockk, junit]
 workflow_ref: battle-test

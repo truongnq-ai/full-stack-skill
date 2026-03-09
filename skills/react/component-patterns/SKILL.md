@@ -4,6 +4,8 @@ description: Modern React component architecture and composition patterns.
 metadata:
   labels: [react, components, composition, patterns]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.jsx', '**/*.tsx']
     keywords: [component, props, children, composition, hoc, render-props]
 workflow_ref: performance

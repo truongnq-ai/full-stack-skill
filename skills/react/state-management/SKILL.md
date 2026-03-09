@@ -4,6 +4,8 @@ description: Standards for managing local, global, and server state.
 metadata:
   labels: [react, state, redux, zustand, context]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.tsx', '**/*.jsx']
     keywords: [state, useReducer, context, store, props]
 workflow_ref: performance

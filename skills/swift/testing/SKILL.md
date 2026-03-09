@@ -4,6 +4,8 @@ description: Standards for XCTest, Async Tests, and Test Organization
 metadata:
   labels: [swift, testing, xctest, async-testing]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*Tests.swift']
     keywords: ['XCTestCase', 'XCTestExpectation', 'XCTAssert']
 workflow_ref: battle-test

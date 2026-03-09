@@ -4,6 +4,8 @@ description: Typed routes, route state, and redirection using go_router.
 metadata:
   labels: [navigation, go-router, routing]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/router.dart', '**/app_router.dart']
     keywords: [GoRouter, GoRoute, StatefulShellRoute, redirection, typed-routes]
 workflow_ref: deep-security-audit

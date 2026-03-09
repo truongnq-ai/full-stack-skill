@@ -4,6 +4,8 @@ description: Standards for App Distribution (Signing, Obfuscation, App Bundles)
 metadata:
   labels: [android, deployment, release, proguard]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['build.gradle.kts', 'proguard-rules.pro']
     keywords: ['signingConfigs', 'proguard', 'minifyEnabled', '.aab']
 workflow_ref: smart-release

@@ -4,6 +4,8 @@ description: Standards for database interaction, connection pooling, and reposit
 metadata:
   labels: [golang, database, sql, postgres, repository]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['internal/adapter/repository/**']
     keywords: [database, sql, postgres, gorm, sqlc, pgx]
 workflow_ref: performance

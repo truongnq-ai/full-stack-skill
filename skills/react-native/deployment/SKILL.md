@@ -4,6 +4,8 @@ description: OTA updates with CodePush, EAS Build, and release configurations.
 metadata:
   labels: [react-native, deployment, codepush, expo, eas]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['app.json', 'eas.json', 'android/app/build.gradle', 'ios/**']
     keywords: [deployment, codepush, eas, release, build, fastlane]
 workflow_ref: deep-security-audit

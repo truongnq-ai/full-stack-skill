@@ -4,6 +4,8 @@ description: PHP security standards for database access, password handling, and 
 metadata:
   labels: [php, security, pdo, hashing]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.php']
     keywords: [pdo, password_hash, htmlentities, filter_var]
 workflow_ref: deep-security-audit

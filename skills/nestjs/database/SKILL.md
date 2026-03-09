@@ -4,6 +4,8 @@ description: Data access patterns, Scaling, Migrations, and ORM selection.
 metadata:
   labels: [nestjs, database, typeorm, prisma, mongodb]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.entity.ts', 'prisma/schema.prisma']
     keywords: [TypeOrmModule, PrismaService, MongooseModule, Repository]
 workflow_ref: smart-release

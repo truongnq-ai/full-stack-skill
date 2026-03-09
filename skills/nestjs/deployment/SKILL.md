@@ -4,6 +4,8 @@ description: Docker builds, Memory tuning, and Graceful shutdown.
 metadata:
   labels: [nestjs, deployment, docker, k8s]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['Dockerfile', 'k8s/**', 'helm/**']
     keywords: [Dockerfile, max-old-space-size, shutdown hooks]
 workflow_ref: deep-security-audit

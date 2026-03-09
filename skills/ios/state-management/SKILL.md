@@ -4,6 +4,8 @@ description: Standards for Combine, Observation, and Reactive Programming.
 metadata:
   labels: [ios, state, combine, observation, reactive, observation-framework]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.swift']
     keywords:
       - "Observable"

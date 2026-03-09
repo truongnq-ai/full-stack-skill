@@ -4,6 +4,8 @@ description: Enforce strict Design Language System (DLS) adherence. Prevents har
 metadata:
   labels: [flutter, dls, design-tokens, theme, styling]
   triggers:
+    priority: medium
+    confidence: 0.7
     files:
       [
         '**/theme/**',

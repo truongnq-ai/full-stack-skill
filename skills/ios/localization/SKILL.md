@@ -4,6 +4,8 @@ description: Standards for String Catalogs, L10n, and Asset Management.
 metadata:
   labels: [ios, localization, l10n, assets, xcassets]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.stringcatalog', '**/*.xcassets', '**/*.strings']
     keywords: [LocalizedStringResource, NSLocalizedString, String(localized:)]
 workflow_ref: smart-release

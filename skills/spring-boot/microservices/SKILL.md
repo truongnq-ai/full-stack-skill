@@ -4,6 +4,8 @@ description: Standards for synchronous (Feign) and asynchronous (Cloud Stream) c
 metadata:
   labels: [spring-boot, microservices, feign, kafka]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*Client.java', '**/*Consumer.java']
     keywords: [feign-client, spring-cloud-stream, rabbitmq, resilience4j]
 workflow_ref: smart-release

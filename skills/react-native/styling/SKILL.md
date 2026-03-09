@@ -4,6 +4,8 @@ description: StyleSheet API, Flexbox, theming, and responsive design.
 metadata:
   labels: [react-native, styling, theme, flexbox, responsive]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.tsx', '**/*.ts']
     keywords: [StyleSheet, style, theme, responsive, flexbox]
 workflow_ref: smart-release

@@ -4,6 +4,8 @@ description: Standards for ViewBinding, RecyclerView, and XML Layouts
 metadata:
   labels: [android, xml, views, viewbinding]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['layout/*.xml', '**/*Binding.java', '**/*Binding.kt']
     keywords: ['ViewBinding', 'ConstraintLayout', 'RecyclerView']
 workflow_ref: performance

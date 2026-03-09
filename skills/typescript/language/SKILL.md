@@ -4,6 +4,8 @@ description: Modern TypeScript standards for type safety, performance, and maint
 metadata:
   labels: [typescript, language, types, generics]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.ts', '**/*.tsx', 'tsconfig.json']
     keywords:
       [

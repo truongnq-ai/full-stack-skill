@@ -4,6 +4,8 @@ description: Continuous Integration and Deployment standards for Flutter apps.
 metadata:
   labels: [cicd, github-actions, automation, codemagic, fastlane]
   triggers:
+    priority: medium
+    confidence: 0.7
     files:
       [
         '.github/workflows/**.yml',

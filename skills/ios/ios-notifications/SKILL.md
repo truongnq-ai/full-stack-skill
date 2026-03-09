@@ -4,6 +4,8 @@ description: Push notifications for iOS using UserNotifications framework and AP
 metadata:
   labels: [ios, apns, notifications, push, user-notifications]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*Notification*.swift', '**/*AppDelegate.swift']
     keywords:
       [UNUserNotificationCenter, APNS, UNNotificationRequest, deviceToken]

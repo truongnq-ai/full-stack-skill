@@ -4,6 +4,8 @@ description: Handling concurrency and non-blocking I/O in modern PHP.
 metadata:
   labels: [php, concurrency, fibers, async]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.php']
     keywords: [Fiber, suspend, resume, non-blocking, async]
 workflow_ref: smart-release

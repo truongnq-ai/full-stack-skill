@@ -4,6 +4,8 @@ description: Standards for Angular project structure, feature modules, and lazy 
 metadata:
   labels: [angular, architecture, structure, modules]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['angular.json']
     keywords:
       [

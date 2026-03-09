@@ -4,6 +4,8 @@ description: PHP ecosystem tooling, dependency management, and static analysis.
 metadata:
   labels: [php, composer, toolchain, static-analysis]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['composer.json']
     keywords: [composer, lock, phpstan, xdebug]
 workflow_ref: smart-release

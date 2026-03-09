@@ -4,6 +4,8 @@ description: Standards for SwiftData, Core Data, and Local Storage.
 metadata:
   labels: [ios, persistence, swiftdata, coredata, sqlite]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.xcdatamodeld', '**/*Model.swift']
     keywords:
       [

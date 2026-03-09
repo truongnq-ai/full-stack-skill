@@ -4,6 +4,8 @@ description: Standards for safe, structured concurrency in Kotlin.
 metadata:
   labels: [kotlin, concurrency, coroutines, async]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.kt']
     keywords: [suspend, CoroutineScope, launch, async, Flow]
 workflow_ref: ui-ux-pro-max

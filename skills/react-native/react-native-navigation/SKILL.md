@@ -4,6 +4,8 @@ description: Navigation and deep linking for React Native using React Navigation
 metadata:
   labels: [react-native, navigation, routing, deep-linking, react-navigation]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/App.tsx', '**/*Navigator.tsx', '**/*Screen.tsx']
     keywords:
       [

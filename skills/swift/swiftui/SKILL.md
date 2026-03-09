@@ -4,6 +4,8 @@ description: Standards for State Management, View Lifecycle, and Property Wrappe
 metadata:
   labels: [swift, swiftui, state, binding, view]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.swift']
     keywords: ['@State', '@Binding', '@ObservedObject', 'View', 'body']
 workflow_ref: performance

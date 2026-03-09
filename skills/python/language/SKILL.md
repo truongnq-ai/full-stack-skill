@@ -4,6 +4,8 @@ description: Modern Python 3.12+ standards for type safety, async patterns, and 
 metadata:
   labels: [python, language, type-hints, async, pydantic, dataclass]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ["**/*.py", "pyproject.toml", ".python-version"]
     keywords:
       [

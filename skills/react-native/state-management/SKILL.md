@@ -4,6 +4,8 @@ description: Local and global state patterns with Context, Zustand, and Redux To
 metadata:
   labels: [react-native, state, redux, zustand, context]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.tsx', '**/*.ts']
     keywords: [useState, useContext, zustand, redux, state-management]
 workflow_ref: ui-ux-pro-max

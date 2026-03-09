@@ -4,6 +4,8 @@ description: Standards for Coroutines, Flow, and Threading
 metadata:
   labels: [android, concurrency, coroutines, flow]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.kt']
     keywords: ['suspend', 'viewModelScope', 'lifecycleScope', 'Flow']
 workflow_ref: ui-ux-pro-max

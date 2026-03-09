@@ -4,6 +4,8 @@ description: Optimization strategies for smooth 60fps mobile apps.
 metadata:
   labels: [react-native, performance, optimization, flatlist]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.tsx', '**/*.ts']
     keywords: [FlatList, memo, useMemo, useCallback, performance, optimization]
 workflow_ref: performance

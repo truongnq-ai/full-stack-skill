@@ -4,6 +4,8 @@ description: Optimization strategies for React applications (Client & Server).
 metadata:
   labels: [react, performance, optimization, nextjs]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.tsx', '**/*.jsx']
     keywords: [waterfall, bundle, lazy, suspense, dynamic]
 workflow_ref: performance

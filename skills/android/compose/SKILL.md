@@ -4,6 +4,8 @@ description: Standards for high-performance Declarative UI and State Hoisting.
 metadata:
   labels: [android, compose, ui]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.kt']
     keywords: ['@Composable', 'Modifier', 'Column', 'Row']
 workflow_ref: performance

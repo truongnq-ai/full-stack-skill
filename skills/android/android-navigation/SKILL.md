@@ -4,6 +4,8 @@ description: Navigation for Android using Jetpack Compose Navigation and App Lin
 metadata:
   labels: [android, compose, navigation, deep-linking, app-links]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*Screen.kt', '**/*Activity.kt', '**/NavGraph.kt']
     keywords: [NavController, NavHost, composable, navArgument, deepLinks]
 workflow_ref: ui-ux-pro-max

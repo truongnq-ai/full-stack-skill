@@ -4,6 +4,8 @@ description: Standards for enforcing multi-tenant isolation and PostgreSQL Row L
 metadata:
   labels: [security, rls, isolation, authorization, postgresql]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['src/modules/**', 'SECURITY.md', 'src/migrations/**']
     keywords: [RLS, Row Level Security, childId, isolation, access policy]
 workflow_ref: deep-security-audit

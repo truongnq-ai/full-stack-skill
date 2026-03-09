@@ -4,6 +4,8 @@ description: Standards for creating high-quality, granular manual test cases and
 metadata:
   labels: [qa, testing, best-practices]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.feature', '**/*.test.ts', '**/test_plan.md']
     keywords:
       [

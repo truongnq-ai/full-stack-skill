@@ -4,6 +4,8 @@ description: Standards for Angular Router, Lazy Loading, and Guards.
 metadata:
   labels: [angular, routing, guards, lazy-loading]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['*.routes.ts']
     keywords: [angular router, loadComponent, canActivate, resolver]
 workflow_ref: smart-release

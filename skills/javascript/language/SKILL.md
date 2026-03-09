@@ -4,6 +4,8 @@ description: Modern JavaScript (ES2022+) patterns for clean, maintainable code.
 metadata:
   labels: [javascript, language, es6, modern-js]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.js', '**/*.mjs', '**/*.cjs']
     keywords:
       [const, let, arrow, async, await, promise, destructuring, spread, class]

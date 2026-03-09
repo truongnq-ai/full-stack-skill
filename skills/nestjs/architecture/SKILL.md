@@ -4,6 +4,8 @@ description: Standards for scalable, modular NestJS backend architecture.
 metadata:
   labels: [nestjs, backend, architecture, modularity]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.module.ts', 'main.ts']
     keywords: [NestFactory, Module, Controller, Injectable]
 workflow_ref: smart-release

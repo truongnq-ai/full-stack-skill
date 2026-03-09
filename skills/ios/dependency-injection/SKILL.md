@@ -4,6 +4,8 @@ description: Standards for Protocol-based DI, Property Wrappers, and Factory/Nee
 metadata:
   labels: [ios, di, dependency-injection, injection, modularity]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.swift']
     keywords:
       - "@Injected"

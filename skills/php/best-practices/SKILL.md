@@ -4,6 +4,8 @@ description: PHP best practices, PSR standards, and code quality guidelines.
 metadata:
   labels: [php, psr, best-practices]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.php']
     keywords: [psr-12, camelCase, PascalCase, dry, solid]
 workflow_ref: smart-release

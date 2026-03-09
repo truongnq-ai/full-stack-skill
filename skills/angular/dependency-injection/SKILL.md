@@ -4,6 +4,8 @@ description: Best practices for DI, inject() usage, and providers.
 metadata:
   labels: [angular, di, injection, providers]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.service.ts', '**/*.ts']
     keywords: [angular inject, providedIn, injection token]
 workflow_ref: smart-release

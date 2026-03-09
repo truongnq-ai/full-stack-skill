@@ -4,6 +4,8 @@ description: Automated testing standards with Pest and PHPUnit.
 metadata:
   labels: [laravel, testing, pest, phpunit, tdd]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['tests/**/*.php', 'phpunit.xml']
     keywords: [feature, unit, mock, factory, sqlite]
 workflow_ref: battle-test

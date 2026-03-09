@@ -4,6 +4,8 @@ description: Expert process for gathering requirements and drafting PRDs (Iterat
 metadata:
   labels: [prd, requirements, planning, product]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['PRD.md', 'specs/*.md']
     keywords: [create prd, draft requirements, new feature spec]
 workflow_ref: plan-feature

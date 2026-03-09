@@ -4,6 +4,8 @@ description: Core coding standards, dependency injection, and configuration for 
 metadata:
   labels: [spring-boot, best-practices, dependency-injection]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['application.properties', '**/*Service.java']
     keywords:
       [autowired, requiredargsconstructor, configuration-properties, slf4j]

@@ -4,6 +4,8 @@ description: Standards for project structure, layering, and API design in Spring
 metadata:
   labels: [spring-boot, architecture, layering]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['pom.xml', 'build.gradle']
     keywords:
       - "structure"

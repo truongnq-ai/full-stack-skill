@@ -4,6 +4,8 @@ description: Fastify adapter, Scope management, and Compression.
 metadata:
   labels: [nestjs, performance, fastify]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['main.ts']
     keywords: [FastifyAdapter, compression, SINGLETON, REQUEST scope]
 workflow_ref: performance

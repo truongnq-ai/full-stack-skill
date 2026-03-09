@@ -4,6 +4,8 @@ description: Context-less navigation, named routes, and middleware using GetX.
 metadata:
   labels: [navigation, getx, routing, middleware]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/app_pages.dart', '**/app_routes.dart']
     keywords: [GetPage, Get.to, Get.off, Get.offAll, Get.toNamed, GetMiddleware]
 workflow_ref: ui-ux-pro-max

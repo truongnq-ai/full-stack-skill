@@ -4,6 +4,8 @@ description: Modern Dart standards (3.x+) including null safety and patterns.
 metadata:
   labels: [dart, language, idioms]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.dart']
     keywords:
       [sealed, record, switch, pattern, extension, final, late, async, await]

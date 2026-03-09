@@ -4,6 +4,8 @@ description: Standards for Room Database and DataStore
 metadata:
   labels: [android, persistence, room, database]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*Dao.kt', '**/*Database.kt', '**/*Entity.kt']
     keywords: ['@Dao', '@Entity', 'RoomDatabase']
 workflow_ref: ui-ux-pro-max

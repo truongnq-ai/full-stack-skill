@@ -4,6 +4,8 @@ description: Debugging, build analysis, and ecosystem tools.
 metadata:
   labels: [react, tooling, debug, performance]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['package.json']
     keywords: [devtool, bundle, strict mode, profile]
 workflow_ref: performance

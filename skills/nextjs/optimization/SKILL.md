@@ -4,6 +4,8 @@ description: Image, Font, Script, and Metadata optimization strategies.
 metadata:
   labels: [nextjs, optimization, seo, performance]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/layout.tsx', '**/page.tsx']
     keywords: [next/image, next/font, metadata, generateMetadata]
 workflow_ref: performance

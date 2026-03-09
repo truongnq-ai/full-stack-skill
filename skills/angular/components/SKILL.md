@@ -4,6 +4,8 @@ description: Standards for Standalone Components, Signals inputs, and Control Fl
 metadata:
   labels: [angular, components, standalone, signals, control-flow]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.component.ts', '**/*.html']
     keywords:
       - "angular component"

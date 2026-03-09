@@ -4,6 +4,8 @@ description: Secure storage, deep linking security, and certificate pinning for 
 metadata:
   labels: [react-native, security, keychain, secure-storage]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.tsx', '**/*.ts']
     keywords:
       [security, keychain, secure-storage, deep-link, certificate-pinning]

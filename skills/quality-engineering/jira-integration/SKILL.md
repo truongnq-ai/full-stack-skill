@@ -4,6 +4,8 @@ description: Standards for retrieving Jira issue details and linking Zephyr test
 metadata:
   labels: [jira, zephyr, integration, traceability]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/jira_*.xml', '**/test_case.json']
     keywords: [jira issue, link zephyr, jira details, jira mcp]
 workflow_ref: deep-security-audit

@@ -4,6 +4,8 @@ description: REST and JSON API standards for modern Laravel backends.
 metadata:
   labels: [laravel, api, rest, json, sanctum]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['routes/api.php', 'app/Http/Resources/**/*.php']
     keywords: [resource, collection, sanctum, passport, cors]
 workflow_ref: smart-release

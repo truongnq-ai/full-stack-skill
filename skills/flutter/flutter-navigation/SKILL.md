@@ -4,6 +4,8 @@ description: Flutter navigation patterns including go_router, deep linking, and 
 metadata:
   labels: [flutter, navigation, routing, deep-linking, go-router]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*_route.dart', '**/*_router.dart', '**/main.dart']
     keywords: [Navigator, GoRouter, routes, deep link, go_router, AutoRoute]
 workflow_ref: ui-ux-pro-max

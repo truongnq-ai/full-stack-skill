@@ -4,6 +4,8 @@ description: Standards for scheduled tasks and distributed locking with ShedLock
 metadata:
   labels: [spring-boot, scheduling, job]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*Scheduler.java', '**/*Job.java']
     keywords: [scheduled, shedlock, cron]
 workflow_ref: ui-ux-pro-max

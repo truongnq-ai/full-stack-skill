@@ -4,6 +4,8 @@ description: Standards for Retrofit, OkHttp, and API Communication
 metadata:
   labels: [android, networking, retrofit, okhttp]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*Api.kt', '**/*Service.kt', '**/*Client.kt']
     keywords: ['Retrofit', 'OkHttpClient', '@GET', '@POST']
 workflow_ref: smart-release

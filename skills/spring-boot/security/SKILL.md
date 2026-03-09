@@ -4,6 +4,8 @@ description: Spring Security 6+ standards, Lambda DSL, and Hardening
 metadata:
   labels: [spring-boot, security, oauth2, jwt]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*SecurityConfig.java', '**/*Filter.java']
     keywords: [security-filter-chain, lambda-dsl, csrf, cors]
 workflow_ref: deep-security-audit

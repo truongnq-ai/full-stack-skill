@@ -4,6 +4,8 @@ description: Core standards for unit, widget, and integration testing in Flutter
 metadata:
   labels: [flutter, testing, quality]
   triggers:
+    priority: medium
+    confidence: 0.7
     keywords: [flutter test, widget test, unit test, integration test, mocking]
     files: ['**/test/**', '**/*test.dart']
 workflow_ref: battle-test

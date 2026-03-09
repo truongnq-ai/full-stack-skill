@@ -4,6 +4,8 @@ description: Standards for Provisioning, Signing, and Fastlane.
 metadata:
   labels: [ios, deployment, fastlane, provisioning]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['Fastfile', 'Appfile', 'Matchfile']
     keywords: [ios_bundle_id, provisioning_profile, testflight]
 workflow_ref: smart-release

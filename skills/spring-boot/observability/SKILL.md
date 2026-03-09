@@ -4,6 +4,8 @@ description: Standards for Micrometer, Distributed Tracing, and Structured Loggi
 metadata:
   labels: [spring-boot, observability, tracing, logs]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['logback-spring.xml', 'application.properties']
     keywords: [micrometer, tracing, correlation-id, mdc]
 workflow_ref: deep-security-audit

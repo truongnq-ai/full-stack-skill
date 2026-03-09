@@ -4,6 +4,8 @@ description: Best practices for multi-language handling, locale routing, and det
 metadata:
   labels: [nextjs, i18n, routing, middleware]
   triggers:
+    priority: medium
+    confidence: 0.7
     files:
       [
         'middleware.ts',

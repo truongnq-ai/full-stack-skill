@@ -4,6 +4,8 @@ description: Handling iOS and Android differences with Platform API and native m
 metadata:
   labels: [react-native, platform, ios, android, native-modules]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.tsx', '**/*.ts', '**/*.ios.*', '**/*.android.*']
     keywords: [Platform, Platform.select, native-module, ios, android]
 workflow_ref: smart-release

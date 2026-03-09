@@ -4,6 +4,8 @@ description: Modern layout and widget composition standards.
 metadata:
   labels: [flutter, clean-code, widgets]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['lib/presentation/**/*.dart']
     keywords: [context.mounted, SizedBox, Gap, composition, shrink]
 workflow_ref: performance

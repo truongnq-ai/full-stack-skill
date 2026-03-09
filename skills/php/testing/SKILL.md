@@ -4,6 +4,8 @@ description: Unit and integration testing standards for PHP applications.
 metadata:
   labels: [php, testing, phpunit, pest, tdd]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['tests/**/*.php', 'phpunit.xml']
     keywords: [phpunit, pest, mock, assert, tdd]
 workflow_ref: battle-test

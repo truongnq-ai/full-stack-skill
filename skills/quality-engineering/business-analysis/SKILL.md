@@ -4,6 +4,8 @@ description: Standard for deep requirement investigation, logic validation, and 
 metadata:
   labels: [ba, requirement-analysis, logic-validation, technical-impact]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/user_story.md', '**/requirements.md', '**/jira_*.xml']
     keywords:
       [

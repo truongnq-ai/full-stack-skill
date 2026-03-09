@@ -4,6 +4,8 @@ description: Push notifications for Android using Firebase Cloud Messaging and N
 metadata:
   labels: [android, fcm, notifications, push, notification-channels]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*Notification*.kt', '**/MainActivity.kt']
     keywords: [FirebaseMessaging, NotificationCompat, NotificationChannel, FCM]
 workflow_ref: smart-release

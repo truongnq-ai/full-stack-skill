@@ -4,6 +4,8 @@ description: Motion design principles for mobile apps. Covers timing curves, tra
 metadata:
   labels: [mobile, animation, motion, transitions, ux]
   triggers:
+    priority: medium
+    confidence: 0.7
     files:
       [
         '**/*_page.dart',

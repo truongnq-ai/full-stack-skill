@@ -4,6 +4,8 @@ description: Standards for Static Analysis (Detekt, Ktlint) and CI/CD Checks
 metadata:
   labels: [android, tooling, lint, detekt]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['build.gradle.kts', 'detekt.yml']
     keywords: ['detekt', 'ktlint', 'lint']
 workflow_ref: smart-release

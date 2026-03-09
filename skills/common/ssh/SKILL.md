@@ -4,6 +4,8 @@ description: SSH connection management — tunnels, config, SCP/rsync safely. Ne
 metadata:
   labels: [ssh, security, infra]
   triggers:
+    priority: medium
+    confidence: 0.7
     keywords: [ssh, tunnel, scp, rsync, port forward]
     files: ['**/.ssh/config', 'Dockerfile', 'docker-compose*.yml']
 workflow_ref: deep-security-audit

@@ -4,6 +4,8 @@ description: idiomatic Kotlin 1.9+ standards (Null Safety, Expressions, Extensio
 metadata:
   labels: [kotlin, language, idioms, null-safety]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.kt', '**/*.kts']
     keywords:
       - "val"

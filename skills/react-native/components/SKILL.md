@@ -4,6 +4,8 @@ description: Modern component patterns using function components and composition
 metadata:
   labels: [react-native, components, hooks, patterns]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.tsx', '**/*.jsx']
     keywords:
       [component, props, children, composition, presentational, container]

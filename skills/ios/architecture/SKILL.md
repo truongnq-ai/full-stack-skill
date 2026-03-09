@@ -4,6 +4,8 @@ description: Standards for MVVM, Coordinators, and Clean Architecture (VIP/VIPER
 metadata:
   labels: [ios, architecture, mvvm, coordinator, vips]
   triggers:
+    priority: medium
+    confidence: 0.7
     files:
       [
         '**/*ViewModel.swift',

@@ -4,6 +4,8 @@ description: Incident response FSM for system operations — always read logs fi
 metadata:
   labels: [ops, incident, reliability]
   triggers:
+    priority: medium
+    confidence: 0.7
     keywords: [incident, outage, restart, production, downtime]
     files: ['Dockerfile', 'docker-compose.yml', '*.service', '*.conf']
 workflow_ref: smart-release

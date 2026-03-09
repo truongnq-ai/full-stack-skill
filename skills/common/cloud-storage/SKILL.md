@@ -4,6 +4,8 @@ description: Universal standards and patterns for integrating with cloud storage
 metadata:
   labels: [cloud, storage, google-drive, aws-s3, file-management, oauth2]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['*storage*', '*drive*', '*upload*', '*download*']
     keywords: [google drive, s3, file upload, cloud storage, file management]
 workflow_ref: ui-ux-pro-max

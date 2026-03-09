@@ -4,6 +4,8 @@ description: HARD STOP when ambiguity is detected — never auto-decide on the u
 metadata:
   labels: [clarification, safety, decision]
   triggers:
+    priority: medium
+    confidence: 0.7
     keywords: [clarify, ambiguity, options, decision, choose]
     task_types: [analysis, planning]
 workflow_ref: smart-release

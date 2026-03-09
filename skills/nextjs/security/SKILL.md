@@ -4,6 +4,8 @@ description: Core security standards for App Router and Server Actions.
 metadata:
   labels: [nextjs, security, rsc, csrf, zod]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['app/**/actions.ts', 'middleware.ts']
     keywords: [action, boundary, sanitize, auth, jose]
 workflow_ref: deep-security-audit

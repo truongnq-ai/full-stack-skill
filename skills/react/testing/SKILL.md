@@ -4,6 +4,8 @@ description: Testing strategies with RTL and Jest/Vitest.
 metadata:
   labels: [react, testing, jest, vitest]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.test.tsx', '**/*.spec.tsx']
     keywords: [render, screen, userEvent, expect]
 workflow_ref: battle-test

@@ -4,6 +4,8 @@ description: TypeScript patterns specific to React components and hooks.
 metadata:
   labels: [react, typescript, types]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.tsx']
     keywords: [ReactNode, FC, PropsWithChildren, ComponentProps]
 workflow_ref: smart-release

@@ -4,6 +4,8 @@ description: Standards for organizing code by feature at the root level to impro
 metadata:
   labels: [architecture, clean-architecture, feature-driven, ddd, modularity]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['lib/features/**']
     keywords:
       [feature, domain, infrastructure, application, presentation, modular]

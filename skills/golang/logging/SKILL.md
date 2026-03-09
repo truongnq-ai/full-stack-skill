@@ -4,6 +4,8 @@ description: Standards for structured logging and observability in Golang.
 metadata:
   labels: [golang, logging, slog, zap, observability]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['go.mod', 'pkg/logger/**']
     keywords: [logging, slog, structured logging, zap]
 workflow_ref: performance

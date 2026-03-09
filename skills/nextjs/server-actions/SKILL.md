@@ -4,6 +4,8 @@ description: Mutations, Form handling, and RPC-style calls.
 metadata:
   labels: [nextjs, actions, mutations]
   triggers:
+    priority: medium
+    confidence: 0.7
     files:
       [
         'app/**/actions.ts',

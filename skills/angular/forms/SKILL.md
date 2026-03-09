@@ -4,6 +4,8 @@ description: Standards for Typed Reactive Forms and Validators.
 metadata:
   labels: [angular, forms, reactive-forms, validation]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.ts', '**/*.html']
     keywords: [FormBuilder, FormGroup, FormControl, Validators]
 workflow_ref: smart-release

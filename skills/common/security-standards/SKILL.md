@@ -4,6 +4,8 @@ description: Universal security protocols for building safe and resilient softwa
 metadata:
   labels: [security, encryption, authentication, authorization]
   triggers:
+    priority: medium
+    confidence: 0.7
     keywords: [security, encrypt, authenticate, authorize]
 workflow_ref: deep-security-audit
 ---

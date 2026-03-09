@@ -4,6 +4,8 @@ description: Enforces Test-Driven Development (Red-Green-Refactor) for rigorous 
 metadata:
   labels: [tdd, testing, quality]
   triggers:
+    priority: medium
+    confidence: 0.7
     keywords: [tdd, test-driven, red green refactor, test first]
 workflow_ref: battle-test
 ---

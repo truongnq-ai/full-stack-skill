@@ -4,6 +4,8 @@ description: Standards for Throwing Functions, Result Type, and Never
 metadata:
   labels: [swift, errors, throws, result]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.swift']
     keywords: ['throws', 'try', 'catch', 'Result', 'Error']
 workflow_ref: smart-release

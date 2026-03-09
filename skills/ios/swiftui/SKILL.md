@@ -4,6 +4,8 @@ description: Standards for declarative UI construction and data flow in iOS.
 metadata:
   labels: [ios, swiftui, ui]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*View.swift']
     keywords: [View, State, Binding, EnvironmentObject]
 workflow_ref: ui-ux-pro-max

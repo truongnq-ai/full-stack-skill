@@ -4,6 +4,8 @@ description: Protocol for auditing structural debt, logic leakage, and fragmenta
 metadata:
   labels: [architecture, tech-debt, logic-leakage, refactoring, code-quality]
   triggers:
+    priority: medium
+    confidence: 0.7
     files:
       ['package.json', 'pubspec.yaml', 'go.mod', 'pom.xml', 'nest-cli.json']
     keywords:

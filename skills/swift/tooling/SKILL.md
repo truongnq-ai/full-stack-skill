@@ -4,6 +4,8 @@ description: Standards for SPM, Build Configs, and Code Quality
 metadata:
   labels: [swift, tooling, spm, swiftlint]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['Package.swift', '.swiftlint.yml']
     keywords: ['package', 'target', 'dependency']
 workflow_ref: update-docs

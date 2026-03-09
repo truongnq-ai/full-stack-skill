@@ -4,6 +4,8 @@ description: Never create/modify files outside approved scope — protect codeba
 metadata:
   labels: [file-safety, guardrails, scope]
   triggers:
+    priority: medium
+    confidence: 0.7
     keywords: [file scope, modify files, delete, overwrite, destructive]
     task_types: [implementation, refactor]
 workflow_ref: update-docs

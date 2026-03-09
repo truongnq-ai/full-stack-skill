@@ -4,6 +4,8 @@ description: Data access patterns, Scaling, Migrations, and ORM selection.
 metadata:
   labels: [nestjs, database, postgresql, typeorm, prisma]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.entity.ts', 'prisma/schema.prisma', '**/migrations/*.sql']
     keywords: [TypeOrmModule, PrismaService, PostgresModule, Repository]
 workflow_ref: deep-security-audit

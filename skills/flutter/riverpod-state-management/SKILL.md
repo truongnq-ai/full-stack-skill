@@ -4,6 +4,8 @@ description: Reactive state management using Riverpod 2.0 with code generation.
 metadata:
   labels: [flutter, state-management, riverpod, dependency-injection, reactive]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**_provider.dart', '**_notifier.dart']
     keywords:
       - "riverpod"

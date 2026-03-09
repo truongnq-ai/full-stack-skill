@@ -4,6 +4,8 @@ description: Standard workflow for implementing background jobs using BullMQ in 
 metadata:
   labels: [nestjs, bullmq, background-jobs, queue, redis]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['package.json', '**/*.module.ts']
     keywords: [queue, backlog, background job, async task, worker]
 workflow_ref: smart-release

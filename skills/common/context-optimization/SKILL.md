@@ -4,6 +4,8 @@ description: Techniques to maximize context window efficiency, reduce latency, a
 metadata:
   labels: [context, optimization, tokens, memory, performance]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['*.log', 'chat-history.json']
     keywords: [reduce tokens, optimize context, summarize history, clear output]
 workflow_ref: performance

@@ -4,6 +4,8 @@ description: Controller/Service separation and Custom Decorators.
 metadata:
   labels: [nestjs, controller, service]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.controller.ts', '**/*.service.ts']
     keywords: [Controller, Injectable, ExecutionContext, createParamDecorator]
 workflow_ref: update-docs

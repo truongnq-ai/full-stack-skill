@@ -4,6 +4,8 @@ description: Standards for Optionals, Protocols, Extensions, and Type Safety
 metadata:
   labels: [swift, language, optionals, protocols]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.swift']
     keywords: ['protocol', 'extension', 'optional', 'guard', 'enum']
 workflow_ref: smart-release

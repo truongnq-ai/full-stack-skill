@@ -4,6 +4,8 @@ description: Standards for efficient React functional components and hooks usage
 metadata:
   labels: [react, hooks, performance, frontend]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.tsx', '**/*.jsx']
     keywords:
       [

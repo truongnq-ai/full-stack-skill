@@ -4,6 +4,8 @@ description: Signals-based state management and NgRx Signal Store.
 metadata:
   labels: [angular, state, signals, ngrx, store]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.store.ts', '**/state/**']
     keywords: [angular signals, signal store, computed, effect]
 workflow_ref: smart-release

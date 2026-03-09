@@ -4,6 +4,8 @@ description: gRPC, RabbitMQ standards and Monorepo contracts.
 metadata:
   labels: [nestjs, microservices, grpc, rabbitmq]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['main.ts', '**/*.controller.ts']
     keywords: [Transport.GRPC, Transport.RMQ, MicroserviceOptions]
 workflow_ref: plan-feature

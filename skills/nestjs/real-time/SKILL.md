@@ -4,6 +4,8 @@ description: WebSocket and SSE selection strategies and scaling.
 metadata:
   labels: [nestjs, websockets, sse, socket.io]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.gateway.ts', '**/*.controller.ts']
     keywords: [WebSocketGateway, SubscribeMessage, Sse, Socket.io]
 workflow_ref: deep-security-audit

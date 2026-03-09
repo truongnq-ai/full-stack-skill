@@ -4,6 +4,8 @@ description: The 4 layers of caching (Memoization, Data Cache, Full Route, Route
 metadata:
   labels: [nextjs, caching, isr, revalidation]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/page.tsx', '**/layout.tsx', '**/action.ts']
     keywords: [unstable_cache, revalidateTag, Router Cache, Data Cache]
 workflow_ref: smart-release

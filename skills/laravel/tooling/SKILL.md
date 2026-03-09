@@ -4,6 +4,8 @@ description: Ecosystem management, Artisan, and asset bundling.
 metadata:
   labels: [laravel, artisan, vite, horizon, pint]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['package.json', 'composer.json', 'vite.config.js']
     keywords: [artisan, vite, horizon, pint, blade]
 workflow_ref: ui-ux-pro-max

@@ -4,6 +4,8 @@ description: Standards for Hilt Setup, Scoping, and Modules
 metadata:
   labels: [android, di, hilt, dagger]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*Module.kt', '**/*Component.kt']
     keywords: ['@HiltAndroidApp', '@Inject', '@Provides', '@Binds']
 workflow_ref: smart-release

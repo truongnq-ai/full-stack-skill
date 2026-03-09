@@ -4,6 +4,8 @@ description: Rules for translating high-level PRDs into actionable, development-
 metadata:
   labels: [ba, agile, user-story, bdd, invest, acceptance-criteria]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['user-stories.md', 'backlog.md']
     keywords: [user story, break down, acceptance criteria, bdd, scrum, agile]
 workflow_ref: performance

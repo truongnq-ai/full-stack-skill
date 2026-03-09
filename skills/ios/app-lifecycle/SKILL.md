@@ -4,6 +4,8 @@ description: Standards for AppDelegate, SceneDelegate, Deep Linking, and Backgro
 metadata:
   labels: [ios, lifecycle, scenedelegate, background-tasks]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['AppDelegate.swift', 'SceneDelegate.swift']
     keywords:
       [

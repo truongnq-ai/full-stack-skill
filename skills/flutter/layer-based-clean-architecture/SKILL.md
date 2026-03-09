@@ -4,6 +4,8 @@ description: Standards for separation of concerns, layer dependency rules, and D
 metadata:
   labels: [architecture, clean-architecture, layers, ddd]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['lib/domain/**', 'lib/infrastructure/**', 'lib/application/**']
     keywords:
       [domain, infrastructure, application, presentation, layers, dto, mapper]

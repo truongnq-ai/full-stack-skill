@@ -4,6 +4,8 @@ description: Standards for safe concurrent programming using Goroutines, Channel
 metadata:
   labels: [golang, concurrency, goroutines, channels, context, sync]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.go']
     keywords: [goroutine, go keyword, channel, mutex, waitgroup, context]
 workflow_ref: smart-release

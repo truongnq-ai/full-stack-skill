@@ -4,6 +4,8 @@ description: Jest and React Native Testing Library for component and integration
 metadata:
   labels: [react-native, testing, jest, testing-library]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.test.tsx', '**/*.spec.tsx', '__tests__/**']
     keywords: [test, testing, jest, render, fireEvent, waitFor]
 workflow_ref: battle-test

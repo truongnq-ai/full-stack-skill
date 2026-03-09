@@ -4,6 +4,8 @@ description: Security standards for Flutter applications based on OWASP Mobile.
 metadata:
   labels: [security, owasp, pii, encryption]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['lib/infrastructure/**', 'pubspec.yaml']
     keywords: [secure_storage, obfuscate, jailbreak, pinning, PII, OWASP]
 workflow_ref: deep-security-audit

@@ -4,6 +4,8 @@ description: Standards for Jetpack Navigation Compose (Type-safe)
 metadata:
   labels: [android, navigation, compose]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*NavHost.kt', '**/*Graph.kt']
     keywords: ['NavHost', 'navController', '@Serializable']
 workflow_ref: ui-ux-pro-max

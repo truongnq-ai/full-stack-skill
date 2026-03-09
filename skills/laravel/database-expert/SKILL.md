@@ -4,6 +4,8 @@ description: Expert patterns for advanced queries, Redis caching, and database s
 metadata:
   labels: [laravel, database, redis, sql, performance]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['config/database.php', 'database/migrations/*.php']
     keywords: [join, aggregate, subquery, selectRaw, Cache]
 workflow_ref: performance

@@ -4,6 +4,8 @@ description: Security best practices for Angular (XSS, CSP, Route Guards).
 metadata:
   labels: [angular, security, xss, csp]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.ts', '**/*.html']
     keywords: [DomSanitizer, innerHTML, bypassSecurityTrust, CSP]
 workflow_ref: deep-security-audit

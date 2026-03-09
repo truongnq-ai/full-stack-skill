@@ -4,6 +4,8 @@ description: Standards for multi-language support using easy_localization with C
 metadata:
   labels: [localization, l10n, i18n, easy_localization, csv]
   triggers:
+    priority: medium
+    confidence: 0.7
     files:
       ['**/assets/translations/*.json', '**/assets/langs/*.csv', 'main.dart']
     keywords:

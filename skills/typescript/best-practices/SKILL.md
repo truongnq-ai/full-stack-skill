@@ -4,6 +4,8 @@ description: Idiomatic TypeScript patterns for clean, maintainable code.
 metadata:
   labels: [typescript, best-practices, idioms, conventions]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.ts', '**/*.tsx']
     keywords: [class, function, module, import, export, async, promise]
 workflow_ref: deep-security-audit

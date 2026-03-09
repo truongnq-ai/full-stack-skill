@@ -4,6 +4,8 @@ description: Advanced Eloquent ORM patterns for performance and query reuse.
 metadata:
   labels: [laravel, eloquent, orm, database]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['app/Models/**/*.php']
     keywords: [scope, with, eager, chunk, model]
 workflow_ref: performance

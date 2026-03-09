@@ -4,6 +4,8 @@ description: Optimization techniques including OnPush, @defer, and Image Optimiz
 metadata:
   labels: [angular, performance, optimization, onpush]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.ts', '**/*.html']
     keywords:
       - "ChangeDetectionStrategy.OnPush"

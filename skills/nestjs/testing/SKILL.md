@@ -4,6 +4,8 @@ description: Unit and E2E testing with Jest, mocking strategies, and database is
 metadata:
   labels: [nestjs, testing, jest, e2e]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.spec.ts', 'test/**/*.e2e-spec.ts']
     keywords: [Test.createTestingModule, supertest, jest, beforeEach]
 workflow_ref: battle-test

@@ -4,6 +4,8 @@ description: Unit, Integration, and E2E testing standards for App Router.
 metadata:
   labels: [nextjs, testing, vitest, playwright, msw]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.test.{ts,tsx}', 'cypress/**', 'tests/**']
     keywords: [vitest, playwright, msw, testing-library]
 workflow_ref: battle-test

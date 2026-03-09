@@ -4,6 +4,8 @@ description: Essential rules for code comments, READMEs, and technical documenta
 metadata:
   labels: [documentation, comments, docstrings, readme]
   triggers:
+    priority: medium
+    confidence: 0.7
     keywords: [comment, docstring, readme, documentation]
 workflow_ref: update-docs
 ---

@@ -4,6 +4,8 @@ description: Core idioms, style guides, and best practices for writing idiomatic
 metadata:
   labels: [golang, style, idioms, best-practices]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.go', 'go.mod']
     keywords: [golang, go code, style, idiomatic]
 workflow_ref: smart-release

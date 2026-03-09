@@ -4,6 +4,8 @@ description: Functional error handling using Dartz and Either.
 metadata:
   labels: [error-handling, dartz, functional]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['lib/domain/**', 'lib/infrastructure/**']
     keywords: [Either, fold, Left, Right, Failure, dartz]
 workflow_ref: smart-release

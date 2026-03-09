@@ -4,6 +4,8 @@ description: Push notifications and local notifications for Flutter using Fireba
 metadata:
   labels: [flutter, notifications, fcm, firebase, push, local-notifications]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*notification*.dart', '**/main.dart']
     keywords:
       [

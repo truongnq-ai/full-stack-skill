@@ -106,6 +106,8 @@ export class FrontmatterRule implements ValidationRule {
         const keywords = (triggers as any).keywords;
         const files = (triggers as any).files;
         const taskTypes = (triggers as any).task_types;
+        const priority = (triggers as any).priority;
+        const confidence = (triggers as any).confidence;
 
         const hasKeywords = Array.isArray(keywords) && keywords.length > 0;
         const hasFiles = Array.isArray(files) && files.length > 0;
@@ -130,6 +132,16 @@ export class FrontmatterRule implements ValidationRule {
 
         if (Array.isArray(taskTypes) && taskTypes.some((t) => typeof t !== 'string')) {
           result.errors.push('All "metadata.triggers.task_types" values must be strings');
+          result.passed = false;
+        }
+
+        if (!priority || !['high', 'medium', 'low'].includes(priority)) {
+          result.errors.push('metadata.triggers.priority must be one of: high, medium, low');
+          result.passed = false;
+        }
+
+        if (typeof confidence !== 'number' || confidence < 0 || confidence > 1) {
+          result.errors.push('metadata.triggers.confidence must be a number between 0 and 1');
           result.passed = false;
         }
       }

@@ -4,6 +4,8 @@ description: Core architectural standards for scalable Laravel applications.
 metadata:
   labels: [laravel, architecture, srp, service-layer]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['app/Http/Controllers/**/*.php', 'routes/*.php']
     keywords: [controller, service, action, request, container]
 workflow_ref: smart-release

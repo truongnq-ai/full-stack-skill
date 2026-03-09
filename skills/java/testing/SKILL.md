@@ -4,6 +4,8 @@ description: Modern testing practices using JUnit 5, AssertJ, and Mockito.
 metadata:
   labels: [java, testing, junit, assertj, mockito]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*Test.java', '**/*IT.java']
     keywords: [test, assert, mock, verify, junit]
 workflow_ref: battle-test

@@ -4,6 +4,8 @@ description: Security standards for Go backend services (Input Validation, Crypt
 metadata:
   labels: [golang, security, validation, crypto]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.go']
     keywords: [crypto/rand, sql, sanitize, jwt, bcrypt, validation]
 workflow_ref: deep-security-audit

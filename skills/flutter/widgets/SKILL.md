@@ -4,6 +4,8 @@ description: Principles for maintainable UI components.
 metadata:
   labels: [ui, widgets]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**_page.dart', '**_screen.dart', '**/widgets/**']
     keywords: [StatelessWidget, const, Theme, ListView]
 workflow_ref: performance

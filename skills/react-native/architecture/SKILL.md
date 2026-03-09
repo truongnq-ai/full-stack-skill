@@ -4,6 +4,8 @@ description: Feature-first project structure and separation of concerns for scal
 metadata:
   labels: [react-native, architecture, structure, features]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['src/**/*.tsx', 'src/**/*.ts', 'app.json']
     keywords:
       [

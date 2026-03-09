@@ -4,6 +4,8 @@ description: Authentication, RBAC, and Hardening standards.
 metadata:
   labels: [nestjs, security, auth, jwt]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.guard.ts', '**/*.strategy.ts', '**/auth/**']
     keywords: [Passport, JWT, AuthGuard, CSRF, Helmet]
 workflow_ref: deep-security-audit

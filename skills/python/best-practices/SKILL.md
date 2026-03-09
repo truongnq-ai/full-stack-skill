@@ -4,6 +4,8 @@ description: Framework selection, project structure, and clean architecture patt
 metadata:
   labels: [python, best-practices, fastapi, django, architecture, clean-code]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ["**/*.py", "main.py", "app.py", "manage.py", "pyproject.toml"]
     keywords:
       [

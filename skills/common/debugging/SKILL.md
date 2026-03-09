@@ -4,6 +4,8 @@ description: Systematic troubleshooting using the Scientific Method (Observe, Hy
 metadata:
   labels: [debugging, troubleshooting, bug-fixing, root-cause]
   triggers:
+    priority: medium
+    confidence: 0.7
     keywords: [debug, fix bug, crash, error, exception, troubleshooting]
 workflow_ref: smart-release
 ---

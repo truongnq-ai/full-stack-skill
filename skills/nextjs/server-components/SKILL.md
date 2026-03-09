@@ -4,6 +4,8 @@ description: RSC usage, "use client" directive, and Component Purity.
 metadata:
   labels: [nextjs, rsc, components]
   triggers:
+    priority: medium
+    confidence: 0.7
     files:
       ['app/**/*.tsx', 'src/app/**/*.tsx', 'app/**/*.jsx', 'src/app/**/*.jsx']
     keywords: [use client, Server Component, Client Component, hydration]

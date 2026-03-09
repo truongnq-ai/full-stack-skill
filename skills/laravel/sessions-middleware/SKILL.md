@@ -4,6 +4,8 @@ description: Expert standards for session drivers, security headers, and middlew
 metadata:
   labels: [laravel, session, middleware, security, high-density]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['app/Http/Middleware/**/*.php', 'config/session.php']
     keywords: [session, driver, handle, headers, csrf]
 workflow_ref: deep-security-audit

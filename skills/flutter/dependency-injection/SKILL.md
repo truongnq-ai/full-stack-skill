@@ -4,6 +4,8 @@ description: Standards for automated service locator setup using injectable and 
 metadata:
   labels: [dependency-injection, injectable, get_it]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/injection.dart', '**/locator.dart']
     keywords: [GetIt, injectable, singleton, module, lazySingleton, factory]
 workflow_ref: battle-test

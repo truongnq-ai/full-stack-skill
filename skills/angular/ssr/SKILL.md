@@ -4,6 +4,8 @@ description: Hydration, TransferState, and Prerendering standards.
 metadata:
   labels: [angular, ssr, hydration, server-side]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.server.ts', 'server.ts']
     keywords: [hydration, transferState, afterNextRender, isPlatformServer]
 workflow_ref: smart-release

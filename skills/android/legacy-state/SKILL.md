@@ -4,6 +4,8 @@ description: Standards for State integration with Views using Coroutines and Lif
 metadata:
   labels: [android, state, views, lifecycle]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*Fragment.kt', '**/*Activity.kt']
     keywords: ['repeatOnLifecycle', 'launchWhenStarted']
 workflow_ref: ui-ux-pro-max

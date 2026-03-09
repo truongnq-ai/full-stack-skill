@@ -4,6 +4,8 @@ description: Standards for Baseline Profiles, Startup Time, and UI Rendering
 metadata:
   labels: [android, performance, baseline-profile, startup]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*Benchmark.kt', '**/*Initializer.kt']
     keywords: ['BaselineProfile', 'JankStats', 'recomposition']
 workflow_ref: performance

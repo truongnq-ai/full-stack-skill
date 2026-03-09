@@ -4,6 +4,8 @@ description: Standards for UIKit, Auto Layout, and Apple Human Interface Guideli
 metadata:
   labels: [ios, uikit, autolayout, snapkit, layouts]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*View.swift', '**/*.xib', '**/*.storyboard']
     keywords: [NSLayoutConstraint, UIStackView, SnapKit, layoutSubviews]
 workflow_ref: ui-ux-pro-max

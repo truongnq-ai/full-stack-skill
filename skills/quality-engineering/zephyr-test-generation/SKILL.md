@@ -4,6 +4,8 @@ description: Workflow for generating or updating Zephyr Scale Test Cases from re
 metadata:
   labels: [zephyr, test-generation, jira, regression-analysis]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.feature', '**/user_story.md']
     keywords:
       [generate test cases, update zephyr, jira validation, impact analysis]

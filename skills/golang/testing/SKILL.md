@@ -4,6 +4,8 @@ description: Standards for unit testing, table-driven tests, and mocking in Gola
 metadata:
   labels: [golang, testing, tdd, mocking, unit-tests]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*_test.go']
     keywords: [testing, unit tests, go test, mocking, testify]
 workflow_ref: battle-test

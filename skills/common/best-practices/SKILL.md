@@ -4,6 +4,8 @@ description: Universal principles for clean, maintainable, and robust code acros
 metadata:
   labels: [best-practices, solid, clean-code, architecture]
   triggers:
+    priority: medium
+    confidence: 0.7
     keywords: [solid, kiss, dry, yagni, naming, conventions]
 workflow_ref: deep-security-audit
 ---

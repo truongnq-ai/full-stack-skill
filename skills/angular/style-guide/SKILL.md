@@ -4,6 +4,8 @@ description: Naming conventions, file structure, and coding standards for Angula
 metadata:
   labels: [angular, style, naming, structure]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.ts']
     keywords: [angular style, naming convention, file structure]
 workflow_ref: smart-release

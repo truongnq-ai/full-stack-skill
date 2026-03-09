@@ -4,6 +4,8 @@ description: Core engineering principles inspired by Effective Java and Clean Co
 metadata:
   labels: [java, best-practices, effective-java, clean-code]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.java']
     keywords: [refactor, clean code, smells, patterns, design]
 workflow_ref: smart-release

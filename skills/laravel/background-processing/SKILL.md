@@ -4,6 +4,8 @@ description: Scalable asynchronous workflows using Queues, Jobs, and Events.
 metadata:
   labels: [laravel, queue, job, events, horizon]
   triggers:
+    priority: medium
+    confidence: 0.7
     files:
       ['app/Jobs/**/*.php', 'app/Events/**/*.php', 'app/Listeners/**/*.php']
     keywords: [ShouldQueue, dispatch, batch, chain, listener]

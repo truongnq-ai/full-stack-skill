@@ -4,6 +4,8 @@ description: Universal mobile UX principles for touch-first interfaces. Enforces
 metadata:
   labels: [mobile, ux, design, accessibility, cross-platform]
   triggers:
+    priority: medium
+    confidence: 0.7
     files:
       [
         '**/*_page.dart',

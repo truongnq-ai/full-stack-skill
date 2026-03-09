@@ -4,6 +4,8 @@ description: Standards for Unit Tests, UI Tests (Compose), and Hilt Integration
 metadata:
   labels: [android, testing, junit, compose-test]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*Test.kt', '**/*Rule.kt']
     keywords: ['@Test', 'runTest', 'composeTestRule']
 workflow_ref: battle-test

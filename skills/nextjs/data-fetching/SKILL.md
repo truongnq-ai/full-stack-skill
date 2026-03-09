@@ -4,6 +4,8 @@ description: Fetch API, Caching, and Revalidation strategies.
 metadata:
   labels: [nextjs, data-fetching, caching]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.tsx', '**/service.ts']
     keywords: [fetch, revalidate, no-store, force-cache]
 workflow_ref: update-docs

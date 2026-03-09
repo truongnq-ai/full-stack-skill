@@ -4,6 +4,8 @@ description: Evidence-based research — choose the right tool, cite sources, di
 metadata:
   labels: [research, sources, citations]
   triggers:
+    priority: medium
+    confidence: 0.7
     keywords: [research, sources, citations, verify, fact check]
     task_types: [research, analysis]
 workflow_ref: update-docs

@@ -4,6 +4,8 @@ description: Standards for Clean Architecture, Modularization, and Unidirectiona
 metadata:
   labels: [android, architecture, clean-architecture, mvvm]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['build.gradle.kts', 'settings.gradle.kts']
     keywords: [clean-architecture, module, layers, domain]
 workflow_ref: ui-ux-pro-max

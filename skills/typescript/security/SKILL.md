@@ -4,6 +4,8 @@ description: Secure coding practices for building safe TypeScript applications.
 metadata:
   labels: [security, typescript, validation, sanitization]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.ts', '**/*.tsx']
     keywords:
       [validate, sanitize, xss, injection, auth, password, secret, token]

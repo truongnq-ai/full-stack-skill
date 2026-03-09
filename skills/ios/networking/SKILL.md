@@ -4,6 +4,8 @@ description: Standards for URLSession, Alamofire, and API communication.
 metadata:
   labels: [ios, networking, urlsession, alamofire, codable]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*Service.swift', '**/*API.swift', '**/*Client.swift']
     keywords: [URLSession, Alamofire, Moya, URLRequest, URLComponents, Codable]
 workflow_ref: deep-security-audit

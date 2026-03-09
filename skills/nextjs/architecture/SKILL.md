@@ -4,6 +4,8 @@ description: Scalable project structure using Feature-Sliced Design (FSD).
 metadata:
   labels: [nextjs, architecture, fsd, folder-structure]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['src/features/**', 'src/entities/**', 'src/widgets/**']
     keywords: [FSD, Feature Sliced Design, slices, segments]
 workflow_ref: update-docs

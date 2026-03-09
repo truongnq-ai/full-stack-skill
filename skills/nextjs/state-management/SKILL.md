@@ -4,6 +4,8 @@ description: Best practices for managing state (Server URL vs Client Hooks).
 metadata:
   labels: [nextjs, state, zustand, context]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/hooks/*.ts', '**/store.ts', '**/components/*.tsx']
     keywords: [useState, useContext, zustand, redux]
 workflow_ref: smart-release

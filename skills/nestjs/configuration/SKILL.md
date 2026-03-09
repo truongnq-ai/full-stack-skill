@@ -4,6 +4,8 @@ description: Environment variables validation and ConfigModule setup.
 metadata:
   labels: [nestjs, config, env]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['.env', 'app.module.ts', '**/config.ts']
     keywords: [ConfigModule, Joi, env]
 workflow_ref: smart-release

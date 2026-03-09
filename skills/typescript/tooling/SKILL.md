@@ -4,6 +4,8 @@ description: Development tools, linting, and build configuration for TypeScript 
 metadata:
   labels: [tooling, typescript, eslint, prettier, testing]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['tsconfig.json', '.eslintrc.*', 'jest.config.*', 'package.json']
     keywords: [eslint, prettier, jest, vitest, build, compile, lint]
 workflow_ref: battle-test

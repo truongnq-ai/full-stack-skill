@@ -4,6 +4,8 @@ description: Standards for Component Test Harnesses and TestBed.
 metadata:
   labels: [angular, testing, harness, testbed]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.spec.ts']
     keywords: [TestBed, ComponentFixture, TestHarness, provideHttpClientTesting]
 workflow_ref: battle-test

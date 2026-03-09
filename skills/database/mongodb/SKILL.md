@@ -4,6 +4,8 @@ description: Expert rules for schema design, indexing, and performance in MongoD
 metadata:
   labels: [mongodb, nosql, mongoose, database, performance]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.ts', '**/*.js', '**/*.json']
     keywords: [mongo, mongoose, objectid, schema, model]
 workflow_ref: performance

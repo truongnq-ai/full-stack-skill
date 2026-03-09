@@ -4,6 +4,8 @@ description: Standards for Strings, Drawables, and Localization
 metadata:
   labels: [android, resources, localization, xml]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['strings.xml', '**/*Screen.kt']
     keywords: ['stringResource', 'plurals', 'R.string']
 workflow_ref: ui-ux-pro-max

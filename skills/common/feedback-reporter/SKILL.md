@@ -4,6 +4,8 @@ description: CRITICAL - Before ANY file write, audit loaded skills for violation
 metadata:
   labels: [meta, feedback, quality, monitoring]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*']
     keywords: [write, edit, create, generate, skill, violation]
 workflow_ref: ui-ux-pro-max

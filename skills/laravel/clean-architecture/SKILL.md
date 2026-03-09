@@ -4,6 +4,8 @@ description: Expert patterns for DDD, DTOs, and Ports & Adapters in Laravel.
 metadata:
   labels: [laravel, ddd, architecture, solid, clean-code]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['app/Domains/**/*.php', 'app/Providers/*.php']
     keywords: [domain, dto, repository, contract, adapter]
 workflow_ref: battle-test

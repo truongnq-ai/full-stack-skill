@@ -4,6 +4,8 @@ description: Enforce design token usage in SwiftUI apps. Covers Colors, Spacing,
 metadata:
   labels: [ios, swiftui, dls, design-tokens, hig]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*View.swift', '**/Theme/**', '**/DesignSystem/**']
     keywords: [Color, Font, SwiftUI, ViewModifier, Theme]
 workflow_ref: smart-release

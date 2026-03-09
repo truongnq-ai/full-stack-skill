@@ -4,6 +4,8 @@ description: Disciplined coding FSM — analyze first, execute second. 7-step wo
 metadata:
   labels: [workflow, discipline, process]
   triggers:
+    priority: medium
+    confidence: 0.7
     keywords: [plan, scope, clarify, coding discipline, workflow]
     task_types: [implementation, refactor, debugging]
 workflow_ref: update-docs

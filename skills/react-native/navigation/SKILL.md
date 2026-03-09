@@ -4,6 +4,8 @@ description: React Navigation 6+ standards for stack, tab, and deep linking.
 metadata:
   labels: [react-native, navigation, routing, deep-linking]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*Navigation*.tsx', 'src/navigation/**']
     keywords: [navigation, react-navigation, stack, tab, drawer, deep link]
 workflow_ref: smart-release

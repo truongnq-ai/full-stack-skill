@@ -4,6 +4,8 @@ description: Standards for building HTTP services, REST APIs, and middleware in 
 metadata:
   labels: [golang, http, api, rest, middleware]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['cmd/server/*.go', 'internal/adapter/handler/**']
     keywords: [http server, rest api, gin, echo, middleware]
 workflow_ref: performance

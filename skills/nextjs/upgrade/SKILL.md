@@ -4,6 +4,8 @@ description: Next.js version migrations using official guides and codemods.
 metadata:
   labels: [nextjs, upgrade, migration, codemods]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['package.json']
     keywords: [next upgrade, migration guide, codemod]
 workflow_ref: battle-test

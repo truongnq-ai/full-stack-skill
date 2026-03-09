@@ -4,6 +4,8 @@ description: Modern concurrency patterns using Virtual Threads and Structured Co
 metadata:
   labels: [java, concurrency, threads, async, loom]
   triggers:
+    priority: medium
+    confidence: 0.7
     files: ['**/*.java']
     keywords: [thread, async, future, executor, synchronized, lock, await]
 workflow_ref: smart-release

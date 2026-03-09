@@ -4,6 +4,8 @@ description: Modern Python toolchain standards — uv, ruff, mypy, pytest, and p
 metadata:
   labels: [python, tooling, uv, ruff, mypy, pytest, packaging]
   triggers:
+    priority: medium
+    confidence: 0.7
     files:
       [
         "pyproject.toml",
