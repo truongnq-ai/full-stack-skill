@@ -35,10 +35,13 @@ description: A test
 metadata:
   labels: [test]
   triggers:
+    priority: medium
+    confidence: 0.7
     keywords: [sample]
+workflow_ref: orchestrate
 ---
 body`;
-      const result = await rule.validate(content);
+      const result = await rule.validate(content, '/tmp/skills/common/test/SKILL.md');
       expect(result.passed).toBe(true);
     });
 
