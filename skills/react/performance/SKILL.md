@@ -54,8 +54,6 @@ Strategies to minimize waterfalls, bundle size, and render cost.
 - **Caching**: `React.cache` for per-request deduplication.
 - **Serialization**: Minimize props passing to Client Components (only IDs/primitives).
 
-## Anti-Patterns
-
 - **No `export *`**: Breaks tree-shaking.
 - **No Sequential Await**: Causes waterfalls.
 - **No Inline Objects**: `style={{}}` breaks strict equality checks (if memoized).
@@ -74,9 +72,6 @@ import { Button } from './components/Button'; // Not from './components'
 const STATIC_CONFIG = { theme: 'dark' };
 function Component() {
   return <div config={STATIC_CONFIG} />;
-}
-```
-
 ## References
-
 - [Examples (Input/Output)](references/examples.md)
+- [Notes](references/notes.md)

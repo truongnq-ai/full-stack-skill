@@ -63,22 +63,7 @@ Layer separation standards and dependency injection patterns for NestJS applicat
 
 - **Singleton**: Default.
 - **Stateless**: Do not store request-specific state in class properties unless identifying as `Scope.REQUEST`.
-
-## Pipes & Validation
-
-- **Global**: Register `ValidationPipe` globally.
-- **Route Params**: Fail fast. Always use `ParseIntPipe`, `ParseUUIDPipe` on all ID parameters.
-
-```typescript
-@Get(':id')
-findOne(@Param('id', ParseIntPipe) id: number) { ... }
-```
-
-## Lifecycle Events
-
-- **Init**: Use `OnModuleInit` for connection setup.
-- **Destroy**: Use `OnApplicationShutdown` for cleanup. (Requires `enableShutdownHooks()`).
-
 ## References
-
 - [Examples (Input/Output)](references/examples.md)
+- [Notes](references/notes.md)
+

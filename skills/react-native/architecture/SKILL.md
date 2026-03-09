@@ -53,8 +53,6 @@ src/
 └── types/             # TypeScript types
 ```
 
-## Implementation Guidelines
-
 - **Feature-First**: Organize by feature/module, not by type.
 - **Colocation**: Keep related files together (screens, components, hooks within feature).
 - **Separation**: UI (screens/components) separate from logic (hooks/services).
@@ -65,32 +63,7 @@ src/
 
 ## Anti-Patterns
 
-- **No Type-Based Folders**: Avoid `/containers`, `/screens` at root. Use features.
-- **No Logic in Screens**: Extract to hooks or services.
-- **No Circular Deps**: Features should not import from each other directly.
-- **No Deep Nesting**: Max 3 levels deep.
-
-## Navigation Strategy
-
-- **Expo Router**: Use for new projects, web-parity, and file-based routing.
-- **React Navigation**: Use for complex deep-linking, legacy apps, or high-customization needs.
-
-## Verification Checklist (Mandatory)
-
-- [ ] **Feature-First**: Is the file inside a feature directory?
-- [ ] **Colocation**: Are hooks/services colocated with screens?
-- [ ] **Logic-Free Screens**: Is there any business logic in the screen component?
-- [ ] **Navigation Choice**: Does the project use the navigation strategy defined above?
-
 ## References
-
-See [references/folder-structure.md](references/folder-structure.md) for full directory tree, path mapping, and service layer patterns.
-
-## Related Topics
-
-common/system-design | components | navigation | react/hooks | react/component-patterns
-
-
-## References
-
 - [Examples (Input/Output)](references/examples.md)
+- [Notes](references/notes.md)
+

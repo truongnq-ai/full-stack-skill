@@ -34,8 +34,6 @@ lib/app/modules/home/
     └── home_view.dart
 ```
 
-## Implementation Guidelines
-
 - **Controllers**: Extend `GetxController`. Store logic and state variables here.
 - **Reactivity**:
   - Use `.obs` for observable variables (e.g., `final count = 0.obs;`).
@@ -74,10 +72,6 @@ class UserView extends GetView<UserController> {
 ```
 
 ## Related Topics
-
-getx-navigation | layer-based-clean-architecture | dependency-injection
-
-
 ## References
-
 - [Examples (Input/Output)](references/examples.md)
+- [Notes](references/notes.md)

@@ -63,26 +63,7 @@ Compare total routes vs protected endpoints.
 - **Java**: `mvn dependency:list` or `./gradlew dependencies`
 - **Python**: `pip-audit`
 - **Rust**: `cargo audit`
-
-### 6. Infrastructure Hardening
-
-## ⚖️ Scoring Impact
-
-| Finding                      | Threshold | Severity | Deduction |
-| ---------------------------- | --------- | -------- | --------- |
-| **Hardcoded Secrets**        | Any match | 🔴 P0    | -25       |
-| **Plain-text PII in Logs**   | Any match | 🔴 P0    | -20       |
-| **Unguarded Routes > 20%**   | > 0.2     | 🔴 P0    | -15       |
-| **Raw SQL Concatenation**    | Any match | 🟠 P1    | -10       |
-| **Response Leakage (Stack)** | > 0       | 🟠 P1    | -10       |
-
-> [!CAUTION]
-> A **🔴 P0 finding** immediately caps the Security score at **40/100**.
-
-## 📚 Reference Links
-
-- [Vulnerability Remediation Protocols](references/REMEDIATION.md)
-
 ## References
-
 - [Examples (Input/Output)](references/examples.md)
+- [Notes](references/notes.md)
+

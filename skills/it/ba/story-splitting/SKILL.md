@@ -63,25 +63,7 @@ You **MUST** use Behavior-Driven Development (BDD) formatting for every Acceptan
 **Scenario:** [Title of the scenario]
 - **Given** [Initial context/State]
 - **When** [Action/Event occurs]
-- **Then** [Expected outcome/State change]
-```
-
-*Example*:
-**Scenario:** User enters an invalid email format.
-- **Given** the user is on the "Forgot Password" screen
-- **When** the user enters "invalid_email_format" and clicks submit
-- **Then** the system should display an inline error message "Please enter a valid email address."
-- **And** the submit button should remain active.
-
-## 4. Definition of Done (DoD)
-
-Provide a common Definition of Done for the stories, such as:
-- Code is peer-reviewed.
-- Unit tests cover the Acceptance Criteria (>80% coverage).
-- UI matches the design (Figma).
-- No console errors or performance regressions.
-
-
 ## References
-
 - [Examples (Input/Output)](references/examples.md)
+- [Notes](references/notes.md)
+

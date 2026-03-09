@@ -24,8 +24,6 @@ workflow_ref: smart-release
 
 Standards for building scalable, maintainable components.
 
-## Implementation Guidelines
-
 - **Function Components Only**: Use hooks. No class components.
 - **Container/Presentational**: Separate logic (hooks, data fetching) from UI (JSX, styling).
 - **Composition**: Use `children` prop. Prefer composition over prop drilling.
@@ -74,7 +72,6 @@ See [references/patterns.md](references/patterns.md) for HOCs, Render Props, Com
 ## Related Topics
 
 react/component-patterns | react/hooks | styling
-
 
 ## References
 

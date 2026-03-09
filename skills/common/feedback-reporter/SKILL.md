@@ -70,12 +70,9 @@ Before `notify_user` or task completion:
 
 **Did I write code?** YES → **Did I audit skills?** NO → Audit now
 
-## Anti-Patterns
-
 - **No "I'll check later"**: Check before writing, not after
 - **No "minor change skip"**: Every write needs check
 - **No "user waiting skip"**: 10-second check > pattern violation
-
 
 ## References
 
