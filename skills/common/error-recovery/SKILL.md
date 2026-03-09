@@ -17,6 +17,14 @@ workflow_ref: smart-release
 
 ## Output Template
 
+## Output (Strict)
+
+```yaml
+summary: "<what was done>"
+risks: ["<risk 1>"] # or []
+next_checks: ["<check 1>"]
+```
+
 - **Summary**: <what changed / what was done>
 - **Risks**: <known risks or "none">
 - **Next Checks**: <tests/verification steps>
@@ -55,38 +63,6 @@ When an agent encounters an error mid-execution, it must classify the error and 
 ### ✅ RECOVERABLE (max 2 retries)
 
 | Error                        | Fix                 | Retry Limit |
-| ---------------------------- | ------------------- | ----------- |
-| Lint/syntax error after edit | Fix specific error  | 2           |
-| Build fail: missing import   | Add import, rebuild | 2           |
-| Command timeout (<30s)       | Retry same command  | 1           |
-| File not found (typo)        | Fix path, retry     | 1           |
-| Test fail from recent change | Fix logic, re-test  | 2           |
-
-### ⚠️ NEEDS INPUT (ask user)
-
-- Build fail with unclear cause
-- Test fails but logic seems correct
-- Conflict between new and existing code
-- Dependency version incompatibility
-- Permission denied / access error
-
-### 🔴 CRITICAL (full stop)
-
-- File deleted/corrupted unintentionally
-- Database error (schema mismatch, data loss)
-- Deploy failure on production
-- Secret/credential exposed
-- Files modified outside approved scope
-
-## Rules
-
-1. **Max 2 retries** per error — then escalate
-2. **Never catch and ignore** — all errors must be logged or reported
-3. **Never change approach** mid-execution without user approval
-4. **Check rollback before retry** — avoid duplicates (double insert, double create)
-5. **Never continue to next step** when current step failed
-
-
 ## References
 
 - [Examples (Input/Output)](references/examples.md)

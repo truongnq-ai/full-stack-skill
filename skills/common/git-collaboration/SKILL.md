@@ -16,6 +16,14 @@ workflow_ref: deep-security-audit
 
 ## Output Template
 
+## Output (Strict)
+
+```yaml
+summary: "<what was done>"
+risks: ["<risk 1>"] # or []
+next_checks: ["<check 1>"]
+```
+
 - **Summary**: <what changed / what was done>
 - **Risks**: <known risks or "none">
 - **Next Checks**: <tests/verification steps>
@@ -55,39 +63,6 @@ develop         ← integration branch
 
 ```
 feature → develop:  Squash merge
-develop → main:     Merge commit
-hotfix → main:      Merge commit + cherry-pick to develop
-```
-
-## ⚠️ Auto-Accept Safety — Git Operations
-
-These commands **MUST NOT auto-run** without explicit confirmation:
-
-| Command                   | Risk                          |
-| ------------------------- | ----------------------------- |
-| `git push origin main`    | Push directly to production   |
-| `git reset --hard HEAD~N` | Lose commits, hard to recover |
-| `git push --force`        | Rewrite public history        |
-| `git branch -D`           | Delete branch                 |
-
-## PR Checklist
-
-```
-[ ] Pulled latest from base branch?
-[ ] Branch named per convention?
-[ ] No credentials/secrets in commits?
-[ ] No debug logs / commented-out code?
-[ ] PR title follows Conventional Commits?
-[ ] PR body has issue link and testing steps?
-[ ] CI passes?
-```
-
-## Security
-
-- **No Secrets**: Never commit `.env`, keys, or certs. Use `.gitignore` strictly.
-- **Git Hooks**: Use `husky` or `lefthook` for local enforcement.
-- **Tags**: SemVer (`vX.Y.Z`) for releases.
-
 ## References
 
 - [Clean Linear History & Rebase Examples](references/CLEAN_HISTORY.md)

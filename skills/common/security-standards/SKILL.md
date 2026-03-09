@@ -18,6 +18,14 @@ Universal security protocols for building safe and resilient software.
 
 ## Output Template
 
+## Output (Strict)
+
+```yaml
+summary: "<what was done>"
+risks: ["<risk 1>"] # or []
+next_checks: ["<check 1>"]
+```
+
 - **Summary**: <what changed / what was done>
 - **Risks**: <known risks or "none">
 - **Next Checks**: <tests/verification steps>

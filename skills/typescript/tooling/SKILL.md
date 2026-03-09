@@ -17,6 +17,14 @@ workflow_ref: battle-test
 
 ## Output Template
 
+## Output (Strict)
+
+```yaml
+summary: "<what was done>"
+risks: ["<risk 1>"] # or []
+next_checks: ["<check 1>"]
+```
+
 - **Summary**: <what changed / what was done>
 - **Risks**: <known risks or "none">
 - **Next Checks**: <tests/verification steps>
@@ -54,43 +62,6 @@ Essential tooling for TypeScript development and maintenance.
 ```typescript
 import { RequestWithUser } from 'src/common/interfaces/request.interface';
 ```
-
-#### Unused Parameters
-
-**Problem**: Function parameters marked as unused by linter.
-**Solution**: Prefix the parameter with an underscore (e.g., `_data`) or remove it. NEVER use `eslint-disable`.
-
-#### Test Mock Typing
-
-**Problem**: Jest mocks triggering unsafe type warnings when `expect.any()` or custom mocks are used.
-**Solution**: Cast the mock or expectation using `as unknown as TargetType`.
-
-```typescript
-mockRepo.save.mockResolvedValue(result as unknown as User);
-```
-
-## Configuration
-
-```json
-// tsconfig.json
-{
-  "compilerOptions": {
-    "strict": true,
-    "noImplicitReturns": true,
-    "noUnusedLocals": true
-  }
-}
-```
-
-## Reference & Examples
-
-For testing configuration and CI/CD setup:
-See [references/REFERENCE.md](references/REFERENCE.md).
-
-## Related Topics
-
-best-practices | language
-
 
 ## References
 

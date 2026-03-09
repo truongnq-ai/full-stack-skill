@@ -23,6 +23,14 @@ workflow_ref: ui-ux-pro-max
 
 ## Output Template
 
+## Output (Strict)
+
+```yaml
+summary: "<what was done>"
+risks: ["<risk 1>"] # or []
+next_checks: ["<check 1>"]
+```
+
 - **Summary**: <what changed / what was done>
 - **Risks**: <known risks or "none">
 - **Next Checks**: <tests/verification steps>
@@ -54,38 +62,6 @@ export async function createPost(formData: FormData) {
 - **Pending State**: Use `useFormStatus` hook (must be inside a component rendered within the form).
 
 ## **P1: Operational Standard**
-
-### **1. Secure & Validate**
-
-Always validate inputs and authorization within the action.
-
-```tsx
-'use server';
-export async function updateProfile(prevState: any, formData: FormData) {
-  const session = await auth();
-  if (!session) throw new Error('Unauthorized');
-
-  const validatedFields = ProfileSchema.safeParse(
-    Object.fromEntries(formData.entries()),
-  );
-  if (!validatedFields.success)
-    return { errors: validatedFields.error.flatten().fieldErrors };
-
-  // mutation...
-  revalidatePath('/profile');
-  return { success: true };
-}
-```
-
-### **2. Pending States**
-
-Use `useActionState` (React 19/Next.js 15+) for state handling and `useFormStatus` for button loading states.
-
-## **Constraints**
-
-- **Closures**: Avoid defining actions inside components to prevent hidden closure encryption overhead and serialization bugs.
-- **Redirection**: Use `redirect()` for success navigation; it throws an error that Next.js catches to handle the redirect.
-
 
 ## References
 

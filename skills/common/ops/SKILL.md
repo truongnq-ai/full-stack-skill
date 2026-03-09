@@ -17,6 +17,14 @@ workflow_ref: smart-release
 
 ## Output Template
 
+## Output (Strict)
+
+```yaml
+summary: "<what was done>"
+risks: ["<risk 1>"] # or []
+next_checks: ["<check 1>"]
+```
+
 - **Summary**: <what changed / what was done>
 - **Risks**: <known risks or "none">
 - **Next Checks**: <tests/verification steps>
@@ -55,40 +63,6 @@ ps aux / systemctl status / docker ps
 journalctl -n 100 / docker logs --tail 100
 top / htop / free -h / df -h / docker stats
 ss -tlnp / netstat -tlnp / lsof -i :<port>
-```
-
-### ⚠️ Needs Confirmation — State changes
-
-| Action                        | Confirm?                    |
-| ----------------------------- | --------------------------- |
-| Restart a specific service    | ✅ Always                   |
-| Reload config without restart | ✅ If production            |
-| Clear cache                   | ✅ If production            |
-| Change .env values            | ✅ Always + read file first |
-
-### 🔴 Mandatory Plan + Confirm — High risk
-
-| Action                          | Risk                            |
-| ------------------------------- | ------------------------------- |
-| Stop entire service stack       | Full downtime                   |
-| Delete records / truncate table | Irreversible data loss          |
-| Run database migration          | Schema change, hard to reverse  |
-| Change firewall / iptables      | May block all access            |
-| `kill -9` process               | Not graceful, may corrupt state |
-| Deploy to production            | Affects real users              |
-
-## Risk Checklist
-
-```
-[ ] Does this action cause downtime?
-[ ] Can it be rolled back? How?
-[ ] What data could be lost?
-[ ] Are users currently active?
-[ ] Have logs been checked for root cause?
-[ ] Is a backup needed first?
-```
-
-
 ## References
 
 - [Examples (Input/Output)](references/examples.md)

@@ -19,6 +19,14 @@ workflow_ref: codebase-review
 
 ## Output Template
 
+## Output (Strict)
+
+```yaml
+summary: "<what was done>"
+risks: ["<risk 1>"] # or []
+next_checks: ["<check 1>"]
+```
+
 - **Summary**: <what changed / what was done>
 - **Risks**: <known risks or "none">
 - **Next Checks**: <tests/verification steps>
@@ -55,40 +63,6 @@ Detect business logic trapped in the wrong layer (e.g., UI layer in apps, Contro
 
 - **Action**: `grep -rE "Repository\.|Query\.|db\." src/controllers --include="*.ts" | wc -l`
 - **Threshold**: Controllers must only handle request parsing and response formatting.
-
-### 3. Monolith Detection (Ecosystem Specific)
-
-Identify massive files violating Single Responsibility Principle.
-
-- **Thresholds**:
-  - **UI**: > 500 lines (🟡 Medium), > 1,000 lines (🔴 Critical).
-  - **Backend Services**: > 1,500 lines indicate "God Class".
-- **Action**:
-  ```bash
-  find . -type f \( -name "*.tsx" -o -name "*.dart" -o -name "*.go" -o -name "*.java" \) | xargs wc -l | awk '$1 > 1000'
-  ```
-
-### 4. Resource Performance Audit (Universal)
-
-Check for large metadata or constants impacting IDE performance and binary size.
-
-- **Threshold**: Resources > 1,000 lines require granulation.
-- **Action**:
-  ```bash
-  find . -type f \( -name "*constants*" -o -name "*.graphql" -o -name "*strings*" \) | xargs wc -l | awk '$1 > 1000'
-  ```
-
-## ⚖️ Scoring Impact
-
-- **Layer Violation**: -15 per business logic instance in UI/Controller layer.
-- **Structural Fragmentation**: -10 per duplicated legacy entity.
-- **Monoliths**: -10 per unit > 1,000 lines.
-
-## 📚 Reference Links
-
-- [Architecture Patterns & Remediation Protocols](references/PATTERNS.md)
-
-
 ## References
 
 - [Examples (Input/Output)](references/examples.md)
