@@ -15,6 +15,11 @@ import { RegistryMetadata } from '../models/types';
 
 const CATEGORY_ALIASES: Record<string, string> = {
   'quality-engineering': 'roles',
+  'frontend': 'react',
+  'backend': 'nestjs',
+  'mobile': 'flutter',
+  'data': 'database',
+  'platform': 'common',
 };
 
 const SkillConfigSchema = z.object({
