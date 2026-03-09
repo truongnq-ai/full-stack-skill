@@ -22,6 +22,9 @@ risks: ["<risk 1>"] # or []
 next_checks: ["<check 1>"]
 ```
 
+## Selector Strategy
+- Prefer: role/text → data-testid → CSS selectors
+
 ## Core Rules
 - Prefer stable locators (role/text).
 - Avoid flaky waits; use explicit conditions.

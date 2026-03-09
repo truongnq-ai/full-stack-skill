@@ -23,6 +23,8 @@ next_checks: ["<check 1>"]
 ```
 
 ## Checklist
+- Map UAT cases to acceptance criteria
+- Sign-off Form (date, version, approver)
 - UAT scenarios agreed
 - Stakeholder sign-off collected
 
