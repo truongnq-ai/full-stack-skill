@@ -13,6 +13,12 @@ workflow_ref: deep-security-audit
 
 ## **Priority: P1 (OPERATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Global error handling and exception management patterns.
 
 - **Requirement**: Centralize error formatting.

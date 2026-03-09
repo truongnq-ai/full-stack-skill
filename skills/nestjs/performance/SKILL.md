@@ -13,6 +13,12 @@ workflow_ref: performance
 
 ## **Priority: P1 (OPERATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 High-performance patterns and optimization techniques for NestJS applications.
 
 - **Adapter**: Use `FastifyAdapter` instead of Express (2x throughput).

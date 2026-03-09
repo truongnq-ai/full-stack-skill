@@ -12,6 +12,12 @@ workflow_ref: deep-security-audit
 
 ## **Priority: P0 (FOUNDATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## 🏗 SOLID & Architectural Principles
 
 - **SRP (Single Responsibility)**: One class/function = One reason to change. Separate business logic from delivery (UI/API).

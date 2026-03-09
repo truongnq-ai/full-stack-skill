@@ -13,6 +13,12 @@ workflow_ref: smart-release
 
 ## **Priority: P1 (HIGH)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Principles
 
 - **Async to Sync**: Use `toSignal` to convert Observables (HTTP, Events) to Signals for template rendering.

@@ -13,6 +13,12 @@ workflow_ref: battle-test
 
 ## **Priority: P0 (CRITICAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Strict guidelines for maintaining a high-quality, reliable, and fast test suite.
 
 ## Core Rules

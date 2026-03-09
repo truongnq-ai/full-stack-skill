@@ -13,6 +13,12 @@ workflow_ref: update-docs
 
 ## **Priority: P1 (OPERATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Context
 
 When answering technical or business questions, every conclusion must be backed by a real source. Never guess or hallucinate.

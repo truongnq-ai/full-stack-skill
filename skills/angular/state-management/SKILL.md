@@ -13,6 +13,12 @@ workflow_ref: smart-release
 
 ## **Priority: P1 (HIGH)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Principles
 
 - **Signals First**: Use Signals for all local and shared state.

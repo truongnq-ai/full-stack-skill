@@ -13,6 +13,12 @@ workflow_ref: performance
 
 ## **Priority: P1 (OPERATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Caching strategies and Redis integration patterns for high-performance NestJS applications.
 
 ## Caching Strategy

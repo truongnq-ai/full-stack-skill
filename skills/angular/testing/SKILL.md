@@ -13,6 +13,12 @@ workflow_ref: battle-test
 
 ## **Priority: P1 (HIGH)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Principles
 
 - **Harnesses**: Always use `ComponentTestHarness` (Angular Material Harnesses) to interact with components. Avoid querying DOM/CSS selectors directly.

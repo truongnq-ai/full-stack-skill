@@ -13,6 +13,12 @@ workflow_ref: performance
 
 ## **Priority: P1 (OPERATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Standards for building reusable, performant Flutter widgets and UI components.
 
 - **State**: Use `StatelessWidget` by default. `StatefulWidget` only for local state/controllers.

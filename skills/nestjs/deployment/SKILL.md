@@ -13,6 +13,12 @@ workflow_ref: deep-security-audit
 
 ## **Priority: P1 (OPERATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Docker optimization and production deployment standards for NestJS applications.
 
 ## Docker Optimization

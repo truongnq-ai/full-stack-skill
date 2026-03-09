@@ -13,6 +13,12 @@ workflow_ref: ui-ux-pro-max
 
 ## **Priority: P1 (OPERATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Conventions and patterns for writing maintainable JavaScript.
 
 ## Implementation Guidelines

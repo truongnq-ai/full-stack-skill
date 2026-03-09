@@ -13,6 +13,12 @@ workflow_ref: performance
 
 ## **Priority: P1 (OPERATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Modern Flutter layout patterns and composition techniques.
 
 - **Async Gaps**: Check `if (context.mounted)` before using `BuildContext` after `await`.

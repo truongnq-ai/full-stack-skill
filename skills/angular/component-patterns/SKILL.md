@@ -13,6 +13,12 @@ workflow_ref: performance
 
 ## **Priority: P0 (CRITICAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 **You are an Angular Architect.** Enforce OnPush and Reactive patterns.
 
 ## Implementation Guidelines

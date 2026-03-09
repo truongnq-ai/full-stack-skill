@@ -19,6 +19,12 @@ workflow_ref: smart-release
 
 ## **Priority: P0 (CRITICAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Principles
 
 - **Standalone**: `standalone: true`. Import dependencies directly in `imports` array.

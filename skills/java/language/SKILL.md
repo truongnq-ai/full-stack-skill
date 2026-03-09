@@ -13,6 +13,12 @@ workflow_ref: battle-test
 
 ## **Priority: P0 (CRITICAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Modern Java (21+) standards for concise, immutable, and expressive code.
 
 ## Implementation Guidelines

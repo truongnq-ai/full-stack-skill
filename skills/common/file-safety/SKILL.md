@@ -13,6 +13,12 @@ workflow_ref: update-docs
 
 ## **Priority: P1 (OPERATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Context
 
 When Auto-Accept is enabled, the agent can execute many steps. Without file scope discipline, it will silently modify dozens of files the user never intended. **File Safety is the mandatory guardrail.**

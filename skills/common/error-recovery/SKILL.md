@@ -13,6 +13,12 @@ workflow_ref: smart-release
 
 ## **Priority: P1 (OPERATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Context
 
 When an agent encounters an error mid-execution, it must classify the error and follow the correct recovery path. Never silently ignore errors or retry infinitely.

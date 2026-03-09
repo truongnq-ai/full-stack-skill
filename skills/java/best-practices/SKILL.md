@@ -13,6 +13,12 @@ workflow_ref: smart-release
 
 ## **Priority: P1 (HIGH)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Core engineering principles for robust, maintainable Java systems.
 
 ## Implementation Guidelines

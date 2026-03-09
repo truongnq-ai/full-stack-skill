@@ -28,6 +28,12 @@ workflow_ref: performance
 
 ## **Priority: P1 (OPERATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Native-feeling motion design. Optimize for 60fps and platform conventions.
 
 ## Timing Standards

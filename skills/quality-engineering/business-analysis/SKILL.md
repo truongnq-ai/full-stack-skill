@@ -19,6 +19,12 @@ workflow_ref: smart-release
 
 ## **Priority: P0 (CRITICAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## 1. Deep Investigation Protocol
 
 - **Atomic Decomposition**: Split AC into 1-Condition logic units.

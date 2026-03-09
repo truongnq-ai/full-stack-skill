@@ -13,6 +13,12 @@ workflow_ref: deep-security-audit
 
 ## **Priority: P0 (CRITICAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 - **Security**:
   - **Access Control**: Use Redis 6.0+ ACLs (`ACL SETUSER`) to restrict commands by user/role.
   - **Encryption**: Always enable TLS for data-in-transit (standard in managed Redis like Azure/AWS).

@@ -11,6 +11,12 @@ workflow_ref: performance
 
 ## **Priority: P1 (OPTIMIZATION)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Manage the Attention Budget. Treat context as a scarce resource.
 
 ## 1. Observation Masking (Noise Reduction)

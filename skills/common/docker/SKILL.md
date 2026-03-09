@@ -13,6 +13,12 @@ workflow_ref: ui-ux-pro-max
 
 ## **Priority: P1 (OPERATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Context
 
 Manage containers, images, and volumes with control. Never delete production volumes without backup. Always know which environment you're in.

@@ -248,6 +248,14 @@ export class SyncService {
       }
 
       await fs.outputFile(targetFilePath, content);
+
+      // Enforce global guardrails at agent root
+      if (fileItem.name === 'GLOBAL_GUARDRAILS.md') {
+        const guardrailsPath = path.join(basePath, 'GLOBAL_GUARDRAILS.md');
+        if (!this.isOverridden(guardrailsPath, overrides)) {
+          await fs.outputFile(guardrailsPath, content);
+        }
+      }
     }
   }
 

@@ -13,6 +13,12 @@ workflow_ref: deep-security-audit
 
 ## **Priority: P1 (OPERATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Implementation Guidelines
 
 - **Naming**: Classes/Types=`PascalCase`, vars/funcs=`camelCase`, consts=`UPPER_SNAKE`. Prefix `I` only if needed.

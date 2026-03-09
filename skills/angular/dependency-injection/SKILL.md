@@ -13,6 +13,12 @@ workflow_ref: smart-release
 
 ## **Priority: P0 (CRITICAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Principles
 
 - **`inject()` over Constructor**: Use the `inject()` function for cleaner injection updates and type inference.

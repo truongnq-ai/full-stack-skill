@@ -14,6 +14,12 @@ workflow_ref: smart-release
 
 ## **Priority: P0 (CRITICAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Standard for modular Clean Architecture organized by business features in `lib/features/`.
 
 ## Structure

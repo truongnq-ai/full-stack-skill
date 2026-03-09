@@ -22,6 +22,12 @@ workflow_ref: deep-security-audit
 
 ## **Priority: P1 (STANDARD)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Package Manager — uv
 
 - Use `uv` as default. Replaces pip, poetry, pipenv.

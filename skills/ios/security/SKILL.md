@@ -14,6 +14,12 @@ workflow_ref: deep-security-audit
 
 ## **Priority: P0 (CRITICAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Implementation Guidelines
 
 ### Key Storage

@@ -13,6 +13,12 @@ workflow_ref: smart-release
 
 ## **Priority: P1 (OPERATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Context
 
 When managing production or staging systems, always collect information first and change state second. Never reverse this order.

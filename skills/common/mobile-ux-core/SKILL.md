@@ -21,6 +21,12 @@ workflow_ref: performance
 
 ## **Priority: P0 (CRITICAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Universal UX principles for mobile applications.
 
 ## Guidelines

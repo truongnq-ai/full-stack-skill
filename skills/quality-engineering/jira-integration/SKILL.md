@@ -13,6 +13,12 @@ workflow_ref: deep-security-audit
 
 ## **Priority: P1 (HIGH)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## 1. Retrieving Issue Details
 
 - **Fetch Core Info**: Retrieve Summary, Description, Acceptance Criteria, and Labels.

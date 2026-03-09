@@ -13,6 +13,12 @@ workflow_ref: smart-release
 
 ## **Priority: P1 (HIGH)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Modern concurrent programming emphasizing Virtual Threads (Loom) and safety.
 
 ## Implementation Guidelines

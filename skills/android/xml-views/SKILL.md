@@ -13,6 +13,12 @@ workflow_ref: performance
 
 ## **Priority: P1**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Implementation Guidelines
 
 ### ViewBinding

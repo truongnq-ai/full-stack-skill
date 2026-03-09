@@ -17,6 +17,12 @@ workflow_ref: performance
 
 ## **Priority: P1 (HIGH)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Principles
 
 - **OnPush**: Always use `ChangeDetectionStrategy.OnPush`. Components should only update when Inputs change or Signals fire.

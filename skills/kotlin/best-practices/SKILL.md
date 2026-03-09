@@ -13,6 +13,12 @@ workflow_ref: ui-ux-pro-max
 
 ## **Priority: P1 (HIGH)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Engineering standards for clean, maintainable Kotlin systems.
 
 ## Implementation Guidelines

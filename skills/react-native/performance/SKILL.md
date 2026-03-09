@@ -13,6 +13,12 @@ workflow_ref: performance
 
 ## **Priority: P0 (CRITICAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## FlatList Optimization
 
 - **windowSize**: Reduce to 5-10 for long lists (default 21).

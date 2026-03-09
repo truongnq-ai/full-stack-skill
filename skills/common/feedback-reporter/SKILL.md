@@ -13,6 +13,12 @@ workflow_ref: ui-ux-pro-max
 
 ## **Priority: P0 - Auto-detect skill violations before file writes**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## 🚨 Checkpoint: Before File Writes
 
 **Quick check before `write_to_file`, `replace_file_content`, `multi_replace_file_content`:**

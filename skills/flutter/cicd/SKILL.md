@@ -19,6 +19,12 @@ workflow_ref: battle-test
 
 ## **Priority: P1 (HIGH)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Automates code quality checks, testing, and deployment to prevent regressions and accelerate delivery.
 
 ## Core Pipeline Steps

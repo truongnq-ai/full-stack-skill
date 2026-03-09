@@ -13,6 +13,12 @@ workflow_ref: performance
 
 ## **Priority: P1 (OPERATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Performance optimization techniques for smooth 60fps Flutter applications.
 
 - **Rebuilds**: Use `const` widgets and `buildWhen` / `select` for granular updates.

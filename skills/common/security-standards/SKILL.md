@@ -14,6 +14,12 @@ Universal security protocols for building safe and resilient software.
 
 ## **Priority: P0 (CRITICAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## 🛡 Data Safeguarding
 
 - **Zero Trust**: Never trust external input. Sanitize and validate every data boundary (API, UI, CSV).

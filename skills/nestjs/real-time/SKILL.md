@@ -13,6 +13,12 @@ workflow_ref: deep-security-audit
 
 ## **Priority: P1 (OPERATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 WebSocket and real-time communication patterns with NestJS.
 
 - **WebSockets (Bi-directional)**: Use for Chat, Multiplayer Games, Collaborative Editing.

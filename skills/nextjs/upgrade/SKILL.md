@@ -15,6 +15,12 @@ Automated and manual migration steps for Next.js version upgrades (e.g., v14 →
 
 ## **Priority: P1 (OPERATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## **1. Detection & Planning**
 
 - Check `package.json` for current `next`, `react`, and `react-dom` versions.

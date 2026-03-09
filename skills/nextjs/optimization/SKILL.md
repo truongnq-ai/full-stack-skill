@@ -13,6 +13,12 @@ workflow_ref: performance
 
 ## **Priority: P1 (HIGH)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Core optimization primitives provided by Next.js. **Monitor First, Optimize Later.**
 
 ## Monitoring (Core Web Vitals)

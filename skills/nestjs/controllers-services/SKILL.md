@@ -13,6 +13,12 @@ workflow_ref: update-docs
 
 ## **Priority: P0 (FOUNDATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Layer separation standards and dependency injection patterns for NestJS applications.
 
 ## Controllers

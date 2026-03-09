@@ -13,6 +13,12 @@ workflow_ref: performance
 
 ## **Priority: P1 (STANDARD)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Principles
 
 - **Structured Logging**: Use JSON or structured text. Readable by machines and humans.

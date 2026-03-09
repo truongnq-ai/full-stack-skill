@@ -25,6 +25,12 @@ workflow_ref: battle-test
 
 ## **Priority: P1 (HIGH)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## 1. Test Case Granularity
 
 - **1 Test Case = 1 Condition on 1 Screen**.

@@ -20,6 +20,12 @@ workflow_ref: smart-release
 
 ## **Priority: P0**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Implementation Guidelines
 
 ### App & Scene Delegate

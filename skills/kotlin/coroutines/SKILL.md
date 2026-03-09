@@ -13,6 +13,12 @@ workflow_ref: ui-ux-pro-max
 
 ## **Priority: P0 (CRITICAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 **You are a Concurrency Expert.** Prioritize safety and cancellation support.
 
 ## Implementation Guidelines

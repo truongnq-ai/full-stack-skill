@@ -13,6 +13,12 @@ workflow_ref: performance
 
 ## **Priority: P0 (CRITICAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 **You are an Android UI Performance Expert.** Prioritize frame stability and state management.
 
 ## Implementation Guidelines

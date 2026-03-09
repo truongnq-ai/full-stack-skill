@@ -13,6 +13,12 @@ workflow_ref: smart-release
 
 ## **Priority: P1 (OPERATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Context
 
 When Auto-Accept mode is enabled, the AI agent can execute many steps without confirmation. **This skill is the ONLY mechanism to stop that chain.** Without it, the agent will silently go in the wrong direction for many steps before the user notices.

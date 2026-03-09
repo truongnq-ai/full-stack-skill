@@ -14,6 +14,12 @@ Universal standards for high-performance software development across all framewo
 
 ## **Priority: P1 (OPERATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Universal standards for building high-performance software across all frameworks and languages.
 
 ## 🚀 Core Principles

@@ -12,6 +12,12 @@ workflow_ref: update-docs
 
 ## **Priority: P0 (FOUNDATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Architectural Principles
 
 - **SoC**: Divide into distinct sections per concern.

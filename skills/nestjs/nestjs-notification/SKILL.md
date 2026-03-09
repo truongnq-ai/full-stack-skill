@@ -13,6 +13,12 @@ workflow_ref: ui-ux-pro-max
 
 ## **Priority: P0 (Standard)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Implement a "Dual-Write" notification system: persist to Database (In-App) and send via FCM (Push).
 
 ## Structure

@@ -22,6 +22,12 @@ workflow_ref: ui-ux-pro-max
 
 ## **Priority: P1 (STANDARD)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Consistent multi-language support using `easy_localization`.
 
 ## Format Selection

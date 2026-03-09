@@ -29,6 +29,12 @@ workflow_ref: smart-release
 
 ## **Priority: P0 (CRITICAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Zero tolerance for hardcoded design values.
 
 ## **Phase 0: Context Discovery (MANDATORY)**

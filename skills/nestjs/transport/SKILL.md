@@ -13,6 +13,12 @@ workflow_ref: plan-feature
 
 ## **Priority: P0 (FOUNDATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Microservices communication patterns and transport layer standards.
 
 - **Synchronous (RPC)**: Use **gRPC** for low-latency, internal service-to-service calls.

@@ -19,6 +19,12 @@ workflow_ref: ui-ux-pro-max
 
 ## **Priority: P1 (HIGH)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 > [!WARNING]
 > If the project uses the `pages/` directory instead of the App Router, **ignore** this skill entirely.
 

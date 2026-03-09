@@ -22,6 +22,12 @@ workflow_ref: deep-security-audit
 
 ## **Priority: P0 (CRITICAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Framework Selection
 
 | Context                             | Framework                  |
@@ -35,23 +41,6 @@ workflow_ref: deep-security-audit
 > Ask user for existing stack before assuming. Never default without context.
 
 ## Project Structure
-
-```
-# Medium API (FastAPI)
-app/
-├── main.py          # App factory, lifespan
-├── api/             # Routers grouped by feature
-├── services/        # Business logic
-├── models/          # ORM models
-├── schemas/         # Pydantic DTOs
-├── dependencies/    # Shared FastAPI deps
-└── core/            # Config, DB, security
-tests/
-pyproject.toml
-
-# Large App — use src/ layout
-src/myapp/
-```
 
 ## FastAPI Patterns
 

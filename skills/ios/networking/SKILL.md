@@ -13,6 +13,12 @@ workflow_ref: deep-security-audit
 
 ## **Priority: P0**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Implementation Guidelines
 
 ### URLSession (Native)

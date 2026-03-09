@@ -15,6 +15,12 @@ workflow_ref: codebase-review
 
 ## **Priority: P1 (STANDARD)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## 📋 Audit Protocol
 
 ### 1. Structural Duplication Discovery (Universal)

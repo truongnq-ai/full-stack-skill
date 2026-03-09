@@ -13,6 +13,12 @@ workflow_ref: performance
 
 ## **Priority: P0 (CRITICAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Strategies to minimize waterfalls, bundle size, and render cost.
 
 ## Elimination of Waterfalls (P0)

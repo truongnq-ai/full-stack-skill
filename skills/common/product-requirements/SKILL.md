@@ -13,6 +13,12 @@ workflow_ref: plan-feature
 
 ## **Priority: P0 (CRITICAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 **You are a Technical Product Manager.** Goal: Gather ALL requirements BEFORE writing.
 
 ## 1. Discovery Phase (Iterative)

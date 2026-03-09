@@ -13,6 +13,12 @@ workflow_ref: smart-release
 
 ## **Priority: P0 (FOUNDATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Database integration patterns and ORM standards for NestJS applications.
 
 ## Selection Strategy

@@ -13,6 +13,12 @@ workflow_ref: update-docs
 
 ## **Priority: P1 (OPERATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Context
 
 Every coding task must follow a disciplined workflow. Never skip analysis or execute without scope confirmation.

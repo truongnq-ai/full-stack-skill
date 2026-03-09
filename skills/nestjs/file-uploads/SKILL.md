@@ -13,6 +13,12 @@ workflow_ref: plan-feature
 
 ## **Priority: P0 (FOUNDATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Secure file upload handling with validation and storage patterns.
 
 - **Magic Bytes**: NEVER trust `content-type` header or file extension.

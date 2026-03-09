@@ -12,6 +12,12 @@ workflow_ref: battle-test
 
 ## **Priority: P1 (OPERATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## **The Iron Law**
 
 > **NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST.**

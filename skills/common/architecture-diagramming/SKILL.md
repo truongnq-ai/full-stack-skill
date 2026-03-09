@@ -13,6 +13,12 @@ workflow_ref: plan-feature
 
 ## **Priority: P1 (Standard)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Guidelines
 
 - **Use C4 Model**: Context->Container->Component->Code.

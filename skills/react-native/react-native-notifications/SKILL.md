@@ -14,6 +14,12 @@ workflow_ref: ui-ux-pro-max
 
 ## **Priority: P1 (OPERATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Push notifications using React Native Firebase or Expo Notifications.
 
 ## Guidelines

@@ -13,6 +13,12 @@ workflow_ref: smart-release
 
 ## **Priority: P0 (Standard)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Implement type-safe, robust background jobs using the `Producer-Consumer` pattern with `@nestjs/bullmq`.
 
 ## Structure

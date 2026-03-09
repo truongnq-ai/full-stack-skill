@@ -13,6 +13,12 @@ workflow_ref: smart-release
 
 ## **Priority: P1 (OPERATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Type-safe React patterns.
 
 ## Implementation Guidelines

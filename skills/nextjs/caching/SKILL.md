@@ -13,6 +13,12 @@ workflow_ref: smart-release
 
 ## **Priority: P1 (HIGH)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Next.js has 4 distinct caching layers. Understanding them prevents stale data bugs.
 
 ## **Modern Standard: Cache Components (Next.js 16+)**

@@ -13,6 +13,12 @@ workflow_ref: battle-test
 
 ## **Priority: P1 (HIGH)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Automated class dependency management using `get_it` and `injectable`.
 
 ## Structure

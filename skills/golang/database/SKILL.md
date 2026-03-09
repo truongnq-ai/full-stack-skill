@@ -13,6 +13,12 @@ workflow_ref: performance
 
 ## **Priority: P0 (CRITICAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Principles
 
 - **Prefer Raw SQL/Builders over ORMs**: Go structs map well to SQL. ORMs (GORM) can obscure performance. Recommended: `sqlc` (type-safe SQL generation).

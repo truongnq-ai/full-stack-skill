@@ -20,16 +20,17 @@ workflow_ref: deep-security-audit
 
 ## **Priority: P0 (CRITICAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## 📋 Security Probing Protocol
 
 ### 1. Hardcoded Secrets (Critical)
 
 Scan for plain-text keys, passwords, and tokens in code.
-
-```bash
-grep -riE "(password|apiKey|api_key|secret|private_key|token)\s*=\s*['\"][^'\"]{6,}" \
-  . --exclude-dir={node_modules,dist,build,.git} -l
-```
 
 ### 2. Data Leakage in Logs (PII/Secrets)
 
@@ -43,11 +44,6 @@ Identify sensitive info printed to logs or stdout.
 ### 3. Injection Surface (SQL / Command)
 
 Detect raw string concatenation in queries or system commands.
-
-```bash
-grep -rE "\+.*SELECT|\+.*INSERT|\+.*UPDATE|\+.*DELETE|query\(.*\+|fmt\.Sprintf.*SELECT" \
-  . --include="*.ts" --include="*.js" --include="*.go" --include="*.java" --include="*.py"
-```
 
 ### 4. Auth Coverage vs Exposure
 
@@ -68,10 +64,6 @@ Compare total routes vs protected endpoints.
 
 ### 6. Infrastructure Hardening
 
-```bash
-grep -rE "^FROM .+:latest|^USER root|curl.*sh.*|ADD http" . --include="Dockerfile"
-```
-
 ## ⚖️ Scoring Impact
 
 | Finding                      | Threshold | Severity | Deduction |
@@ -88,7 +80,6 @@ grep -rE "^FROM .+:latest|^USER root|curl.*sh.*|ADD http" . --include="Dockerfil
 ## 📚 Reference Links
 
 - [Vulnerability Remediation Protocols](references/REMEDIATION.md)
-
 
 ## References
 

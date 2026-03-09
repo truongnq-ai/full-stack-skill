@@ -14,6 +14,12 @@ workflow_ref: smart-release
 
 ## **Priority: P0 (CRITICAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 > [!IMPORTANT]
 > The project uses Next.js **Pages Router** (`pages/` directory). Do NOT use App Router features (`app/` directory, React Server Components, `use server`, `use client`).
 

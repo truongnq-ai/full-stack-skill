@@ -13,6 +13,12 @@ workflow_ref: update-docs
 
 ## **Priority: P1 (HIGH)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Standards for code quality, formatting, and generation.
 
 ## Implementation Guidelines

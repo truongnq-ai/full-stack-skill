@@ -31,7 +31,7 @@ export class SizeRule implements ValidationRule {
 export class FrontmatterRule implements ValidationRule {
   name = 'Frontmatter';
 
-  async validate(content: string): Promise<RuleResult> {
+  async validate(content: string, filePath?: string): Promise<RuleResult> {
     const result: RuleResult = { passed: true, errors: [], warnings: [] };
     const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
 
@@ -141,6 +141,23 @@ export class FrontmatterRule implements ValidationRule {
     } else if (typeof frontmatter.workflow_ref !== 'string') {
       result.errors.push('"workflow_ref" must be a string');
       result.passed = false;
+    }
+
+    // Enforce static workflow mapping if present
+    try {
+      if (filePath) {
+        const rel = filePath.replace(/.*\/skills\//, '').replace(/\/SKILL\.md$/, '');
+        const mapPath = path.join(process.cwd(), 'skills', 'workflow-map.json');
+        if (fs.existsSync(mapPath)) {
+          const map = JSON.parse(fs.readFileSync(mapPath, 'utf8')) as Record<string, string>;
+          if (map[rel] && frontmatter.workflow_ref !== map[rel]) {
+            result.errors.push(`workflow_ref mismatch: expected "${map[rel]}"`);
+            result.passed = false;
+          }
+        }
+      }
+    } catch (err) {
+      result.warnings.push(`workflow-map check skipped: ${err}`);
     }
 
     return result;

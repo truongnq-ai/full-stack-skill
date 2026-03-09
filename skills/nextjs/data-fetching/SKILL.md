@@ -13,6 +13,12 @@ workflow_ref: update-docs
 
 ## **Priority: P0 (CRITICAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 > [!WARNING]
 > This skill covers **App Router** data fetching (`fetch`). If the project uses the `pages/` directory, you MUST use `getServerSideProps` or `getStaticProps` instead. Ignore this file's native `fetch` caching advice.
 

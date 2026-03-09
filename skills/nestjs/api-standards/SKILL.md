@@ -13,6 +13,12 @@ workflow_ref: update-docs
 
 ## **Priority: P1 (OPERATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 Standardized API response patterns and common NestJS conventions.
 
 ## Generic Response Wrapper

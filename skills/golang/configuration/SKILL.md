@@ -13,6 +13,12 @@ workflow_ref: smart-release
 
 ## **Priority: P1 (STANDARD)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Principles
 
 - **12-Factor App**: Store config in environment variables.

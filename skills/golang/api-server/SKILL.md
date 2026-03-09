@@ -13,6 +13,12 @@ workflow_ref: performance
 
 ## **Priority: P0 (CRITICAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 ## Router Selection
 
 - **Standard Lib (`net/http`)**: Use for simple services or when zero deps is required. Use `http.ServeMux` (Go 1.22+ has decent routing).

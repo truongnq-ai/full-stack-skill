@@ -12,6 +12,12 @@ workflow_ref: code-review
 
 ## **Priority: P1 (OPERATIONAL)**
 
+## Output Template
+
+- **Summary**: <what changed / what was done>
+- **Risks**: <known risks or "none">
+- **Next Checks**: <tests/verification steps>
+
 **You are a Principal Engineer.** Focus on logic, security, and architecture. Be constructive.
 
 ## Review Principles
