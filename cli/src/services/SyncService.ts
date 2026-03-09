@@ -174,7 +174,7 @@ export class SyncService {
   /**
    * Writes collected skills to target agent paths.
    */
-  async writeSkills(skills: CollectedSkill[], config: SkillConfig) {
+  async writeSkills(skills: CollectedSkill[], config: SkillConfig, dryRun?: boolean) {
     const agents = await this.resolveTargetAgents(config);
     const overrides = config.custom_overrides || [];
 
@@ -183,12 +183,12 @@ export class SyncService {
       if (!agentDef || !agentDef.path) continue;
 
       const basePath = agentDef.path;
-      await fs.ensureDir(basePath);
+      if (!dryRun) await fs.ensureDir(basePath);
 
       for (const skill of skills) {
-        await this.writeSkillForAgent(agentId, skill, overrides, basePath);
+        await this.writeSkillForAgent(agentId, skill, overrides, basePath, dryRun);
       }
-      console.log(pc.gray(`  - Updated ${basePath}/ (${agentDef.name})`));
+      console.log(pc.gray(`  - ${dryRun ? '[DRY] Would update' : 'Updated'} ${basePath}/ (${agentDef.name})`));
     }
   }
 
@@ -214,6 +214,7 @@ export class SyncService {
     skill: CollectedSkill,
     overrides: string[],
     basePath: string,
+    dryRun?: boolean,
   ) {
     const isKiro = agentId === Agent.Kiro;
     const kiroFolder = `${skill.category}-${skill.skill}`;
@@ -221,7 +222,7 @@ export class SyncService {
       ? path.join(basePath, kiroFolder)
       : path.join(basePath, skill.category, skill.skill);
 
-    await fs.ensureDir(skillPath);
+    if (!dryRun) await fs.ensureDir(skillPath);
 
     for (const fileItem of skill.files) {
       const targetFilePath = path.join(skillPath, fileItem.name);
@@ -247,13 +248,27 @@ export class SyncService {
         content = this.transformSkillForKiro(content, skill.category);
       }
 
-      await fs.outputFile(targetFilePath, content);
+      // P2: Incremental sync — skip unchanged files
+      if (!dryRun && (await fs.pathExists(targetFilePath))) {
+        const existing = await fs.readFile(targetFilePath, 'utf8');
+        if (existing === content) continue; // Skip unchanged
+      }
+
+      if (dryRun) {
+        console.log(pc.gray(`    [DRY] Would write: ${this.normalizePath(targetFilePath)}`));
+      } else {
+        await fs.outputFile(targetFilePath, content);
+      }
 
       // Enforce global guardrails at agent root
       if (fileItem.name === 'GLOBAL_GUARDRAILS.md') {
         const guardrailsPath = path.join(basePath, 'GLOBAL_GUARDRAILS.md');
         if (!this.isOverridden(guardrailsPath, overrides)) {
-          await fs.outputFile(guardrailsPath, content);
+          if (dryRun) {
+            console.log(pc.gray(`    [DRY] Would write: ${this.normalizePath(guardrailsPath)}`));
+          } else {
+            await fs.outputFile(guardrailsPath, content);
+          }
         }
       }
     }
@@ -322,7 +337,7 @@ export class SyncService {
   /**
    * Writes collected workflows to the .agent/workflows directory.
    */
-  async writeWorkflows(workflows: CollectedSkill[], config: SkillConfig) {
+  async writeWorkflows(workflows: CollectedSkill[], config: SkillConfig, dryRun?: boolean) {
     if (workflows.length === 0) return;
 
     // Only write workflows if Antigravity agent is enabled
@@ -333,7 +348,7 @@ export class SyncService {
 
     const workflowPath = path.join(process.cwd(), '.agent', 'workflows');
     const overrides = config.custom_overrides || [];
-    await fs.ensureDir(workflowPath);
+    if (!dryRun) await fs.ensureDir(workflowPath);
 
     for (const wf of workflows) {
       if (wf.skill !== 'workflows') continue;
@@ -350,11 +365,20 @@ export class SyncService {
           continue;
         }
 
-        await fs.outputFile(targetFilePath, fileItem.content);
-        console.log(pc.gray(`    + Wrote ${fileItem.name}`));
+        if (dryRun) {
+          console.log(pc.gray(`    [DRY] Would write: ${this.normalizePath(targetFilePath)}`));
+        } else {
+          // Incremental: skip if unchanged
+          if (await fs.pathExists(targetFilePath)) {
+            const existing = await fs.readFile(targetFilePath, 'utf8');
+            if (existing === fileItem.content) continue;
+          }
+          await fs.outputFile(targetFilePath, fileItem.content);
+          console.log(pc.gray(`    + Wrote ${fileItem.name}`));
+        }
       }
     }
-    console.log(pc.green(`  ✅ Workflows synced to .agent/workflows/`));
+    console.log(pc.green(`  ✅ Workflows ${dryRun ? 'preview' : 'synced'} to .agent/workflows/`));
   }
 
   /**

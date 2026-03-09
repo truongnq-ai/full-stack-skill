@@ -1,18 +1,18 @@
 {
   "role:ba": [
-    "roles"
+    "roles/ba"
   ],
   "role:qa": [
-    "roles"
+    "roles/qa"
   ],
   "role:devops": [
-    "roles"
+    "roles/devops"
   ],
   "role:writer": [
-    "roles"
+    "roles/writer"
   ],
   "role:reviewer": [
-    "roles"
+    "roles/reviewer"
   ],
   "stack:web": [
     "frontend",

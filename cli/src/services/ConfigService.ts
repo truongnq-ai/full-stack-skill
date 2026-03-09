@@ -36,6 +36,7 @@ const SkillConfigSchema = z.object({
   custom_overrides: z.array(z.string()).optional(),
   workflows: z.union([z.boolean(), z.array(z.string())]).optional(),
   presets: z.array(z.string()).optional(),
+  presets_data: z.record(z.string(), z.array(z.string())).optional(),
 });
 
 /**
@@ -78,9 +79,8 @@ export class ConfigService {
 
   private expandPresets(config: SkillConfig) {
     if (!config.presets || config.presets.length === 0) return config;
-    const presetsPath = path.join(process.cwd(), 'skills', 'presets.json');
-    if (!fs.existsSync(presetsPath)) return config;
-    const presets = JSON.parse(fs.readFileSync(presetsPath, 'utf8')) as Record<string, string[]>;
+    const presets = config.presets_data || {};
+    if (Object.keys(presets).length === 0) return config;
     for (const preset of config.presets) {
       const cats = presets[preset] || [];
       cats.forEach((cat) => {

@@ -27,8 +27,12 @@ export class SyncCommand {
    * Executes the synchronization flow.
    * Reconciles dependencies, fetches skills and workflows from the registry, and updates AGENTS.md.
    */
-  async run(options: { yes?: boolean } = {}) {
+  async run(options: { yes?: boolean; dryRun?: boolean } = {}) {
+    const startTime = Date.now();
     try {
+      if (options.dryRun) {
+        console.log(pc.cyan('🔍 DRY RUN — No files will be written.\n'));
+      }
       // 1. Load Config
       const config = await this.configService.loadConfig();
       if (!config) {
@@ -108,13 +112,25 @@ export class SyncCommand {
       const workflows = await this.syncService.assembleWorkflows(config);
 
       // 5. Write skills and workflows to target
-      await this.syncService.writeSkills(skills, config);
-      await this.syncService.writeWorkflows(workflows, config);
+      await this.syncService.writeSkills(skills, config, options.dryRun);
+      await this.syncService.writeWorkflows(workflows, config, options.dryRun);
 
       // 6. Automatically apply framework-specific indices to AGENTS.md
-      await this.syncService.applyIndices(config, config.agents);
+      if (!options.dryRun) {
+        await this.syncService.applyIndices(config, config.agents);
+      } else {
+        console.log(pc.gray('  ⏭  Skipping AGENTS.md index update (dry-run)'));
+      }
 
-      console.log(pc.green('✅ All skills synced successfully!'));
+      // 7. Summary
+      const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+      const agents = (config.agents || []).length;
+      const totalSkills = skills.length;
+      console.log(pc.green(options.dryRun
+        ? '✅ Dry run complete. No files were modified.'
+        : '✅ All skills synced successfully!'
+      ));
+      console.log(pc.gray(`   📊 ${enabledCategories.length} categories · ${totalSkills} skills · ${agents} agent(s) · ${elapsed}s`));
     } catch (error) {
       if (error instanceof Error) {
         console.error(pc.red('❌ Sync failed:'), error.message);

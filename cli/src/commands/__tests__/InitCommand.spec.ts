@@ -17,6 +17,12 @@ vi.mock('picocolors', () => ({
     blue: vi.fn((t) => t),
   },
 }));
+// Mock sync command so auto-sync won't actually run
+vi.mock('../sync', () => ({
+  SyncCommand: vi.fn().mockImplementation(() => ({
+    run: vi.fn().mockResolvedValue(undefined),
+  })),
+}));
 
 describe('InitCommand', () => {
   let command: InitCommand;
@@ -64,12 +70,13 @@ describe('InitCommand', () => {
       return false;
     });
     vi.spyOn(fs, 'readFile').mockResolvedValue('{}' as never);
-    // Mock prompts: languages, frameworks, roles/stacks, agents+registry
+    // New wizard flow: languages → frameworks → agents → confirm → auto-sync
     vi.mocked(inquirer.prompt)
-      .mockResolvedValueOnce({ languages: ['ts-js'] })
-      .mockResolvedValueOnce({ frameworks: ['react'] })
-      .mockResolvedValueOnce({ roles: [], stacks: [] })
-      .mockResolvedValueOnce({ agents: ['cursor'], registry: 'reg' });
+      .mockResolvedValueOnce({ languages: ['ts-js'] })       // Step 1: languages
+      .mockResolvedValueOnce({ frameworks: ['react'] })       // Step 2: frameworks
+      .mockResolvedValueOnce({ agents: ['cursor'] })          // Step 3: agents
+      .mockResolvedValueOnce({ confirmed: true })             // Confirmation summary
+      .mockResolvedValueOnce({ sync: false });                // Auto-sync prompt
   });
 
   it('should initialize project from scratch', async () => {
@@ -112,13 +119,14 @@ describe('InitCommand', () => {
       { name: 'React', value: 'react', checked: false },
     ]);
     vi.mocked(inquirer.prompt).mockReset();
-    // Sequence: overwrite, languages, frameworks, roles/stacks, agents+registry
+    // Sequence: overwrite → languages → frameworks → agents → confirm → auto-sync
     vi.mocked(inquirer.prompt)
       .mockResolvedValueOnce({ overwrite: true })
       .mockResolvedValueOnce({ languages: ['ts-js'] })
       .mockResolvedValueOnce({ frameworks: ['react'] })
-      .mockResolvedValueOnce({ roles: [], stacks: [] })
-      .mockResolvedValueOnce({ agents: ['cursor'], registry: 'reg' });
+      .mockResolvedValueOnce({ agents: ['cursor'] })
+      .mockResolvedValueOnce({ confirmed: true })
+      .mockResolvedValueOnce({ sync: false });
 
     await command.run();
     expect(mockInitService.buildAndSaveConfig).toHaveBeenCalled();
@@ -133,14 +141,48 @@ describe('InitCommand', () => {
     });
     vi.spyOn(fs, 'readFile').mockResolvedValue('{}' as never);
     vi.mocked(inquirer.prompt).mockReset();
+    // No frameworks → languages → agents → confirm → auto-sync
     vi.mocked(inquirer.prompt)
       .mockResolvedValueOnce({ languages: ['python'] })
-      .mockResolvedValueOnce({ roles: [], stacks: [] })
-      .mockResolvedValueOnce({ agents: ['cursor'], registry: 'reg' });
+      .mockResolvedValueOnce({ agents: ['cursor'] })
+      .mockResolvedValueOnce({ confirmed: true })
+      .mockResolvedValueOnce({ sync: false });
 
     await command.run();
     expect(mockInitService.buildAndSaveConfig).toHaveBeenCalled();
-    // Prompts: languages + roles/stacks + agents/registry (no frameworks prompt)
-    expect(inquirer.prompt).toHaveBeenCalledTimes(3);
+    // Prompts: languages + agents + confirm + auto-sync (no frameworks)
+    expect(inquirer.prompt).toHaveBeenCalledTimes(4);
+  });
+
+  it('should abort if user declines confirmation summary', async () => {
+    mockInitService.getFrameworkChoices.mockReturnValue([]);
+    vi.mocked(inquirer.prompt).mockReset();
+    vi.mocked(inquirer.prompt)
+      .mockResolvedValueOnce({ languages: ['ts-js'] })
+      .mockResolvedValueOnce({ agents: ['cursor'] })
+      .mockResolvedValueOnce({ confirmed: false }); // User declines
+
+    await command.run();
+    expect(mockInitService.buildAndSaveConfig).not.toHaveBeenCalled();
+    expect(console.log).toHaveBeenCalledWith(
+      expect.stringContaining('Aborted'),
+    );
+  });
+
+  it('should show registry URL prompt with --advanced flag', async () => {
+    mockInitService.getFrameworkChoices.mockReturnValue([]);
+    vi.mocked(inquirer.prompt).mockReset();
+    // languages → agents → registry (advanced) → confirm → sync
+    vi.mocked(inquirer.prompt)
+      .mockResolvedValueOnce({ languages: ['ts-js'] })
+      .mockResolvedValueOnce({ agents: ['cursor'] })
+      .mockResolvedValueOnce({ registry: 'https://custom-registry.com' })
+      .mockResolvedValueOnce({ confirmed: true })
+      .mockResolvedValueOnce({ sync: false });
+
+    await command.run({ advanced: true });
+    expect(mockInitService.buildAndSaveConfig).toHaveBeenCalled();
+    // 5 prompts: languages + agents + registry + confirm + sync
+    expect(inquirer.prompt).toHaveBeenCalledTimes(5);
   });
 });

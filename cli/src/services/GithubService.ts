@@ -1,15 +1,17 @@
 import pc from 'picocolors';
 import { GitHubTreeResponse } from '../models/types';
+import { IRegistryProvider } from './IRegistryProvider';
 
 /**
  * Service for interacting with the GitHub API and fetching raw file content.
  * Handles repository tree discovery, file downloads, and URL parsing.
+ * Implements IRegistryProvider for registry abstraction.
  */
-export class GithubService {
+export class GithubService implements IRegistryProvider {
   private baseUrl = 'https://api.github.com';
   private rawBaseUrl = 'https://raw.githubusercontent.com';
 
-  constructor(private token?: string) {}
+  constructor(private token?: string) { }
 
   private get headers() {
     const h: Record<string, string> = {
@@ -162,5 +164,25 @@ export class GithubService {
     const m = url.match(/github\.com\/([^/]+)\/([^/]+)/i);
     if (!m) return null;
     return { owner: m[1], repo: m[2].replace(/\.git$/, '') };
+  }
+
+  // ─── IRegistryProvider Adapter Methods ────────────────────────────────
+
+  /** @inheritdoc */
+  async getTree(owner: string, repo: string, ref: string) {
+    return this.getRepoTree(owner, repo, ref);
+  }
+
+  /** @inheritdoc */
+  async downloadFiles(
+    tasks: { owner: string; repo: string; ref: string; path: string }[],
+    concurrency = 10,
+  ) {
+    return this.downloadFilesConcurrent(tasks, concurrency);
+  }
+
+  /** @inheritdoc */
+  parseUrl(url: string) {
+    return GithubService.parseGitHubUrl(url);
   }
 }

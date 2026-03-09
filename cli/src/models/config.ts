@@ -31,8 +31,10 @@ export interface SkillConfig {
   };
   /** Whether to sync workflows, or a specific list of workflow names */
   workflows?: boolean | string[];
+  /** List of preset IDs (e.g., 'role:qa', 'stack:backend') */
   presets?: string[];
-  presets?: string[];
+  /** Cached presets mapping from the registry (preset ID → category array) */
+  presets_data?: Record<string, string[]>;
   /** List of file paths to PROTECT from being overwritten by sync */
   custom_overrides?: string[];
 }

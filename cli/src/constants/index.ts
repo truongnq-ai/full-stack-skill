@@ -35,6 +35,8 @@ export interface AgentDefinition {
   ruleFileName?: string;
   frontmatterStyle: 'cursor' | 'copilot' | 'none';
   detectionFiles: string[];
+  /** Agent group for UI sorting: popular editors first, then others, then platform agents */
+  group: 'popular' | 'editor' | 'platform';
 }
 
 export interface FrameworkDefinition {
@@ -57,6 +59,7 @@ export const getAgentDefinition = (id: Agent): AgentDefinition => {
         ruleExtension: '.mdc',
         frontmatterStyle: 'cursor',
         detectionFiles: ['.cursor', '.cursorrules'],
+        group: 'popular',
       };
     case Agent.Trae:
       return {
@@ -67,6 +70,7 @@ export const getAgentDefinition = (id: Agent): AgentDefinition => {
         ruleExtension: '.mdc',
         frontmatterStyle: 'cursor',
         detectionFiles: ['.trae'],
+        group: 'editor',
       };
     case Agent.Claude:
       return {
@@ -78,6 +82,7 @@ export const getAgentDefinition = (id: Agent): AgentDefinition => {
         ruleFileName: 'CLAUDE.md',
         frontmatterStyle: 'none',
         detectionFiles: ['.claude', 'CLAUDE.md'],
+        group: 'popular',
       };
     case Agent.Copilot:
       return {
@@ -88,6 +93,7 @@ export const getAgentDefinition = (id: Agent): AgentDefinition => {
         ruleExtension: '.instructions.md',
         frontmatterStyle: 'copilot',
         detectionFiles: ['.github'],
+        group: 'popular',
       };
     case Agent.Antigravity:
       return {
@@ -98,6 +104,7 @@ export const getAgentDefinition = (id: Agent): AgentDefinition => {
         ruleExtension: '.md',
         frontmatterStyle: 'cursor',
         detectionFiles: ['.agent'],
+        group: 'platform',
       };
     case Agent.OpenAI:
       return {
@@ -108,6 +115,7 @@ export const getAgentDefinition = (id: Agent): AgentDefinition => {
         ruleExtension: '.md',
         frontmatterStyle: 'cursor',
         detectionFiles: ['.codex'],
+        group: 'platform',
       };
     case Agent.OpenCode:
       return {
@@ -118,6 +126,7 @@ export const getAgentDefinition = (id: Agent): AgentDefinition => {
         ruleExtension: '.md',
         frontmatterStyle: 'cursor',
         detectionFiles: ['.opencode'],
+        group: 'editor',
       };
     case Agent.Gemini:
       return {
@@ -128,6 +137,7 @@ export const getAgentDefinition = (id: Agent): AgentDefinition => {
         ruleExtension: '.md',
         frontmatterStyle: 'cursor',
         detectionFiles: ['.gemini'],
+        group: 'platform',
       };
     case Agent.Roo:
       return {
@@ -138,6 +148,7 @@ export const getAgentDefinition = (id: Agent): AgentDefinition => {
         ruleExtension: '.md',
         frontmatterStyle: 'cursor',
         detectionFiles: ['.roo'],
+        group: 'editor',
       };
     case Agent.Windsurf:
       return {
@@ -148,6 +159,7 @@ export const getAgentDefinition = (id: Agent): AgentDefinition => {
         ruleExtension: '.md',
         frontmatterStyle: 'cursor',
         detectionFiles: ['.windsurf', '.windsurfrules'],
+        group: 'editor',
       };
     case Agent.Kiro:
       return {
@@ -158,6 +170,7 @@ export const getAgentDefinition = (id: Agent): AgentDefinition => {
         ruleExtension: '.md',
         frontmatterStyle: 'cursor',
         detectionFiles: ['.kiro'],
+        group: 'editor',
       };
   }
 };
