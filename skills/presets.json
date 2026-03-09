@@ -1,0 +1,13 @@
+{
+  "role:ba": ["roles"],
+  "role:qa": ["roles"],
+  "role:devops": ["roles"],
+  "role:writer": ["roles"],
+  "role:reviewer": ["roles"],
+  "stack:web": ["frontend", "backend", "common"],
+  "stack:mobile": ["mobile", "common"],
+  "stack:backend": ["backend", "common", "database"],
+  "stack:frontend": ["frontend", "common"],
+  "stack:data": ["data", "common"],
+  "stack:platform": ["platform", "common"]
+}

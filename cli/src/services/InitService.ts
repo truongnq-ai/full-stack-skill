@@ -34,6 +34,8 @@ export interface InitAnswers {
   languages: string[];
   /** List of framework IDs chosen by the user */
   frameworks: string[];
+  /** List of role presets chosen by the user */
+  roles: string[];
   /** List of AI agents to enable for the project */
   agents: Agent[];
   /** The URL of the skill registry to use */
@@ -142,6 +144,12 @@ export class InitService {
   /**
    * Generates agent choices for the prompt.
    */
+  getRoleChoices(presets: Record<string, string[]>) {
+    return Object.keys(presets)
+      .filter((k) => k.startsWith('role:'))
+      .map((k) => ({ name: k.replace('role:', '').toUpperCase(), value: k }));
+  }
+
   getAgentChoices(context: InitContext) {
     return SUPPORTED_AGENTS.map((a) => ({
       name: `${a.name} (${a.path}/)`,
@@ -161,6 +169,16 @@ export class InitService {
     metadata: Partial<RegistryMetadata>,
     cwd: string = process.cwd(),
   ) {
+    const presetsPath = path.join(process.cwd(), 'skills', 'presets.json');
+    const presets = (await fs.pathExists(presetsPath))
+      ? (JSON.parse(await fs.readFile(presetsPath, 'utf8')) as Record<string, string[]>)
+      : {};
+
+    const roleCategories = new Set<string>();
+    for (const role of answers.roles || []) {
+      (presets[role] || []).forEach((cat) => roleCategories.add(cat));
+    }
+
     // Collect language skill categories from selected languages
     const languageSkillCategories = new Set<string>();
     for (const langId of answers.languages) {
@@ -195,7 +213,7 @@ export class InitService {
       answers.agents,
       answers.registry,
       metadata,
-      Array.from(allLanguages),
+      Array.from(new Set([...allLanguages, ...roleCategories])),
       includeWorkflows ? DEFAULT_WORKFLOWS : [],
     );
 
@@ -212,9 +230,9 @@ export class InitService {
 #\r
 # Run 'fss list-skills' to view all available skills.\r
 #
-# TIP: For Jira/Zephyr automation and requirement analysis, manually add:
+# TIP: For BA/QA role presets, select roles during init, or manually add:
 # skills:
-#   quality-engineering: { ref: quality-engineering-v1.0.0 }
+#   roles: { ref: roles-v1.0.0, include: [ba, qa] }
 #
 `;
     const configPath = path.join(cwd, '.skillsrc');

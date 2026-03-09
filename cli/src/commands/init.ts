@@ -83,7 +83,23 @@ export class InitCommand {
       frameworks = fwAnswers.frameworks;
     }
 
-    // 5. Step 3 — Select Agents
+    // 5. Step 3 — Select Role Presets (optional)
+    const presetsPath = path.join(process.cwd(), 'skills', 'presets.json');
+    const presets = (await fs.pathExists(presetsPath))
+      ? (JSON.parse(await fs.readFile(presetsPath, 'utf8')) as Record<string, string[]>)
+      : {};
+    const roleChoices = this.initService.getRoleChoices(presets);
+    const { roles } = await inquirer.prompt<{ roles: string[] }>([
+      {
+        type: 'checkbox',
+        name: 'roles',
+        message: 'Select role presets (optional):',
+        choices: roleChoices,
+        pageSize: 10,
+      },
+    ]);
+
+    // 6. Step 4 — Select Agents
     const agentChoices = this.initService.getAgentChoices(context);
 
     const { agents, registry } = await inquirer.prompt<{
@@ -105,10 +121,11 @@ export class InitCommand {
       },
     ]);
 
-    // 6. Build answers and save
+    // 7. Build answers and save
     const answers: InitAnswers = {
       languages,
       frameworks,
+      roles,
       agents: agents as any[],
       registry,
     };

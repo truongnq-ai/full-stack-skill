@@ -103,17 +103,6 @@
         "largest_skill": "best-practices (915 tokens)"
       }
     },
-    "quality-engineering": {
-      "version": "1.0.1",
-      "last_updated": "2026-02-24",
-      "tag_prefix": "quality-engineering-v",
-      "token_metrics": {
-        "total_skills": 4,
-        "total_tokens": 1833,
-        "avg_tokens_per_skill": 458,
-        "largest_skill": "zephyr-test-generation (585 tokens)"
-      }
-    },
     "golang": {
       "version": "1.0.3",
       "last_updated": "2026-02-24",
@@ -245,6 +234,36 @@
         "avg_tokens_per_skill": 437,
         "largest_skill": "language (480 tokens)"
       }
+    },
+    "roles": {
+      "version": "1.0.0",
+      "last_updated": "2026-03-09",
+      "tag_prefix": "roles-v"
+    },
+    "frontend": {
+      "version": "0.1.0",
+      "last_updated": "2026-03-09",
+      "tag_prefix": "frontend-v"
+    },
+    "backend": {
+      "version": "0.1.0",
+      "last_updated": "2026-03-09",
+      "tag_prefix": "backend-v"
+    },
+    "mobile": {
+      "version": "0.1.0",
+      "last_updated": "2026-03-09",
+      "tag_prefix": "mobile-v"
+    },
+    "platform": {
+      "version": "0.1.0",
+      "last_updated": "2026-03-09",
+      "tag_prefix": "platform-v"
+    },
+    "data": {
+      "version": "0.1.0",
+      "last_updated": "2026-03-09",
+      "tag_prefix": "data-v"
     }
   }
 }

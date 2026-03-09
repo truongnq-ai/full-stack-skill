@@ -13,6 +13,10 @@ import {
 import { CategoryConfig, SkillConfig } from '../models/config';
 import { RegistryMetadata } from '../models/types';
 
+const CATEGORY_ALIASES: Record<string, string> = {
+  'quality-engineering': 'roles',
+};
+
 const SkillConfigSchema = z.object({
   registry: z.string().url(),
   agents: z.array(z.nativeEnum(Agent)).optional(),
@@ -33,6 +37,9 @@ const SkillConfigSchema = z.object({
  * Handles loading, saving, and initial construction of the configuration based on project metadata.
  */
 export class ConfigService {
+  private resolveCategoryAlias(category: string) {
+    return CATEGORY_ALIASES[category] || category;
+  }
   /**
    * Loads and validates the skill configuration from the workspace.
    * @param cwd Current working directory
@@ -168,8 +175,9 @@ export class ConfigService {
     const depsArray = Array.from(projectDeps);
 
     for (const categoryId in config.skills) {
+      const resolvedCategoryId = this.resolveCategoryAlias(categoryId);
       const category = config.skills[categoryId];
-      const detections = SKILL_DETECTION_REGISTRY[categoryId] || [];
+      const detections = SKILL_DETECTION_REGISTRY[resolvedCategoryId] || [];
       if (detections.length === 0) continue;
 
       const exclusions = new Set<string>(category.exclude || []);
