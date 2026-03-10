@@ -1,65 +1,75 @@
 ---
 name: Quality Assurance Standards
-description: Standards for maintaining code hygiene, automated checks, and testing integrity.
+description: Standards for maintaining code hygiene, automated checks, and testing integrity. Activates when writing tests, configuring CI, or enforcing code quality gates.
 metadata:
-  labels: [quality-assurance, testing, linting, code-quality]
+  labels: [quality-assurance, testing, linting, code-quality, ci]
   triggers:
-    keywords: [test, qa, lint, quality, assurance]
+    files: ['**/*.spec.ts', '**/*.test.ts', '**/*.test.js', '**/*.spec.js', '.eslintrc.*', 'jest.config.*', '.github/workflows/**']
+    keywords: [test, qa, lint, quality, assurance, coverage, ci, pipeline, hook, pre-commit, sonar]
+    negative: ["user asks to debug a specific bug — use debugging skill", "user asks to design architecture — use system-design"]
 ---
 
-# Quality Assurance - High-Density Standards
-
-Standards for maintaining code hygiene, automated checks, and testing integrity.
+# Quality Assurance Standards
 
 ## **Priority: P1 (MAINTENANCE)**
 
-Standards for maintaining code quality, automated checks, and testing integrity.
+**This skill does NOT**: debug specific bugs — use `debugging` skill. Does not cover architecture design — use `system-design`. Unit test patterns (TDD cycle) belong to `tdd` skill.
+
+**Compatible skills**: `tdd` (test-first cycle), `debugging` (bug fix validation), `code-review` (QA enforcement in PRs), `testing-rule` (applied automatically).
 
 ## 🔍 Code Quality & Linting
 
-- **Zero Tolerance**: Treat all linter warnings/infos as fatal errors in CI.
-- **Automated Formatting**: Enforce strict formatting on every commit using hooks.
-- **Type Safety**: Never use `any` or `dynamic` unless absolutely necessary. Use specific interfaces/types for all data boundaries.
-- **Dead Code**: Proactively remove unused imports, variables, and deprecated methods.
+- **Zero Tolerance**: All linter warnings/errors are fatal in CI. No exceptions.
+- **Automated Formatting**: Enforce `prettier`/`gofmt`/`black` on every commit via hooks.
+- **Type Safety**: Never use `any` / `dynamic`. Use specific interfaces for all data boundaries.
+- **Dead Code**: Remove unused imports, variables, and deprecated methods proactively.
 
-## 🧪 Testing & TDD
+> To enforce: `view_file .agent/skills/common/quality-assurance/` for pre-commit hook configs.
 
-- **F-I-R-S-T**: Test must be Fast, Independent, Repeatable, Self-Validating, and Timely.
-- **TDD (Red-Green-Refactor)**: See our dedicated [TDD Skill](../tdd/SKILL.md) for strict cycle enforcement.
-- **Edge Cases**: Always test null/empty states, boundary limits, and error conditions.
-- **Mock Dependencies**: Isolate code by mocking external systems (APIs, DBs) to ensure deterministic results.
+## 🧪 Testing Standards
 
-## 🔺 The Test Pyramid
+- **FIRST**: Tests must be Fast, Independent, Repeatable, Self-validating, Timely.
+- **Test Pyramid**: 70% unit / 20% integration / 10% E2E.
+- **Edge Cases**: Always test null/empty, boundary limits, and error conditions.
+- **Mock External**: Isolate by mocking APIs, DBs, file system for determinism.
 
-- **Unit Tests (70%)**: Fast, isolated, test individual functions/classes. (TDD focus).
-- **Integration Tests (20%)**: Test interactions between modules (e.g., Service + DB).
-- **E2E Tests (10%)**: Slow, realistic, test user flows from UI to Backend.
+> **Fallback**: If test runner unavailable, use manual verification checklist and document results.
 
-## 🎯 Risk-Based Testing
+## 🎯 Risk-Based Testing Priority
 
-- **Prioritize Critical Paths**: Login, Payments, Data Integrity must have the highest coverage.
-- **Impact Analysis**: Ask "What happens if this fails?" If the answer is "Data Loss", test it thoroughly.
+1. Auth flows, payments, data mutation — highest coverage required.
+2. Error paths and boundary conditions.
+3. Happy path (usually already covered by feature development).
 
-## 🛠 Refactoring & Code Reviews
+> Apply: "What happens if this fails?" If answer is "Data Loss" or "User can't log in" → 100% coverage required.
 
-- **Code Smells**: Proactively refactor duplicated code, long methods (>20 lines), and "god classes".
-- **Incremental Changes**: Perform small, behavior-preserving transformations (Extract Method, Rename Variable).
-- **Quality Gate**: Use peer reviews to share knowledge and catch logic errors before merging.
-- **Constructive Feedback**: Critique the code, not the author. Explain the "why" behind suggestions.
+## 🛠 Automation & CI
 
-## 🛠 Automation & Hooks
-
-- **Pre-commit Hooks**: Validate linting, formatting, and unit tests before every push.
-- **Documentation**: Keep public APIs documented. Use triple-slash/JSDoc.
-- **Strict Dependencies**: Lock versions in `pubspec.lock` / `package-lock.json` / `pnpm-lock.yaml`.
+- **Pre-commit hooks**: Run lint + format + unit tests before every push (husky/lefthook).
+- **CI gate**: PR must pass lint + test + build before merge. No manual override.
+- **Coverage threshold**: Minimum defined in `jest.config.*` or `coverage.json`. Never reduce threshold.
 
 ## 🚫 Anti-Patterns
 
-- **Broken Window**: `**No Ignoring Warnings**: Leaving "small" lint errors leads to codebase rot.`
-- **Testing Implementation**: `**No Testing Internals**: Changes to private methods shouldn't break tests.`
-- **Manual QA Dependency**: `**No "Test-Last"**: Verification must be automated and continuous, not a final manual gate.`
-- **Magic Strings**: `**No Hardcoded IDs**: Use constants or generated keys for accessibility/test IDs.`
+**`No Ignored Warnings`**: Linter warnings left in code lead to codebase rot. Fix or suppress with documented reason.
+
+**`No Implementation Testing`**: Test behavior, not private method internals. Refactoring must not break tests.
+
+**`No Test-Last`**: Testing after feature completion misses design feedback. Test during or before writing code.
+
+**`No Magic Test IDs`**: Use descriptive constants for test selectors. Not `#input-1`.
+
+**`No Coverage Gaming`**: Coverage % without meaningful assertions is worthless. Test behavior, not line hits.
+
+## ✅ Verification Checklist
+
+- [ ] All new code has corresponding test file
+- [ ] Coverage threshold passes (`npm test -- --coverage`)
+- [ ] Pre-commit hook runs lint + test locally
+- [ ] CI pipeline passes all checks on PR
+- [ ] Edge cases (null, boundary, error) tested
 
 ## 📚 References
 
-- [TDD Cycle & Feedback Examples](references/TDD_FEEDBACK.md)
+- [TDD Cycle](../tdd/SKILL.md)
+- [TDD Feedback Examples](references/TDD_FEEDBACK.md)

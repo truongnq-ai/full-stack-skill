@@ -1,63 +1,77 @@
 ---
 name: Agent Skills Architecture
-description: Foundational "High-Density" standard for token-optimized agent instructions and CLI-based automated activation.
+description: Foundational standard for token-optimized agent skill design, CLI-based automated activation, and progressive disclosure loading. Activates when designing or evaluating skill structure.
 metadata:
   labels: [architecture, high-density, meta, optimization, cli-integration]
   triggers:
     files: ['.skillsrc', 'metadata.json', 'SKILL.md']
-    keywords:
-      [
-        skill architecture,
-        high-density standard,
-        modular skills,
-        dependency exclusion,
-        skill separation,
-      ]
+    keywords: [skill architecture, high-density standard, modular skills, dependency exclusion, skill separation, token economy, skill design]
+    negative: ["user asks to implement application code — use framework skills", "user asks to write workflow — use workflow-review"]
 ---
 
 # Agent Skills Architecture Standard
 
 ## **Priority: P0 (CRITICAL)**
 
-The primary goal is **Maximum Information Density** and **Automated Precision**.
+**This skill does NOT**: define individual skill content — use `skill-creator/SKILL.md` for that. Does not review workflows — use `workflow-review`.
 
-## 🏗️ Core Architectural Pillars
+**Compatible skills**: `skill-creator` (creation standard), `skill-review` workflow (audit process).
 
-### 1. **Separation by Package (Granularity)**
+## Core Architectural Pillars
 
-- **Rule**: Separate skills based on specific library/framework dependencies.
-- **Goal**: Avoid context pollution. Don't load "Riverpod" instructions into a "BLoC" project.
-- **Example**: `flutter/bloc-state-management` vs `flutter/riverpod-state-management`.
+**1. Separation by Package**
+- Separate skills per specific library/framework dependency.
+- Goal: Avoid context pollution. Don't load Riverpod rules into a BLoC project.
+- Example: `flutter/bloc-state-management` ≠ `flutter/riverpod-state-management`.
 
-### 2. **Presence = Active (Simplified Configuration)**
+**2. Presence = Active**
+- If a skill is listed in `.skillsrc`, it is active. No `enabled` flags.
+- Control activation via inclusion/exclusion lists only.
 
-- **Logic**: If a skill is listed in `.skillsrc`, it is considered active.
-- **Standard**: Remove legacy `enabled` flags. Control activation via inclusion/exclusion lists.
+**3. CLI Detection & Dynamic Exclusion**
+- CLI maps `package.json`/`pubspec.yaml` to skill IDs.
+- Irrelevant sub-skills auto-added to `exclude` during `init` if packages missing.
 
-### 3. **CLI Detection & Dynamic Exclusion**
+> **Fallback**: If CLI unavailable, manually edit `.skillsrc` exclude list.
 
-- **Mechanism**: The CLI (`ags`) maps `package.json`/`pubspec.yaml` dependencies to skill IDs.
-- **Exclusion**: Irrelevant sub-skills are automatically added to the `exclude` list during initialization if their corresponding packages are missing.
+**4. Progressive Disclosure (Three-Level Loading)**
+- Level 1 — Metadata: triggers activation via keywords/files.
+- Level 2 — SKILL.md Body: core imperative logic (<100 lines).
+- Level 3 — references/: detailed examples, lazy-loaded on-demand.
 
-### 4. **Progressive Disclosure (Three-Level Loading)**
+> To inspect current skill loading: `view_file .skillsrc` then `view_file .agent/skills/<id>/SKILL.md`.
 
-- **Level 1 (Metadata)**: Triggers activation via high-precision keywords/files.
-- **Level 2 (SKILL.md Body)**: Core imperative logic (<100 lines). No conversational fluff.
-- **Level 3 (References)**: Detailed examples, complex patterns, scripts. Lazy-loaded on-demand.
+## ID & Naming Standards
 
-## 📦 ID & Naming Standards
+- Category: lowercase (e.g., `flutter`, `nestjs`).
+- Skill ID: kebab-case matching directory name.
+- Registry ID: must match Skill ID for CLI detection.
 
-- **Category**: Lowercase letters (e.g., `flutter`, `nestjs`).
-- **Skill ID**: Kebab-case, must match the directory name.
-- **Registry ID**: Must match the Skill ID for automated CLI detection/exclusion.
+## Writing Style
 
-## 📋 High-Density Writing Style
+- **Imperative**: "Use X", "Avoid Y". No "Please" / "You should".
+- **Token-compressed**: Skip articles. Bullets > paragraphs.
+- **No conversational intros**: "In this skill..." → Delete.
 
-- **Imperative Mood**: Use "Use X", "Avoid Y". No "Please" or "You should".
-- **Token Compression**: Skip articles ("the", "a") where possible. Use bullet points > paragraphs.
-- **Anti-Patterns**: Avoid conversational intros ("In this skill, we see...").
+## 🚫 Anti-Patterns
 
-## 🔗 Internal References
+**`No Fat Skills`**: SKILL.md >100 lines? Extract to `references/`.
 
-- [Skill Creator Standard](../../skill-creator/SKILL.md) - Detailed authoring rules.
-- [Resource Organization](../../skill-creator/references/resource-organization.md) - Folder structure best practices.
+**`No Coupled IDs`**: Registry ID must always match directory name exactly.
+
+**`No Manual Activation`**: Skills should auto-activate via `.skillsrc` + CLI. Never require user to load manually.
+
+**`No Inlined Examples`**: Code >10 lines belongs in `references/`, not SKILL.md body.
+
+## ✅ Verification Checklist
+
+- [ ] SKILL.md ≤100 lines
+- [ ] Directory name matches registry ID
+- [ ] `.skillsrc` entry exists and matches
+- [ ] Heavy examples in `references/`, not inlined
+- [ ] Triggers cover file patterns + keywords
+
+## 📚 References
+
+- [Skill Creator Standard](../../skill-creator/SKILL.md)
+- [Resource Organization](../../skill-creator/references/resource-organization.md)

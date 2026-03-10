@@ -1,56 +1,71 @@
 ---
 name: Global Best Practices
-description: Universal principles for clean, maintainable, and robust code across all environments.
+description: Universal principles for clean, maintainable, and robust code across all environments. Activates on any code file when SOLID, DRY, KISS violations are detected.
 metadata:
   labels: [best-practices, solid, clean-code, architecture]
   triggers:
-    keywords: [solid, kiss, dry, yagni, naming, conventions]
+    files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.py', '**/*.java', '**/*.go']
+    keywords: [solid, kiss, dry, yagni, naming, conventions, refactor, clean code, god class, magic number]
+    negative: ["user asks for framework-specific patterns — use framework skill instead"]
 ---
 
 # Global Best Practices
 
 ## **Priority: P0 (FOUNDATIONAL)**
 
-## 🏗 SOLID & Architectural Principles
+**This skill does NOT**: replace framework-specific skills — use `typescript/best-practices`, `javascript/best-practices`, or specific framework skills for language-level conventions.
 
-- **SRP (Single Responsibility)**: One class/function = One reason to change. Separate business logic from delivery (UI/API).
-- **OCP (Open-Closed)**: Extended via composition/interfaces; closed to source modification.
-- **LSP (Liskov)**: Subtypes must be transparently replaceable for base types. Use `@override` carefully.
-- **ISP (Interface Segregation)**: Granular interfaces > "Fat" general-purpose ones.
-- **DIP (Dependency Inversion)**: Depend on abstractions (interfaces), not concretions. Use DI containers.
-- **Modular Design**: Break complex systems into small, independent, and swappable components to reduce cognitive load.
+**Compatible skills**: `quality-assurance` (enforcement), `code-review` (application), `system-design` (architecture level), `tdd` (test-first).
 
-## 🧹 Clean Code Standards (KISS/DRY/YAGNI)
+## 🏗 SOLID Principles
 
-- **KISS**: Favor readable, simple logic over "clever" one-liners.
-- **DRY**: Abstract repeated logic into reusable utilities. No magic numbers/strings.
-- **YAGNI**: Implement only current requirements. Avoid "just in case" abstractions.
-- **Meaningful Names**: Use intention-revealing names (`isUserAuthenticated` > `checkUser`).
-- **Naming Conventions**: Follow language-specific standards:
-  - `camelCase`: Variables/Functions (JS/Java/Dart).
-  - `snake_case`: Variables/Functions (Python/Ruby).
-  - `PascalCase`: Classes/Types (universal).
-  - `kebab-case`: Files/CSS/URLs.
+- **SRP**: One class/function = one reason to change. Separate business logic from delivery layer.
+- **OCP**: Extend via composition/interfaces. Never modify closed source.
+- **LSP**: Subtypes transparent replacements for base types. No behavior surprises.
+- **ISP**: Granular interfaces over fat general-purpose ones.
+- **DIP**: Depend on abstractions. Inject dependencies via constructor.
+
+## 🧹 KISS/DRY/YAGNI
+
+- **KISS**: Readable simple logic over clever one-liners.
+- **DRY**: Abstract repeated logic to utilities. No magic strings/numbers — use named constants.
+- **YAGNI**: Implement only current requirements. No "just in case" abstractions.
+- **Naming**: Intent-revealing names. `isUserAuthenticated` > `checkUser`. Language conventions apply.
 
 ## 🛡 Security & Performance Foundations
 
-- **Sanitization**: Always validate external input (API, User, Env) to prevent Injection/XSS.
-- **Early Return**: Guard clauses first to minimize nesting and improve readability.
-- **Lazy Loading**: Defer heavy initialization or data fetching until actually needed.
-- **Resource Cleanup**: Always close streams, file handles, and database connections to prevent leaks.
+- **Sanitize**: Validate all external input (API, User, Env). Prevent injection/XSS.
+- **Early Return**: Guard clauses first. Minimize nesting depth.
+- **Lazy Loading**: Defer heavy initialization until needed.
+- **Resource Cleanup**: Close streams, file handles, DB connections. Always.
 
 ## 🧱 Error Handling
 
-- **Predictable Failures**: Use custom exception types over generic Catch-Alls.
-- **Graceful Degradation**: Fallback values/UI for non-critical failures.
-- **Log Context**: Log actionable metadata (ID, State) along with errors. Avoid silent failures.
+- **Custom Exceptions**: Typed errors over generic `Error`. Name them semantically.
+- **Graceful Degradation**: Fallback values for non-critical failures.
+- **Log Context**: Log with ID, state, and actionable metadata. No silent failures.
+
+> **Fallback**: If no structured logger available, `console.error({ context, error })` as minimum.
 
 ## 🚫 Anti-Patterns
 
-- **Magic Numbers**: `**No Hardcoded Constants**: Use named constants or config.`
-- **Pyramid of Doom**: `**No Deep Nesting**: Use guard clauses and early returns.`
-- **Mutable Globals**: `**No Global State**: Use dependency injection or state management.`
-- **Silent Failures**: `**No Empty Catch**: Always handle, log, or rethrow errors.`
+**`No Magic Numbers`**: Extract to named constants. `const MAX_RETRIES = 3`, not `if (count > 3)`.
+
+**`No Deep Nesting`**: Use guard clauses and early returns. Max 3 levels.
+
+**`No Global State`**: Use dependency injection or state management patterns.
+
+**`No Empty Catch`**: Always handle, log, or rethrow. Never silent `catch {}`.
+
+**`No God Class`**: >3 responsibilities → split into focused modules.
+
+## ✅ Verification Checklist
+
+- [ ] No magic numbers or strings — all extracted to named constants
+- [ ] No nesting deeper than 3 levels
+- [ ] All errors caught are handled (log or rethrow)
+- [ ] No class with >3 distinct responsibilities
+- [ ] Dependencies injected, not hardcoded
 
 ## 📚 References
 

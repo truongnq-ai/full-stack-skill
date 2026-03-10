@@ -1,64 +1,52 @@
 ---
 name: JavaScript Best Practices
-description: Idiomatic JavaScript patterns and conventions for maintainable code.
+description: Idiomatic JavaScript patterns and conventions for maintainable code. Activates on JS files to enforce naming, error handling, module patterns, and code structure.
 metadata:
   labels: [javascript, best-practices, conventions, code-quality]
   triggers:
     files: ['**/*.js', '**/*.mjs']
-    keywords: [module, import, export, error, validation]
+    keywords: [module, import, export, error, validation, naming, async, callback, promise]
+    negative: ["user asks for TypeScript-specific patterns — use typescript/best-practices", "user asks for test config — use javascript/tooling"]
 ---
 
 # JavaScript Best Practices
 
 ## **Priority: P1 (OPERATIONAL)**
 
-Conventions and patterns for writing maintainable JavaScript.
+**This skill does NOT**: cover TypeScript-specific patterns — use `typescript/best-practices` for typed code. Test tooling configuration belongs to `javascript/tooling`.
+
+**Compatible skills**: `javascript/language` (syntax patterns), `javascript/tooling` (tooling config), `best-practices` (global principles), `debugging` (error investigation).
 
 ## Implementation Guidelines
 
-- **Naming**: `camelCase` (vars/funcs), `PascalCase` (classes), `UPPER_SNAKE` (constants).
-- **Errors**: Throw `Error` objects only. Handle all async errors.
-- **Comments**: JSDoc for APIs. Explain "why" not "what".
-- **Files**: One entity per file. `index.js` for exports.
-- **Modules**: Named exports only. Order: Ext -> Int -> Rel.
+- **Naming**: `camelCase` (vars/funcs), `PascalCase` (classes/constructors), `UPPER_SNAKE` (constants).
+- **Errors**: Throw `Error` objects only — never throw strings. Handle all async errors with `try/catch`.
+- **Comments**: JSDoc for public APIs. Explain "why", not "what".
+- **Files**: One entity per file. `index.js` for barrel exports.
+- **Modules**: Named exports only. Import order: external → internal → relative.
 
-## Anti-Patterns
+> **Fallback**: If ESLint not configured, manually apply the naming conventions and error handling patterns from `references/REFERENCE.md`.
 
-- **No Globals**: Encapsulate state.
-- **No Magic Numbers**: Use `const`.
-- **No Nesting**: Guard clauses/early returns.
-- **No Defaults**: Use named exports.
-- **No Side Effects**: Keep functions pure.
+## 🚫 Anti-Patterns
 
-## Code
+**`No Globals`**: Encapsulate all state. Never mutate `window` or global scope.
 
-```javascript
-// Constants
-const STATUS = { OK: 200, ERROR: 500 };
+**`No Magic Numbers`**: Extract to named `const`. `const MAX_RETRIES = 3`, never `if (count > 3)`.
 
-// Errors
-class APIError extends Error {
-  constructor(msg, code) {
-    super(msg);
-    this.code = code;
-  }
-}
+**`No Deep Nesting`**: Use guard clauses and early returns. Max 3 levels of nesting.
 
-// Async + JDoc
-/** @throws {APIError} */
-export async function getData(id) {
-  if (!id) throw new APIError('Missing ID', 400);
-  const res = await fetch(`/api/${id}`);
-  if (!res.ok) throw new APIError('Failed', res.status);
-  return res.json();
-}
-```
+**`No Default Exports`**: Use named exports for tree-shaking and discoverability.
 
-## Reference & Examples
+**`No Side Effects in Modules`**: Keep module-level code pure. No immediate execution on import.
 
-For module patterns and project structure:
-See [references/REFERENCE.md](references/REFERENCE.md).
+## ✅ Verification Checklist
 
-## Related Topics
+- [ ] All public APIs have JSDoc comments
+- [ ] No `var` declarations (only `const`/`let`)
+- [ ] All async functions have `try/catch` error handling
+- [ ] Named exports used (no default exports)
+- [ ] No magic numbers — all extracted to named constants
 
-language | tooling
+## 📚 References
+
+- [Module Patterns & Project Structure](references/REFERENCE.md)
