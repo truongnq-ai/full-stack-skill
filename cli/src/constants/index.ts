@@ -18,12 +18,7 @@ export const FRONTEND_REACT_FRAMEWORKS: Framework[] = [
 export const DEFAULT_REGISTER =
   'https://github.com/truongnq-ai/full-stack-skill';
 
-export const DEFAULT_WORKFLOWS = [
-  'code-review',
-  'codebase-review',
-  'plan-feature',
-  'skill-benchmark'
-];
+
 
 // Configurable via ENV or hardcoded for production convenience
 export interface AgentDefinition {

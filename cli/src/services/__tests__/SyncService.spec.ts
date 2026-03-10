@@ -96,7 +96,7 @@ describe('SyncService', () => {
   });
 
   describe('reconcileWorkflows', () => {
-    it('should discover and add new workflows from DEFAULT_WORKFLOWS if config.workflows is an array', async () => {
+    it('should discover and add ALL new workflows if config.workflows is an array', async () => {
       const config = {
         registry: 'https://github.com/o/r',
         workflows: ['code-review'],
@@ -117,10 +117,11 @@ describe('SyncService', () => {
       expect(result).toBe(true);
       expect(config.workflows).toContain('code-review');
       expect(config.workflows).toContain('plan-feature');
-      expect(config.workflows).not.toContain('custom');
+      // All new workflows are added, including non-default ones
+      expect(config.workflows).toContain('custom');
     });
 
-    it('should initialize workflows if undefined and Antigravity is enabled', async () => {
+    it('should initialize ALL available workflows if undefined (first-time init)', async () => {
       const config = {
         registry: 'https://github.com/o/r',
         agents: [Agent.Antigravity],

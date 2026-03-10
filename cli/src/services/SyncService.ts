@@ -1,7 +1,7 @@
 import fs from 'fs-extra';
 import path from 'path';
 import pc from 'picocolors';
-import { Agent, DEFAULT_WORKFLOWS, SUPPORTED_AGENTS } from '../constants';
+import { Agent, SUPPORTED_AGENTS } from '../constants';
 import { SkillConfig, SkillEntry } from '../models/config';
 import {
   CollectedSkill,
@@ -84,12 +84,10 @@ export class SyncService {
     let changed = false;
 
     if (Array.isArray(config.workflows)) {
-      // If workflows is an array, we respect the user's explicit list.
-      // We automatically add new default workflows discovered in the registry.
+      // If workflows is an array, auto-add ALL newly discovered workflows from the registry.
       const currentWorkflows = config.workflows as string[];
       const newWorkflows = availableWorkflows.filter(
-        (wf) =>
-          !currentWorkflows.includes(wf) && DEFAULT_WORKFLOWS.includes(wf),
+        (wf) => !currentWorkflows.includes(wf),
       );
 
       if (newWorkflows.length > 0) {
@@ -102,19 +100,14 @@ export class SyncService {
         changed = true;
       }
     } else if (config.workflows === undefined || config.workflows === true) {
-      const agents = await this.resolveTargetAgents(config);
-      if (agents.includes(Agent.Antigravity)) {
-        const defaultWorkflows = availableWorkflows.filter((wf) =>
-          DEFAULT_WORKFLOWS.includes(wf),
-        );
-        config.workflows = defaultWorkflows;
-        console.log(
-          pc.yellow(
-            `✨ Workflows Initialized: Adding [${defaultWorkflows.join(', ')}] to .skillsrc.`,
-          ),
-        );
-        changed = true;
-      }
+      // First-time init: sync ALL available workflows from the registry.
+      config.workflows = availableWorkflows;
+      console.log(
+        pc.yellow(
+          `✨ Workflows Initialized: Adding [${availableWorkflows.join(', ')}] to .skillsrc.`,
+        ),
+      );
+      changed = true;
     }
 
     return changed;

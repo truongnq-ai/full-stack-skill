@@ -2,7 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2026.03.10.1 — Hotfix: Workflow Sync Strategy
+
+### Fixed
+
+- **Workflow sync now initializes ALL available workflows on first `init`** (previously only 4 hardcoded defaults)
+- **Subsequent `sync` runs auto-add ALL newly added workflows** from the registry (previously filtered by `DEFAULT_WORKFLOWS` whitelist)
+- Removed `DEFAULT_WORKFLOWS` constant — no longer needed with the all-inclusive strategy
+
+### Changed
+
+- `SyncService.reconcileWorkflows`: First-time init sets `config.workflows` to full list of available workflows from registry
+- `SyncService.reconcileWorkflows`: Reconcile mode now auto-adds every new workflow discovered in registry, not just whitelisted ones
+
+---
+
 ## 2026.03.01 — Initial Release
+
 
 ### Added
 
