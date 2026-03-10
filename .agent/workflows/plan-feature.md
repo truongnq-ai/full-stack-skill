@@ -2,41 +2,107 @@
 description: Interactive workflow to plan a new feature from scratch, from Interview to Task List.
 ---
 
-# Feature Planning Workflow
+# 🗺️ Feature Planning Workflow
 
-This workflow guides you from a vague idea to a fully planned implementation workspace.
+> **Use this workflow when**: user has a new feature idea and needs structured planning before coding. Trigger phrases: "plan this feature", "let's design X", "I want to build Y", `/plan-feature`.
+>
+> **Out of scope**: Does not implement code — use `code-review` or `orchestrate` after planning is complete. Does not generate PRDs for existing features already in progress.
 
-## 1. Requirement Gathering (Interview)
+---
 
-Trigger the PRD skill to interview the user and gather full context. This step is interactive.
+## Step 1 — Requirement Gathering (Interview)
 
-**Instruction**:
-"Please act as a Product Manager. Reference `skills/common/product-requirements/SKILL.md`. Start the **Discovery Phase** to gather requirements for the new feature the user wants to build. Ask clarifying questions until you have enough info."
+**Persona**: PM / Business Analyst.
 
-## 2. PRD Generation
+Load and apply `skills/common/product-requirements/SKILL.md`:
 
-Once the interview is complete, generate the formal PRD.
+```
+view_file skills/common/product-requirements/SKILL.md
+```
 
-**Instruction**:
-"Based on the gathering findings, generate the PRD using the template at `skills/common/product-requirements/references/prd-template.md`. Save it to `docs/specs/prd-[feature_name].md`. Then, validate it using `skills/common/product-requirements/references/checklist.md`."
+> **Fallback**: If skill file missing, conduct interview manually covering: (1) Problem being solved, (2) Target users, (3) Core user stories, (4) Acceptance criteria, (5) Non-functional requirements (perf, security, scale).
 
-## 3. Implementation Planning
+Start **Discovery Phase**: ask clarifying questions until all ambiguity is resolved. Do not proceed while any acceptance criterion is unclear.
 
-Convert the "What" (PRD) into "How" (Plan).
+> **Rule**: A minimum of 5 clarifying questions must be asked and answered before generating the PRD.
 
-**Instruction**:
-"Analyze the generated PRD. Create an `implementation_plan.md` artifact.
+---
 
-- Break down the PRD into technical components.
-- Identify necessary file changes.
-- Define a Verification Plan (Automated & Manual tests)."
+## ⏸️ Checkpoint: Confirm Requirements
 
-## 4. Task Initialization
+```
+"Requirements gathered:
+- Problem: [summary]
+- Users: [summary]
+- Core stories: [N] stories
+- Acceptance criteria: [N] items
 
-Set up the workspace for execution.
+Proceed to PRD generation? (Y / N — revise first)"
+```
 
-**Instruction**:
-"Initialize `task.md` based on the Implementation Plan.
+---
 
-- Create granular checklist items.
-- Ensure the first task consists of setup or structural changes."
+## Step 2 — PRD Generation
+
+Generate the PRD using the template:
+
+```
+view_file skills/common/product-requirements/references/prd-template.md
+```
+
+Save to `docs/specs/prd-[feature_name].md`.
+
+Validate against checklist:
+
+```
+view_file skills/common/product-requirements/references/checklist.md
+```
+
+> **Fallback**: If template or checklist missing, generate PRD with these mandatory sections: Overview, User Stories, Acceptance Criteria, Out of Scope, Success Metrics.
+
+---
+
+## Step 3 — Implementation Planning
+
+Convert "What" (PRD) → "How" (Technical Plan).
+
+Create `docs/implementation_plan.md` with:
+
+- **Technical components**: list each module/service to create or modify
+- **File changes**: exact file paths to create, modify, or delete
+- **Dependency order**: which component must be built first
+- **Verification Plan**:
+  - Automated: unit tests, E2E tests, commands to run
+  - Manual: UI flows, edge cases to check by hand
+
+> **Fallback**: If PRD is missing when this step runs, return to Step 1 immediately.
+
+---
+
+## ⏸️ Checkpoint: Approve Plan
+
+```
+"Implementation plan ready: docs/implementation_plan.md
+
+Approve to proceed?
+- Y → Initialize task.md and begin execution
+- N → Revise plan first"
+```
+
+---
+
+## Step 4 — Task Initialization
+
+Initialize `task.md` from the approved implementation plan:
+
+- Create granular checklist items (`- [ ]` format)
+- First tasks must be setup/structural changes (no logic before scaffolding)
+- Group by component with clear section headers
+- Mark first actionable item as `[/]` (in progress)
+
+**Done criteria** — workflow is complete when:
+
+- [ ] `docs/specs/prd-[feature_name].md` exists and validated
+- [ ] `docs/implementation_plan.md` exists and approved by user
+- [ ] `task.md` initialized with all checklist items
+- [ ] First task marked as in progress

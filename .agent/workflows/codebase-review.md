@@ -4,11 +4,13 @@ description: Review an entire codebase against framework best practices and gene
 
 # 🔍 Codebase Review Workflow
 
-> **Goal**: Auto-detect ecosystem, dynamically load matching skills, and perform a high-efficiency review with a weighted score and improvement roadmap.
+> **Use this workflow when**: user asks to review the entire project, assess overall code health, onboard to a new codebase, or run `/codebase-review`. Typical triggers: "review my project", "how's my codebase?", "audit everything".
+>
+> **Out of scope**: Does not review individual PRs or diffs — use `code-review` for that. Does not review skill/workflow/rule files — use `skill-review`, `workflow-review`, or `rule-review`.
+
 > [!IMPORTANT]
 > **Token Efficiency First**:
->
-> - Use `grep -c` or `wc -l` for metrics.
+> - Use `grep -c` or `wc -l` for metrics — never read entire files for counts.
 > - Summarize findings internally; do not repeat skill rules verbatim.
 > - Delegate security and architectural deep-dives to `common/` skills.
 
@@ -16,26 +18,39 @@ description: Review an entire codebase against framework best practices and gene
 
 ## Step 1 — Project Discovery
 
-Gather enough info to identify the architecture:
-
 ```bash
-# manifest/structure check
+# Detect architecture and stack
 ls -F
 cat package.json 2>/dev/null || cat lib/main.dart 2>/dev/null || cat go.mod 2>/dev/null || cat pom.xml 2>/dev/null
 find . -maxdepth 2 -not -path '*/.*' -not -path '*/node_modules/*' -not -path '*/build/*'
 ```
 
+> **Fallback**: If no manifest found, run `find . -maxdepth 3 -name "*.json" -o -name "*.yaml" | head -10` to locate config files.
+
+---
+
+## ⏸️ Checkpoint: Confirm Scan Scope
+
+Present findings to user before running full scan:
+
+```
+"Detected: [stack] project with ~[N] source files.
+Full scan will read up to 3 representative files + run grep metrics.
+Proceed? (Y = full scan / N = stop here)"
+```
+
+> Only continue to Step 2 after explicit user confirmation.
+
 ---
 
 ## Step 2 — Skill Mapping
 
-Match the detected project to registry keys (e.g., `flutter`, `nestjs`, `golang`, `typescript`).
-**Action**: Use `view_file` to load matching `SKILL.md` files from the registry, specifically:
+Match detected project to registry. Load matching skill files with `view_file`:
 
 - `skills/common/architecture-audit/SKILL.md`
 - `skills/common/security-audit/SKILL.md`
 
-**Fallback**: If paths are missing, search `.agent/skills/` using `list_dir`. If specialized skills are unavailable, proceed using the **Lite Audit** fallbacks in the following steps.
+> **Fallback**: If skill paths missing, run `find .agent/skills/ -name "SKILL.md" | head -10` to locate available skills. If none, proceed with **Lite Audit** fallbacks in Steps 3–4.
 
 ---
 
@@ -43,80 +58,82 @@ Match the detected project to registry keys (e.g., `flutter`, `nestjs`, `golang`
 
 Run ecosystem-aware scans to identify hotspots:
 
-- **Test Coverage Signal**: `find . -name "*_test.*" -o -name "*.spec.*" | wc -l`
-- **Debt Signal**: `grep -riE "TODO|FIXME" . | wc -l`
-- **Fat Files (>1k LOC)**: `find src lib -type f -name "*.*" | xargs wc -l | awk '$1 > 1000'`
-- **Secret/Credential Signal**:
-  - If skill present: Execute Step 1 from `skills/common/security-audit/SKILL.md`.
-  - **Lite Fallback**: `grep -riE "password|secret|apiKey|token" . --exclude-dir=node_modules -l | head -n 10`
+```bash
+find . -name "*_test.*" -o -name "*.spec.*" | wc -l          # test files
+grep -riE "TODO|FIXME" . --exclude-dir=node_modules | wc -l  # tech debt
+find src lib -type f -name "*.*" | xargs wc -l 2>/dev/null | awk '$1 > 1000'  # fat files
+grep -riE "password|secret|apiKey|token" . --exclude-dir=node_modules -l | head -10  # secrets
+```
 
 ---
 
-## Step 4 — Security & Architecture Audit (Adversarial)
+## Step 4 — Security & Architecture Audit
 
-Apply the full audit protocols defined in:
+Apply protocols from loaded skills (Step 2). If skills missing, use **Lite Fallback**:
 
-1. `skills/common/security-audit/SKILL.md`
-2. `skills/common/architecture-audit/SKILL.md`
+```bash
+grep -rE "\+.*SELECT|\+.*INSERT|query\(.*\+" . --include="*.ts" --include="*.go"  # injection
+grep -rE "Repository\.|db\." src/controllers lib/widgets 2>/dev/null | wc -l      # layer leakage
+find src lib -maxdepth 2 -type f | xargs wc -l 2>/dev/null | awk '$1 > 1000'     # god files
+```
 
-**Lite Fallback (If skills missing)**:
-
-- **Injection Probing**: `grep -rE "\+.*SELECT|\+.*INSERT|query\(.*\+" . --include="*.ts" --include="*.go"`
-- **Architecture Leakage**: `grep -rE "Repository\.|db\." src/controllers lib/widgets | wc -l`
-- **Monoliths**: `find src lib -maxdepth 2 -type f | xargs wc -l | awk '$1 > 1000'`
-
-- **Goal**: Identify 🔴 Critical (P0) findings. Do not block if specialized skills are unavailable.
+Identify 🔴 Critical (P0) findings. Do not block if specialized skills unavailable.
 
 ---
 
 ## Step 5 — Targeted Deep Dive
 
-Pick **three** representative files (UI, Logic, Data) for a quality assessment:
+Pick **3 representative files** (UI layer, Logic layer, Data layer) using `view_file`. Assess:
 
 - **Typing**: Strictness vs `any`/`dynamic` usage.
-- **Error Handling**: Propagation vs Swallowing.
-- **Modularity**: Compliance with the detected framework's best practices.
+- **Error Handling**: Propagation vs silent swallowing.
+- **Modularity**: Compliance with detected framework's best practices.
+
+> **Fallback**: If project has fewer than 3 layers, pick the 3 largest source files.
 
 ---
 
 ## Step 6 — Generate Scored Report
 
-### ⚖️ Weighted Scoring Algorithm (Base: 100)
+Save to `docs/codebase-review.md` (create `docs/` if missing).
 
-1. 🛡️ **Security** (Secrets, Auth, Leakage) - **40% weighting**
-2. 🏗️ **Architecture** (Separation, State, Layers) - **30% weighting**
-3. 🧪 **Testing & Quality** (Coverage, LOC, Errors) - **30% weighting**
+### Scoring Algorithm (base 100)
 
-**Deductions**:
+| Category | Weight | Deductions |
+|----------|--------|------------|
+| 🛡️ Security | 40% | -15 per secret/auth leak |
+| 🏗️ Architecture | 30% | -8 per god-file or layer violation |
+| 🧪 Testing & Quality | 30% | -3 per missing test on critical path |
 
-- 🔴 **Critical (-15)**: Security leaks, missing guards.
-- 🟠 **High (-8)**: Massive god-files, zero tests on critical paths.
-- 🟡 **Medium (-3)**: Logic leakage, missing documentation.
+### Output Format
 
----
+```
+## Codebase Review — [Project] — [Date]
 
-### 📊 Metric Dashboard
-
-- **Score**: [X]/100
-- **Primary Framework**: [Detected]
-- **Critical Issues**: [Count]
+### 📊 Score: [X]/100
+Primary Framework: [Detected] | Critical Issues: [N]
 
 ### 🔴 CRITICAL FINDINGS
+- **[SEC-001]** [Finding] — [Impact] — [Fix]
+- **[ARCH-001]** [Finding] — [Impact] — [Fix]
 
-- **[SEC-001] Security**: [Finding]
-- **[ARCH-001] Architecture**: [Finding]
+### 🟠 HIGH FINDINGS
+- **[H-001]** [Finding] — [Fix]
 
-### 🗺️ Continuous Improvement Plan
-
-- **Phase 1**: Security & Stability (Fix P0s).
-- **Phase 2**: Architectural Alignment (Refactor hotspot layers).
-- **Phase 3**: Quality Polish.
+### 🗺️ Improvement Roadmap
+| Phase | Focus | Actions |
+|-------|-------|---------|
+| Phase 1 | Security & Stability | Fix all P0s |
+| Phase 2 | Architecture | Refactor hotspot layers |
+| Phase 3 | Quality Polish | Test coverage, docs |
+```
 
 ---
 
-## Step 7 — Execution Strategy
+## Step 7 — Interactive Follow-up
 
-Ask:
+After delivering report, ask:
 
-1. "Generate `task.md` for **Phase 1**?"
-2. "Optimize the worst performing module ([Module])?"
+1. "Generate `task.md` for **Phase 1** so we can start immediately?"
+2. "Deep-dive on the worst performing module ([Module])?"
+3. "Run `code-review` on the 3 worst files found?"

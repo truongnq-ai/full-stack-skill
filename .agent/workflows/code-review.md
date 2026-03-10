@@ -4,47 +4,91 @@ description: Run an AI-assisted PR code review using the Code Review Expert skil
 
 # AI Code Review Workflow
 
-1. **Scope**: Ask user to select review scope (Tip: Use [Request Template](../skills/common/code-review/references/request-template.md) for context):
-   - **(A) Diff Review**:
-     ```bash
-     git fetch origin <base> && git diff origin/<base>...HEAD
-     ```
-   - **(B) Specific Files**:
-     User provides list of paths. Read contents of those files (ensure to ignore files in `.gitignore`).
-   - **(C) Full Project**:
-     List all source files (ensure to ignore files in `.gitignore`) and review in batches.
+> **Use this workflow when**: user asks to review code, review a PR, review specific files, or check code quality before merging. Trigger phrases: "review this", "code review", "check my PR", `/code-review`.
+>
+> **Out of scope**: Does not review skill/workflow/rule files — use `skill-review`, `workflow-review`, or `rule-review` for those. Does not auto-run tests or implement fixes.
 
-2. **Analyze**: Apply the **[Code Review Expert](../skills/common/code-review/SKILL.md)** skill.
-   - **Role**: Act as a Principal Engineer.
-   - **Focus**: Logic, Security, Architecture (P0).
-   - **Context**: Cross-check with active framework skills (e.g. Flutter, React) if detected.
+---
 
-3. **Report**: Output results using the **Standard Review Format** (BLOCKER/MAJOR/NIT).
+## Step 1 — Define Scope
 
-4. **Implementation Planning**:
-   - Ask the user if they want to implement the feedback.
-   - If **YES**:
-     - Parse the report into a checklist.
-     - Add/Update the specific items in `task.md`.
-     - Recommend using `skills/common/tdd/SKILL.md` if code changes are required.
+Ask user which review mode to use:
 
-5. **🔁 Skill Feedback Sweep (Mandatory)**:
+- **(A) Diff Review** — changes since base branch:
+  ```bash
+  git fetch origin <base> && git diff origin/<base>...HEAD
+  ```
+  > **Fallback**: If `git diff` returns empty, run `git log --oneline -10` and ask user to confirm base branch.
 
-   For each **🔴 BLOCKER** or **🟠 MAJOR** finding, ask:
+- **(B) Specific Files** — user provides paths. Read each with `view_file`. Skip `.gitignore` entries.
 
-   > _"Was there an active skill that should have prevented this violation?"_
-   - **YES** → Run the feedback command immediately:
-     ```bash
-     npx agent-skills-standard feedback \
-       --skill="[category/skill-id]" \
-       --issue="[specific finding from review]" \
-       --skill-instruction="[exact rule the skill has or is missing]" \
-       --actual-action="[what the code did instead]" \
-       --suggestion="[proposed improvement to skill]"
-     ```
-   - **NO** → Note it: _no relevant skill exists yet_ → Consider if a new skill should be created.
+- **(C) Full Project** — use `list_dir` to enumerate source files. Review in batches of ≤10 files.
 
-   > [!IMPORTANT]
-   > This step is **not optional**. Every BLOCKER that traces to a known skill pattern is a signal
-   > that the skill either: (a) didn't trigger correctly, (b) had the wrong rule, or (c) is missing from `.skillsrc`.
-   > All three are upstream skill quality problems that must be reported.
+---
+
+## Step 2 — Load Skill & Detect Framework
+
+```bash
+view_file skills/common/code-review/SKILL.md
+list_dir src/   # detect framework (NestJS, Next.js, Flutter…)
+```
+
+- **Role**: Act as Principal Engineer.
+- **Focus order**: Logic → Security → Architecture (P0), then Style (P1).
+- **Fallback**: If skill missing, review through these lenses: logic correctness, auth/injection security, layer coupling, code style.
+- Load matching framework skill if detected (e.g., `skills/nestjs/SKILL.md`).
+
+---
+
+## Step 3 — Generate Report
+
+Save to `docs/code-review.md` (create `docs/` if missing). Output format:
+
+```
+## Code Review Report — [Date] — [Scope description]
+
+### 🔴 BLOCKER
+- **[FILE:LINE]** [Finding] — [Why it matters] — [Fix suggestion]
+
+### 🟠 MAJOR
+- **[FILE:LINE]** [Finding] — [Fix suggestion]
+
+### 🟡 NIT
+- **[FILE:LINE]** [Minor suggestion]
+
+### ✅ Summary
+BLOCKERs: N | MAJORs: N | NITs: N | Files reviewed: N
+```
+
+---
+
+## Step 4 — Implementation Planning
+
+Ask: _"Do you want to implement the feedback now?"_
+
+- **YES**:
+  - Use `view_file` to re-read each affected file before modifying.
+  - Parse BLOCKERs/MAJORs into checklist items in `task.md`.
+  - Apply `skills/common/tdd/SKILL.md` if logic changes required.
+- **NO**: End workflow. Report saved to `docs/code-review.md`.
+
+---
+
+## Step 5 — Skill Feedback Sweep (Mandatory)
+
+For each **🔴 BLOCKER** or **🟠 MAJOR**, ask: _"Was there an active skill that should have prevented this?"_
+
+- **YES** → Run immediately:
+  ```bash
+  npx agent-skills-standard feedback \
+    --skill="[category/skill-id]" \
+    --issue="[finding]" \
+    --skill-instruction="[rule the skill has or is missing]" \
+    --actual-action="[what the code did instead]" \
+    --suggestion="[proposed skill improvement]"
+  ```
+- **NO** → Note: _no relevant skill exists_ → Consider creating one with `create-skillset` workflow.
+
+> [!IMPORTANT]
+> This step is **not optional**. Every BLOCKER tracing to a known skill = upstream skill quality problem.
+> Root causes: (a) skill didn't trigger, (b) rule was wrong, (c) skill missing from `.skillsrc`.

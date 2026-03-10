@@ -6,6 +6,10 @@ description: Deep audit of a skills directory against the Skill Creator standard
 
 > **Goal**: Evaluate every `SKILL.md` in the target skill directory against the [Skill Creator Standard](../.agent/skills/skill-creator/SKILL.md). Produce a quantified health report with a prioritized, phased remediation plan so any team can immediately start improving.
 
+> **Use this workflow when**: user asks to audit/review skills quality, asks "are my skills good?", wants to benchmark a skill directory, or runs `/battle-test`.
+>
+> **Out of scope**: Does not review workflows, rules, or code files — only `SKILL.md` files. Use `workflow-review` or `rule-review` for those.
+
 > [!IMPORTANT]
 > **Token Efficiency First**:
 >
@@ -27,6 +31,8 @@ find . -name "SKILL.md" | sed 's|/[^/]*/SKILL.md||' | sort | uniq -c
 # 1c. Read the Skill Creator standard to internalize the grading rubric
 cat .agent/skills/skill-creator/SKILL.md
 ```
+
+> **Fallback**: If `.agent/skills/skill-creator/SKILL.md` does not exist, run `find . -name "SKILL.md" -path "*skill-creator*"` to locate it. If still not found, notify user and stop: _"skill-creator standard not found — cannot run battle test without it."_
 
 ---
 
@@ -59,7 +65,18 @@ find . -name "SKILL.md" -exec awk 'END{if(NR>100) print FILENAME": "NR" lines"}'
 
 ---
 
-## Step 3 — Deep Audit: P0 Skills (Critical Path)
+## ⏸️ Checkpoint: Confirm Deep Audit Scope
+
+Before proceeding to Step 3, present the P0 skill list to the user:
+
+```
+"Found [N] P0 skills: [list]. Deep audit will read each file in full.
+Proceed? (Y = start deep audit / N = stop here with breadth scan only)"
+```
+
+> Only proceed to Step 3 after explicit user confirmation.
+
+---
 
 Open and review every P0 (CRITICAL) skill fully. For each, evaluate:
 
@@ -104,6 +121,8 @@ Score skills in each category **(100 points base)**:
 4. 🏎️ **Token Efficiency** — Size, imperative mood, no redundancy.
 
 ---
+
+Save the report to `docs/battle-test-report.md` (create `docs/` if missing). Also print a summary to console.
 
 Output the report in this format:
 
