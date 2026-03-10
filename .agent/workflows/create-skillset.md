@@ -7,6 +7,8 @@ description: How to create a new Language/Framework Skillset
 > **Use this workflow when**: user wants to create a new skill category, add skills for a new language/framework, or runs `/create-skillset`. Trigger phrases: "create skill for X", "add skillset", "new skills for [language]".
 >
 > **Out of scope**: Does not modify existing skills — use `skill-review` to audit and improve them. Does not create workflows or rules — use `workflow-review` for guidance.
+>
+> **Applicable rules**: `agent-skill-standard-rule` • `file-safety-rule` • `skill-integrity-rule` • `commit-message-rule`
 
 > [!IMPORTANT]
 > All skills MUST strictly follow the [Skill Creator Standard](.agent/skills/skill-creator/SKILL.md).

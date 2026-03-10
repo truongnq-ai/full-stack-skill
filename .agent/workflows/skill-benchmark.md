@@ -7,6 +7,8 @@ description: Benchmark AI skill effectiveness by measuring implementation qualit
 > **Use this workflow when**: user wants to measure how much active skills improve code quality, verify skills are triggering correctly, or validate `.skillsrc` configuration. Trigger phrases: "benchmark my skills", "are skills working?", "test skill effectiveness", `/skill-benchmark`.
 >
 > **Out of scope**: Does not audit skill content quality — use `skill-review` for that. Does not review workflows or rules.
+>
+> **Applicable rules**: `agent-skill-standard-rule` • `file-safety-rule` • `skill-integrity-rule` • `commit-message-rule`
 
 ---
 

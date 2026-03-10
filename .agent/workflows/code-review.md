@@ -7,6 +7,8 @@ description: Run an AI-assisted PR code review using the Code Review Expert skil
 > **Use this workflow when**: user asks to review code, review a PR, review specific files, or check code quality before merging. Trigger phrases: "review this", "code review", "check my PR", `/code-review`.
 >
 > **Out of scope**: Does not review skill/workflow/rule files — use `skill-review`, `workflow-review`, or `rule-review` for those. Does not auto-run tests or implement fixes.
+>
+> **Applicable rules**: `agent-skill-standard-rule` • `file-safety-rule` • `skill-integrity-rule` • `code-generation-rule` • `testing-rule` • `commit-message-rule`
 
 ---
 

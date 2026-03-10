@@ -7,6 +7,10 @@ description: PM daily standup, project tracking, sprint review, and blocker mana
 > **Use this workflow when**: PM needs daily standup report, project status update, sprint review, or blocker triage. Trigger phrases: "daily standup", "what did we do yesterday", "project status", "what's blocked", "sprint summary", `/pm-standup`.
 >
 > **Out of scope**: Does not implement features — use `plan-feature` or `orchestrate` for that. Does not write PRDs — use `plan-feature` workflow.
+>
+> **Applicable rules**: `agent-skill-standard-rule` • `file-safety-rule` • `skill-integrity-rule` • `commit-message-rule`
+>
+> **Activates skill**: `skills/common/product-manager/SKILL.md` — load at workflow start.
 
 ---
 

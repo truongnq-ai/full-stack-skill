@@ -7,6 +7,8 @@ description: Audit and optimize web/app performance. Measures baseline, identifi
 > **Use this workflow when**: user wants to improve page speed, reduce bundle size, fix Core Web Vitals, or runs `/performance`. Trigger phrases: "make it faster", "optimize performance", "Lighthouse score too low", "reduce load time".
 >
 > **Out of scope**: Does not fix functional bugs or refactor architecture — use `code-review` or `codebase-review` for those. Backend DB query optimization beyond indexing is out of scope.
+>
+> **Applicable rules**: `agent-skill-standard-rule` • `file-safety-rule` • `skill-integrity-rule` • `code-generation-rule` • `commit-message-rule`
 
 $ARGUMENTS
 

@@ -6,6 +6,10 @@ description: Review and audit AI agent workflows against a standardized quality 
 
 > **Goal**: Evaluate one or more workflow files (`.agent/workflows/*.md`) against a standardized quality framework. Produce a scored audit report and prioritized improvement plan.
 
+> **Out of scope**: Does not review skills or rules — use `skill-review` or `rule-review` for those.
+>
+> **Applicable rules**: `agent-skill-standard-rule` • `file-safety-rule` • `skill-integrity-rule` • `commit-message-rule`
+
 > [!IMPORTANT]
 > This workflow is both a **review process** and a **quality standard**. Use it to:
 > - Audit existing workflows before release

@@ -7,6 +7,8 @@ description: Database operations workflow — covers schema design, migration ma
 > **Use this workflow when**: user needs to design a schema, write migrations, optimize slow queries, or run data scripts. Trigger phrases: "add column", "create migration", "query is slow", "design schema", "clean up data", `/db-workflow`.
 >
 > **Out of scope**: Does not handle application-layer ORM configuration — use `code-review` for that. Does not cover DB infrastructure provisioning — use `deploy` workflow for server setup. Does not replace ANALYZE with production-only profiling tools (pg_stat, pt-query-digest).
+>
+> **Applicable rules**: `agent-skill-standard-rule` • `file-safety-rule` • `skill-integrity-rule` • `commit-message-rule`
 
 ---
 

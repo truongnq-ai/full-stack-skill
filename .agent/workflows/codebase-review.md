@@ -7,6 +7,8 @@ description: Review an entire codebase against framework best practices and gene
 > **Use this workflow when**: user asks to review the entire project, assess overall code health, onboard to a new codebase, or run `/codebase-review`. Typical triggers: "review my project", "how's my codebase?", "audit everything".
 >
 > **Out of scope**: Does not review individual PRs or diffs — use `code-review` for that. Does not review skill/workflow/rule files — use `skill-review`, `workflow-review`, or `rule-review`.
+>
+> **Applicable rules**: `agent-skill-standard-rule` • `file-safety-rule` • `skill-integrity-rule` • `code-generation-rule` • `testing-rule` • `commit-message-rule`
 
 > [!IMPORTANT]
 > **Token Efficiency First**:
@@ -47,8 +49,8 @@ Proceed? (Y = full scan / N = stop here)"
 
 Match detected project to registry. Load matching skill files with `view_file`:
 
-- `skills/common/architecture-audit/SKILL.md`
-- `skills/common/security-audit/SKILL.md`
+- `skills/common/system-design/SKILL.md`
+- `skills/common/security-standards/SKILL.md`
 
 > **Fallback**: If skill paths missing, run `find .agent/skills/ -name "SKILL.md" | head -10` to locate available skills. If none, proceed with **Lite Audit** fallbacks in Steps 3–4.
 

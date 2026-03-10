@@ -6,6 +6,10 @@ description: Review and audit AI agent skills (SKILL.md files) against a standar
 
 > **Goal**: Evaluate one or more `SKILL.md` files against a skill quality framework designed to prevent LLM hallucination, wrong-tool usage, and scope violations. Produce a scored report and prioritized improvement plan.
 
+> **Out of scope**: Does not review workflows or rules — use `workflow-review` or `rule-review` for those.
+>
+> **Applicable rules**: `agent-skill-standard-rule` • `file-safety-rule` • `skill-integrity-rule` • `commit-message-rule`
+
 > [!IMPORTANT]
 > A skill is not documentation — it is **prompt engineering**. Evaluate every dimension through the lens of:
 > _"Will this instruction make an LLM activate correctly, execute precisely, and not break the project?"_

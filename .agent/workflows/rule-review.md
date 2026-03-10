@@ -6,6 +6,10 @@ description: Review and audit AI agent rules against a standardized quality fram
 
 > **Goal**: Evaluate one or more rule files (`.agent/rules/*.md`) against a quality framework designed to ensure rules effectively constrain LLM behavior — preventing hallucination, file corruption, scope drift, and security violations.
 
+> **Out of scope**: Does not review workflows or skills — use `workflow-review` or `skill-review` for those.
+>
+> **Applicable rules**: `agent-skill-standard-rule` • `file-safety-rule` • `skill-integrity-rule` • `commit-message-rule`
+
 > [!IMPORTANT]
 > A rule is not documentation — it is a **behavioral constraint** injected into the LLM's context.
 > Evaluate every rule through this lens:

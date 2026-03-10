@@ -7,6 +7,10 @@ description: Interactive workflow to plan a new feature from scratch, from Inter
 > **Use this workflow when**: user has a new feature idea and needs structured planning before coding. Trigger phrases: "plan this feature", "let's design X", "I want to build Y", `/plan-feature`.
 >
 > **Out of scope**: Does not implement code — use `code-review` or `orchestrate` after planning is complete. Does not generate PRDs for existing features already in progress.
+>
+> **Applicable rules**: `agent-skill-standard-rule` • `file-safety-rule` • `skill-integrity-rule` • `commit-message-rule`
+>
+> **Activates skill**: `skills/common/product-manager/SKILL.md` — load at Step 1 start.
 
 ---
 
@@ -14,10 +18,10 @@ description: Interactive workflow to plan a new feature from scratch, from Inter
 
 **Persona**: PM / Business Analyst.
 
-Load and apply `skills/common/product-requirements/SKILL.md`:
+Load and apply `skills/common/product-manager/SKILL.md`:
 
 ```
-view_file skills/common/product-requirements/SKILL.md
+view_file skills/common/product-manager/SKILL.md
 ```
 
 > **Fallback**: If skill file missing, conduct interview manually covering: (1) Problem being solved, (2) Target users, (3) Core user stories, (4) Acceptance criteria, (5) Non-functional requirements (perf, security, scale).
@@ -47,7 +51,7 @@ Proceed to PRD generation? (Y / N — revise first)"
 Generate the PRD using the template:
 
 ```
-view_file skills/common/product-requirements/references/prd-template.md
+view_file skills/common/product-manager/references/prd-template.md
 ```
 
 Save to `docs/specs/prd-[feature_name].md`.
@@ -55,7 +59,7 @@ Save to `docs/specs/prd-[feature_name].md`.
 Validate against checklist:
 
 ```
-view_file skills/common/product-requirements/references/checklist.md
+view_file skills/common/product-manager/references/prioritization.md
 ```
 
 > **Fallback**: If template or checklist missing, generate PRD with these mandatory sections: Overview, User Stories, Acceptance Criteria, Out of Scope, Success Metrics.

@@ -7,6 +7,8 @@ description: Comprehensive UI/UX design system generator for web and mobile. Cov
 > **Use this workflow when**: user requests UI/UX design, wants to build/improve a visual interface, or runs `/ui-ux-pro-max`. Trigger phrases: "design X", "build UI", "make it look like Linear/Magic UI", "improve the interface".
 >
 > **Out of scope**: Does not handle backend logic, API design, or database schema. Does not generate images — use image generation tools for assets.
+>
+> **Applicable rules**: `agent-skill-standard-rule` • `file-safety-rule` • `skill-integrity-rule` • `commit-message-rule`
 
 ---
 

@@ -7,6 +7,8 @@ description: API design, contract definition, and 3rd-party integration workflow
 > **Use this workflow when**: user wants to design new API endpoints, review existing API contracts, or integrate a 3rd-party API. Trigger phrases: "design this API", "integrate with X", "review API contract", "add endpoint for Y", `/api-design`.
 >
 > **Out of scope**: Does not implement database layer — use `db-workflow` for schema. Does not cover GraphQL schema design (different patterns apply). Does not test load/performance — use `performance` workflow.
+>
+> **Applicable rules**: `agent-skill-standard-rule` • `file-safety-rule` • `skill-integrity-rule` • `code-generation-rule` • `testing-rule` • `dependency-rule` • `commit-message-rule`
 
 ---
 

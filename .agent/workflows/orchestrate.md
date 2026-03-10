@@ -7,6 +7,8 @@ description: Orchestrate multiple specialized agents to solve complex, multi-dom
 > **Use this workflow when**: task spans multiple domains (UI + API + DB + Security), user says "this is complex", or runs `/orchestrate`. Trigger phrases: "build full app", "orchestrate this", "coordinate agents for X".
 >
 > **Out of scope**: Single-domain tasks (use the relevant skill directly). Simple one-file fixes (use normal agent). Reviews (use `code-review` or `codebase-review`).
+>
+> **Applicable rules**: `agent-skill-standard-rule` • `file-safety-rule` • `skill-integrity-rule` • `commit-message-rule`
 
 > [!IMPORTANT]
 > **Minimum 3 different agents required.** Using fewer = delegating, not orchestrating.

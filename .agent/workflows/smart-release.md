@@ -7,6 +7,8 @@ description: Automatically prepare a release by analyzing changes, bumping versi
 > **Use this workflow when**: user wants to publish a new version, bump version numbers, or update changelog. Trigger phrases: "release new version", "bump version", "prepare release", `/smart-release`.
 >
 > **Out of scope**: Does not deploy to production or push Docker images — use `orchestrate` with `devops-engineer` agent for that. Does not create GitHub/GitLab releases — only prepares local artifacts.
+>
+> **Applicable rules**: `agent-skill-standard-rule` • `file-safety-rule` • `skill-integrity-rule` • `dependency-rule` • `commit-message-rule`
 
 ---
 

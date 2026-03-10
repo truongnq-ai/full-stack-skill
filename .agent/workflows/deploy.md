@@ -7,6 +7,8 @@ description: Deploy application to VPS/server — covers Docker build, SSH servi
 > **Use this workflow when**: user wants to deploy a new version to server, restart a service, or troubleshoot a failed deployment. Trigger phrases: "deploy to production", "push to VPS", "restart service", "deploy latest", `/deploy`.
 >
 > **Out of scope**: Does not handle cloud provider infrastructure setup (AWS, GCP, Azure provisioning) — use `orchestrate` with `devops-engineer` agent. Does not manage database migrations — use `db-workflow` before deploying.
+>
+> **Applicable rules**: `agent-skill-standard-rule` • `file-safety-rule` • `skill-integrity-rule` • `dependency-rule` • `commit-message-rule`
 
 > [!CAUTION]
 > Always run database migrations BEFORE deploying new code. Deploying code that expects a new schema before migrating will cause production errors.

@@ -7,6 +7,8 @@ description: Automated workflow to detect and fix missing documentation in the c
 > **Use this workflow when**: user wants to find and fill missing JSDoc/documentation, or runs `/update-docs`. Trigger phrases: "update docs", "find missing documentation", "add JSDoc", "document the code".
 >
 > **Out of scope**: Does not write README or external documentation — use `orchestrate` with `documentation-writer` agent for that. Does not document workflow or skill files.
+>
+> **Applicable rules**: `agent-skill-standard-rule` • `file-safety-rule` • `skill-integrity-rule` • `code-generation-rule` • `commit-message-rule`
 
 ---
 

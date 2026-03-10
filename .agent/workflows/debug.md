@@ -7,6 +7,8 @@ description: Systematic production debugging workflow — traces errors from log
 > **Use this workflow when**: user reports a production error, sees unexpected behavior, gets a stack trace, or runs `/debug`. Trigger phrases: "fix this bug", "got an error", "something's broken", "why is this failing".
 >
 > **Out of scope**: Does not fix performance issues — use `performance` workflow. Does not redesign architecture — use `codebase-review`. Does not optimize DB queries — use `db-workflow`.
+>
+> **Applicable rules**: `agent-skill-standard-rule` • `file-safety-rule` • `skill-integrity-rule` • `code-generation-rule` • `testing-rule` • `commit-message-rule`
 
 ---
 

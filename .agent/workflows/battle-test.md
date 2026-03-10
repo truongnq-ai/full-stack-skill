@@ -9,6 +9,8 @@ description: Deep audit of a skills directory against the Skill Creator standard
 > **Use this workflow when**: user asks to audit/review skills quality, asks "are my skills good?", wants to benchmark a skill directory, or runs `/battle-test`.
 >
 > **Out of scope**: Does not review workflows, rules, or code files — only `SKILL.md` files. Use `workflow-review` or `rule-review` for those.
+>
+> **Applicable rules**: `agent-skill-standard-rule` • `file-safety-rule` • `skill-integrity-rule` • `commit-message-rule`
 
 > [!IMPORTANT]
 > **Token Efficiency First**:
