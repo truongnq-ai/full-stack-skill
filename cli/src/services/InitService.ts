@@ -4,7 +4,6 @@ import yaml from 'js-yaml';
 import path from 'path';
 import {
   Agent,
-  DEFAULT_WORKFLOWS,
   Framework,
   Language,
   SUPPORTED_AGENTS,
@@ -238,7 +237,8 @@ export class InitService {
       answers.registry,
       metadata,
       Array.from(new Set([...allLanguages, ...roleCategories])),
-      includeWorkflows ? DEFAULT_WORKFLOWS : [],
+      includeWorkflows ? true : false, // Download all workflows when Antigravity is enabled
+      includeWorkflows, // Download all rules when Antigravity is enabled
     );
 
     const projectDeps = await this.detectionService.getProjectDeps();

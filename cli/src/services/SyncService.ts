@@ -382,6 +382,108 @@ export class SyncService {
   }
 
   /**
+   * Assembles rules from the remote registry (.agent/rules/*.md).
+   */
+  async assembleRules(config: SkillConfig): Promise<CollectedSkill[]> {
+    if (config.rules === false || config.rules === undefined) return [];
+
+    // Only sync rules if Antigravity agent is enabled
+    const agents = await this.resolveTargetAgents(config);
+    if (!agents.includes(Agent.Antigravity)) {
+      return [];
+    }
+
+    const githubMatch = GithubService.parseGitHubUrl(config.registry);
+    if (!githubMatch) return [];
+
+    const { owner, repo } = githubMatch;
+    const ref =
+      (await this.githubService.getRepoInfo(owner, repo))?.default_branch ||
+      'main';
+
+    console.log(pc.gray(`  - Discovering rules (${ref})...`));
+
+    const treeData = await this.githubService.getRepoTree(owner, repo, ref);
+    if (!treeData) {
+      console.log(pc.red(`    ❌ Failed to fetch rules@${ref}.`));
+      return [];
+    }
+
+    const ruleFiles = treeData.tree.filter(
+      (f) =>
+        f.path.startsWith('.agent/rules/') && f.path.endsWith('.md'),
+    );
+
+    const files = await this.githubService.downloadFilesConcurrent(
+      ruleFiles.map((f) => ({ owner, repo, ref, path: f.path })),
+    );
+
+    if (files.length > 0) {
+      console.log(pc.gray(`    + Fetched ${files.length} rules`));
+      return [
+        {
+          category: '.agent',
+          skill: 'rules',
+          files: files.map((f) => ({
+            name: path.basename(f.path),
+            content: f.content,
+          })),
+        },
+      ];
+    }
+
+    return [];
+  }
+
+  /**
+   * Writes collected rules to the .agent/rules directory.
+   */
+  async writeRules(rules: CollectedSkill[], config: SkillConfig, dryRun?: boolean) {
+    if (rules.length === 0) return;
+
+    // Only write rules if Antigravity agent is enabled
+    const agents = await this.resolveTargetAgents(config);
+    if (!agents.includes(Agent.Antigravity)) {
+      return;
+    }
+
+    const rulesPath = path.join(process.cwd(), '.agent', 'rules');
+    const overrides = config.custom_overrides || [];
+    if (!dryRun) await fs.ensureDir(rulesPath);
+
+    for (const ruleSet of rules) {
+      if (ruleSet.skill !== 'rules') continue;
+
+      for (const fileItem of ruleSet.files) {
+        const targetFilePath = path.join(rulesPath, fileItem.name);
+
+        if (this.isOverridden(targetFilePath, overrides)) {
+          console.log(
+            pc.yellow(
+              `    ⚠️  Skipping overridden: ${this.normalizePath(targetFilePath)}`,
+            ),
+          );
+          continue;
+        }
+
+        if (dryRun) {
+          console.log(pc.gray(`    [DRY] Would write: ${this.normalizePath(targetFilePath)}`));
+        } else {
+          // Incremental: skip if unchanged
+          if (await fs.pathExists(targetFilePath)) {
+            const existing = await fs.readFile(targetFilePath, 'utf8');
+            if (existing === fileItem.content) continue;
+          }
+          await fs.outputFile(targetFilePath, fileItem.content);
+          console.log(pc.gray(`    + Wrote ${fileItem.name}`));
+        }
+      }
+    }
+    console.log(pc.green(`  ✅ Rules ${dryRun ? 'preview' : 'synced'} to .agent/rules/`));
+  }
+
+
+  /**
    * Automatically applies framework-specific indices to AGENTS.md.
    */
   async applyIndices(config: SkillConfig, agentsOverride?: Agent[]) {

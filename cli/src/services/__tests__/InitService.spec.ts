@@ -215,7 +215,8 @@ describe('InitService', () => {
         expect.any(String),
         expect.any(Object),
         expect.arrayContaining(['python']),
-        expect.any(Array),
+        false, // No Antigravity, so workflows = false
+        false, // No Antigravity, so rules = false
       );
     });
 
@@ -234,7 +235,8 @@ describe('InitService', () => {
         expect.any(String),
         expect.any(Object),
         expect.any(Array),
-        expect.arrayContaining(['code-review']),
+        true, // Antigravity selected → workflows: true (download all)
+        true, // Antigravity selected → rules: true (download all)
       );
     });
 

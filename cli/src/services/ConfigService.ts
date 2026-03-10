@@ -35,6 +35,7 @@ const SkillConfigSchema = z.object({
   ),
   custom_overrides: z.array(z.string()).optional(),
   workflows: z.union([z.boolean(), z.array(z.string())]).optional(),
+  rules: z.boolean().optional(),
   presets: z.array(z.string()).optional(),
   presets_data: z.record(z.string(), z.array(z.string())).optional(),
 });
@@ -160,7 +161,8 @@ export class ConfigService {
     registry: string,
     metadata: Partial<RegistryMetadata>,
     languages: string[] = [],
-    workflows: string[] = [],
+    workflows: string[] | boolean = false,
+    rules: boolean = false,
   ): SkillConfig {
     const skills: Record<string, CategoryConfig> = {};
 
@@ -218,7 +220,8 @@ export class ConfigService {
       agents,
       skills,
       custom_overrides: [],
-      workflows: workflows.length > 0 ? workflows : false, // Array if specific, false if empty
+      workflows: typeof workflows === 'boolean' ? workflows : (workflows.length > 0 ? workflows : false),
+      rules: rules || undefined, // Only include when true
     };
   }
 

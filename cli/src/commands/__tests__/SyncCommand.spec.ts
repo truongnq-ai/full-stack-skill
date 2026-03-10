@@ -48,6 +48,8 @@ describe('SyncCommand', () => {
       assembleWorkflows: vi.fn().mockResolvedValue([]),
       writeWorkflows: vi.fn(),
       reconcileWorkflows: vi.fn().mockResolvedValue(false),
+      assembleRules: vi.fn().mockResolvedValue([]),
+      writeRules: vi.fn(),
     } as unknown as Mocked<SyncService>;
     mockConfigService = {
       loadConfig: vi.fn().mockResolvedValue({
@@ -73,8 +75,8 @@ describe('SyncCommand', () => {
     // @ts-expect-error - testing private instance patching
     command.syncService = mockSyncService;
 
-    vi.spyOn(console, 'log').mockImplementation(() => {});
-    vi.spyOn(console, 'error').mockImplementation(() => {});
+    vi.spyOn(console, 'log').mockImplementation(() => { });
+    vi.spyOn(console, 'error').mockImplementation(() => { });
   });
 
   it('should run sync successfully', async () => {

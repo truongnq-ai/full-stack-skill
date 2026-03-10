@@ -833,4 +833,131 @@ describe('SyncService', () => {
       expect(mockGenerate).not.toHaveBeenCalled();
     });
   });
+
+  describe('assembleRules', () => {
+    it('should return empty if rules are not configured (undefined)', async () => {
+      const config = { rules: undefined } as unknown as SkillConfig;
+      const result = await syncService.assembleRules(config);
+      expect(result).toEqual([]);
+    });
+
+    it('should return empty if rules are explicitly false', async () => {
+      const config = { rules: false } as unknown as SkillConfig;
+      const result = await syncService.assembleRules(config);
+      expect(result).toEqual([]);
+    });
+
+    it('should return empty if Antigravity agent is not enabled', async () => {
+      const config = {
+        rules: true,
+        registry: 'https://github.com/o/r',
+        agents: [Agent.Cursor],
+      } as unknown as SkillConfig;
+      const result = await syncService.assembleRules(config);
+      expect(result).toEqual([]);
+    });
+
+    it('should return empty if registry URL is invalid', async () => {
+      const config = {
+        rules: true,
+        registry: 'https://gitlab.com/o/r',
+        agents: [Agent.Antigravity],
+      } as unknown as SkillConfig;
+      const result = await syncService.assembleRules(config);
+      expect(result).toEqual([]);
+    });
+
+    it('should return empty if fetching tree fails', async () => {
+      const config = {
+        rules: true,
+        registry: 'https://github.com/o/r',
+        agents: [Agent.Antigravity],
+      } as unknown as SkillConfig;
+      mockGithubService.getRepoInfo.mockResolvedValue({ default_branch: 'main' });
+      mockGithubService.getRepoTree.mockResolvedValue(null);
+      const result = await syncService.assembleRules(config);
+      expect(result).toEqual([]);
+    });
+
+    it('should fetch all .md files from .agent/rules/ directory', async () => {
+      const config = {
+        rules: true,
+        registry: 'https://github.com/o/r',
+        agents: [Agent.Antigravity],
+      } as unknown as SkillConfig;
+      mockGithubService.getRepoInfo.mockResolvedValue({ default_branch: 'main' });
+      mockGithubService.getRepoTree.mockResolvedValue({
+        tree: [
+          { path: '.agent/rules/agent-skill-standard-rule.md' },
+          { path: '.agent/rules/another-rule.md' },
+          { path: '.agent/workflows/code-review.md' }, // Should NOT be included
+        ],
+      });
+      mockGithubService.downloadFilesConcurrent.mockResolvedValue([
+        { path: '.agent/rules/agent-skill-standard-rule.md', content: '# Rule' },
+        { path: '.agent/rules/another-rule.md', content: '# Another' },
+      ]);
+
+      const result = await syncService.assembleRules(config);
+
+      expect(result).toHaveLength(1);
+      expect(result[0].skill).toBe('rules');
+      expect(result[0].files).toHaveLength(2);
+      expect(mockGithubService.downloadFilesConcurrent).toHaveBeenCalledWith(
+        expect.arrayContaining([
+          expect.objectContaining({ path: '.agent/rules/agent-skill-standard-rule.md' }),
+          expect.objectContaining({ path: '.agent/rules/another-rule.md' }),
+        ]),
+      );
+    });
+  });
+
+  describe('writeRules', () => {
+    it('should skip if no rules provided', async () => {
+      await syncService.writeRules([], {} as SkillConfig);
+      expect(fs.outputFile).not.toHaveBeenCalled();
+    });
+
+    it('should skip if skill is not "rules"', async () => {
+      await syncService.writeRules(
+        [{ skill: 'invalid', files: [], category: '.agent' } as any],
+        {} as any,
+      );
+      expect(fs.outputFile).not.toHaveBeenCalled();
+    });
+
+    it('should write rule files to local .agent/rules/', async () => {
+      const rules = [
+        {
+          category: '.agent',
+          skill: 'rules',
+          files: [{ name: 'agent-skill-standard-rule.md', content: '# Rule' }],
+        },
+      ];
+      await syncService.writeRules(rules as any, { agents: [Agent.Antigravity] } as any);
+      expect(fs.ensureDir).toHaveBeenCalledWith(
+        expect.stringContaining('.agent'),
+      );
+      expect(fs.outputFile).toHaveBeenCalledWith(
+        expect.stringMatching(/\.agent[/\\]rules[/\\]agent-skill-standard-rule\.md/),
+        '# Rule',
+      );
+    });
+
+    it('should skip overridden rule files', async () => {
+      const rules = [
+        {
+          category: '.agent',
+          skill: 'rules',
+          files: [{ name: 'protected.md', content: 'c' }],
+        },
+      ];
+      vi.spyOn(syncService as any, 'isOverridden').mockReturnValue(true);
+      await syncService.writeRules(rules as any, { agents: [Agent.Antigravity] } as any);
+      expect(fs.outputFile).not.toHaveBeenCalled();
+      expect(console.log).toHaveBeenCalledWith(
+        expect.stringContaining('Skipping overridden'),
+      );
+    });
+  });
 });

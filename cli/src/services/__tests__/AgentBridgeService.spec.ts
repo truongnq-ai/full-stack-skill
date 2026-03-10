@@ -11,53 +11,24 @@ describe('AgentBridgeService', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     service = new AgentBridgeService();
+    (fs.ensureDir as any).mockResolvedValue(undefined);
   });
 
   describe('bridge', () => {
-    it('should create correct rule files for all supported agents', async () => {
+    it('should ensure rule directories exist for detected agents', async () => {
       const rootDir = '/root';
-      const agents = [
-        Agent.Cursor,
-        Agent.Windsurf,
-        Agent.Trae,
-        Agent.Roo,
-        Agent.Kiro,
-        Agent.Antigravity,
-        Agent.Claude,
-        Agent.Copilot,
-      ];
+      const agents = [Agent.Cursor, Agent.Antigravity];
 
-      (fs.ensureDir as any).mockResolvedValue(undefined);
       // Mock pathExists to return TRUE to simulate detected agents
       (fs.pathExists as any).mockResolvedValue(true);
 
       await service.bridge(rootDir, agents);
 
-      // Helper to find call for a specific path (normalize separators for cross-platform)
-      const normalizeSep = (p: string) => p.replace(/\\/g, '/');
-      const findCall = (pathPart: string) =>
-        vi
-          .mocked(fs.outputFile)
-          .mock.calls.find((call) => normalizeSep(call[0] as string).includes(pathPart));
+      // Should ensure directories exist for detected agents
+      expect(fs.ensureDir).toHaveBeenCalled();
 
-      // Cursor
-      const cursorCall = findCall(
-        '.cursor/rules/agent-skill-standard-rule.mdc',
-      );
-      expect(cursorCall).toBeDefined();
-      expect(cursorCall![1]).toContain('globs: ["**/*"]');
-
-      const copilotCall = findCall(
-        '.github/instructions/agent-skill-standard-rule.instructions.md',
-      );
-      expect(copilotCall).toBeDefined();
-
-      // ... match others implicitly via the fact that we passed all agents and forced them
-      // We can check a few representative ones
-      expect(findCall('.windsurf/rules')).toBeDefined();
-      expect(findCall('.trae/rules')).toBeDefined();
-      expect(findCall('.roo/rules')).toBeDefined();
-      expect(findCall('CLAUDE.md')).toBeDefined();
+      // Should NOT write any hardcoded rule content — that is now done by SyncService.writeRules()
+      expect(fs.outputFile).not.toHaveBeenCalled();
     });
 
     it('should SKIP agents if their detection files do not exist', async () => {
@@ -69,14 +40,14 @@ describe('AgentBridgeService', () => {
 
       await service.bridge(rootDir, agents);
 
+      expect(fs.ensureDir).not.toHaveBeenCalled();
       expect(fs.outputFile).not.toHaveBeenCalled();
     });
 
-    it('should WRITE agents if their detection files exist', async () => {
+    it('should ensure rule directory for detected Cursor agent', async () => {
       const rootDir = '/root';
       const agents = [Agent.Cursor];
 
-      // Mock pathExists to return TRUE for .cursor detection
       (fs.pathExists as any).mockImplementation(async (p: string) => {
         if (p.endsWith('.cursor') || p.endsWith('.cursorrules')) return true;
         return false;
@@ -84,15 +55,17 @@ describe('AgentBridgeService', () => {
 
       await service.bridge(rootDir, agents);
 
-      expect(fs.outputFile).toHaveBeenCalledWith(
-        expect.stringMatching(/\.cursor[\/\\]rules[\/\\]agent-skill-standard-rule\.mdc/),
-        expect.any(String),
+      expect(fs.ensureDir).toHaveBeenCalledWith(
+        expect.stringMatching(/\.cursor[/\\]rules/),
       );
+      // No hardcoded file content written
+      expect(fs.outputFile).not.toHaveBeenCalled();
     });
 
-    it('should ignore unknown agents', async () => {
+    it('should skip unknown agents gracefully', async () => {
       const rootDir = '/root';
       await service.bridge(rootDir, ['unknown-agent' as Agent]);
+      expect(fs.ensureDir).not.toHaveBeenCalled();
       expect(fs.outputFile).not.toHaveBeenCalled();
     });
   });

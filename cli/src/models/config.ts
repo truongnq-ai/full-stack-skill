@@ -31,6 +31,8 @@ export interface SkillConfig {
   };
   /** Whether to sync workflows, or a specific list of workflow names */
   workflows?: boolean | string[];
+  /** Whether to sync rules from the registry (.agent/rules/*.md) */
+  rules?: boolean;
   /** List of preset IDs (e.g., 'role:qa', 'stack:backend') */
   presets?: string[];
   /** Cached presets mapping from the registry (preset ID → category array) */

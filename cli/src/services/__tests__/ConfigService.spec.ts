@@ -258,6 +258,41 @@ describe('ConfigService', () => {
       );
       expect(config.workflows).toEqual(['workflow-1']);
     });
+
+    it('should set workflows: true when boolean true is passed', () => {
+      const config = configService.buildInitialConfig(
+        ['flutter'],
+        [],
+        'url',
+        {},
+        [],
+        true,
+      );
+      expect(config.workflows).toBe(true);
+    });
+
+    it('should set rules: true in initial config when rules param is true', () => {
+      const config = configService.buildInitialConfig(
+        ['flutter'],
+        [Agent.Antigravity],
+        'url',
+        {},
+        [],
+        true,
+        true,
+      );
+      expect(config.rules).toBe(true);
+    });
+
+    it('should omit rules from initial config when rules param is false (default)', () => {
+      const config = configService.buildInitialConfig(
+        ['flutter'],
+        [Agent.Cursor],
+        'url',
+        {},
+      );
+      expect(config.rules).toBeUndefined();
+    });
   });
 
   describe('applyDependencyExclusions', () => {

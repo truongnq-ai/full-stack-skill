@@ -111,9 +111,13 @@ export class SyncCommand {
       // 4b. Assemble workflows
       const workflows = await this.syncService.assembleWorkflows(config);
 
-      // 5. Write skills and workflows to target
+      // 4c. Assemble rules
+      const rules = await this.syncService.assembleRules(config);
+
+      // 5. Write skills, workflows, and rules to target
       await this.syncService.writeSkills(skills, config, options.dryRun);
       await this.syncService.writeWorkflows(workflows, config, options.dryRun);
+      await this.syncService.writeRules(rules, config, options.dryRun);
 
       // 6. Automatically apply framework-specific indices to AGENTS.md
       if (!options.dryRun) {
