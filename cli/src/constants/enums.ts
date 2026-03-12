@@ -5,6 +5,7 @@ export enum Agent {
   Copilot = 'copilot',
   Antigravity = 'antigravity',
   OpenAI = 'openai',
+  OpenClaw = 'openclaw',
   OpenCode = 'opencode',
   Gemini = 'gemini',
   Roo = 'roo',

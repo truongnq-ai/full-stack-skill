@@ -112,6 +112,17 @@ export const getAgentDefinition = (id: Agent): AgentDefinition => {
         detectionFiles: ['.codex'],
         group: 'platform',
       };
+    case Agent.OpenClaw:
+      return {
+        id,
+        name: 'OpenClaw',
+        path: '.openclaw/skills',
+        ruleFile: '.openclaw/rules',
+        ruleExtension: '.md',
+        frontmatterStyle: 'cursor',
+        detectionFiles: ['.openclaw'],
+        group: 'platform',
+      };
     case Agent.OpenCode:
       return {
         id,
