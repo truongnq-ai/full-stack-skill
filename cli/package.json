@@ -1,7 +1,7 @@
 {
   "name": "@truongnq-ai/full-stack-skill",
-  "version": "2026.03.10.1",
-  "description": "A CLI to manage and sync full-stack AI agent skills for Cursor, Claude, Copilot, Windsurf, Antigravity, and more.",
+  "version": "2026.03.11",
+  "description": "A CLI to manage and sync full-stack AI agent skills for Cursor, Claude, Copilot, Windsurf, Antigravity, OpenClaw, and more.",
   "main": "dist/index.js",
   "bin": {
     "full-stack-skill": "dist/index.js",
@@ -33,6 +33,7 @@
     "copilot",
     "cli",
     "antigravity",
+    "openclaw",
     "full-stack"
   ],
   "author": "Truong Nguyen",
