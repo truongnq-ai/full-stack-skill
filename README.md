@@ -3,7 +3,7 @@
 [![NPM Version](https://img.shields.io/npm/v/@truongnq-ai/full-stack-skill.svg?style=flat-square)](https://www.npmjs.com/package/@truongnq-ai/full-stack-skill)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](https://github.com/truongnq-ai/full-stack-skill/blob/master/LICENSE)
 
-> **Full-stack AI agent skills** — high-density coding instructions distributed to Cursor, Claude Code, Copilot, Antigravity, Windsurf, Gemini, Roo Code, OpenCode, Kiro, and more.
+> **Full-stack AI agent skills** — high-density coding instructions distributed to Cursor, Claude Code, Copilot, Antigravity, Windsurf, Gemini, Roo Code, OpenCode, Kiro, OpenClaw, and more.
 
 ## 🚀 Quick Start (3 commands)
 
@@ -163,6 +163,7 @@ Registry (GitHub)  ──→  CLI (init/sync)  ──→  Your Project
                                                 ├── .agent/skills/      (Antigravity)
                                                 ├── .claude/skills/     (Claude Code)
                                                 ├── .github/skills/     (Copilot)
+                                                ├── .openclaw/skills/   (OpenClaw)
                                                 ├── .agent/workflows/   (Reusable workflows)
                                                 ├── .skillsrc           (Config — source of truth)
                                                 └── AGENTS.md           (Auto-generated skill index)
@@ -194,7 +195,7 @@ Registry (GitHub)  ──→  CLI (init/sync)  ──→  Your Project
 | ----------------- | ----------------------------------------------- |
 | **Popular**       | Cursor · GitHub Copilot · Claude Code           |
 | **Other Editors** | Windsurf · Trae · Kiro · Roo Code · OpenCode    |
-| **Platform**      | Antigravity · OpenAI Codex · Gemini              |
+| **Platform**      | Antigravity · OpenAI Codex · Gemini · OpenClaw  |
 
 ---
 

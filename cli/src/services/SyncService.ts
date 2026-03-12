@@ -56,9 +56,9 @@ export class SyncService {
   async reconcileWorkflows(config: SkillConfig): Promise<boolean> {
     if (config.workflows === false) return false;
 
-    // Only reconcile workflows if Antigravity agent is enabled
+    // Only reconcile workflows if Antigravity or OpenClaw agent is enabled
     const agents = await this.resolveTargetAgents(config);
-    if (!agents.includes(Agent.Antigravity)) {
+    if (!agents.includes(Agent.Antigravity) && !agents.includes(Agent.OpenClaw)) {
       return false;
     }
 
@@ -273,9 +273,9 @@ export class SyncService {
   async assembleWorkflows(config: SkillConfig): Promise<CollectedSkill[]> {
     if (!config.workflows) return [];
 
-    // Only sync workflows if Antigravity agent is enabled
+    // Only sync workflows if Antigravity or OpenClaw agent is enabled
     const agents = await this.resolveTargetAgents(config);
-    if (!agents.includes(Agent.Antigravity)) {
+    if (!agents.includes(Agent.Antigravity) && !agents.includes(Agent.OpenClaw)) {
       return [];
     }
 
@@ -333,9 +333,9 @@ export class SyncService {
   async writeWorkflows(workflows: CollectedSkill[], config: SkillConfig, dryRun?: boolean) {
     if (workflows.length === 0) return;
 
-    // Only write workflows if Antigravity agent is enabled
+    // Only write workflows if Antigravity or OpenClaw agent is enabled
     const agents = await this.resolveTargetAgents(config);
-    if (!agents.includes(Agent.Antigravity)) {
+    if (!agents.includes(Agent.Antigravity) && !agents.includes(Agent.OpenClaw)) {
       return;
     }
 
@@ -380,9 +380,9 @@ export class SyncService {
   async assembleRules(config: SkillConfig): Promise<CollectedSkill[]> {
     if (config.rules === false || config.rules === undefined) return [];
 
-    // Only sync rules if Antigravity agent is enabled
+    // Only sync rules if Antigravity or OpenClaw agent is enabled
     const agents = await this.resolveTargetAgents(config);
-    if (!agents.includes(Agent.Antigravity)) {
+    if (!agents.includes(Agent.Antigravity) && !agents.includes(Agent.OpenClaw)) {
       return [];
     }
 
@@ -434,9 +434,9 @@ export class SyncService {
   async writeRules(rules: CollectedSkill[], config: SkillConfig, dryRun?: boolean) {
     if (rules.length === 0) return;
 
-    // Only write rules if Antigravity agent is enabled
+    // Only write rules if Antigravity or OpenClaw agent is enabled
     const agents = await this.resolveTargetAgents(config);
-    if (!agents.includes(Agent.Antigravity)) {
+    if (!agents.includes(Agent.Antigravity) && !agents.includes(Agent.OpenClaw)) {
       return;
     }
 
@@ -695,7 +695,7 @@ export class SyncService {
     const rel = this.normalizePath(targetPath);
     return overrides.some((o) => {
       const op = o.replace(/\\/g, '/');
-      return rel === op || rel.startsWith(`${op.replace(/\/$/, '')}/`);
+      return rel === op || rel.startsWith(`${op.replace(/\/$/, '/')}/`);
     });
   }
 

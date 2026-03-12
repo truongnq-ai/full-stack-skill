@@ -229,7 +229,9 @@ export class InitService {
       ...detectedLanguages,
     ]);
 
-    const includeWorkflows = answers.agents.includes(Agent.Antigravity);
+    const includeWorkflows =
+      answers.agents.includes(Agent.Antigravity) ||
+      answers.agents.includes(Agent.OpenClaw);
 
     const config = this.configService.buildInitialConfig(
       answers.frameworks,
@@ -237,8 +239,8 @@ export class InitService {
       answers.registry,
       metadata,
       Array.from(new Set([...allLanguages, ...roleCategories])),
-      includeWorkflows ? true : false, // Download all workflows when Antigravity is enabled
-      includeWorkflows, // Download all rules when Antigravity is enabled
+      includeWorkflows ? true : false, // Download all workflows when Antigravity or OpenClaw is enabled
+      includeWorkflows, // Download all rules when Antigravity or OpenClaw is enabled
     );
 
     const projectDeps = await this.detectionService.getProjectDeps();
