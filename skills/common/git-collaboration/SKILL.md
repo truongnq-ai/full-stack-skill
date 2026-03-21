@@ -1,82 +1,75 @@
 ---
 name: Git & Collaboration Standards
-description: >-
-  🚨 Universal standards for version control, branching, PR workflows, and merge strategies. Never push directly to
-  protected branches.
+description: Universal standards for version control, branching, commit messages, and team collaboration. Activates on git operations, PRs, and branching tasks.
 metadata:
-  labels:
-    - git
-    - collaboration
-    - commits
-    - branching
-    - common
-    - git-collaboration
+  labels: [git, collaboration, commits, branching, pr]
   triggers:
-    priority: medium
-    confidence: 0.7
-    keywords:
-      - commit
-      - branch
-      - merge
-      - pull-request
-      - git
-workflow_ref: deep-security-audit
+    files: ['.gitignore', '.husky/**', '.lefthook.yml', 'CHANGELOG.md']
+    keywords: [commit, branch, merge, pull request, git, rebase, squash, cherry-pick, changelog, tag, release, hotfix]
+    negative: ["user asks to write code — use framework skill", "user asks to deploy — use deploy workflow"]
 ---
 
-# Git & Collaboration — Enhanced Standards
+# Git & Collaboration Standards
 
-## **Priority: P1 (OPERATIONAL)**
+## **Priority: P0 (OPERATIONAL)**
 
-## Output Template
+**This skill does NOT**: deploy code or manage CI/CD pipelines — use `deploy` workflow for that. Does not review code content — use `code-review`.
 
-## Output (Strict)
+**Compatible skills**: `code-review` (PR review process), `smart-release` workflow (release tagging), `commit-message-rule` (auto-enforced on commits).
 
-```yaml
-summary: "<what was done>"
-risks: ["<risk 1>"] # or []
-next_checks: ["<check 1>"]
-```
+## 📝 Commit Messages (Conventional Commits)
 
-- **Summary**: <what changed / what was done>
-- **Risks**: <known risks or "none">
-- **Next Checks**: <tests/verification steps>
+Format: `<type>(<scope>): <description>` — imperative, lowercase.
 
-## Branch Convention (default)
+Types: `feat` / `fix` / `docs` / `style` / `refactor` / `perf` / `test` / `chore`.
 
-```
-main/master     ← production, NEVER push directly
-develop         ← integration branch
-│
-├─ feature/<slug>   e.g. feature/add-export-report
-├─ fix/<slug>       e.g. fix/order-null-discount
-├─ hotfix/<slug>    e.g. hotfix/payment-timeout
-├─ chore/<slug>     e.g. chore/upgrade-dependencies
-└─ release/<ver>    e.g. release/2026.03
-```
+- **Atomic**: One commit = one logical change. Never "mega-commits."
+- **Imperative mood**: "add feature" not "added feature."
 
-> If project has custom convention → follow project convention, don't invent.
+> **Fallback**: If unsure of type, use `chore` and describe clearly. Never leave message as "wip" or "fix."
 
-## Commit Messages (Conventional Commits)
+## 🌿 Branching
 
-- **Format**: `<type>(<scope>): <description>`
-- **Types**: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `chore`
-- **Atomic**: One commit = One logical change
-- **Imperative mood**: "add feature" not "added feature"
+- **Naming**: `feat/`, `fix/`, `hotfix/`, `refactor/`, `docs/` prefixes required.
+- **Branch for everything**: Never push directly to `main` or `develop`.
+- **Sync early**: Pull before push. Rebase onto latest upstream before PR.
+- **Linear history**: `git rebase -i` to squash messy commits before PR. No merge commits in feature branches.
 
-## PR Standards
+> **Fallback**: If rebase causes conflicts beyond 3 files, use `git merge --no-ff` then document in PR description.
 
-1. Base branch correct: `feature → develop`, `hotfix → main`
-2. Title: `<type>(<scope>): <description>`
-3. Body required: `Closes #<issue>`, summary, testing steps
-4. Don't self-merge in team — wait for reviewer approval
-5. Resolve all review comments before merge
-6. Keep PRs < 300 lines for effective review
+## 🤝 Pull Request Standards
 
-## Merge Strategy (default)
+- **Size**: <300 lines of change per PR. Split larger changes.
+- **Description**: What changed + why + how to test. Link issues (`Closes #123`).
+- **Self-review**: Check own PR before requesting peers.
+- **CI gate**: All checks (lint, test, build) must pass before merge.
 
-```
-feature → develop:  Squash merge
-## References
+## 🛡 Security
+
+- **No secrets**: Never commit `.env`, API keys, certificates. Use `.gitignore` strictly.
+- **Git hooks**: Use `husky`/`lefthook` for pre-commit lint + test enforcement.
+- **Tags**: SemVer (`vX.Y.Z`) for releases. Update `CHANGELOG.md` per release.
+
+## 🚫 Anti-Patterns
+
+**`No Direct Main Push`**: All changes via PR. No exceptions for "small fixes."
+
+**`No Mega-Commits`**: One logical change per commit. Squash before pushing.
+
+**`No WIP Messages`**: Every commit message must describe what changed. "wip" → rejected.
+
+**`No Secrets in History`**: Use `git filter-repo` to purge. Prevention via hooks.
+
+**`No Rebase on Shared Branches`**: Never force-push to branch with other contributors.
+
+## ✅ Verification Checklist
+
+- [ ] Commit message follows Conventional Commits format
+- [ ] Branch has appropriate prefix (feat/, fix/, etc.)
+- [ ] PR is <300 lines of diff
+- [ ] CI passes (lint + test + build)
+- [ ] No secrets, keys, or `.env` files committed
+
+## 📚 References
 
 - [Clean Linear History & Rebase Examples](references/CLEAN_HISTORY.md)
-- [Examples (Input/Output)](references/examples.md)

@@ -6,9 +6,14 @@ This document captures the high-level design, data flow, and key decision record
 
 The system consists of three main components:
 
-1.  **Registry**: A Git repository containing skill definitions (`SKILL.md`) organized by framework/language.
-2.  **CLI**: The `@truongnq-ai/full-stack-skill` npm package that fetches, validates, and syncs skills to a project.
-3.  **Local Project**: The user's codebase where skills are installed (e.g., `.agent/skills/`, `.cursor/skills/`).
+1.  **Registry**: A Git repository containing skill definitions organized by type:
+    - `skills/` — coding skills by framework/language
+    - `rules/` — global agent behavior rules
+    - `workflows/` — reusable workflow runbooks
+    - `hooks/` — IDE session hooks
+    - `tests/` — automated testing scripts for skills
+2.  **CLI**: The `@truongnq-ai/full-stack-skill` npm package that fetches, validates, and syncs content to a project.
+3.  **Local Project**: The user's codebase where content is installed (e.g., `.agent/skills/`, `.agent/rules/`, `.agent/workflows/`).
 
 ### Data Flow
 

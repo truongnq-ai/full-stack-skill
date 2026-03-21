@@ -20,7 +20,7 @@ AI: *Detects uncertainty between react/hooks and react/performance skills*
 
 ```bash
 # AI should execute:
-npx @truongnq-ai/full-stack-skill feedback \
+npx agent-skills-standard feedback \
   --skill="react/hooks" \
   --issue="Conflicting guidance on async state management" \
   --context="React 18" \
@@ -46,7 +46,7 @@ User: "No, that's wrong. You need SafeBuildContext wrapper for async gaps."
 
 ```bash
 # AI should immediately execute:
-npx @truongnq-ai/full-stack-skill feedback \
+npx agent-skills-standard feedback \
   --skill="flutter/bloc-state-management" \
   --issue="Incorrect BuildContext async guidance" \
   --context="Flutter 3.16+, async/await in BLoC" \
@@ -73,7 +73,7 @@ Linter: "Error: exhaustive-deps violation"
 
 ```bash
 # AI should execute:
-npx @truongnq-ai/full-stack-skill feedback \
+npx agent-skills-standard feedback \
   --skill="react/hooks" \
   --issue="useEffect guidance missing exhaustive-deps enforcement" \
   --context="React 18, ESLint exhaustive-deps enabled" \
@@ -100,7 +100,7 @@ User: "That's the old Pages Router. App Router uses app/ directory."
 
 ```bash
 # AI should execute:
-npx @truongnq-ai/full-stack-skill feedback \
+npx agent-skills-standard feedback \
   --skill="nextjs/routing" \
   --issue="Guidance outdated for Next.js 14 App Router" \
   --context="Next.js 14, App Router" \
@@ -127,7 +127,7 @@ AI: *Uncertain about correct approach*
 
 ```bash
 # AI should execute:
-npx @truongnq-ai/full-stack-skill feedback \
+npx agent-skills-standard feedback \
   --skill="react/error-handling" \
   --issue="Missing server component error boundary pattern" \
   --context="React 18, Next.js 14, Server Components" \
@@ -154,7 +154,7 @@ AI: *Unclear if should use JWT, session, or passport-based guards*
 
 ```bash
 # AI should execute:
-npx @truongnq-ai/full-stack-skill feedback \
+npx agent-skills-standard feedback \
   --skill="nestjs/auth" \
   --issue="Guard implementation guidance too vague" \
   --context="NestJS 10, REST API" \
@@ -182,7 +182,7 @@ AI: *Conflicting guidance detected*
 
 ```bash
 # AI should execute:
-npx @truongnq-ai/full-stack-skill feedback \
+npx agent-skills-standard feedback \
   --skill="react/performance" \
   --issue="Conflicts with react/security on local storage caching" \
   --context="User authentication data, React 18" \
@@ -190,11 +190,71 @@ npx @truongnq-ai/full-stack-skill feedback \
   --suggestion="Add security disclaimer and reference react/security skill"
 ```
 
-## Validation Checklist
+## Scenario 8: Code Review BLOCKER Traces to Skill Gap
+
+**Setup:**
+
+- `/code-review` runs on a PR
+- A BLOCKER finding is identified that a loaded skill should have caught
+
+**Test Conversation:**
+
+```
+Code review finds:
+🔴 [BLOCKER] auth/auth.service.ts — Password stored in plain text before hashing
+Active skill: common/security-standards
+Skill rule: "Hash passwords with Argon2id before storage"
+```
+
+**Expected Behavior:**
+
+```bash
+# AI runs feedback immediately after producing the BLOCKER:
+npx agent-skills-standard feedback \
+  --skill="common/security-standards" \
+  --issue="Security skill active but did not prevent plain-text password storage" \
+  --skill-instruction="Hash passwords with Argon2id before storage" \
+  --actual-action="Plain text password passed to DB before hashing step" \
+  --suggestion="Add anti-pattern: **No Plain Passwords**: Hash before any DB/log operation"
+```
+
+**Why this matters**: The skill was loaded, the rule existed, but the agent still wrote violating code. That's a trigger clarity or priority failure — report it.
+
+---
+
+## Scenario 9: User Override (Highest-Signal Feedback)
+
+**Setup:**
+
+- Agent provides a code suggestion based on a loaded skill
+- User explicitly corrects it
+
+**Test Conversation:**
+
+```
+AI: "Use @Transactional on the Controller method to wrap the request."
+User: "No, @Transactional belongs on the Service layer, not the Controller."
+```
+
+**Expected Behavior:**
+
+```bash
+# AI runs feedback IMMEDIATELY upon receiving the correction:
+npx agent-skills-standard feedback \
+  --skill="spring-boot/architecture" \
+  --issue="Suggested @Transactional on Controller — violates layer separation" \
+  --skill-instruction="Business transactions must be bounded in Service layer" \
+  --actual-action="Suggested adding @Transactional to controller method" \
+  --suggestion="Add anti-pattern: **No Transactional Controller**: Move @Transactional to Service layer"
+```
+
+**Why this matters**: User overrides are the highest-quality signal in the system. Every correction means the skill was unclear, wrong, or missing the exact rule. Never dismiss or defer reporting after a correction.
+
+---
 
 ✅ **Trigger Activation**: Skill loads when context contains trigger keywords  
 ✅ **Detection**: AI recognizes one of the 4 detection conditions  
-✅ **Command Execution**: AI runs exact `npx @truongnq-ai/full-stack-skill feedback` command  
+✅ **Command Execution**: AI runs exact `npx agent-skills-standard feedback` command  
 ✅ **Payload**: All fields (skill, issue, context, model, suggestion) correctly populated  
 ✅ **Privacy**: No code snippets or project details included in submission
 
@@ -205,5 +265,5 @@ npx @truongnq-ai/full-stack-skill feedback \
 **Expected Behavior:**
 
 - AI should NOT auto-report
-- User must manually run `npx @truongnq-ai/full-stack-skill feedback`
+- User must manually run `npx agent-skills-standard feedback`
 - No automated detection or submission occurs

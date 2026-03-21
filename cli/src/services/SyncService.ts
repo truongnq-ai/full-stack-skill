@@ -75,7 +75,7 @@ export class SyncService {
 
     const availableWorkflows = treeData.tree
       .filter(
-        (f) => f.path.startsWith('.agent/workflows/') && f.path.endsWith('.md'),
+        (f) => f.path.startsWith('workflows/') && f.path.endsWith('.md'),
       )
       .map((f) => path.basename(f.path, '.md'));
 
@@ -296,7 +296,7 @@ export class SyncService {
     }
 
     const workflowFiles = treeData.tree.filter((f) => {
-      if (!f.path.startsWith('.agent/workflows/') || !f.path.endsWith('.md'))
+      if (!f.path.startsWith('workflows/') || !f.path.endsWith('.md'))
         return false;
 
       if (typeof config.workflows === 'boolean') return config.workflows;
@@ -404,7 +404,7 @@ export class SyncService {
 
     const ruleFiles = treeData.tree.filter(
       (f) =>
-        f.path.startsWith('.agent/rules/') && f.path.endsWith('.md'),
+        f.path.startsWith('rules/') && f.path.endsWith('.md'),
     );
 
     const files = await this.githubService.downloadFilesConcurrent(

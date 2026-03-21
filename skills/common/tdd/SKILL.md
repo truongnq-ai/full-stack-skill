@@ -1,67 +1,44 @@
 ---
 name: tdd
-description: Enforces Test-Driven Development (Red-Green-Refactor) for rigorous code quality.
-metadata:
-  labels:
-    - tdd
-    - testing
-    - quality
-    - common
-  triggers:
-    priority: medium
-    confidence: 0.7
-    keywords:
-      - tdd
-      - test-driven
-      - red green refactor
-      - test first
-workflow_ref: battle-test
+description: Enforces Test-Driven Development (Red-Green-Refactor cycle). Use when implementing any feature or bugfix, before writing implementation code.
+triggers: test, spec, tdd, red-green-refactor, failing test, first, feature, bugfix
+priority: P1
 ---
 
 # Test-Driven Development (TDD)
 
-## **Priority: P1 (OPERATIONAL)**
+> **Goal**: Enforce the Red-Green-Refactor cycle for rigorous code quality and prevent rationalizations for skipping tests.
 
-## Output Template
+## The Iron Law
 
-## Output (Strict)
+**NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST.**
+If you write code before the test, delete it. Start over. No adapting. No keeping as reference.
 
-```yaml
-summary: "<what was done>"
-risks: ["<risk 1>"] # or []
-next_checks: ["<check 1>"]
-```
+## The TDD Cycle
 
-- **Summary**: <what changed / what was done>
-- **Risks**: <known risks or "none">
-- **Next Checks**: <tests/verification steps>
+1. **RED**: Write a minimal failing test. 
+   - *Verify* the failure is expected (the feature is missing, not a setup error or typo).
+2. **GREEN**: Write the simplest code to pass. Nothing more.
+   - *Verify* the test passes.
+3. **REFACTOR**: Clean up while staying green. Run tests after every change.
 
-## **The Iron Law**
+*(See `references/tdd-detailed-guide.md` for common rationalizations and why order matters).*
 
-> **NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST.**
-> If you wrote code before the test: **Delete it.** Start over. No "adapting" or keeping as reference.
+## Anti-Patterns
 
-## **The TDD Cycle**
+- **No production code first**: Do write the failing test before any implementation. No exceptions.
+- **No green without red**: Do NOT skip seeing the test fail. Ensure it fails for the right reason.
+- **No over-mocking**: Do mock only slow/external dependencies. Real > Mock.
+- **No big bang tests**: Do write one test at a time.
+- **No skipping refactor**: Do refactor every cycle to prevent technical debt.
 
-1. **RED**: Write a minimal failing test. **Verify failure** (Expected error, not typo).
-2. **GREEN**: Write the simplest code to pass. **Verify pass** (Pristine output).
-3. **REFACTOR**: Clean up code while staying green.
+## Tools
+- `run_command` with your test runner (`npm test`, `pytest`, `cargo test`, `go test`).
 
-## **Core Principles**
+## Verification
 
-- **Watch it Fail**: If you didn't see it fail, you didn't prove the test works.
-- **Minimalism**: Don't add features/options beyond the current test (YAGNI).
-- **Real Over Mock**: Prefer real dependencies unless they are slow/flaky. Avoid [Anti-Patterns](references/testing_anti_patterns.md).
-
-## **Verification Checklist**
-
-- [ ] Every new function/method has a failing test first?
-- [ ] Failure message was expected (feature missing, not setup error)?
-- [ ] Minimal code implemented (no over-engineering)?
-- [ ] [Common Pitfalls](references/testing_anti_patterns.md) avoided?
-
-## **Expert References**
-
-- [TDD Patterns & Discovery Protocols](references/tdd_patterns.md)
-- [Testing Anti-Patterns (Safety First)](references/testing_anti_patterns.md)
-- [Examples (Input/Output)](references/examples.md)
+- [ ] Every new function/method has a failing test written *first*.
+- [ ] I watched the test fail and confirmed the failure message was expected.
+- [ ] I wrote minimal implementation to pass without over-engineering.
+- [ ] All tests are green after refactoring.
+- [ ] No disabled tests (`it.skip`) were left uncommitted.

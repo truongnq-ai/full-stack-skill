@@ -26,7 +26,7 @@ Container(
 **Feedback Command**:
 
 ```bash
-npx @truongnq-ai/full-stack-skill feedback \
+npx agent-skills-standard feedback \
   --skill="flutter/theme-system" \
   --issue="Used hardcoded hex color instead of theme" \
   --skill-instruction="Use theme colors, not hardcoded values" \
@@ -83,7 +83,7 @@ class MyComponent extends React.Component {
 **Feedback Command**:
 
 ```bash
-npx @truongnq-ai/full-stack-skill feedback \
+npx agent-skills-standard feedback \
   --skill="react/hooks" \
   --issue="Created class component instead of function component" \
   --skill-instruction="Use function components with hooks" \
@@ -130,18 +130,18 @@ useEffect(() => {
 **Violation Detected**:
 
 - Writing SKILL.md
-- Line count: 105 lines
+- Line count: 85 lines
 - Limit: 100 lines
-- **VERDICT**: VIOLATION by 5 lines
+- **VERDICT**: VIOLATION by 15 lines
 
 **Feedback Command**:
 
 ```bash
-npx @truongnq-ai/full-stack-skill feedback \
+npx agent-skills-standard feedback \
   --skill="skill-creator" \
-  --issue="SKILL.md exceeds 100 line limit (105 lines)" \
+  --issue="SKILL.md exceeds 100 line limit (85 lines)" \
   --skill-instruction="SKILL.md total: 100 lines max" \
-  --actual-action="Created 105-line SKILL.md" \
+  --actual-action="Created 85-line SKILL.md" \
   --decision-reason="Included too many inline examples"
 ```
 

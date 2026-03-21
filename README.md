@@ -159,14 +159,14 @@ Available roles:
 
 ```
 Registry (GitHub)  ──→  CLI (init/sync)  ──→  Your Project
-                                                ├── .cursor/skills/     (Cursor)
-                                                ├── .agent/skills/      (Antigravity)
-                                                ├── .claude/skills/     (Claude Code)
-                                                ├── .github/skills/     (Copilot)
-                                                ├── .openclaw/skills/   (OpenClaw)
-                                                ├── .agent/workflows/   (Reusable workflows)
-                                                ├── .skillsrc           (Config — source of truth)
-                                                └── AGENTS.md           (Auto-generated skill index)
+                                                 ├── .agent/skills/      (Antigravity skills)
+                                                 ├── .agent/rules/       (Agent behavior rules)
+                                                 ├── .agent/workflows/   (Reusable workflows)
+                                                 ├── .cursor/skills/     (Cursor)
+                                                 ├── .claude/skills/     (Claude Code)
+                                                 ├── .openclaw/skills/   (OpenClaw)
+                                                 ├── .skillsrc           (Config — source of truth)
+                                                 └── AGENTS.md           (Auto-generated skill index)
 ```
 
 1. **`init`** — detects your tech stack and AI agents, creates `.skillsrc`
@@ -234,6 +234,10 @@ full-stack-skill/
 │   ├── flutter/       # Flutter-specific skills
 │   ├── roles/         # Role-based skills (BA, QA, DevOps...)
 │   └── ...            # 22 framework/language/role categories
+├── rules/             # Agent behavior rules (synced to .agent/rules/)
+├── workflows/         # Reusable workflow runbooks (synced to .agent/workflows/)
+├── hooks/             # IDE session hooks
+├── tests/             # Automated skill testing scripts
 ├── AGENTS.md          # Auto-generated skill index for AI agents
 ├── ARCHITECTURE.md    # System design & data flow
 └── CHANGELOG.md       # Release history
