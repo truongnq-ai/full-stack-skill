@@ -106,9 +106,9 @@ describe('SyncService', () => {
       });
       mockGithubService.getRepoTree.mockResolvedValue({
         tree: [
-          { path: '.agent/workflows/code-review.md' },
-          { path: '.agent/workflows/plan-feature.md' },
-          { path: '.agent/workflows/custom.md' },
+          { path: 'workflows/code-review.md' },
+          { path: 'workflows/plan-feature.md' },
+          { path: 'workflows/custom.md' },
         ],
       });
 
@@ -130,7 +130,7 @@ describe('SyncService', () => {
         default_branch: 'main',
       });
       mockGithubService.getRepoTree.mockResolvedValue({
-        tree: [{ path: '.agent/workflows/code-review.md' }],
+        tree: [{ path: 'workflows/code-review.md' }],
       });
 
       const result = await syncService.reconcileWorkflows(config);
@@ -148,7 +148,7 @@ describe('SyncService', () => {
         default_branch: 'main',
       });
       mockGithubService.getRepoTree.mockResolvedValue({
-        tree: [{ path: '.agent/workflows/w1.md' }],
+        tree: [{ path: 'workflows/w1.md' }],
       });
 
       const result = await syncService.reconcileWorkflows(config);
@@ -595,8 +595,8 @@ describe('SyncService', () => {
       } as unknown as SkillConfig;
       const treeData = {
         tree: [
-          { path: '.agent/workflows/w1.md' },
-          { path: '.agent/workflows/w2.md' },
+          { path: 'workflows/w1.md' },
+          { path: 'workflows/w2.md' },
           { path: 'other/file.md' },
         ],
       };
@@ -605,7 +605,7 @@ describe('SyncService', () => {
       });
       mockGithubService.getRepoTree.mockResolvedValue(treeData);
       mockGithubService.downloadFilesConcurrent.mockResolvedValue([
-        { path: '.agent/workflows/w1.md', content: 'c1' },
+        { path: 'workflows/w1.md', content: 'c1' },
       ]);
 
       const result = await syncService.assembleWorkflows(config);
@@ -628,8 +628,8 @@ describe('SyncService', () => {
       } as unknown as SkillConfig;
       const treeData = {
         tree: [
-          { path: '.agent/workflows/w1.md' },
-          { path: '.agent/workflows/w2.md' },
+          { path: 'workflows/w1.md' },
+          { path: 'workflows/w2.md' },
         ],
       };
       mockGithubService.getRepoInfo.mockResolvedValue({
@@ -642,7 +642,7 @@ describe('SyncService', () => {
 
       expect(mockGithubService.downloadFilesConcurrent).toHaveBeenCalledWith(
         expect.arrayContaining([
-          expect.objectContaining({ path: '.agent/workflows/w1.md' }),
+          expect.objectContaining({ path: 'workflows/w1.md' }),
         ]),
       );
     });
@@ -889,14 +889,14 @@ describe('SyncService', () => {
       mockGithubService.getRepoInfo.mockResolvedValue({ default_branch: 'main' });
       mockGithubService.getRepoTree.mockResolvedValue({
         tree: [
-          { path: '.agent/rules/agent-skill-standard-rule.md' },
-          { path: '.agent/rules/another-rule.md' },
-          { path: '.agent/workflows/code-review.md' }, // Should NOT be included
+          { path: 'rules/agent-skill-standard-rule.md' },
+          { path: 'rules/another-rule.md' },
+          { path: 'workflows/code-review.md' }, // Should NOT be included
         ],
       });
       mockGithubService.downloadFilesConcurrent.mockResolvedValue([
-        { path: '.agent/rules/agent-skill-standard-rule.md', content: '# Rule' },
-        { path: '.agent/rules/another-rule.md', content: '# Another' },
+        { path: 'rules/agent-skill-standard-rule.md', content: '# Rule' },
+        { path: 'rules/another-rule.md', content: '# Another' },
       ]);
 
       const result = await syncService.assembleRules(config);
@@ -906,8 +906,8 @@ describe('SyncService', () => {
       expect(result[0].files).toHaveLength(2);
       expect(mockGithubService.downloadFilesConcurrent).toHaveBeenCalledWith(
         expect.arrayContaining([
-          expect.objectContaining({ path: '.agent/rules/agent-skill-standard-rule.md' }),
-          expect.objectContaining({ path: '.agent/rules/another-rule.md' }),
+          expect.objectContaining({ path: 'rules/agent-skill-standard-rule.md' }),
+          expect.objectContaining({ path: 'rules/another-rule.md' }),
         ]),
       );
     });
