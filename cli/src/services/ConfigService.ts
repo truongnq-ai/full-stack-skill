@@ -203,6 +203,16 @@ export class ConfigService {
       };
     }
 
+    // Add roles category — always included (cross-cutting role-based skills)
+    if (metadata.categories?.['roles']) {
+      skills['roles'] = {
+        ref: `${metadata.categories['roles'].tag_prefix || ''}${metadata.categories['roles'].version}`,
+      };
+    } else {
+      // Fallback: roles may not be in metadata yet, add with 'main'
+      skills['roles'] = { ref: 'main' };
+    }
+
     // Add database category for backend frameworks
     if (
       frameworks.some((fw) => BACKEND_FRAMEWORKS.includes(fw as Framework)) &&
