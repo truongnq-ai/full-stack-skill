@@ -1,76 +1,84 @@
 ---
-name: Quality Assurance
-description: Standards for creating high-quality, granular manual test cases and QA processes.
+name: Quality Assurance Master Protocol
+description: The baseline, overarching hub for QA processes, defining the mindset, shifting-left philosophy, and entry points into all other QA operational sub-skills.
+category: roles/qa
 metadata:
-  labels:
-    - qa
-    - testing
-    - best-practices
-    - roles
-    - quality-assurance
+  labels: [qa, quality-assurance, index, philosophy, shift-left]
   triggers:
-    priority: medium
-    confidence: 0.7
-    files:
-      - '**/*.feature'
-      - '**/*.test.ts'
-      - '**/test_plan.md'
-    keywords:
-      - test case
-      - qa
-      - bug report
-      - testing standard
-      - zephyr
-      - jira ticket
-      - acceptance criteria
-      - test scenario
-      - manual test
-    exclude:
-      - src/**/*.ts
-      - src/**/*.js
-      - src/**/*.tsx
-      - src/**/*.jsx
-workflow_ref: battle-test
+    priority: critical
+    confidence: 0.95
+    keywords: [qa overview, qa protocol, quality assurance index]
 ---
 
-# Quality Assurance Standards
+# 🛡️ Quality Assurance Master Protocol
 
-## **Priority: P1 (HIGH)**
+> **Use this skill when**: an agent adopts the QA Persona, a stakeholder asks for a high-level explanation of how quality is enforced, or to root other automated QA workflows. Trigger: `/qa-core`.
+>
+> **Out of scope**: This is NOT a tactical specific script for testing. It is the Index that glues the entire `roles/qa/` directory together.
 
-## Output Template
+---
 
-## Output (Strict)
+## 🚫 Anti-Patterns
 
-```yaml
-summary: "<what was done>"
-risks: ["<risk 1>"] # or []
-next_checks: ["<check 1>"]
-```
+- **QA as the Clean-up Crew**: Wait until the Dev is 100% finished with the code, then throwing it over the wall to QA. (Violates Shift-Left principles).
+- **Ignoring Code Quality**: Assuming QA only clicks UI buttons. Modern QA includes auditing static architecture, security configurations, and performance limits.
+- **Manual Monotony**: Doing the exact same 3-hour manual test every sprint instead of automating it.
 
-- **Summary**: <what changed / what was done>
-- **Risks**: <known risks or "none">
-- **Next Checks**: <tests/verification steps>
+---
 
-## 1. Test Case Granularity
+## 🛠 Prerequisites & Tooling
 
-- **1 Test Case = 1 Condition on 1 Screen**.
-  - **Split Screens**: "Order Details" & "Item Details" are separate.
-  - **Split Conditions**: "Config A" & "Config B" are separate.
-- **No "OR" Logic**: Each TC must test a single, distinct path.
+1. Complete directory access to all `/roles/qa` sub-skills.
+2. Integration with BA Skills (Requirement parsing) and DevOps Skills (Pipeline triggers).
 
-## 2. Naming Convention
+---
 
-- **Pattern**: `([Platform]) [Module]_[Action] on [Screen] when [Condition]`
-- **Rule**: Only include `[Platform]` if requirement is exclusive to one platform (e.g., `[Mobile]`). Omit if it supports **Both**.
-- **Example**: `Order_Verify payment term on Item Details when Toggle is OFF` (Supports Both)
+## 🔄 Execution Workflow
 
-## 3. Priority Levels
+### Principle 1 — Shift Left
+QA begins *before* a single line of code is written.
+As soon as a BA specs a User Story (`roles/ba/handover-to-dev/...`), the QA persona immediately begins mapping Test Cases. By the time the code is ready, the tests are already written.
 
-- **High**: Critical path, blocker bug.
-- **Normal**: Standard validation, edge case.
-- **Low**: Cosmetic, minor improvement.
+### Principle 2 — The Tactical Toolkit
+When operating as QA, select the right tool for the exact lifecycle phase:
 
-## 4. References
+#### 1: Planning Phase
+- **Test Strategy**: Determine the Unit/E2E ratio `(test-strategy/SKILL.md)`.
+- **Test Plan**: Map scope and schedule `(test-plan-template/SKILL.md)`.
+- **Coverage**: Establish mapping `(coverage-model/SKILL.md)`.
 
-- [Detailed Examples](references/test_case_standards.md)
-- [Examples (Input/Output)](references/examples.md)
+#### 2: Test Case Design
+- Use **Boundary Value Analysis** `(test-case-design/boundary-value/SKILL.md)`.
+- Use **Equivalence Partitions** `(test-case-design/equivalence-partition/SKILL.md)`.
+- Use **Decision Tables** `(test-case-design/decision-table/SKILL.md)`.
+
+#### 3: Execution & Stability
+- Orchestrate environments securely `(environment-management/SKILL.md)`.
+- Write rigorous automated E2E scripts `(automation-e2e/SKILL.md)`.
+- Execute strict manual step-throughs `(execution-checklist/SKILL.md)`.
+
+#### 4: Incident & Handoff
+- File perfect, traceable defect matrices `(bug-reporting-standard/SKILL.md)`.
+- Investigate process holes for escaped bugs `(rca-lite/SKILL.md)`.
+- Manage the ultimate Release Gate `(handover-to-devops/SKILL.md)`.
+
+### Principle 3 — Absolute Objectivity
+When evaluating a Quality Gate, QA is immune to business deadline pressure. If a feature fails to meet the `qa-gates/SKILL.md` baseline, it is Rejected. Overrides must come explicitly from the Project Management/Product Owner via a logged `Waiver`.
+
+---
+
+## ⚠️ Error Handling (Fallback)
+
+| Context | Failure State | Fallback Action |
+|---------|---------------|-----------------|
+| AI Orchestration | Agent lost in QA workflow loop | Reboot to this `quality-assurance/SKILL.md` master index. Re-evaluate which phase of the SDLC is currently active, and pick the designated sub-skill. |
+
+---
+
+## ✅ Done Criteria / Verification
+
+Adherence to the Master Protocol is met when:
+
+- [ ] All QA activity is actively mapping against documented specifications (No guessing logic).
+- [ ] Overlap with DevOps (Infrastructure) and Dev (Unit Tests) is minimized.
+- [ ] At all times, the system provides an auditable paper trail of Defects, Action Items, and formal Approvals/Rejections.

@@ -1,70 +1,113 @@
 ---
-description: Standard for Dynamic Telegram Inline Buttons Interaction
+name: Telegram Interactive Messages
+description: Sends robust, interactive Telegram messages using bot API — handles formatting, keyboards, rate limits, and failure retries.
+category: common
+metadata:
+  labels: [telegram, bot, messaging, integration]
+  triggers:
+    priority: medium
+    confidence: 0.8
+    keywords: [telegram, alert, message, notify, bot]
 ---
 
-# Telegram Interactive Messages Standard (Dynamic Buttons)
+# 📱 Telegram Interactive Messages
 
-## Context & Purpose
-When Openclaw (Rose) interacts with the user via Telegram, it is highly recommended to use inline buttons to make confirmations, selections, and choices faster and more intuitive. Instead of always defaulting to a simple "Yes/No", Openclaw must proactively analyze the context of the conversation and provide custom, contextual buttons according to the user's options.
+> **Use this skill when**: the agent needs to send mission-critical alerts, reports, or interactive messages with inline button keyboards to a Telegram chat, group, or channel. Trigger: `/core-telegram-message` or when tasked to "Notify the team via Telegram".
+>
+> **Out of scope**: This skill does NOT handle receiving messages, webhook processing, or Long Polling. It does NOT provision the Telegram bot itself via BotFather (user must provide the token).
 
-## 1. Rule / Standard for Emitting Buttons
-Whenever the assistant requires the user to make a decision, choose an option, or confirm an action, the agent should formulate the responses using the `message` tool with `channel: "telegram"` and inject a `buttons` array.
+---
 
-- **DO NOT** limit choices to "Yes" / "No" unless the question is strictly binary (e.g., "Do you want to proceed?").
-- **DO** generate dynamic options based on what is being discussed (e.g., "Approve PR", "Reject PR", "Run Tests", "Deploy to Staging").
-- **DO** keep button `text` short and concise (1-3 words).
-- **DO** assign a clear and distinct `callback_data` for each action so the system knows exactly how to handle the callback.
+## 🚫 Anti-Patterns
 
-## 2. Dynamic Payload Template
-Use the following format when invoking the `message` tool (action: `send`):
+- **Hardcoded Secrets**: Never hardcode the `TELEGRAM_BOT_TOKEN` in scripts or workflow definitions. Always read from `.env` or secure vault.
+- **Unescaped Characters**: Sending raw Markdown or MarkdownV2 without escaping reserved special characters, leading to API `HTTP 400 Bad Request`.
+- **Ignoring Rate Limits**: Sending tight loops of messages and ignoring Telegram's `429 Too Many Requests` responses.
+- **Micro-spamming**: Sending 5 separate messages for an incident instead of 1 batched summary message.
 
+---
+
+## 🛠 Prerequisites & Tooling
+
+1. `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` must be configured in your application environment (e.g. `.env` file).
+2. Appropriate network egress rules allowing traffic to `https://api.telegram.org`.
+3. Load reference templates for specific message layouts:
+```bash
+view_file skills/common/telegram-interactive-messages/references/examples.md
+```
+
+---
+
+## 🔄 Execution Workflow
+
+### Step 1 — Validate Environment
+Before attempting any network calls, verify the environment:
+```bash
+grep -E "TELEGRAM_BOT_TOKEN|TELEGRAM_CHAT_ID" .env
+```
+Ensure credentials exist and are not empty placeholders. If missing, Abort and explicitly request the user to provide them.
+
+### Step 2 — Format Message Payload
+Choose format mode (`MarkdownV2` or `HTML`). 
+*Best practice*: Use `HTML` mode for safer formatting, as MarkdownV2 has exceedingly strict escape character rules (`_ * [ ] ( ) ~ \ > # + - = | { } . !`).
+
+Format structure:
 ```json
 {
-  "action": "send",
-  "channel": "telegram",
-  "target": "<chat_id>",
-  "message": "Nội dung câu hỏi hoặc yêu cầu sự lựa chọn từ user:",
-  "buttons": [
+  "chat_id": "{{TELEGRAM_CHAT_ID}}",
+  "text": "<b>🚨 Critical Alert</b>\nDescription: High CPU utilization detected.\n<i>Action required immediately.</i>",
+  "parse_mode": "HTML",
+  "disable_web_page_preview": true
+}
+```
+
+### Step 3 — Add Interactive Keyboards (Optional)
+If user action or approval is needed, append a `reply_markup` inline keyboard object:
+```json
+"reply_markup": {
+  "inline_keyboard": [
     [
-      {"text": "<Option 1>", "callback_data": "<action_1>"},
-      {"text": "<Option 2>", "callback_data": "<action_2>"}
+      {"text": "Approve Deploy ✅", "callback_data": "action_deploy_approve"},
+      {"text": "Reject Deploy ❌", "callback_data": "action_deploy_reject"}
     ],
     [
-      {"text": "<Option 3 (Full wide)>", "callback_data": "<action_3>"}
+      {"text": "View Logs 📜", "url": "https://dashboard.example.com/logs/123"}
     ]
   ]
 }
 ```
 
-*Note: The `buttons` array is an array of arrays. Each inner array represents a horizontal row of buttons on the Telegram UI. Group related options on the same row, and destructive/major actions on their own row.*
-
-## 3. Contextual Examples
-
-### Scenario A: Deployment Approval
-If asking to deploy a new version to a specific environment:
-```json
-"buttons": [
-  [
-    {"text": "Deploy Staging", "callback_data": "deploy_stg"},
-    {"text": "Deploy Prod", "callback_data": "deploy_prod"}
-  ],
-  [
-    {"text": "Cancel", "callback_data": "cancel_deploy"}
-  ]
-]
+### Step 4 — Send Request (with Rate Limit Handling)
+Execute the payload using `curl` or native HTTP framework. 
+```bash
+curl -s -X POST https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage \
+  -H 'Content-Type: application/json' \
+  -d '{ "chat_id": "'"$TELEGRAM_CHAT_ID"'", "text": "Test Integration Message", "parse_mode": "HTML" }' \
+  -w "\nHTTP_CODE: %{http_code}"
 ```
 
-### Scenario B: Report Generation
-If asking what timeframe to generate a sales report for:
-```json
-"buttons": [
-  [
-    {"text": "Today", "callback_data": "report_today"},
-    {"text": "This Week", "callback_data": "report_week"},
-    {"text": "This Month", "callback_data": "report_month"}
-  ]
-]
-```
+---
 
-## 4. Response Handling
-When the user clicks a button, a callback is triggered with the specified `callback_data`. Openclaw should listen for these callbacks in the event loop and trigger the corresponding workflows or subsequent LLM interactions without requiring the user to type text.
+## ⚠️ Error Handling (Fallback)
+
+When evaluating the response HTTP status code, implement the following fail-safes:
+
+| HTTP Code | Telegram Error | Primary Cause & Fallback Action |
+|-----------|----------------|--------------------------------|
+| **400** | Bad Request (Parse error) | Usually unescaped special characters in Markdown/HTML. <br>→ *Fallback*: Strip all formatting tags and retry as plain text. |
+| **400** | Chat not found | Bot is not added to the target group, or `chat_id` is malformed. <br>→ *Fallback*: Log locally and suspend Telegram notifications. |
+| **401** | Unauthorized | The `BOT_TOKEN` is revoked or incorrect. <br>→ *Fallback*: Halt execution and prompt user to refresh credentials. |
+| **429** | Too Many Requests | Rate limit exceeded. <br>→ *Fallback*: Parse the `retry_after` JSON parameter. Sleep for that many seconds + 1, then retry execution. |
+
+---
+
+## ✅ Done Criteria / Verification
+
+To verify that the Telegram integration was successful, check the following conditions:
+
+- [ ] Network call completes and returns `HTTP 200 OK`.
+- [ ] Response payload is valid JSON and contains `"ok": true`.
+- [ ] The `message_id` property is successfully extracted from the response object (`.result.message_id`).
+- [ ] (If applicable) Expected buttons render correctly without breaking the message text layout.
+
+> **Verification Check**: Do not assume a `curl` completion means success. Always `grep` the output literal for `"ok":true`.
