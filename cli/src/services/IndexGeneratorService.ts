@@ -46,20 +46,50 @@ export class IndexGeneratorService {
       const categoryPath = path.join(baseDir, category);
       if (!(await fs.pathExists(categoryPath))) continue;
 
-      const skills = await fs.readdir(categoryPath);
-      for (const skill of skills) {
-        const skillPath = path.join(categoryPath, skill, 'SKILL.md');
-        if (!(await fs.pathExists(skillPath))) continue;
-
-        const metadata = await this.parseSkill(skillPath);
+      // Recursively discover all SKILL.md files under this category
+      const skillPaths = await this.discoverSkills(categoryPath);
+      for (const { skillRelPath, skillMdPath } of skillPaths) {
+        const metadata = await this.parseSkill(skillMdPath);
         if (metadata) {
-          const entry = this.formatEntry(category, skill, metadata);
+          const entry = this.formatEntry(category, skillRelPath, metadata);
           entries.add(entry);
         }
       }
     }
 
     return this.assembleIndex(Array.from(entries));
+  }
+
+  /**
+   * Recursively discovers all SKILL.md files under a directory.
+   * Returns an array of { skillRelPath, skillMdPath } where skillRelPath
+   * is the relative path from the category root to the skill folder.
+   */
+  private async discoverSkills(
+    dir: string,
+    basePath?: string,
+  ): Promise<{ skillRelPath: string; skillMdPath: string }[]> {
+    const base = basePath || dir;
+    const results: { skillRelPath: string; skillMdPath: string }[] = [];
+
+    const items = await fs.readdir(dir);
+    for (const item of items) {
+      const fullPath = path.join(dir, item);
+      const stat = await fs.stat(fullPath);
+      if (!stat.isDirectory()) continue;
+
+      const skillMdPath = path.join(fullPath, 'SKILL.md');
+      if (await fs.pathExists(skillMdPath)) {
+        const skillRelPath = path.relative(base, fullPath).replace(/\\/g, '/');
+        results.push({ skillRelPath, skillMdPath });
+      }
+
+      // Continue recursing into subdirectories for deeper nesting
+      const nested = await this.discoverSkills(fullPath, base);
+      results.push(...nested);
+    }
+
+    return results;
   }
 
   /**

@@ -5,14 +5,23 @@
   "role:qa": [
     "roles/qa"
   ],
+  "role:dev": [
+    "roles/dev"
+  ],
   "role:devops": [
     "roles/devops"
+  ],
+  "role:pm": [
+    "roles/pm"
   ],
   "role:writer": [
     "roles/writer"
   ],
   "role:reviewer": [
     "roles/reviewer"
+  ],
+  "role:team": [
+    "roles/team"
   ],
   "stack:web": [
     "frontend",

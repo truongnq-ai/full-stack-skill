@@ -39,7 +39,7 @@ program
     'Full-Stack Skill — AI agent coding standards for your entire team.\n' +
     'Distributes high-density skills to Cursor, Claude Code, Copilot, Antigravity, and more.',
   )
-  .version('2026.03.09');
+  .version('2026.3.26');
 
 // ── Global help: show supported stacks + quick start ────────────────────
 program.addHelpText('after', `

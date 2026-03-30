@@ -126,9 +126,17 @@ export class RegistryService {
         new Set(
           treeResult.tree
             .filter((f: GitHubTreeItem) =>
-              f.path.startsWith(`skills/${framework}/`),
+              f.path.startsWith(`skills/${framework}/`) &&
+              f.path.endsWith('/SKILL.md') &&
+              f.type === 'blob',
             )
-            .map((f: GitHubTreeItem) => f.path.split('/')[2])
+            .map((f: GitHubTreeItem) => {
+              // Extract relative skill path: skills/roles/ba/req/SKILL.md → ba/req
+              const prefix = `skills/${framework}/`;
+              const relative = f.path.slice(prefix.length);
+              const parts = relative.split('/');
+              return parts.slice(0, -1).join('/');
+            })
             .filter(Boolean),
         ),
       );

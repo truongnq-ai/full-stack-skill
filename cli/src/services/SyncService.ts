@@ -570,23 +570,40 @@ export class SyncService {
     catConfig: SkillEntry,
     tree: GitHubTreeItem[],
   ): string[] {
-    const skillFolders = new Set(
-      tree
-        .filter((f) => f.path.startsWith(`skills/${category}/`))
-        .map((f) => f.path.split('/')[2])
-        .filter(Boolean),
+    const prefix = `skills/${category}/`;
+
+    // Deep discovery: find all SKILL.md files and derive skill folder paths
+    const skillMdFiles = tree.filter(
+      (f) => f.path.startsWith(prefix) && f.path.endsWith('/SKILL.md') && f.type === 'blob',
     );
 
+    const skillFolders = new Set<string>();
+    for (const f of skillMdFiles) {
+      // e.g. skills/roles/ba/requirements-elicitation/SKILL.md
+      // → relative = ba/requirements-elicitation/SKILL.md
+      // → skillPath = ba/requirements-elicitation
+      const relative = f.path.slice(prefix.length);
+      const parts = relative.split('/');
+      if (parts.length >= 2) {
+        // Remove the trailing 'SKILL.md' to get the skill folder
+        const skillPath = parts.slice(0, -1).join('/');
+        skillFolders.add(skillPath);
+      }
+    }
+
     const folders = Array.from(skillFolders).filter((folder) => {
-      if (catConfig.include && !catConfig.include.includes(folder))
+      // For filtering, check the top-level segment against include/exclude
+      const topLevel = folder.split('/')[0];
+      if (catConfig.include && !catConfig.include.includes(topLevel) && !catConfig.include.includes(folder))
         return false;
-      if (catConfig.exclude && catConfig.exclude.includes(folder)) return false;
+      if (catConfig.exclude && (catConfig.exclude.includes(topLevel) || catConfig.exclude.includes(folder)))
+        return false;
       return true;
     });
 
     if (catConfig.include) {
       catConfig.include
-        .filter((i) => i.includes('/'))
+        .filter((i) => i.includes('/') && !folders.includes(i))
         .forEach((absSkill) =>
           this.expandAbsoluteInclude(absSkill, folders, tree),
         );
@@ -640,11 +657,9 @@ export class SyncService {
     absOrRelSkill: string,
     tree: GitHubTreeItem[],
   ): Promise<CollectedSkill | null> {
-    const [sourceCat, skillName] = absOrRelSkill.includes('/')
-      ? absOrRelSkill.split('/')
-      : [category, absOrRelSkill];
-
-    const prefix = `skills/${sourceCat}/${skillName}/`;
+    // absOrRelSkill can be multi-segment: "ba/requirements-elicitation" for roles
+    // or a simple name: "hooks" for flat categories
+    const prefix = `skills/${category}/${absOrRelSkill}/`;
     const skillSourceFiles = tree.filter(
       (f) => f.path.startsWith(prefix) && f.type === 'blob',
     );
@@ -662,13 +677,13 @@ export class SyncService {
 
     console.log(
       pc.gray(
-        `    + Fetched ${sourceCat}/${skillName} (${files.length} files)`,
+        `    + Fetched ${category}/${absOrRelSkill} (${files.length} files)`,
       ),
     );
 
     return {
-      category: sourceCat,
-      skill: skillName,
+      category,
+      skill: absOrRelSkill,
       files: files.map((f) => ({
         name: f.path.replace(prefix, ''),
         content: f.content,
