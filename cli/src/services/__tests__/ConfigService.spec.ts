@@ -133,6 +133,8 @@ describe('ConfigService', () => {
       );
 
       expect(config.skills.flutter?.ref).toBe('1.0.0');
+      // roles is always auto-included (no metadata entry → fallback to 'main')
+      expect(config.skills.roles?.ref).toBe('main');
       expect(config.skills.common).toBeUndefined();
     });
 
@@ -179,12 +181,13 @@ describe('ConfigService', () => {
     });
 
     it('should handle missing categories or framework in registry metadata', () => {
-      // Missing categories entirely
+      // Missing categories entirely → framework + roles (fallback)
       const config1 = configService.buildInitialConfig(['f'], [], 'url', {}, []);
-      expect(Object.keys(config1.skills)).toHaveLength(1);
+      expect(Object.keys(config1.skills)).toHaveLength(2); // f + roles
       expect(config1.skills.f.ref).toBe('main');
+      expect(config1.skills.roles.ref).toBe('main');
 
-      // Category missing for primary framework
+      // Category missing for primary framework → framework + roles (fallback)
       const config2 = configService.buildInitialConfig(
         ['f'],
         [],
@@ -192,7 +195,7 @@ describe('ConfigService', () => {
         { categories: {} },
         [],
       );
-      expect(Object.keys(config2.skills)).toHaveLength(1);
+      expect(Object.keys(config2.skills)).toHaveLength(2); // f + roles
       expect(config2.skills.f.ref).toBe('main');
     });
 

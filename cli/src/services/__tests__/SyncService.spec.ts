@@ -211,12 +211,11 @@ describe('SyncService', () => {
         .mockReturnValue({ owner: 'o', repo: 'r' });
       const config = {
         registry: 'url',
-        skills: { cat1: { include: ['s1', 'other/s2'] } },
+        skills: { cat1: { include: ['s1'] } },
       } as unknown as SkillConfig;
       mockGithubService.getRepoTree.mockResolvedValue({
         tree: [
           { path: 'skills/cat1/s1/SKILL.md', type: 'blob' },
-          { path: 'skills/other/s2/SKILL.md', type: 'blob' },
         ],
       });
       mockGithubService.downloadFilesConcurrent.mockImplementation(
@@ -224,7 +223,7 @@ describe('SyncService', () => {
           tasks.map((t) => ({ path: t.path, content: 'c' })),
       );
       const result = await syncService.assembleSkills(['cat1'], config);
-      expect(result).toHaveLength(2);
+      expect(result).toHaveLength(1);
       GithubService.parseGitHubUrl = oldParse;
     });
   });
@@ -249,7 +248,7 @@ describe('SyncService', () => {
       const catConfig = {
         include: ['some-other-skill'],
       } as any;
-      const tree = [{ path: 'skills/test/s1/', type: 'tree' }] as any[];
+      const tree = [{ path: 'skills/test/s1/SKILL.md', type: 'blob' }] as any[];
       // @ts-expect-error - private
       const result = syncService.identifyFoldersToSync('test', catConfig, tree);
       expect(result).not.toContain('s1');
@@ -257,7 +256,7 @@ describe('SyncService', () => {
 
     it('should include folder if explicitly in include list', () => {
       const catConfig = { include: ['s1'] } as any;
-      const tree = [{ path: 'skills/test/s1/', type: 'tree' }] as any[];
+      const tree = [{ path: 'skills/test/s1/SKILL.md', type: 'blob' }] as any[];
       // @ts-expect-error - private
       const result = syncService.identifyFoldersToSync('test', catConfig, tree);
       expect(result).toContain('s1');
@@ -265,7 +264,7 @@ describe('SyncService', () => {
 
     it('should exclude folder if in exclude list', () => {
       const catConfig = { exclude: ['s1'] } as any;
-      const tree = [{ path: 'skills/test/s1/', type: 'tree' }] as any[];
+      const tree = [{ path: 'skills/test/s1/SKILL.md', type: 'blob' }] as any[];
       // @ts-expect-error - private
       const result = syncService.identifyFoldersToSync('test', catConfig, tree);
       expect(result).not.toContain('s1');
@@ -282,7 +281,7 @@ describe('SyncService', () => {
 
     it('should cover include check bypass', () => {
       const catConfig = { include: undefined } as any;
-      const tree = [{ path: 'skills/test/s1/', type: 'tree' }] as any[];
+      const tree = [{ path: 'skills/test/s1/SKILL.md', type: 'blob' }] as any[];
       // @ts-expect-error - private
       const result = syncService.identifyFoldersToSync('test', catConfig, tree);
       expect(result).toContain('s1');
@@ -482,10 +481,10 @@ describe('SyncService', () => {
       expect(res!.files).toHaveLength(4);
     });
 
-    it('should handle relative vs absolute skill fetch', async () => {
-      const tree = [{ path: 'skills/other/s/SKILL.md', type: 'blob' }];
+    it('should handle multi-segment skill path fetch', async () => {
+      const tree = [{ path: 'skills/cat/sub/s/SKILL.md', type: 'blob' }];
       mockGithubService.downloadFilesConcurrent.mockResolvedValue([
-        { path: 'skills/other/s/SKILL.md', content: 'c' },
+        { path: 'skills/cat/sub/s/SKILL.md', content: 'c' },
       ]);
       // @ts-expect-error - private
       const res = await syncService.fetchSkill(
@@ -493,10 +492,11 @@ describe('SyncService', () => {
         'r',
         'ref',
         'cat',
-        'other/s',
+        'sub/s',
         tree as any,
       );
-      expect(res!.category).toBe('other');
+      expect(res!.category).toBe('cat');
+      expect(res!.skill).toBe('sub/s');
     });
   });
 

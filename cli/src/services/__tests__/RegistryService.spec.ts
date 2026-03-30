@@ -132,7 +132,7 @@ describe('RegistryService', () => {
   describe('getFrameworkSkills', () => {
     it('should list framework skills', async () => {
       mockGithub.getRepoTree.mockResolvedValue({
-        tree: [{ path: 'skills/flutter/s1/', type: 'tree' }],
+        tree: [{ path: 'skills/flutter/s1/SKILL.md', type: 'blob' }],
       });
       const result = await service.getFrameworkSkills('url', 'flutter');
       expect(result).toEqual(['s1']);

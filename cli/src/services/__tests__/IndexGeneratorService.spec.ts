@@ -31,6 +31,10 @@ describe('IndexGeneratorService', () => {
         return [];
       });
 
+      (fs.stat as any).mockImplementation(async () => ({
+        isDirectory: () => true,
+      }));
+
       (fs.readFile as any).mockResolvedValue(
         '---\nname: Test\ndescription: Desc\nmetadata:\n  triggers:\n    keywords: [k1]\n---\n## **Priority: P0**',
       );
@@ -61,6 +65,9 @@ describe('IndexGeneratorService', () => {
       (fs.readFile as any).mockRejectedValue(new Error('Parse error'));
       (fs.pathExists as any).mockResolvedValue(true);
       (fs.readdir as any).mockResolvedValue(['skill']);
+      (fs.stat as any).mockImplementation(async () => ({
+        isDirectory: () => true,
+      }));
 
       const result = await service.generate('/skills', ['common']);
       expect(result).toContain('# Agent Skills Index');
@@ -69,6 +76,9 @@ describe('IndexGeneratorService', () => {
     it('should skip skills with invalid frontmatter', async () => {
       (fs.pathExists as any).mockResolvedValue(true);
       (fs.readdir as any).mockResolvedValue(['invalid-skill']);
+      (fs.stat as any).mockImplementation(async () => ({
+        isDirectory: () => true,
+      }));
       (fs.readFile as any).mockResolvedValue('No frontmatter here');
 
       const result = await service.generate('/skills', ['common']);
@@ -81,6 +91,9 @@ describe('IndexGeneratorService', () => {
         return true;
       });
       (fs.readdir as any).mockResolvedValue(['skill']);
+      (fs.stat as any).mockImplementation(async () => ({
+        isDirectory: () => true,
+      }));
 
       const result = await service.generate('/skills', ['common']);
       expect(result).not.toContain('common/skill');
