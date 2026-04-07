@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2026.04.07 — Feature: Superpowers Skill Integration
+
+### Added
+- **Visual Companion** (`common/brainstorming`): Local Node.js server for visual mockups and side-by-side design comparisons in browser.
+- **Workflow: `/visual-brainstorming`**: 8-step visual design session using Visual Companion.
+- **Iron Law of Debugging** (`common/systematic-debugging`): Strict mandate for root cause investigation before any fix.
+- **3-Fix Limit Escalation**: Automatic stop and architectural review requirement after 3 failed fix attempts.
+- **No Placeholders Law** (`common/writing-plans`): Prohibited `TBD`/`TODO` in implementation plans; enforced bite-sized TDD task format.
+- **Improved Brainstorming**: "One-question-at-a-time" rule with multiple-choice preference.
+
+### Changed
+- `common` skills upgraded to v1.6.0.
+- `software-dev-fix-bug` workflow: Integrated Iron Law and 3-fix limit.
+- `software-po-plan-feature` workflow: Mandated `writing-plans` and TDD bite-sized tasks.
+
+
 ## 2026.03.10.1 — Hotfix: Workflow Sync Strategy
 
 ### Fixed
