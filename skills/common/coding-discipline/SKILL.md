@@ -77,7 +77,7 @@ Every coding task must follow a disciplined workflow. Never skip analysis or exe
 
 **Step 4 — Ambiguity Checkpoint**: See `common/clarification` skill. Auto-Accept does NOT exempt this step.
 
-**Step 5 — Declare Plan**: Simple tasks (≤2 files, ≤20 lines, no side effects) → execute directly. Complex tasks → declare plan, wait for confirmation.
+**Step 5 — Declare Plan**: Simple tasks (≤2 files, ≤20 lines, no side effects) → execute directly. Complex multi-step tasks → **invoke `writing-plans` skill first** to create a bite-sized TDD plan, then declare it and wait for confirmation.
 
 **Step 6 — Execute**: Only modify declared files. Prefer `replace_file_content` over full overwrite. Mid-execution discovery of additional files needed → **STOP, declare, wait**.
 
@@ -90,6 +90,7 @@ Every coding task must follow a disciplined workflow. Never skip analysis or exe
 - ❌ Auto-create documentation files not requested
 - ❌ Rename/delete/move files not in the plan
 - ❌ Run side-effect commands (DB migrate, deploy, restart) without confirmation
+- ❌ Start coding a complex multi-step task without first running the `writing-plans` skill to create a structured TDD plan
 
 
 ## References

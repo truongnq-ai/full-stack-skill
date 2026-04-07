@@ -75,15 +75,23 @@ view_file skills/roles/pm/product-manager/references/prioritization.md
 
 Convert PRD ("What") → Technical Plan ("How").
 
+Load skill for bite-sized task format:
+
+```
+view_file skills/common/writing-plans/SKILL.md
+```
+
 Create `docs/implementation_plan.md` with:
 
 - **Technical components**: modules/services to create or modify
 - **File changes**: exact paths to create, modify, or delete
 - **Dependency order**: build sequence
+- **Bite-Sized TDD Tasks**: Each task = Write failing test → Run to fail → Implement → Pass → Commit (use `writing-plans` format)
 - **Verification Plan**:
-  - Automated: unit tests, E2E tests, commands
+  - Automated: unit tests, E2E tests, exact commands with expected output
   - Manual: UI flows, edge cases
 
+> **No Placeholders**: Every task must have exact file paths, commands, and code. No TBD, TODO, or "add appropriate handling".
 > **Fallback**: If PRD missing, return to Step 1 immediately.
 
 ---

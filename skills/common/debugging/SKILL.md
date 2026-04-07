@@ -31,7 +31,13 @@ metadata:
    - Change ONE variable at a time.
    - Use binary search: comment out half, verify which half fails.
    
-4. **FIX** — Implement solution only after root cause is proven.
+4. **FIX** — Implement solution only after root cause is proven. Implement ONE change at a time. No bundled refactoring.
+
+5. **3-FIX LIMIT** — If 3 or more fix attempts have failed:
+   - **STOP immediately.** Do NOT attempt Fix #4.
+   - Escalate to `systematic-debugging` skill or discuss with user.
+   - > "I've tried 3 fixes and each revealed a new problem. This may be an architectural issue — should we step back?"
+   - Pattern: each fix reveals new coupling/shared state in a different file → wrong architecture, not a single bug.
 
 5. **VERIFY** — Confirm fix + no regressions:
    - Run existing tests. Write regression test for this exact bug.
@@ -50,6 +56,8 @@ metadata:
 **`No Shotgun Debugging`**: Never change multiple things simultaneously hoping one works.
 
 **`No Console Spam`**: Remove all debug `console.log`/`print` before committing fix.
+
+**`No Repeated Guessing`**: Never attempt a 4th fix without a fundamentally different root cause hypothesis or an architectural discussion. If 3 fixes failed, the problem is likely not where you think it is.
 
 **`No Symptom Masking`**: Never wrap in `try-catch` to silence without handling root cause.
 

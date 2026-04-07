@@ -8,7 +8,10 @@ description: Dev systematically debugs production errors — traces from log to 
 >
 > **Out of scope**: Does not fix performance — use `software-dev-optimize-performance`. Does not redesign architecture — use `software-dev-audit-codebase`.
 >
-> **Activates skills**: `skills/roles/dev/debugging-workflow/SKILL.md`, `skills/common/debugging/SKILL.md`
+> **Activates skills**: `skills/common/systematic-debugging/SKILL.md`, `skills/common/debugging/SKILL.md`
+
+> [!IMPORTANT]
+> **Iron Law (from `systematic-debugging` skill)**: NO FIXES WITHOUT ROOT CAUSE INVESTIGATION FIRST. If 3+ fixes fail → STOP and escalate. Do not attempt Fix #4 without architectural discussion.
 
 ---
 
@@ -70,6 +73,10 @@ Proceed? (Y / N — investigate further)"
 
 `view_file` the full function before modifying. Apply minimal change. Add inline comment: `// Fix: [what was wrong]`.
 
+> **3-Fix Limit**: Track fix attempts. If this is the **3rd failed fix**, STOP immediately. Do NOT attempt Fix #4. Escalate:
+> - Ask user: "I've tried 3 fixes and each revealed a new problem — this may be architectural. Should we step back?"
+> - Switch to `software-dev-audit-codebase` if root cause appears systemic.
+
 > **Fallback**: If fix introduces secondary failures, `git checkout HEAD -- <file>` and re-debug from Step 3.
 
 ---
@@ -101,7 +108,8 @@ Save to `docs/debug/debug-[YYYY-MM-DD]-[slug].md`:
 
 ## Done Criteria
 
-- [ ] Root cause confirmed before fix applied
+- [ ] Root cause confirmed before fix applied (Iron Law respected)
 - [ ] Fix is minimal — no scope creep
+- [ ] Fix attempts tracked — escalated if 3+ failed
 - [ ] Tests pass (or regression test created)
 - [ ] `docs/debug/` report saved
