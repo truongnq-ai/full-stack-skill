@@ -8,7 +8,7 @@ description: PO/PM plans a new feature from discovery interview through PRD gene
 >
 > **Out of scope**: Does not implement code — use `software-dev-review-code` or `software-team-orchestrate-agents` after planning. Does not gather detailed requirements — use `software-ba-gather-requirements` for deep BA analysis.
 >
-> **Activates skills**: `skills/roles/pm/product-manager/SKILL.md`, `skills/roles/pm/product-requirements/SKILL.md`
+> **Activates skills**: `skills/roles/po/feature-discovery/SKILL.md`, `skills/roles/po/prd-generation/SKILL.md`
 
 ---
 
@@ -19,7 +19,7 @@ description: PO/PM plans a new feature from discovery interview through PRD gene
 Load skill:
 
 ```
-view_file skills/roles/pm/product-manager/SKILL.md
+view_file skills/roles/po/feature-discovery/SKILL.md
 ```
 
 Ask clarifying questions covering:
@@ -54,7 +54,7 @@ Proceed to PRD generation? (Y / N — revise first)"
 Generate PRD using template:
 
 ```
-view_file skills/roles/pm/product-manager/references/prd-template.md
+view_file skills/roles/po/feature-discovery/references/prd-template.md
 ```
 
 Save to `docs/specs/prd-[feature_name].md`.
@@ -62,7 +62,7 @@ Save to `docs/specs/prd-[feature_name].md`.
 Validate against prioritization checklist:
 
 ```
-view_file skills/roles/pm/product-manager/references/prioritization.md
+view_file skills/roles/po/feature-discovery/references/prioritization.md
 ```
 
 **Mandatory PRD sections**: Overview, User Stories, Acceptance Criteria, Out of Scope, Success Metrics.

@@ -8,7 +8,7 @@ description: QA executes test plan — runs functional, regression, and smoke te
 >
 > **Out of scope**: Does not write test plan — use `software-qa-write-testplan`. Does not fix bugs — use `software-dev-fix-bug`.
 >
-> **Activates skills**: `skills/roles/qa/execution-checklist/SKILL.md`, `skills/roles/qa/regression-testing/SKILL.md`
+> **Activates skills**: `skills/roles/tester/execution-checklist/SKILL.md`, `skills/roles/tester/regression-testing/SKILL.md`
 
 ---
 
@@ -16,7 +16,7 @@ description: QA executes test plan — runs functional, regression, and smoke te
 
 ```
 view_file docs/qa/test-plan-<feature>.md
-view_file skills/roles/qa/execution-checklist/SKILL.md
+view_file skills/roles/tester/execution-checklist/SKILL.md
 ```
 
 > **Fallback**: If no test plan, run `software-qa-write-testplan` first.
@@ -52,7 +52,7 @@ Run each test case. Record per case:
 ## Step 4 — Regression Test
 
 ```
-view_file skills/roles/qa/regression-testing/SKILL.md
+view_file skills/roles/tester/regression-testing/SKILL.md
 ```
 
 Run regression suite for features adjacent to changes:

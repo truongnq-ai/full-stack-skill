@@ -8,15 +8,15 @@ description: BA elicits requirements from stakeholders through structured interv
 >
 > **Out of scope**: Does not write PRD — use `software-po-plan-feature`. Does not split stories — use `software-ba-split-stories`. Does not design API — use `software-dev-design-api`.
 >
-> **Activates skills**: `skills/roles/ba/requirements-elicitation/SKILL.md`, `skills/roles/ba/system-modeling/SKILL.md`, `skills/roles/qa/business-analysis/SKILL.md`
+> **Activates skills**: `skills/roles/ba/requirement-analysis/SKILL.md`, `skills/roles/ba/system-design-uml/SKILL.md`, `skills/roles/tester/business-analysis/SKILL.md`
 
 ---
 
 ## Step 1 — Load BA Skills
 
 ```
-view_file skills/roles/ba/requirements-elicitation/SKILL.md
-view_file skills/roles/ba/system-modeling/SKILL.md
+view_file skills/roles/ba/requirement-analysis/SKILL.md
+view_file skills/roles/ba/system-design-uml/SKILL.md
 ```
 
 > **Fallback**: If skill files missing, use manual protocol: (1) identify actors, (2) define interactions, (3) map constraints, (4) validate edge cases.
@@ -41,7 +41,7 @@ Conduct structured discovery covering:
 
 ## Step 3 — Deep Analysis
 
-Apply `skills/roles/qa/business-analysis/SKILL.md`:
+Apply `skills/roles/tester/business-analysis/SKILL.md`:
 
 - **Atomic Decomposition**: Split acceptance criteria into single-condition logic units
 - **Variable Identification**: Extract toggles, market rules, user roles
@@ -49,7 +49,7 @@ Apply `skills/roles/qa/business-analysis/SKILL.md`:
 - **Truth Table Verification**: Map complex logic to truth tables
 
 ```
-view_file skills/roles/qa/business-analysis/references/logic_truth_tables.md
+view_file skills/roles/tester/business-analysis/references/logic_truth_tables.md
 ```
 
 > **Fallback**: If reference missing, construct truth table manually for conditions with ≥3 variables.
@@ -82,7 +82,7 @@ Document each edge case with expected behavior.
 
 ---
 
-## Step 5 — Requirements Document
+## Step 5 — Requirements Document & UML
 
 Save to `docs/specs/requirements-[feature_name].md`:
 
@@ -93,6 +93,9 @@ Save to `docs/specs/requirements-[feature_name].md`:
 ### User Flows (Happy + Alternate)
 ### Acceptance Criteria (Atomic)
 ### Edge Cases & Boundary Conditions
+### UML Diagrams
+- Use Case Diagram (Mermaid)
+- Sequence Diagram (Mermaid)
 ### Open Questions (if any)
 ### Platform Parity Notes
 ```

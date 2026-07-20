@@ -8,14 +8,14 @@ description: QA reports bugs with standardized format — reproduction steps, se
 >
 > **Out of scope**: Does not fix bugs — use `software-dev-fix-bug`. Does not verify fixes — use `software-qa-execute-testplan`.
 >
-> **Activates skills**: `skills/roles/qa/bug-reporting-standard/SKILL.md`, `skills/roles/qa/bug-triage/SKILL.md`, `skills/roles/qa/rca-lite/SKILL.md`
+> **Activates skills**: `skills/roles/tester/bug-reporting-standard/SKILL.md`, `skills/roles/tester/bug-triage/SKILL.md`, `skills/roles/tester/rca-lite/SKILL.md`
 
 ---
 
 ## Step 1 — Load Bug Reporting Skill
 
 ```
-view_file skills/roles/qa/bug-reporting-standard/SKILL.md
+view_file skills/roles/tester/bug-reporting-standard/SKILL.md
 ```
 
 > **Fallback**: If skill missing, use template from Step 3 directly.
@@ -71,7 +71,7 @@ Save to `docs/qa/bugs/bug-[YYYY-MM-DD]-[NNN].md`:
 ## Step 4 — Apply RCA Lite
 
 ```
-view_file skills/roles/qa/rca-lite/SKILL.md
+view_file skills/roles/tester/rca-lite/SKILL.md
 ```
 
 Quick analysis: Where in the flow does it break? Is it data, logic, or integration issue?
@@ -83,7 +83,7 @@ Quick analysis: Where in the flow does it break? Is it data, logic, or integrati
 ## Step 5 — Triage Assignment
 
 ```
-view_file skills/roles/qa/bug-triage/SKILL.md
+view_file skills/roles/tester/bug-triage/SKILL.md
 ```
 
 Assign based on: S1/S2 → immediate sprint, S3 → next sprint, S4 → backlog.

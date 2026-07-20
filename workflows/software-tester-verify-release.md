@@ -8,7 +8,7 @@ description: QA verifies release readiness — confirms all tests pass, blockers
 >
 > **Out of scope**: Does not deploy — use `software-devops-deploy-release`. Does not fix bugs — use `software-dev-fix-bug`.
 >
-> **Activates skills**: `skills/roles/qa/release-readiness/SKILL.md`, `skills/roles/qa/qa-gates/SKILL.md`, `skills/roles/qa/uat-process/SKILL.md`
+> **Activates skills**: `skills/roles/tester/release-readiness/SKILL.md`, `skills/roles/tester/qa-gates/SKILL.md`, `skills/roles/tester/uat-process/SKILL.md`
 
 ---
 
@@ -28,7 +28,7 @@ Verify: latest test execution report exists, all S1/S2 bugs resolved.
 ## Step 2 — Quality Gate Check
 
 ```
-view_file skills/roles/qa/qa-gates/SKILL.md
+view_file skills/roles/tester/qa-gates/SKILL.md
 ```
 
 | Gate | Criteria | Status |
@@ -46,7 +46,7 @@ view_file skills/roles/qa/qa-gates/SKILL.md
 ## Step 3 — UAT Verification
 
 ```
-view_file skills/roles/qa/uat-process/SKILL.md
+view_file skills/roles/tester/uat-process/SKILL.md
 ```
 
 Confirm with stakeholder: core user flows work as specified, acceptance criteria met.

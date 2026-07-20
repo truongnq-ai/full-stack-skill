@@ -54,7 +54,7 @@ Use: `skills/roles/dev/implementation-workflow`, `skills/roles/dev/unit-test-bes
 
 Run `software-qa-write-testplan` → `software-qa-execute-testplan`.
 
-Use: `skills/roles/qa/test-plan-template`, `skills/roles/qa/execution-checklist`, `skills/roles/qa/regression-testing`
+Use: `skills/roles/tester/test-plan-template`, `skills/roles/tester/execution-checklist`, `skills/roles/tester/regression-testing`
 
 ---
 

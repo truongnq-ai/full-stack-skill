@@ -8,7 +8,7 @@ description: PM generates daily standup, end-of-day, sprint review, blocker tria
 >
 > **Out of scope**: Does not implement features — use `software-po-plan-feature`. Does not write PRDs — use `software-po-plan-feature`.
 >
-> **Activates skill**: `skills/roles/pm/product-manager/SKILL.md`, `skills/roles/pm/status-sync/SKILL.md`
+> **Activates skill**: `skills/roles/po/feature-discovery/SKILL.md`, `skills/roles/po/status-sync/SKILL.md`
 
 ---
 
