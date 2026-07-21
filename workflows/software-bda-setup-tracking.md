@@ -1,21 +1,34 @@
 ---
-description: Shell workflow cho software-bda-setup-tracking
+name: software-bda-setup-tracking
+description: Workflow for generating technical tracking specifications (e.g., Mixpanel, GA4) for developers.
+metadata:
+  labels: [bda, workflow, setup-tracking, mixpanel, telemetry]
+  triggers:
+    keywords: [setup tracking, tracking plan, telemetry, mixpanel spec]
+    file_patterns: ["tracking-plan.md"]
 ---
 
-# software-bda-setup-tracking
+# Workflow: software-bda-setup-tracking
 
-> [!NOTE]
-> ��y l� file shell du?c sinh t? d?ng. C?n b? sung n?i dung chi ti?t.
+> **Persona Focus**: crewAI Data Analyst (Technical bridge).
 
-## 1. M?c ti�u (Objective)
-- TODO: Vi?t m?c ti�u c?a workflow n�y.
+## 🎯 1. Objective (Mục tiêu)
+Tạo ra bản đặc tả gắn sự kiện (Tracking Plan) chuẩn kỹ thuật để team Engineering implement.
 
-## 2. �?u v�o (Inputs)
-- TODO: Li?t k� d?u v�o.
+## ⚙️ 2. Steps (Các bước thực thi)
 
-## 3. C�c bu?c th?c hi?n (Steps)
-1. Bu?c 1...
-2. Bu?c 2...
+**Step 1: Metric to Event Mapping**
+- Đọc file `metrics.md`.
+- Chuyển đổi mỗi KPI thành 1-2 sự kiện user (User Events).
 
-## 4. �?u ra (Outputs)
-- TODO: Li?t k� k?t qu? d?u ra.
+**Step 2: Event JSON Design**
+- Với mỗi Event, định nghĩa rõ:
+  - Tên (e.g., `user_signed_up`)
+  - Vị trí Trigger (e.g., `On Registration Success`)
+  - Properties cần gửi kèm (e.g., `{"method": "email", "plan": "free"}`).
+
+> **⏸️ Checkpoint**: 
+> "Tracking Plan đã sẵn sàng. Bạn có muốn lưu vào `docs/analytics/tracking-plan.md` để gửi cho Dev không? (Y/N)"
+
+## 📤 3. Outputs (Đầu ra)
+- File `tracking-plan.md`.

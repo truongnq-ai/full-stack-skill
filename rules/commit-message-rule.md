@@ -54,12 +54,10 @@ alwaysApply: true
 ✅ feat(auth): add JWT refresh token rotation
 ✅ fix(payments): handle null response from Stripe webhook
 ✅ chore(deps): upgrade pnpm to 9.x
-✅ refactor(users): extract UserService from UsersController
 
 ❌ fix
 ❌ updated stuff
 ❌ WIP - don't merge
-❌ feat: did some things
 ```
 
 ---

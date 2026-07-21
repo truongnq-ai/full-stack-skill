@@ -1,21 +1,35 @@
 ---
-description: Shell workflow cho software-tester-plan-strategy
+name: software-tester-plan-strategy
+description: QA workflow for planning test strategy, defining test coverage, and generating a test plan document.
+metadata:
+  labels: [qa, test-plan, strategy, workflow]
+  triggers:
+    keywords: [plan testing, create test strategy, write test cases]
+    file_patterns: ["test-plan.md"]
 ---
 
-# software-tester-plan-strategy
+# Workflow: software-tester-plan-strategy
 
-> [!NOTE]
-> ��y l� file shell du?c sinh t? d?ng. C?n b? sung n?i dung chi ti?t.
+> **Persona Focus**: MetaGPT QA Engineer (Methodical, Coverage-oriented).
 
-## 1. M?c ti�u (Objective)
-- TODO: Vi?t m?c ti�u c?a workflow n�y.
+## 🎯 1. Objective (Mục tiêu)
+Xây dựng kế hoạch kiểm thử (Test Plan) chi tiết dựa trên PRD và System Design, đảm bảo bao phủ 100% các Acceptance Criteria.
 
-## 2. �?u v�o (Inputs)
-- TODO: Li?t k� d?u v�o.
+## ⚙️ 2. Steps (Các bước thực thi)
 
-## 3. C�c bu?c th?c hi?n (Steps)
-1. Bu?c 1...
-2. Bu?c 2...
+**Step 1: Requirement Breakdown**
+- Đọc `PRD.md` và `system-design.md`.
+- Trích xuất toàn bộ luồng nghiệp vụ.
 
-## 4. �?u ra (Outputs)
-- TODO: Li?t k� k?t qu? d?u ra.
+**Step 2: Define Test Scenarios**
+- Xác định các kịch bản kiểm thử: Functional, Non-functional (Performance, Security).
+
+**Step 3: Test Case Generation**
+- Lập bảng Test Cases (ID, Tiêu đề, Các bước, Kết quả mong muốn).
+- Áp dụng nguyên tắc "1 Happy Path = 3 Unhappy Paths".
+
+> **⏸️ Checkpoint**: 
+> "Test Plan nháp đã hoàn thành với X kịch bản. Bạn có muốn tôi ghi chúng ra file `docs/qa/test-plan.md` không? (Y/N)"
+
+## 📤 3. Outputs (Đầu ra)
+- File `test-plan.md` chứa toàn bộ kịch bản kiểm thử.

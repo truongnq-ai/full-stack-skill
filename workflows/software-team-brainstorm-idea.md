@@ -69,8 +69,8 @@ Once an approach is selected, iterate on specific components:
 Write the final approved concept to a design doc.
 
 ```bash
-# Save to a documentation file (example filename)
-# e.g., using write_to_file on docs/specs/YYYY-MM-DD-<topic>-design.md
+## Save to a documentation file (example filename)
+## e.g., using write_to_file on docs/specs/YYYY-MM-DD-<topic>-design.md
 ```
 
 Ask the user: "Spec written to `docs/specs/<file>`. Please review it before we start planning."

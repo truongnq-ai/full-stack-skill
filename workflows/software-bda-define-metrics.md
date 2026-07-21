@@ -1,21 +1,33 @@
 ---
-description: Shell workflow cho software-bda-define-metrics
+name: software-bda-define-metrics
+description: Workflow for defining North Star metrics and KPIs based on the PRD.
+metadata:
+  labels: [bda, workflow, define-metrics, kpi]
+  triggers:
+    keywords: [define metrics, set kpi, measure feature]
+    file_patterns: ["metrics.md"]
 ---
 
-# software-bda-define-metrics
+# Workflow: software-bda-define-metrics
 
-> [!NOTE]
-> ��y l� file shell du?c sinh t? d?ng. C?n b? sung n?i dung chi ti?t.
+> **Persona Focus**: crewAI Data Analyst (Actionable insights, Goal alignment).
 
-## 1. M?c ti�u (Objective)
-- TODO: Vi?t m?c ti�u c?a workflow n�y.
+## 🎯 1. Objective (Mục tiêu)
+Phối hợp với PO để dịch các mục tiêu kinh doanh (Product Goals) thành các chỉ số đo lường cụ thể (Metrics).
 
-## 2. �?u v�o (Inputs)
-- TODO: Li?t k� d?u v�o.
+## ⚙️ 2. Steps (Các bước thực thi)
 
-## 3. C�c bu?c th?c hi?n (Steps)
-1. Bu?c 1...
-2. Bu?c 2...
+**Step 1: PRD Analysis**
+- Đọc `PRD.md` để hiểu mục tiêu của tính năng.
 
-## 4. �?u ra (Outputs)
-- TODO: Li?t k� k?t qu? d?u ra.
+**Step 2: Metric Generation**
+- Định nghĩa: North Star Metric, Primary KPIs, và Secondary (Counter) Metrics.
+
+**Step 3: Actionability Check**
+- Trả lời câu hỏi: "Nếu chỉ số này giảm, chúng ta sẽ làm gì?". (Nếu không trả lời được -> Bỏ chỉ số đó).
+
+> **⏸️ Checkpoint**: 
+> "Bản nháp Metrics đã xong. Bạn có muốn lưu vào `docs/analytics/metrics.md` không? (Y/N)"
+
+## 📤 3. Outputs (Đầu ra)
+- File `metrics.md`.

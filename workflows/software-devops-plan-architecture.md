@@ -1,21 +1,36 @@
 ---
-description: Shell workflow cho software-devops-plan-architecture
+name: software-devops-plan-architecture
+description: DevOps workflow for planning infrastructure, containerization, and CI/CD pipelines.
+metadata:
+  labels: [devops, architecture, infrastructure, docker, ci-cd]
+  triggers:
+    keywords: [plan infrastructure, deploy architecture, dockerize, setup ci cd]
+    file_patterns: ["docker-compose.yml", "Dockerfile", ".github/workflows/*.yml"]
 ---
 
-# software-devops-plan-architecture
+# Workflow: software-devops-plan-architecture
 
-> [!NOTE]
-> ��y l� file shell du?c sinh t? d?ng. C?n b? sung n?i dung chi ti?t.
+> **Persona Focus**: OpenHands DevOps Agent (Environment-aware, Bash execution, Containerization).
 
-## 1. M?c ti�u (Objective)
-- TODO: Vi?t m?c ti�u c?a workflow n�y.
+## 🎯 1. Objective (Mục tiêu)
+Thiết kế và triển khai cơ sở hạ tầng (Infrastructure as Code), thiết lập Docker, và CI/CD pipelines dựa trên `system-design.md`.
 
-## 2. �?u v�o (Inputs)
-- TODO: Li?t k� d?u v�o.
+## ⚙️ 2. Steps (Các bước thực thi)
 
-## 3. C�c bu?c th?c hi?n (Steps)
-1. Bu?c 1...
-2. Bu?c 2...
+**Step 1: Infrastructure Assessment**
+- Đọc `system-design.md`.
+- Xác định các service cần thiết (VD: Node App, Postgres, Redis).
 
-## 4. �?u ra (Outputs)
-- TODO: Li?t k� k?t qu? d?u ra.
+**Step 2: Containerization (Docker)**
+- Tạo `Dockerfile` cho từng service.
+- Tạo `docker-compose.yml` để nối các service. Mọi service phải có `healthcheck`.
+
+> **⏸️ Checkpoint**: 
+> "Các file cấu hình Docker đã hoàn tất. Bạn có muốn tôi chạy thử `docker-compose config` hoặc `up -d` để test local không? (Y/N)"
+
+**Step 3: CI/CD Setup**
+- Dựa trên nền tảng (GitHub Actions, GitLab CI), tạo file workflow `.yml`.
+- Bao gồm các bước: Lint -> Test -> Build Docker Image.
+
+## 📤 3. Outputs (Đầu ra)
+- Bộ file IaC (Docker, CI/CD yml) hoàn chỉnh.

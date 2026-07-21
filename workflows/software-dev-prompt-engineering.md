@@ -1,21 +1,37 @@
 ---
-description: Shell workflow cho software-dev-prompt-engineering
+name: software-dev-prompt-engineering
+description: Iterative workflow for developing, testing, and refining LLM prompts within an application.
+metadata:
+  labels: [dev, prompt-engineering, llm, workflow]
+  triggers:
+    keywords: [refine prompt, test prompt, prompt engineering]
+    file_patterns: ["prompts/*.txt"]
 ---
 
-# software-dev-prompt-engineering
+# Workflow: software-dev-prompt-engineering
 
-> [!NOTE]
-> ��y l� file shell du?c sinh t? d?ng. C?n b? sung n?i dung chi ti?t.
+> **Persona Focus**: AI Integration Engineer (Empirical testing, Edge case mitigation).
 
-## 1. M?c ti�u (Objective)
-- TODO: Vi?t m?c ti�u c?a workflow n�y.
+## 🎯 1. Objective (Mục tiêu)
+Tạo ra một bộ Prompt ổn định, chống được jailbreak, chống hallucination, và ép output đúng định dạng JSON/XML.
 
-## 2. �?u v�o (Inputs)
-- TODO: Li?t k� d?u v�o.
+## ⚙️ 2. Steps (Các bước thực thi)
 
-## 3. C�c bu?c th?c hi?n (Steps)
-1. Bu?c 1...
-2. Bu?c 2...
+**Step 1: Draft Baseline Prompt**
+- Viết System Prompt cơ bản. Xác định rõ Role, Task, Context, và Output Format.
 
-## 4. �?u ra (Outputs)
-- TODO: Li?t k� k?t qu? d?u ra.
+**Step 2: Add Few-Shot Examples**
+- Bổ sung 2-3 ví dụ (Input -> Output) vào prompt để model học pattern.
+
+**Step 3: Define Constraints (Negative Prompts)**
+- Liệt kê những thứ LLM KHÔNG được làm. (VD: "Không được output markdown").
+
+> **⏸️ Checkpoint**: 
+> "Bản draft prompt đã sẵn sàng. Bạn có muốn tôi chạy thử script test với 3 test cases mẫu không? (Y/N)"
+
+**Step 4: Execute & Refine (CodeAct)**
+- Nếu User đồng ý, chạy một script Python/NodeJS nhỏ gọi API thật để kiểm tra.
+- Đọc log, sửa prompt nếu output bị lệch chuẩn.
+
+## 📤 3. Outputs (Đầu ra)
+- File `prompt.txt` hoặc code constant được tối ưu.

@@ -50,9 +50,9 @@ Apply `skills/roles/dev/unit-testing/SKILL.md`:
 2. Ensure edge cases identified in the PRD/Requirements are tested.
 3. Run the tests.
 ```bash
-# Example
+## Example
 npm run test
-# OR
+## OR
 pytest
 ```
 
