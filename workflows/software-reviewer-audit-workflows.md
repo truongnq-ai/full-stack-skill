@@ -88,3 +88,5 @@ For each workflow below B: concrete fix plan with priority, dimension, current/t
 - [ ] Structural compliance verified
 - [ ] Cross-cutting checks completed
 - [ ] Scored report with improvement plan generated
+
+> **Required Skill**: [audit-workflows](file:///D:/GitHub/skill/full-stack-skill/skills/roles/reviewer/audit-workflows/SKILL.md)

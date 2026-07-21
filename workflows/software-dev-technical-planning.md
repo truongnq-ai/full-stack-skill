@@ -69,3 +69,9 @@ Save to `docs/implementation_plan.md`:
 - [ ] `docs/implementation_plan.md` created
 - [ ] File modifications are granular and precise
 - [ ] No ambiguities remain that would block execution
+
+> **⏸️ Checkpoint**: Xin phép user trước khi hoàn tất.
+
+> **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
+
+> **Required Skill**: [technical-planning](file:///D:/GitHub/skill/full-stack-skill/skills/roles/dev/technical-planning/SKILL.md)

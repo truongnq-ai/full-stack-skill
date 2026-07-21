@@ -87,3 +87,7 @@ next_checks: ["<qa or deploy verification step>"]
 - [ ] All tasks completed
 - [ ] QA sign-off obtained
 - [ ] Deployed and healthy
+
+> **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
+
+> **Required Skill**: [deliver-feature](file:///D:/GitHub/skill/full-stack-skill/skills/roles/team/deliver-feature/SKILL.md)

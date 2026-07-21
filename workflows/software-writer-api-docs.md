@@ -5,17 +5,23 @@ description: Shell workflow cho software-writer-api-docs
 # software-writer-api-docs
 
 > [!NOTE]
-> Ðây là file shell du?c sinh t? d?ng. C?n b? sung n?i dung chi ti?t.
+> y l file shell du?c sinh t? d?ng. C?n b? sung n?i dung chi ti?t.
 
-## 1. M?c tiêu (Objective)
-- TODO: Vi?t m?c tiêu c?a workflow này.
+## 1. M?c tiu (Objective)
+- TODO: Vi?t m?c tiu c?a workflow ny.
 
-## 2. Ð?u vào (Inputs)
-- TODO: Li?t kê d?u vào.
+## 2. ?u vo (Inputs)
+- TODO: Li?t k d?u vo.
 
-## 3. Các bu?c th?c hi?n (Steps)
+## 3. Cc bu?c th?c hi?n (Steps)
 1. Bu?c 1...
 2. Bu?c 2...
 
-## 4. Ð?u ra (Outputs)
-- TODO: Li?t kê k?t qu? d?u ra.
+## 4. ?u ra (Outputs)
+- TODO: Li?t k k?t qu? d?u ra.
+
+> **â¸ï¸ Checkpoint**: Xin phÃ©p user trÆ°á»›c khi hoÃ n táº¥t.
+
+> **ðŸ”„ Fallback**: Náº¿u gáº·p lá»—i, log láº¡i chi tiáº¿t vÃ  há»i Ã½ kiáº¿n user.
+
+> **Required Skill**: [api-docs](file:///D:/GitHub/skill/full-stack-skill/skills/roles/writer/api-docs/SKILL.md)

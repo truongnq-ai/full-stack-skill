@@ -81,3 +81,5 @@ npx ts-node scripts/scan-docs.ts 2>/dev/null
 - [ ] Scanner shows 0 undocumented P0 items
 - [ ] All `@param` and `@returns` tags present
 - [ ] No empty `/** */` placeholders
+
+> **Required Skill**: [update-docs](file:///D:/GitHub/skill/full-stack-skill/skills/roles/writer/update-docs/SKILL.md)

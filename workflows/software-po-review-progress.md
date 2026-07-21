@@ -42,3 +42,7 @@ Theo dõi tiến độ của Sprint, xác định các task bị block và báo 
 ## 📤 4. Outputs (Đầu ra)
 - Báo cáo Standup/Sprint Review.
 - Cập nhật lại `task.md` (nếu có task bị descoped).
+
+> **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
+
+> **Required Skill**: [review-progress](file:///D:/GitHub/skill/full-stack-skill/skills/roles/po/review-progress/SKILL.md)

@@ -4,7 +4,8 @@ description: "Developer flow for self-testing, unit testing, and debugging error
 # Dev: Test and Debug
 
 > **Trigger**: Use when encountering a bug during development, or when tasked to increase test coverage.
-> **Tools**: un_command (debugger/test runner), log viewing tools.
+> **Tools**: 
+un_command (debugger/test runner), log viewing tools.
 
 ## Step 1 - Bug Reproduction and Isolation
 Run the application locally or view test logs to isolate the error.
@@ -25,3 +26,5 @@ Run the newly added test and the full test suite.
 
 ## Step 5 - Finalize
 - **Exit Criteria**: Bug is fixed, regression test is merged, and pipeline is green.
+
+> **Required Skill**: [test-and-debug](file:///D:/GitHub/skill/full-stack-skill/skills/roles/dev/test-and-debug/SKILL.md)

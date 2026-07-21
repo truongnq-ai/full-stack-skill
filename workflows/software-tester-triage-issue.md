@@ -33,3 +33,7 @@ Phân loại, tái hiện và làm rõ các báo cáo lỗi mập mờ từ ngư
 ## 📤 3. Outputs (Đầu ra)
 - GitHub Issues được tạo chuẩn form.
 - Danh sách các câu hỏi cần feedback lại cho User (nếu bug chưa rõ ràng).
+
+> **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
+
+> **Required Skill**: [triage-issue](file:///D:/GitHub/skill/full-stack-skill/skills/roles/tester/triage-issue/SKILL.md)

@@ -74,3 +74,9 @@ Save to `docs/reports/bda-analysis-[feature_name]-[date].md`:
 
 - [ ] `docs/reports/bda-analysis-[feature_name]-[date].md` created
 - [ ] Clear recommendations for optimization are provided to the PO/DEV team
+
+> **⏸️ Checkpoint**: Xin phép user trước khi hoàn tất.
+
+> **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
+
+> **Required Skill**: [analyze-metrics](file:///D:/GitHub/skill/full-stack-skill/skills/roles/bda/analyze-metrics/SKILL.md)

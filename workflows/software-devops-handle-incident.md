@@ -113,3 +113,5 @@ Save to `docs/incidents/incident-[YYYY-MM-DD]-[slug].md`:
 - [ ] Root cause identified
 - [ ] `docs/incidents/` report saved
 - [ ] Prevention actions documented
+
+> **Required Skill**: [handle-incident](file:///D:/GitHub/skill/full-stack-skill/skills/roles/devops/handle-incident/SKILL.md)

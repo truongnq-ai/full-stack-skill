@@ -97,3 +97,9 @@ Invoke the `writing-plans` skill or transition to the standard planning workflow
 - [ ] `[⭐ Khuyến nghị]` tag used for the best option.
 - [ ] Design document written to `docs/specs/`.
 - [ ] `writing-plans` invoked.
+
+> **⏸️ Checkpoint**: Xin phép user trước khi hoàn tất.
+
+> **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
+
+> **Required Skill**: [brainstorm-idea](file:///D:/GitHub/skill/full-stack-skill/skills/roles/team/brainstorm-idea/SKILL.md)

@@ -33,3 +33,7 @@ Xây dựng kế hoạch kiểm thử (Test Plan) chi tiết dựa trên PRD và
 
 ## 📤 3. Outputs (Đầu ra)
 - File `test-plan.md` chứa toàn bộ kịch bản kiểm thử.
+
+> **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
+
+> **Required Skill**: [plan-strategy](file:///D:/GitHub/skill/full-stack-skill/skills/roles/tester/plan-strategy/SKILL.md)

@@ -4,7 +4,8 @@ description: "Workflow for addressing Technical Debt: performance optimization, 
 # Dev: Refactor and Tech Debt
 
 > **Trigger**: Use when tasked with improving performance, resolving SonarQube alerts, or restructuring legacy code.
-> **Tools**: Code editing tools, un_command (linters/profilers).
+> **Tools**: Code editing tools, 
+un_command (linters/profilers).
 
 ## Step 1 - Debt Identification and Profiling
 Profile the codebase or read lint/performance reports to identify bottlenecks and boundary violations.

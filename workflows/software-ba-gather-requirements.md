@@ -108,3 +108,5 @@ Save to `docs/specs/requirements-[feature_name].md`:
 - [ ] All acceptance criteria are atomic (single-condition)
 - [ ] Edge cases documented with expected behavior
 - [ ] Zero open questions remaining (or explicitly flagged as blockers)
+
+> **Required Skill**: [gather-requirements](file:///D:/GitHub/skill/full-stack-skill/skills/roles/ba/gather-requirements/SKILL.md)

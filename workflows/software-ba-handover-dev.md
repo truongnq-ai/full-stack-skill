@@ -125,3 +125,5 @@ Recommended first story to implement: [Story ID] — [Title] (no dependencies, h
 - [ ] Test scenarios provided (≥5)
 - [ ] Out of scope documented
 - [ ] Dev team notified with recommended starting point
+
+> **Required Skill**: [handover-dev](file:///D:/GitHub/skill/full-stack-skill/skills/roles/ba/handover-dev/SKILL.md)

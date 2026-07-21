@@ -93,3 +93,5 @@ Proceed to report? (Y / N)"
 - [ ] Conflict detection completed
 - [ ] Vague language flagged
 - [ ] Scored report generated
+
+> **Required Skill**: [audit-rules](file:///D:/GitHub/skill/full-stack-skill/skills/roles/reviewer/audit-rules/SKILL.md)

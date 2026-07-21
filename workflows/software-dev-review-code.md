@@ -78,3 +78,7 @@ For each BLOCKER/MAJOR: _"Was there an active skill that should have prevented t
 - [ ] `docs/code-review.md` saved with all findings
 - [ ] Skill feedback sweep completed for all BLOCKERs
 - [ ] Implementation plan created if user chose YES
+
+> **⏸️ Checkpoint**: Xin phép user trước khi hoàn tất.
+
+> **Required Skill**: [review-code](file:///D:/GitHub/skill/full-stack-skill/skills/roles/dev/review-code/SKILL.md)

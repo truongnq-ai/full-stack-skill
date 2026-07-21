@@ -4,7 +4,8 @@ description: "Provision and manage infrastructure as code (IaC Terraform), optim
 # DevOps: Provision Infrastructure
 
 > **Trigger**: Use when creating new environments, scaling clusters, or updating infrastructure configurations.
-> **Tools**: un_command (terraform, aws/gcloud cli).
+> **Tools**: 
+un_command (terraform, aws/gcloud cli).
 
 ## Step 1 - IaC Design and Review
 Write or review Terraform manifests for the new infrastructure.
@@ -23,3 +24,5 @@ Generate the Terraform execution plan.
 ## Step 4 - Apply and Verify
 Apply the changes and verify the new resources are healthy.
 - **Exit Criteria**: Infrastructure is provisioned, secured, and running as defined in the state file.
+
+> **Required Skill**: [provision-infrastructure](file:///D:/GitHub/skill/full-stack-skill/skills/roles/devops/provision-infrastructure/SKILL.md)

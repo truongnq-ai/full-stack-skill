@@ -4,7 +4,8 @@ description: "Daily SRE operations: SLA/SLO management, Capacity Planning, Chaos
 # DevOps: SRE Operations
 
 > **Trigger**: Use for routine system health checks, chaos experiments, or managing SLO error budgets.
-> **Tools**: un_command (kubectl, chaos-mesh, cron), monitoring tools.
+> **Tools**: 
+un_command (kubectl, chaos-mesh, cron), monitoring tools.
 
 ## Step 1 - SLO Management
 Track Error Budgets and SLIs for the current month.
@@ -22,3 +23,5 @@ Perform routine backups, OS updates, and enforce policy as code.
 
 ## Step 4 - Output
 - **Exit Criteria**: Error budgets are updated, backups verified, and system health is within SLA.
+
+> **Required Skill**: [sre-operations](file:///D:/GitHub/skill/full-stack-skill/skills/roles/devops/sre-operations/SKILL.md)

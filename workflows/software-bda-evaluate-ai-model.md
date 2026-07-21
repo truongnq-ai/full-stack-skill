@@ -32,3 +32,7 @@ metadata:
 ## 📤 3. Outputs (Đầu ra)
 - File `ai-evaluation.md`.
 - Báo cáo đề xuất tinh chỉnh Prompt (Prompt refinement suggestions).
+
+> **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
+
+> **Required Skill**: [evaluate-ai-model](file:///D:/GitHub/skill/full-stack-skill/skills/roles/bda/evaluate-ai-model/SKILL.md)

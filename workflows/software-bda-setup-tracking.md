@@ -32,3 +32,7 @@ Tạo ra bản đặc tả gắn sự kiện (Tracking Plan) chuẩn kỹ thuậ
 
 ## 📤 3. Outputs (Đầu ra)
 - File `tracking-plan.md`.
+
+> **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
+
+> **Required Skill**: [setup-tracking](file:///D:/GitHub/skill/full-stack-skill/skills/roles/bda/setup-tracking/SKILL.md)

@@ -21,3 +21,5 @@ Once Dev marks a bug as resolved, verify the fix.
 
 ## Step 4 - Closure
 - **Exit Criteria**: Bugs are triaged and logged, and verified fixes are closed in Jira.
+
+> **Required Skill**: [bug-management](file:///D:/GitHub/skill/full-stack-skill/skills/roles/qa/bug-management/SKILL.md)

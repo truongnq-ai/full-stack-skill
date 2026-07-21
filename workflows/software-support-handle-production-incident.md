@@ -4,7 +4,8 @@ description: "Rapid response for P0/P1 incidents: Severity assessment, Incident 
 # Support: Handle Production Incident
 
 > **Trigger**: Use IMMEDIATELY when a critical production issue is reported.
-> **Tools**: PagerDuty/Slack MCP, Log aggregation tools, un_command (kubectl logs).
+> **Tools**: PagerDuty/Slack MCP, Log aggregation tools, 
+un_command (kubectl logs).
 
 ## Step 1 - Triage and Severity
 Assess the severity level of the incoming incident.
@@ -22,3 +23,5 @@ Joint L3/Dev investigation into production logs to apply temporary mitigations.
 
 ## Step 4 - Output
 - **Exit Criteria**: Temporary mitigation is in place, service is restored (even if degraded), and incident is handed over to resolution phase.
+
+> **Required Skill**: [handle-production-incident](file:///D:/GitHub/skill/full-stack-skill/skills/roles/support/handle-production-incident/SKILL.md)

@@ -90,3 +90,5 @@ Save to `docs/qa/release-signoff-[version].md`:
 - [ ] UAT sign-off obtained
 - [ ] `docs/qa/release-signoff-*.md` saved
 - [ ] GO/NO-GO decision documented
+
+> **Required Skill**: [verify-release](file:///D:/GitHub/skill/full-stack-skill/skills/roles/tester/verify-release/SKILL.md)

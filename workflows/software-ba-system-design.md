@@ -42,3 +42,7 @@ Chuyển đổi các yêu cầu nghiệp vụ (Business Requirements / PRD) thà
 
 ## 📤 4. Outputs (Đầu ra)
 - File `system-design.md` chứa đầy đủ UML diagrams.
+
+> **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
+
+> **Required Skill**: [system-design](file:///D:/GitHub/skill/full-stack-skill/skills/roles/ba/system-design/SKILL.md)

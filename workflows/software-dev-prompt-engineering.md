@@ -35,3 +35,7 @@ Tạo ra một bộ Prompt ổn định, chống được jailbreak, chống hal
 
 ## 📤 3. Outputs (Đầu ra)
 - File `prompt.txt` hoặc code constant được tối ưu.
+
+> **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
+
+> **Required Skill**: [prompt-engineering](file:///D:/GitHub/skill/full-stack-skill/skills/roles/dev/prompt-engineering/SKILL.md)

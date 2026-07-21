@@ -84,3 +84,5 @@ Save to `docs/codebase-review.md`. Scoring: Security 40%, Architecture 30%, Test
 - [ ] `docs/codebase-review.md` saved with score
 - [ ] Critical findings documented
 - [ ] Improvement roadmap with phased plan
+
+> **Required Skill**: [audit-codebase](file:///D:/GitHub/skill/full-stack-skill/skills/roles/dev/audit-codebase/SKILL.md)

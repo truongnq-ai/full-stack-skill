@@ -90,3 +90,5 @@ Save to `docs/qa/test-plan-[feature].md`:
 - [ ] Every AC has ≥1 test case
 - [ ] Traceability matrix shows 100% coverage
 - [ ] `docs/qa/test-plan-[feature].md` saved
+
+> **Required Skill**: [write-testplan](file:///D:/GitHub/skill/full-stack-skill/skills/roles/tester/write-testplan/SKILL.md)

@@ -104,3 +104,7 @@ Generate health dashboard: 🟢/🟡/🔴 per dimension (delivery, debt, coverag
 - [ ] Report saved to `docs/standup/` or `docs/sprint-review/`
 - [ ] `task.md` updated if applicable
 - [ ] Blockers documented with resolution path
+
+> **⏸️ Checkpoint**: Xin phép user trước khi hoàn tất.
+
+> **Required Skill**: [report-standup](file:///D:/GitHub/skill/full-stack-skill/skills/roles/pm/report-standup/SKILL.md)

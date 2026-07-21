@@ -4,7 +4,8 @@ description: "Deploy applications (K8s/Helm) using advanced strategies (Blue-Gre
 # DevOps: Deploy and Release
 
 > **Trigger**: Use during production deployments requiring advanced rollout strategies to minimize downtime.
-> **Tools**: un_command (kubectl, helm).
+> **Tools**: 
+un_command (kubectl, helm).
 
 ## Step 1 - Deployment Configuration
 Prepare Kubernetes manifests or Helm charts for deployment.
@@ -22,3 +23,5 @@ Monitor error rates immediately post-deployment.
 
 ## Step 4 - Output
 - **Exit Criteria**: Application is successfully deployed to production, traffic is routed correctly, and health checks pass.
+
+> **Required Skill**: [deploy-and-release](file:///D:/GitHub/skill/full-stack-skill/skills/roles/devops/deploy-and-release/SKILL.md)

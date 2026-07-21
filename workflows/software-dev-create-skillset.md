@@ -82,3 +82,5 @@ pnpm --filter ./cli run dev validate --all
 - [ ] Anti-patterns use `**No X**: Do Y` format
 - [ ] Code examples >10 lines in `references/`
 - [ ] Token footprint ≤500 per skill
+
+> **Required Skill**: [create-skillset](file:///D:/GitHub/skill/full-stack-skill/skills/roles/dev/create-skillset/SKILL.md)

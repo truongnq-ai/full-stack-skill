@@ -22,3 +22,5 @@ Build Grafana dashboards and set up actionable alerts.
 
 ## Step 4 - Output
 - **Exit Criteria**: Dashboards are live, alerts route to correct channels, and telemetry flows into the backend.
+
+> **Required Skill**: [monitor-and-observe](file:///D:/GitHub/skill/full-stack-skill/skills/roles/devops/monitor-and-observe/SKILL.md)

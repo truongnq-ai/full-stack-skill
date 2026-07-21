@@ -34,3 +34,7 @@ Thiết kế và triển khai cơ sở hạ tầng (Infrastructure as Code), thi
 
 ## 📤 3. Outputs (Đầu ra)
 - Bộ file IaC (Docker, CI/CD yml) hoàn chỉnh.
+
+> **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
+
+> **Required Skill**: [plan-architecture](file:///D:/GitHub/skill/full-stack-skill/skills/roles/devops/plan-architecture/SKILL.md)

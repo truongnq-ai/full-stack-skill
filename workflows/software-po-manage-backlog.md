@@ -24,3 +24,5 @@ Prepare the user stories with clear Acceptance Criteria.
 ## Step 4 - Output Generation
 Generate the final sprint_plan.md artifact.
 - **Exit Criteria**: All stories for the sprint are fully specified, impact is documented, and user approval is received.
+
+> **Required Skill**: [manage-backlog](file:///D:/GitHub/skill/full-stack-skill/skills/roles/po/manage-backlog/SKILL.md)

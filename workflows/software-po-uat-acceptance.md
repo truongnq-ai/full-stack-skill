@@ -40,3 +40,7 @@ Kiểm tra chéo (cross-check) các tính năng đã được Engineering/QA ho�
 ## 📤 4. Outputs (Đầu ra)
 - Quyết định Release (Sign-off document).
 - Danh sách các lỗi tồn đọng (Known Issues) cho Sprint tới.
+
+> **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
+
+> **Required Skill**: [uat-acceptance](file:///D:/GitHub/skill/full-stack-skill/skills/roles/po/uat-acceptance/SKILL.md)

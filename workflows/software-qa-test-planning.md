@@ -24,3 +24,5 @@ Provision test data in the lower environments.
 
 ## Step 5 - Output
 - **Exit Criteria**: Test cases are designed and synced to Zephyr, test data is seeded, and environment is green.
+
+> **Required Skill**: [test-planning](file:///D:/GitHub/skill/full-stack-skill/skills/roles/qa/test-planning/SKILL.md)

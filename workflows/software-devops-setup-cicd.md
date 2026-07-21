@@ -4,7 +4,8 @@ description: "Design CI/CD pipelines (GitHub Actions), Docker, SBOM/Vulnerabilit
 # DevOps: Setup CI/CD and Security Pipelines
 
 > **Trigger**: Use when bootstrapping a new project, adding Docker support, or securing an existing pipeline.
-> **Tools**: un_command (docker, github cli), file editing tools.
+> **Tools**: 
+un_command (docker, github cli), file editing tools.
 
 ## Step 1 - Containerization
 Define Dockerfile and docker-compose.yml for local and prod parity.
@@ -24,3 +25,5 @@ Integrate SBOM and vulnerability scanning, and configure secrets securely.
 Push verified artifacts to the designated container registry.
 - **Skills**: skills/roles/devops/artifact-registry/SKILL.md
 - **Exit Criteria**: Pipeline is fully functional, artifacts are pushed, and no critical vulnerabilities exist in the SBOM.
+
+> **Required Skill**: [setup-cicd](file:///D:/GitHub/skill/full-stack-skill/skills/roles/devops/setup-cicd/SKILL.md)

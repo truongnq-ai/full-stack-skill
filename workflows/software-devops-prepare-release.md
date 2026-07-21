@@ -80,3 +80,5 @@ git add . && git commit -m "chore(release): prepare v[VERSION]"
 - [ ] `CHANGELOG.md` updated
 - [ ] Commit created with `chore(release):` prefix
 - [ ] User informed: `git tag v[VERSION] && git push origin v[VERSION]`
+
+> **Required Skill**: [prepare-release](file:///D:/GitHub/skill/full-stack-skill/skills/roles/devops/prepare-release/SKILL.md)

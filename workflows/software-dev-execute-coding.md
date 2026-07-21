@@ -64,3 +64,9 @@ pytest
 - [ ] Code compiles/builds successfully
 - [ ] Unit tests are written and pass
 - [ ] `task.md` is updated with all items marked as `[x]`
+
+> **⏸️ Checkpoint**: Xin phép user trước khi hoàn tất.
+
+> **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
+
+> **Required Skill**: [execute-coding](file:///D:/GitHub/skill/full-stack-skill/skills/roles/dev/execute-coding/SKILL.md)

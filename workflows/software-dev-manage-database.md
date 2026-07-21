@@ -108,3 +108,5 @@ Save to `docs/db/db-operation-[YYYY-MM-DD]-[slug].md`.
 - [ ] Schema/migration applied and verified
 - [ ] Backup taken before destructive operations
 - [ ] Report saved to `docs/db/`
+
+> **Required Skill**: [manage-database](file:///D:/GitHub/skill/full-stack-skill/skills/roles/dev/manage-database/SKILL.md)

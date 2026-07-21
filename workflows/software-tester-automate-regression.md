@@ -34,3 +34,7 @@ Tạo hoặc cập nhật bộ script tự động hóa (Regression suite) để
 ## 📤 3. Outputs (Đầu ra)
 - Code E2E Tests.
 - Báo cáo chạy test (Test Execution Report).
+
+> **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
+
+> **Required Skill**: [automate-regression](file:///D:/GitHub/skill/full-stack-skill/skills/roles/tester/automate-regression/SKILL.md)

@@ -78,3 +78,7 @@ Stacks: `html-tailwind`, `react`, `nextjs`, `vue`, `svelte`, `swiftui`, `react-n
 - [ ] Design system generated and applied
 - [ ] All checklist items verified
 - [ ] Responsive at all 4 breakpoints
+
+> **⏸️ Checkpoint**: Xin phép user trước khi hoàn tất.
+
+> **Required Skill**: [design-uiux](file:///D:/GitHub/skill/full-stack-skill/skills/roles/dev/design-uiux/SKILL.md)

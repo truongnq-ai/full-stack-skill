@@ -100,3 +100,5 @@ Save to `docs/qa/execution-[feature]-[date].md`:
 - [ ] Regression suite passed
 - [ ] `docs/qa/execution-*.md` report saved
 - [ ] Go/No-Go recommendation provided
+
+> **Required Skill**: [execute-testplan](file:///D:/GitHub/skill/full-stack-skill/skills/roles/tester/execute-testplan/SKILL.md)

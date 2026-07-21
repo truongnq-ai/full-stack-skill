@@ -70,3 +70,9 @@ Notify the DEV team for triage.
 - [ ] `docs/qa/test-plan-[feature_name].md` created and execution results recorded
 - [ ] All required API and UI tests have been executed
 - [ ] Bugs have been logged and assigned to DEV
+
+> **⏸️ Checkpoint**: Xin phép user trước khi hoàn tất.
+
+> **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
+
+> **Required Skill**: [plan-and-execute](file:///D:/GitHub/skill/full-stack-skill/skills/roles/tester/plan-and-execute/SKILL.md)

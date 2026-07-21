@@ -99,3 +99,5 @@ pnpm test 2>/dev/null || npm test || go test ./... || flutter test
 - [ ] ≥3 agents invoked
 - [ ] Verification passed
 - [ ] Orchestration report generated
+
+> **Required Skill**: [orchestrate-agents](file:///D:/GitHub/skill/full-stack-skill/skills/roles/team/orchestrate-agents/SKILL.md)

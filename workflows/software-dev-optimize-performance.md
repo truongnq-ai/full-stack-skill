@@ -100,3 +100,5 @@ Save to `docs/performance-report.md`:
 - [ ] Fixes applied to top bottlenecks
 - [ ] Delta verified (Lighthouse ≥95, LCP <2.5s)
 - [ ] `docs/performance-report.md` saved
+
+> **Required Skill**: [optimize-performance](file:///D:/GitHub/skill/full-stack-skill/skills/roles/dev/optimize-performance/SKILL.md)

@@ -4,7 +4,8 @@ description: "In-depth testing before release: Load test, Stress test, and Secur
 # QA: Advanced Testing
 
 > **Trigger**: Use before a major release to certify performance and security gates.
-> **Tools**: un_command (k6, JMeter), security scanners (ZAP).
+> **Tools**: 
+un_command (k6, JMeter), security scanners (ZAP).
 
 ## Step 1 - Performance and Load Testing
 Run predefined load test scripts against the staging environment.
@@ -22,3 +23,5 @@ Evaluate results against acceptable thresholds (Quality Gates).
 
 ## Step 4 - Certification
 - **Exit Criteria**: Load profile succeeded, no critical vulnerabilities found, and release is certified.
+
+> **Required Skill**: [advanced-testing](file:///D:/GitHub/skill/full-stack-skill/skills/roles/qa/advanced-testing/SKILL.md)
