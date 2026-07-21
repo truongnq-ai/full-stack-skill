@@ -1,47 +1,26 @@
 ---
-name: software-po-manage-backlog
-description: Workflow for managing the product backlog, prioritizing features using P0/P1/P2, and preparing a sprint plan.
-metadata:
-  labels: [po, backlog, sprint-planning, prioritization]
-  triggers:
-    keywords: [manage backlog, prioritize tasks, sprint planning]
-    file_patterns: ["backlog.md", "task.md"]
+description: "PO/BA manages and grooms the Backlog, evaluates impact of new features."
 ---
+# BA: Backlog Management and Impact Analysis
 
-# Workflow: software-po-manage-backlog
+> **Trigger**: Use this workflow when a user requests to plan a new sprint, groom the backlog, or analyze the impact of a new feature before implementation.
+> **Tools**: Jira MCP, Markdown editor, grep_search.
 
-> **Persona Focus**: MetaGPT Product Manager (Structured, Prioritization-focused, Strict Dependency checking).
+## Step 1 - Inventory and Review Backlog
+Fetch the current backlog from Jira or the local acklog.md.
+- Ensure issues are categorized and prioritized.
+- **Skills**: skills/roles/po/backlog-management/SKILL.md
+- **Fallback**: If Jira is down, fallback to reviewing local Markdown task lists.
 
-## 🎯 1. Objective (Mục tiêu)
-Tổ chức, ưu tiên hóa và phân bổ các yêu cầu từ PRD vào `backlog.md` và `task.md` để team Engineering có thể thực thi trong Sprint tiếp theo.
+## Step 2 - Feature Impact Analysis
+For the top prioritized features, analyze their technical and business impact.
+- Trace dependencies in code using grep_search.
+- **Skills**: skills/roles/ba/feature-impact-analysis/SKILL.md
 
-## 📥 2. Inputs (Đầu vào)
-- File `PRD.md` hoặc các yêu cầu tính năng (feature requests).
-- Sức chứa (Capacity) của team trong Sprint.
+## Step 3 - Sprint Preparation Checkpoint
+Prepare the user stories with clear Acceptance Criteria.
+- **Checkpoint**: Pause execution. Ask the user to review the drafted sprint plan and approve before moving issues to "In Progress".
 
-## ⚙️ 3. Steps (Các bước thực thi)
-
-**Step 1: Quét và Trích xuất (Extract Requirements)**
-- Sử dụng công cụ đọc file (vd: `view_file`) để quét toàn bộ nội dung PRD/Specs.
-- Liệt kê ra nháp tất cả các yêu cầu kỹ thuật và tính năng.
-
-**Step 2: Áp dụng Mô hình Ưu tiên (Prioritization)**
-- Đánh giá từng yêu cầu theo chuẩn MetaGPT:
-  - **P0 (Must-have)**: Bắt buộc phải có để luồng chính hoạt động.
-  - **P1 (Should-have)**: Quan trọng nhưng có thể lùi lại nếu thiếu thời gian.
-  - **P2 (Nice-to-have)**: Tính năng bổ trợ nhỏ.
-- Cập nhật `backlog.md` với bảng đánh giá này.
-
-**Step 3: Phân tích Phụ thuộc (Dependency Check)**
-- Kiểm tra tính phụ thuộc giữa các task (Backend -> Frontend -> QA).
-
-> **⏸️ Checkpoint**: 
-> "Backlog đã được phân loại ưu tiên. Tôi có nên chuyển các task P0 vào `task.md` cho Sprint tới không? (Y/N)"
-
-**Step 4: Breakdown Task**
-- Nếu User đồng ý, viết các task P0 vào `task.md`.
-- Task phải theo chuẩn: `[ ] Tên task (Role) - Acceptance Criteria rõ ràng.`
-
-## 📤 4. Outputs (Đầu ra)
-- File `backlog.md` được cập nhật.
-- File `task.md` chứa danh sách task cho Sprint mới.
+## Step 4 - Output Generation
+Generate the final sprint_plan.md artifact.
+- **Exit Criteria**: All stories for the sprint are fully specified, impact is documented, and user approval is received.
