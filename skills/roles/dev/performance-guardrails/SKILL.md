@@ -20,9 +20,11 @@ metadata:
 
 ## 🚫 Anti-Patterns
 
-- **N+1 Queries**: Fetching 50 Users from the DB, then looping through those 50 users to trigger *another* DB query to fetch each user's Avatar. (1 query becomes 51 queries).
-- **In-Memory Filtering (DB Abuse)**: Running `SELECT * FROM Orders` (pulling 2 million rows into the Node.js RAM), just to run `.filter(status === 'active')` in JavaScript.
-- **Frivolous Re-rendering**: In React, passing a brand new inline arrow function `<Button onClick={() => doThing()} />` causing the entire DOM tree to re-evaluate on every keystroke.
+| ID | Anti-Pattern | Why It's Dangerous |
+|----|---|---|
+| **P0** | **N+1 Queries** — Fetching 50 Users, then looping to trigger another DB query per user. | 1 query becomes 51; response time scales linearly. |
+| **P0** | **In-Memory Filtering** — `SELECT * FROM Orders` then `.filter()` in JS. | Pulls millions of rows into RAM; OOM crashes. |
+| **P1** | **Frivolous Re-rendering** — Inline arrow functions causing React DOM tree re-evaluation on every keystroke. | UI becomes sluggish; user experience degrades. |
 
 ---
 
@@ -30,6 +32,16 @@ metadata:
 
 1. APM / Profiler tools (e.g., Chrome DevTools Performance tab, Django Debug Toolbar).
 2. Basic understanding of Big-O Time Complexity.
+
+### Required Tools
+
+| Tool | Purpose |
+|------|--------|
+| `grep_search` | Find N+1 patterns, `SELECT *`, sequential awaits. |
+| `view_file` | Read API handlers and database query code. |
+| `run_command` | Execute profiling tools and benchmarks. |
+| `call_mcp_tool` → `postgres/query` | Run EXPLAIN ANALYZE on slow queries. |
+| `replace_file_content` | Apply performance fixes surgically. |
 
 ---
 
@@ -74,3 +86,14 @@ A feature is considered performant when:
 - [ ] It executes 0 loops invoking network or database calls (No N+1).
 - [ ] Large dataset endpoints default to explicit pagination limits.
 - [ ] Complex independent I/O tasks utilize concurrent/parallel fetching (`Promise.all`).
+- [ ] SELECT queries specify exact columns needed (no `SELECT *`).
+- [ ] Memory-allocating operations have cleanup/disposal logic.
+
+---
+
+## 📚 References
+
+- [Performance Optimization Skill](../performance-optimization/SKILL.md) — Reactive optimization after bottleneck is found.
+- [Unit Test Best Practices](../unit-test-best-practices/SKILL.md) — Write benchmark tests.
+- [Implementation Coding Skill](../implementation-coding/SKILL.md) — CodeAct loop for applying fixes.
+- Big-O Cheat Sheet: https://www.bigocheatsheet.com/

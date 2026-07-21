@@ -28,3 +28,18 @@ next_checks: ["<check 1>"]
 
 ## References
 - [Examples (Input/Output)](references/examples.md)
+
+## Anti-Patterns
+- Releasing features without the ability to roll them back.
+- Releasing large batches of changes infrequently.
+- Not having a clear communication plan for releases.
+
+## Tools
+- LaunchDarkly, Split (Feature Flags)
+- Argo Rollouts
+- Spinnaker
+
+## Verification
+- Perform a canary release and verify traffic shifting.
+- Test a feature flag toggle to enable/disable a feature.
+- Verify release notes are automatically generated.

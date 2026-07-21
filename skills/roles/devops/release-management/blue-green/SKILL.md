@@ -76,3 +76,13 @@ A Blue/Green pipeline is successfully executed when:
 - [ ] Transitioning User traffic from V1 to V2 generates 0 HTTP 502/503 errors.
 - [ ] A complete fallback environment remains idling for the designated stabilization window post-deployment.
 - [ ] Database migrations were proven to be backwards-compatible before the traffic flip.
+
+## Tools
+- Kubernetes Services
+- Argo Rollouts
+- AWS CodeDeploy
+- NGINX, HAProxy
+
+## References
+- [Martin Fowler - BlueGreenDeployment](https://martinfowler.com/bliki/BlueGreenDeployment.html)
+- [AWS Blue/Green Deployments](https://docs.aws.amazon.com/whitepapers/latest/blue-green-deployments/introduction.html)

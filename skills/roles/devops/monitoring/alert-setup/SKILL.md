@@ -80,3 +80,12 @@ An Alert implementation is complete when:
 - [ ] A Warning vs. Critical threshold is explicitly delineated.
 - [ ] It contains a direct link to a Mitigation Runbook.
 - [ ] Routing logic strictly targets the owning team, avoiding global blast channels.
+
+## Tools
+- Prometheus Alertmanager
+- Grafana Alerting
+- PagerDuty, Opsgenie
+
+## References
+- [Prometheus Alerting Rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)
+- [Google SRE Book - Monitoring Distributed Systems](https://sre.google/sre-book/monitoring-distributed-systems/)

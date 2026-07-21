@@ -28,3 +28,19 @@ next_checks: ["<check 1>"]
 
 ## References
 - [Examples (Input/Output)](references/examples.md)
+
+## Anti-Patterns
+- Hardcoding registry credentials in code or CI configs.
+- Using `:latest` or mutable tags in production environments.
+- Allowing public read access to private internal registries.
+- No automated cleanup/retention policies leading to bloated storage.
+
+## Tools
+- AWS ECR, GCP Artifact Registry, Azure Container Registry
+- JFrog Artifactory, Sonatype Nexus
+- Docker Hub
+
+## Verification
+- Run a mock vulnerability scan against a pushed image.
+- Verify that pushing a duplicate immutable tag fails.
+- Audit IAM permissions for registry access.

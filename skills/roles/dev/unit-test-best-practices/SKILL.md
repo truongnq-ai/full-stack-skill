@@ -20,9 +20,11 @@ metadata:
 
 ## 🚫 Anti-Patterns
 
-- **Testing the Framework**: Writing a test to verify that `Array.push()` adds an item to an array, or that the React DOM mounts. (The Microsoft/Facebook engineers already tested that. Test YOUR business logic).
-- **The 100% Coverage Lie**: Writing tests that execute functions to achieve 100% Line Coverage, but checking absolutely no `expect()` assertions. (The test passes even if the function returns the wrong math).
-- **Hard-coded Fragility**: Testing `expect(timestamp).toBe('2025-01-01')`. The test passes today and fails tomorrow.
+| ID | Anti-Pattern | Why It's Dangerous |
+|----|---|---|
+| **P0** | **The 100% Coverage Lie** — Tests that execute functions for coverage but check zero assertions. | Tests pass even if the function returns wrong results. |
+| **P1** | **Testing the Framework** — Verifying `Array.push()` adds items. | Wastes time; Microsoft/Facebook already tested their frameworks. |
+| **P1** | **Hard-coded Fragility** — `expect(timestamp).toBe('2025-01-01')`. Passes today, fails tomorrow. | Non-deterministic tests erode trust in the suite. |
 
 ---
 
@@ -30,6 +32,16 @@ metadata:
 
 1. A fast test runner (Jest, Vitest, PyTest, JUnit).
 2. Mocking libraries for intercepting IO operations.
+
+### Required Tools
+
+| Tool | Purpose |
+|------|--------|
+| `run_command` | Execute test suites and view results. |
+| `write_to_file` | Create new test files. |
+| `view_file` | Read the source function to understand what to test. |
+| `grep_search` | Find existing tests for the module under test. |
+| `replace_file_content` | Add test cases to existing test files. |
 
 ---
 
@@ -76,3 +88,15 @@ Unit tests are production-ready when:
 - [ ] They execute completely offline with zero I/O or Database dependencies.
 - [ ] They utilize the Arrange-Act-Assert structure.
 - [ ] They verify edge cases (nulls, negatives, boundaries), not just the happy path.
+- [ ] Test names read like English sentences describing business behavior.
+- [ ] No flaky tests relying on real clocks or random data.
+
+---
+
+## 📚 References
+
+- [Implementation Coding Skill](../implementation-coding/SKILL.md) — CodeAct loop includes test verification.
+- [Refactor & Tech Debt Skill](../refactor-techdebt/SKILL.md) — Characterization tests for legacy code.
+- [Performance Guardrails Skill](../performance-guardrails/SKILL.md) — Performance benchmark tests.
+- "Unit Testing Principles, Practices, and Patterns" by Vladimir Khorikov.
+- Jest documentation: https://jestjs.io/docs/getting-started

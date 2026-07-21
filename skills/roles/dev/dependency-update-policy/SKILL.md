@@ -20,9 +20,11 @@ metadata:
 
 ## 🚫 Anti-Patterns
 
-- **The Yolo Bump**: Running `npm update` locally, throwing all 45 updated libraries into a single massive PR, and clicking merge hoping the E2E tests catch everything.
-- **Stagnation Fear**: Never updating dependencies because "it works right now." Three years later, you need to upgrade Node.js, and the resulting leap across 15 major versions breaks the entire application irreparably.
-- **Ignoring the Changelog**: Upgrading a Major version (e.g., `v2` to `v3`) without reading the library's release notes, completely oblivious to renamed functions or deprecated APIs.
+| ID | Anti-Pattern | Why It's Dangerous |
+|----|---|---|
+| **P0** | **The Yolo Bump** — `npm update` with all 45 libraries in one massive PR. | One bad lib breaks everything; impossible to bisect. |
+| **P1** | **Stagnation Fear** — Never updating because "it works right now." | 3 years later, a 15-major-version leap breaks everything irreparably. |
+| **P1** | **Ignoring the Changelog** — Upgrading Major version without reading release notes. | Deprecated/renamed APIs cause runtime crashes in production. |
 
 ---
 
@@ -30,6 +32,15 @@ metadata:
 
 1. Heavy reliance on `roles/qa/regression-testing/SKILL.md`. (You cannot safely update dependencies without a high-coverage test suite).
 2. Automated dependency trackers (e.g., GitHub Dependabot, Renovate).
+
+### Required Tools
+
+| Tool | Purpose |
+|------|--------|
+| `view_file` | Read `package.json`, `go.mod`, `requirements.txt` to inventory deps. |
+| `grep_search` | Search for deprecated API usage after major bumps. |
+| `run_command` | Execute test suites and build after version bumps. |
+| `call_mcp_tool` → `github/list_pull_requests` | Review Dependabot/Renovate PRs. |
 
 ---
 
@@ -59,7 +70,7 @@ The lockfile guarantees deterministic builds across the entire team and the CI e
 
 ---
 
-## ⚠️ Errorয়াল Handling (Fallback)
+## ⚠️ Error Handling (Fallback)
 
 | Scenario | Condition | Fallback Action |
 |----------|-----------|-----------------|
@@ -75,3 +86,15 @@ A Dependency Update operation is successful when:
 - [ ] Major, Minor, and Patch bumps are treated with mathematically distinct risk profiles.
 - [ ] Updates are deployed via isolated atomic PRs (One library per PR).
 - [ ] The application successfully compiles and passes 100% of the regression test suite.
+- [ ] Lockfiles committed (never deleted to "fix" install issues).
+- [ ] Major bump changelogs read and deprecated APIs updated.
+
+---
+
+## 📚 References
+
+- [Security Basics Skill](../security-basics/SKILL.md) — CVE-driven emergency patches.
+- [Refactor & Tech Debt Skill](../refactor-techdebt/SKILL.md) — For abandoned library extraction.
+- [PR Checklist Skill](../pr-checklist/SKILL.md) — Preparing the update PR.
+- Semantic Versioning: https://semver.org/
+- Renovate documentation: https://docs.renovatebot.com/

@@ -28,3 +28,18 @@ next_checks: ["<check 1>"]
 
 ## References
 - [Examples (Input/Output)](references/examples.md)
+
+## Anti-Patterns
+- Not propagating trace context across all service boundaries.
+- Excessive sampling leading to missing critical error traces.
+- Logging PII or sensitive data in trace attributes.
+
+## Tools
+- OpenTelemetry, Jaeger, Zipkin
+- Datadog APM, New Relic, Dynatrace
+- AWS X-Ray, GCP Cloud Trace
+
+## Verification
+- Generate a synthetic request and verify the trace appears in the APM tool.
+- Check that trace IDs are consistently logged across all microservices involved in a transaction.
+- Validate sampling rates are configured correctly.

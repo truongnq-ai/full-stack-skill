@@ -77,3 +77,13 @@ Secret Management is successful when:
 - [ ] `grep -r "sk_live" src/` returns absolutely zero hardcoded results.
 - [ ] Developers do not know the actual strings comprising the Production credentials.
 - [ ] CI/CD logs automatically mask/asterisk any secrets printed to standard output.
+
+## Tools
+- HashiCorp Vault
+- AWS Secrets Manager
+- GCP Secret Manager
+- Sealed Secrets
+
+## References
+- [OWASP Secrets Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html)
+- [HashiCorp Vault Documentation](https://developer.hashicorp.com/vault/docs)

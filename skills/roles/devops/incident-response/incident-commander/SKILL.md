@@ -81,3 +81,12 @@ Incident Command is successful when:
 - [ ] A clear Incident Commander was designated who did not type code themselves.
 - [ ] Restoration of service (Mitigation) was prioritized over debugging (Root Cause).
 - [ ] Stakeholders were updated at predictable intervals (e.g., every 15 mins) preventing executive panic.
+
+## Tools
+- PagerDuty, Opsgenie
+- Slack/Teams
+- Zoom/Google Meet
+
+## References
+- [PagerDuty Incident Response Documentation](https://response.pagerduty.com/)
+- [Google SRE Book - Managing Incidents](https://sre.google/sre-book/managing-incidents/)

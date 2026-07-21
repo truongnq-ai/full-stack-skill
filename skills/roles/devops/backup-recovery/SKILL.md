@@ -28,3 +28,19 @@ next_checks: ["<check 1>"]
 
 ## References
 - [Examples (Input/Output)](references/examples.md)
+
+## Anti-Patterns
+- Backing up data but never testing the restoration process.
+- Storing backups in the same failure domain (e.g., same AWS region or physical datacenter) as the primary data.
+- Failing to encrypt backups at rest.
+
+## Tools
+- AWS Backup, GCP Backup and DR
+- Velero (for Kubernetes)
+- Restic, BorgBackup
+- Database specific tools (pg_dump, xtrabackup)
+
+## Verification
+- Perform a dry-run data restoration in an isolated staging environment.
+- Verify RPO (Recovery Point Objective) and RTO (Recovery Time Objective) metrics.
+- Check backup integrity via automated validation scripts.

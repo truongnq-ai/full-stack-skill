@@ -20,9 +20,11 @@ metadata:
 
 ## 🚫 Anti-Patterns
 
-- **The Ghost Deploy**: Merging code, dragging the Jira ticket to "Ready for QA", and going out to lunch without telling anyone. QA spends 4 hours figuring out which environment it's on.
-- **"Just test the Happy Path"**: Assuming QA magically knows the edge cases you discovered during coding but forgot to document.
-- **The Broken Build Handover**: Handing over a feature that instantly crashes on boot in the Staging environment because you only tested it on `localhost`.
+| ID | Anti-Pattern | Why It's Dangerous |
+|----|---|---|
+| **P0** | **The Ghost Deploy** — Merging code, dragging the Jira ticket to "Ready for QA", and going to lunch without telling anyone. | QA spends 4 hours figuring out which environment it's on. |
+| **P0** | **The Broken Build Handover** — Handing over a feature that crashes on boot in Staging because you only tested on localhost. | QA is completely blocked; trust in the dev process erodes. |
+| **P1** | **"Just test the Happy Path"** — Assuming QA magically knows the edge cases you discovered during coding. | Edge cases go untested; bugs ship to production. |
 
 ---
 
@@ -30,6 +32,16 @@ metadata:
 
 1. A Staging environment successfully updated with your feature branch code.
 2. Jira (or equivalent ticket tracker) integrated with your Git provider.
+
+### Required Tools
+
+| Tool | Purpose |
+|------|--------|
+| `run_command` | Verify staging build is running (curl health check). |
+| `call_mcp_tool` → `github/create_issue` | Create QA ticket with handover payload. |
+| `call_mcp_tool` → `ssh/ssh_exec` | Check staging environment health. |
+| `view_file` | Read the PR description and acceptance criteria. |
+| `write_to_file` | Generate handover checklist artifact. |
 
 ---
 
@@ -72,3 +84,14 @@ A feature is successfully handed over when:
 - [ ] The code is physically running on the designated QA environment.
 - [ ] A written summary including explicitly seeded Test Data is attached to the ticket.
 - [ ] A formal ping/notification is sent to the assigned QA engineer.
+- [ ] Staging health check passes (no 500 errors on boot).
+- [ ] Known blindspots documented in the handover comment.
+
+---
+
+## 📚 References
+
+- [Implementation Workflow Skill](../implementation-workflow/SKILL.md) — Dev loop before handover.
+- [PR Checklist Skill](../pr-checklist/SKILL.md) — Author checks before requesting review.
+- [Unit Test Best Practices](../unit-test-best-practices/SKILL.md) — Ensure tests pass before handover.
+- Industry reference: "Definition of Done" in Scrum Guide by Schwaber & Sutherland.

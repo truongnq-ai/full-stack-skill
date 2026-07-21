@@ -28,3 +28,18 @@ next_checks: ["<check 1>"]
 
 ## References
 - [Examples (Input/Output)](references/examples.md)
+
+## Anti-Patterns
+- 'Big Bang' deployments without rollback strategies.
+- Deploying manually from a developer's local machine.
+- Inconsistent configuration between staging and production environments.
+
+## Tools
+- Ansible, Chef, Puppet
+- ArgoCD, Flux
+- AWS CodeDeploy, Octopus Deploy
+
+## Verification
+- Verify application health endpoints return 200 OK after deployment.
+- Execute a rollback test and ensure the previous version is restored seamlessly.
+- Check deployment logs for errors or warnings.

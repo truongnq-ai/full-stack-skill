@@ -20,9 +20,11 @@ metadata:
 
 ## 🚫 Anti-Patterns
 
-- **The Git Log Dump**: Copy/pasting raw git commit messages into the release notes (`fix: off-by-one error in util`, `chore: bump webpack`). The user has no idea what that means.
-- **The Undersell**: Fixing a massive 5-year-old architectural bottleneck that speeds up the app by 400%, and writing: "Backend improvements."
-- **Over-promising**: Documenting a feature as "Released" when it is currently hidden behind a 1% Feature Flag dark-launch.
+| ID | Anti-Pattern | Why It's Dangerous |
+|----|---|---|
+| **P0** | **The Git Log Dump** — Copy-pasting raw commit messages as release notes. | Users can't understand technical jargon; notes are useless. |
+| **P1** | **The Undersell** — A 400% speed improvement described as "Backend improvements." | Stakeholders don't realize the value delivered. |
+| **P1** | **Over-promising** — Documenting a 1% feature flag dark-launch as "Released." | Users expect functionality that doesn't exist for them. |
 
 ---
 
@@ -30,6 +32,15 @@ metadata:
 
 1. The project's merged PRs or Jira ticket scope.
 2. Standard `KeepAChangelog` format.
+
+### Required Tools
+
+| Tool | Purpose |
+|------|--------|
+| `call_mcp_tool` → `github/list_commits` | Fetch merged commits for the release period. |
+| `call_mcp_tool` → `github/list_pull_requests` | List merged PRs with descriptions. |
+| `write_to_file` | Generate `CHANGELOG.md` or release notes artifact. |
+| `view_file` | Read PR descriptions for user-facing context. |
 
 ---
 
@@ -75,3 +86,14 @@ Release notes are complete when:
 - [ ] They are segmented into standard categories (Features, Fixes, Breaking).
 - [ ] Technical jargon is translated into explicit user or business value.
 - [ ] Breaking changes (especially for APIs) contain explicit migration instructions for the consumer.
+- [ ] Visual evidence (screenshots/GIFs) included for UI changes.
+- [ ] Audience-appropriate tone (internal vs external).
+
+---
+
+## 📚 References
+
+- [PR Checklist Skill](../pr-checklist/SKILL.md) — Ensuring PRs have human-readable descriptions.
+- [Feature Flag Practice](../feature-flag-practice/SKILL.md) — Clarifying dark-launched vs released features.
+- Keep a Changelog: https://keepachangelog.com/
+- Conventional Commits: https://www.conventionalcommits.org/

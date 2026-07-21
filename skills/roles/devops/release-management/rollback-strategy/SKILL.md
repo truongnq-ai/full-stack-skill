@@ -77,3 +77,12 @@ A Rollback maneuver is complete when:
 - [ ] Production traffic is flowing exclusively to the previous stable version.
 - [ ] Database state matches the required schema for the previous stable version.
 - [ ] The Git repository `main` branch explicitly reflects the rolled-back state to prevent accidental re-deployments.
+
+## Tools
+- Helm
+- ArgoCD
+- Kubernetes Deployments (undo)
+
+## References
+- [Kubernetes Rolling Update and Rollback](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/)
+- [Google SRE Book - Release Engineering](https://sre.google/sre-book/release-engineering/)

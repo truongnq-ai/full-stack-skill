@@ -82,3 +82,13 @@ A Feature Flag lifecycle is complete when:
 - [ ] New code is safely deployed to Production totally dormant.
 - [ ] Safe-defaults prevent catastrophic failure if the Flag Engine loses connectivity.
 - [ ] A tracked deprecation ticket exists to delete the flag after 100% rollout is finalized.
+
+## Tools
+- LaunchDarkly
+- Split
+- Unleash
+- Flagsmith
+
+## References
+- [Martin Fowler - FeatureToggles](https://martinfowler.com/articles/FeatureToggles.html)
+- [Unleash Best Practices](https://docs.getunleash.io/topics/feature-flag-best-practices)

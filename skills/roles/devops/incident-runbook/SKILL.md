@@ -30,3 +30,19 @@ next_checks: ["<check 1>"]
 
 ## References
 - [Examples (Input/Output)](references/examples.md)
+
+## Anti-Patterns
+- Relying on tribal knowledge instead of documented procedures.
+- Runbooks that are outdated and reference decommissioned systems.
+- Runbooks that are not actionable or lack clear escalation paths.
+
+## Tools
+- Confluence, Notion
+- PagerDuty Runbooks
+- AWS Systems Manager Incident Manager
+- Markdown files in source control
+
+## Verification
+- Execute a table-top exercise using the runbook to ensure its accuracy.
+- Verify runbook links to dashboards and logs are valid.
+- Check that on-call engineers can easily access the runbook during an incident.

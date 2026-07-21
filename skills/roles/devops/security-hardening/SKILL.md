@@ -28,3 +28,18 @@ next_checks: ["<check 1>"]
 
 ## References
 - [Examples (Input/Output)](references/examples.md)
+
+## Anti-Patterns
+- Using default passwords or configurations.
+- Running services with overly permissive IAM roles.
+- Not applying security patches promptly.
+
+## Tools
+- CIS Benchmarks
+- kube-bench, kube-hunter
+- Trivy, Aqua Security
+
+## Verification
+- Run a compliance scan against the infrastructure.
+- Verify that the principle of least privilege is applied.
+- Check that the latest security patches are installed.

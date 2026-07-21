@@ -28,3 +28,18 @@ next_checks: ["<check 1>"]
 
 ## References
 - [Examples (Input/Output)](references/examples.md)
+
+## Anti-Patterns
+- ClickOps (manual configuration in cloud console) instead of Infrastructure as Code.
+- Flat network topologies without proper segmentation (VPCs, Subnets).
+- Running databases on public subnets.
+
+## Tools
+- Terraform, CloudFormation
+- AWS VPC, GCP VPC
+- Ansible
+
+## Verification
+- Verify infrastructure is defined in code.
+- Check network routing tables and security groups for least privilege access.
+- Ensure private resources cannot be accessed directly from the public internet.

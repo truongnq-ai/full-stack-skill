@@ -75,3 +75,12 @@ A Canary sequence is successfully complete when:
 - [ ] Traffic weighting was strictly enforced and users were session-locked to their designated partition.
 - [ ] Explicit metric comparison occurred during the validation window.
 - [ ] At 100% cutover, the old instances were gracefully drained and deprovisioned.
+
+## Tools
+- Argo Rollouts
+- Istio, Linkerd
+- Flagger
+
+## References
+- [Martin Fowler - CanaryRelease](https://martinfowler.com/bliki/CanaryRelease.html)
+- [Flagger Documentation](https://docs.flagger.app/)

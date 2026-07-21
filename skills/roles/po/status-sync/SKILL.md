@@ -1,7 +1,7 @@
 ---
 name: Daily Status Sync Protocol
 description: Standardized PM daily standup — aggregates blockers, updates task trackers, and prepares the operational status report.
-category: roles/pm
+category: roles
 metadata:
   labels: [pm, standup, agile, daily-sync, status]
   triggers:
@@ -95,3 +95,19 @@ Before terminating the workflow, PM must ensure:
 - [ ] At least one active task is logged under "In Progress".
 - [ ] All blockers are explicitly assigned a DRI (Directly Responsible Individual).
 - [ ] The core `task.md` tracker perfectly reflects the summarized reality.
+
+---
+
+## 🛠️ Tools
+- Jira, Linear, Azure DevOps (task tracking)
+- Slack, Microsoft Teams (team broadcasting)
+- `git log` (activity extraction)
+- `view_file`, `write_to_file` (for file-based trackers)
+- Mermaid (for visualizing blocker chains)
+
+---
+
+## 📚 References
+- [Scrum Guide — Daily Scrum](https://scrumguides.org/scrum-guide.html#daily-scrum)
+- [Atlassian — Running Effective Stand-ups](https://www.atlassian.com/agile/scrum/standups)
+- [Martin Fowler — Patterns of Effective Teams](https://martinfowler.com/articles/patterns-effective-teams.html)

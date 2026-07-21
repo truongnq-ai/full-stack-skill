@@ -28,3 +28,19 @@ next_checks: ["<check 1>"]
 
 ## References
 - [Examples (Input/Output)](references/examples.md)
+
+## Anti-Patterns
+- Hardcoding values in `templates/` instead of `values.yaml`.
+- Not versioning Helm charts.
+- Applying charts manually with `helm install` instead of using a GitOps tool.
+
+## Tools
+- Helm v3
+- ArgoCD (Helm integration)
+- FluxCD
+- Helmfile
+
+## Verification
+- Run `helm lint` and `helm template` to validate chart syntax.
+- Deploy a test release and run `helm test`.
+- Verify chart version increments upon changes.

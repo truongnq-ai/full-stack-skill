@@ -20,9 +20,11 @@ metadata:
 
 ## 🚫 Anti-Patterns
 
-- **Coding Without a Design**: Skipping the spec entirely for a 3-month project, resulting in a misaligned architecture that has to be rewritten entirely by QA phase.
-- **The Echo Chamber**: Reviewing your own architectural design or only asking Junior developers who lack the experience to challenge the fundamental constraints.
-- **Buzzword Driven Development**: Approving a design that uses Kafka, Redis, and Kubernetes for an internal tool that expects 5 users a day.
+| ID | Anti-Pattern | Why It's Dangerous |
+|----|---|---|
+| **P0** | **Coding Without a Design** — Skipping the spec for a 3-month project. | Misaligned architecture discovered at QA; costly rewrite. |
+| **P1** | **The Echo Chamber** — Only asking junior devs who can't challenge constraints. | Fundamental flaws go undetected until production. |
+| **P1** | **Buzzword Driven Development** — Kafka + Redis + K8s for a 5-user internal tool. | Over-engineered; maintenance cost dwarfs value. |
 
 ---
 
@@ -30,6 +32,15 @@ metadata:
 
 1. A written Technical Specification or System Design Document.
 2. Architecture Diagrams (C4 model, Entity-Relationship mapping, Sequence diagrams).
+
+### Required Tools
+
+| Tool | Purpose |
+|------|--------|
+| `view_file` | Read the Technical Spec and architecture documents. |
+| `grep_search` | Search codebase for existing patterns that the design should align with. |
+| `write_to_file` | Generate design review artifact with go/no-go decision. |
+| `ask_question` | Present design trade-offs to the team for decision. |
 
 ---
 
@@ -75,3 +86,15 @@ A Design Review is complete when:
 - [ ] All major scalability and security constraints have been challenged and documented.
 - [ ] Database schema choices and API contracts have been explicitly approved.
 - [ ] A formal "Go / No-Go" decision is recorded, unblocking development.
+- [ ] Observability and rollback plan reviewed.
+- [ ] PII/compliance implications assessed.
+
+---
+
+## 📚 References
+
+- [API Contract Skill](../api-contract/SKILL.md) — Reviewing API design specifics.
+- [Architecture Decision Records](../architecture-decision-records/SKILL.md) — Documenting design decisions.
+- [Security Basics Skill](../security-basics/SKILL.md) — Security review checklist.
+- C4 Model: https://c4model.com/
+- "Designing Data-Intensive Applications" by Martin Kleppmann.

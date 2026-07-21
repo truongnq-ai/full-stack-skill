@@ -95,3 +95,14 @@ An IaC provision is successful when:
 - [ ] All code passes `terraform fmt` and `tflint`.
 - [ ] `terraform plan` outputs `0 to add, 0 to change, 0 to destroy` immediately after an apply.
 - [ ] Secrets are dynamically imported via secure data blocks, never hardcoded.
+
+## Tools
+- Terraform
+- Terragrunt
+- TFLint
+- tfsec
+- Infracost
+
+## References
+- [Terraform Best Practices](https://www.terraform-best-practices.com/)
+- [HashiCorp Terraform Documentation](https://developer.hashicorp.com/terraform/docs)

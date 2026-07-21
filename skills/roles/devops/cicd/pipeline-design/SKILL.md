@@ -79,3 +79,12 @@ A Pipeline Architecture is functionally complete when:
 - [ ] It enforces "Build Once, Deploy Anywhere" (Artifacts are promoted, not rebuilt).
 - [ ] Feedback on PR validity is generated in under 10 minutes.
 - [ ] Production deployments do not require manual SSH interventions.
+
+## Tools
+- Draw.io, Lucidchart (for design)
+- Jenkinsfile, .gitlab-ci.yml, action.yml
+- Dagger, Earthly
+
+## References
+- [Continuous Delivery by Jez Humble](https://continuousdelivery.com/)
+- [GitLab CI/CD Pipeline Architecture](https://docs.gitlab.com/ee/ci/pipelines/pipeline_architectures.html)

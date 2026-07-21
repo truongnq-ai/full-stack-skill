@@ -41,3 +41,18 @@ next_checks: ["<check 1>"]
 
 ## References
 - [Examples (Input/Output)](references/examples.md)
+
+## Anti-Patterns
+- Monitoring only infrastructure metrics (CPU/RAM) and ignoring application metrics.
+- Creating too many alerts, leading to alert fatigue.
+- Dashboards that are too complex and hard to understand at a glance.
+
+## Tools
+- Prometheus, Grafana
+- Datadog, New Relic
+- AWS CloudWatch
+
+## Verification
+- Verify key metrics (USE/RED methods) are being collected.
+- Trigger a test alert and ensure it routes to the correct channel.
+- Check dashboard rendering and data accuracy.

@@ -28,3 +28,19 @@ next_checks: ["<check 1>"]
 
 ## References
 - [Examples (Input/Output)](references/examples.md)
+
+## Anti-Patterns
+- Rebuilding artifacts for each environment instead of promoting the same immutable artifact.
+- Having different deployment processes for staging and production.
+- Bypassing lower environments for 'hotfixes'.
+
+## Tools
+- ArgoCD
+- GitLab Environments
+- Spinnaker
+- GitHub Deployments
+
+## Verification
+- Ensure the exact same container image hash deployed to staging is deployed to production.
+- Check that environment variables are correctly substituted per environment.
+- Verify that automated tests pass before promotion is allowed.

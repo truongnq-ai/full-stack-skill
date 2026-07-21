@@ -20,9 +20,11 @@ metadata:
 
 ## 🚫 Anti-Patterns
 
-- **Cowboy Coding**: Opening a file, typing 500 lines of logic, and realizing halfway through that you don't actually understand the business requirement.
-- **The Monstrous Commit**: Working for 4 days locally, and then typing `git commit -m "added feature"` combining 40 files, 3 bug fixes, and a linter formatting pass into one atomic bomb of a commit.
-- **"It Works On My Machine"**: Pushing code that relies on your local `C:\temp\config.json` file.
+| ID | Anti-Pattern | Why It's Dangerous |
+|----|---|---|
+| **P0** | **Cowboy Coding** — Opening a file, typing 500 lines without understanding the business requirement. | Halfway through you realize the requirement was wrong; time wasted. |
+| **P0** | **The Monstrous Commit** — 4 days of work in one `git commit -m "added feature"` with 40 files. | Impossible to review, revert, or bisect. |
+| **P1** | **"It Works On My Machine"** — Code relying on local `C:\temp\config.json`. | Fails immediately in CI/staging/production. |
 
 ---
 
@@ -30,6 +32,16 @@ metadata:
 
 1. A clear Jira Ticket with acceptance criteria (See `roles/pm/product-requirements/SKILL.md`).
 2. Local Development Environment matching production as closely as possible (Docker).
+
+### Required Tools
+
+| Tool | Purpose |
+|------|--------|
+| `run_command` | Execute git, tests, linters, and build scripts. |
+| `view_file` | Read ticket acceptance criteria and existing code. |
+| `grep_search` | Understand codebase context before modifying. |
+| `replace_file_content` | Apply code changes surgically. |
+| `call_mcp_tool` → `github/create_pull_request` | Create PR when code is ready. |
 
 ---
 
@@ -82,3 +94,15 @@ A feature is implemented when:
 - [ ] It fully satisfies the ticket's Acceptance Criteria.
 - [ ] The Git history is composed of small, semantic, reversible commits.
 - [ ] Local linters and unit tests pass before the PR is opened.
+- [ ] Branch is rebased on latest `main` (no stale merge conflicts).
+- [ ] PR is ready for review (see `pr-checklist`).
+
+---
+
+## 📚 References
+
+- [Implementation Coding Skill](../implementation-coding/SKILL.md) — CodeAct methodology for the coding phase.
+- [PR Checklist Skill](../pr-checklist/SKILL.md) — Pre-flight checks before requesting review.
+- [Handover to QA Skill](../handover-to-qa/SKILL.md) — Transferring to QA after merge.
+- [Unit Test Best Practices](../unit-test-best-practices/SKILL.md) — TDD scaffold (Step 2).
+- Trunk-Based Development: https://trunkbaseddevelopment.com/

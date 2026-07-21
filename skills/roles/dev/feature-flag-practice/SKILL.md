@@ -20,9 +20,11 @@ metadata:
 
 ## 🚫 Anti-Patterns
 
-- **The Long-Lived Branch**: Refusing to use Flags, and keeping `feature/new-checkout` alive for 3 weeks. When you finally try to merge it, you spend 4 days fighting 500 merge conflicts.
-- **Nested Flags**: Checking `if (flagA && flagB && !flagC)`. State space explodes, making the code impossible to QA.
-- **Flag Hoarding**: Leaving a feature flag in the codebase 2 years after the feature was released to 100% of users. It is now dead code masking as technical debt.
+| ID | Anti-Pattern | Why It's Dangerous |
+|----|---|---|
+| **P0** | **Flag Hoarding** — Leaving a flag in production 2 years after 100% rollout. | Dead code masking as tech debt; state space explodes. |
+| **P1** | **Nested Flags** — `if (flagA && flagB && !flagC)`. | State space explodes; impossible to QA all combinations. |
+| **P1** | **The Long-Lived Branch** — Keeping `feature/new-checkout` alive for 3 weeks. | 500 merge conflicts when you finally merge. |
 
 ---
 
@@ -30,6 +32,16 @@ metadata:
 
 1. A Feature Flag evaluation SDK (LaunchDarkly, Split.io, or even a simple `process.env`).
 2. Trunk-Based Development mindset.
+
+### Required Tools
+
+| Tool | Purpose |
+|------|--------|
+| `write_to_file` | Create FeatureService abstraction wrapper. |
+| `view_file` | Read existing flag usage patterns. |
+| `grep_search` | Find all instances of a specific flag to plan cleanup. |
+| `run_command` | Verify builds work with flag toggled ON and OFF. |
+| `replace_file_content` | Inject flag checks into existing code paths. |
 
 ---
 
@@ -80,3 +92,15 @@ A Feature Flag implementation is considered mature when:
 - [ ] Code is merged to `main` daily without breaking production.
 - [ ] A dedicated cleanup ticket is already scheduled in the project management tracker.
 - [ ] The flag SDK is abstracted behind a domain-specific interface, not littered as raw strings.
+- [ ] Default fallback is `false` (safe/legacy state).
+- [ ] No nested flags (max 1 flag per code path).
+
+---
+
+## 📚 References
+
+- [Release Notes Skill](../release-notes/SKILL.md) — Clarifying dark-launched vs released features.
+- [Implementation Workflow Skill](../implementation-workflow/SKILL.md) — Trunk-based development with flags.
+- [Refactor & Tech Debt Skill](../refactor-techdebt/SKILL.md) — Flag cleanup as tech debt.
+- Martin Fowler on Feature Toggles: https://martinfowler.com/articles/feature-toggles.html
+- LaunchDarkly best practices: https://launchdarkly.com/blog/best-practices-for-feature-flags/

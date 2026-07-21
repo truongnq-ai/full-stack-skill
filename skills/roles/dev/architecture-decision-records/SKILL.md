@@ -20,9 +20,11 @@ metadata:
 
 ## 🚫 Anti-Patterns
 
-- **Tribal Knowledge**: A Senior Dev chooses Postgres over MongoDB during a 5-minute coffee chat. Two years later, they leave, and the new team spends 3 weeks debating whether to switch to MongoDB.
-- **The Empty "Why"**: Stating *what* the decision was without explaining *why* it was chosen over the alternatives.
-- **Editing History**: Going back and editing a 2-year-old ADR to make the team look smarter because the market shifted. ADRs are immutable historical logs.
+| ID | Anti-Pattern | Why It's Dangerous |
+|----|---|---|
+| **P0** | **Tribal Knowledge** — Senior Dev chooses Postgres over MongoDB in a coffee chat. 2 years later, no one knows why. | New team wastes weeks debating decisions already made. |
+| **P1** | **The Empty "Why"** — Stating the decision without explaining alternatives or rationale. | Decision appears arbitrary; team can't evaluate if context changed. |
+| **P1** | **Editing History** — Going back to edit a 2-year-old ADR to look smarter. | ADRs are immutable historical logs; editing destroys trust. |
 
 ---
 
@@ -30,6 +32,15 @@ metadata:
 
 1. A designated `docs/adr/` folder in the project repository.
 2. The standard MADR (Markdown Architecture Decision Record) template.
+
+### Required Tools
+
+| Tool | Purpose |
+|------|--------|
+| `write_to_file` | Create new ADR files in `docs/adr/`. |
+| `list_dir` | List existing ADRs to determine next sequential ID. |
+| `view_file` | Read existing ADRs for context and superseding. |
+| `call_mcp_tool` → `github/create_pull_request` | Submit ADR for peer review. |
 
 ---
 
@@ -77,3 +88,14 @@ An ADR is considered formalized when:
 - [ ] It resides in the version-controlled `docs/adr/` directory with a sequential ID number.
 - [ ] At least 2 alternatives were explicitly analyzed and rejected in the text.
 - [ ] The negative consequences (trade-offs) of the chosen path are clearly acknowledged.
+- [ ] ADR is merged via PR with Tech Lead approval.
+- [ ] Superseding ADRs cross-reference the original.
+
+---
+
+## 📚 References
+
+- [Design Review Checklist Skill](../design-review-checklist/SKILL.md) — Reviewing architectural designs.
+- [Code Ownership Boundaries](../code-ownership-boundaries/SKILL.md) — Enforcing decisions via CODEOWNERS.
+- MADR Template: https://adr.github.io/madr/
+- Lightweight ADRs by Michael Nygard: https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions

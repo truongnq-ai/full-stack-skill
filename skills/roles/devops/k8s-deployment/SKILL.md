@@ -28,3 +28,19 @@ next_checks: ["<check 1>"]
 
 ## References
 - [Examples (Input/Output)](references/examples.md)
+
+## Anti-Patterns
+- Deploying pods directly without Deployments or StatefulSets.
+- Not configuring resource requests and limits.
+- Running containers as root.
+
+## Tools
+- Kubernetes
+- kubectl
+- ArgoCD, Flux
+- Kustomize, Helm
+
+## Verification
+- Verify pods are running and ready.
+- Check that resource limits are applied.
+- Ensure security context is configured correctly (e.g. non-root user).

@@ -28,3 +28,18 @@ next_checks: ["<check 1>"]
 
 ## References
 - [Examples (Input/Output)](references/examples.md)
+
+## Anti-Patterns
+- Hardcoding secrets in source code or configuration files.
+- Committing `.env` files to version control.
+- Sharing secrets via insecure channels (e.g. email, Slack).
+
+## Tools
+- HashiCorp Vault
+- AWS Secrets Manager, GCP Secret Manager
+- Sealed Secrets, External Secrets Operator
+
+## Verification
+- Verify secrets are rotated regularly.
+- Check that applications retrieve secrets dynamically at runtime.
+- Audit access logs to the secrets manager.

@@ -76,3 +76,12 @@ An Error Budget framework is functional when:
 - [ ] It calculates allowable downtime as a strict Mathematical formula `(100% - SLO)`.
 - [ ] Product and Engineering leadership have formally agreed to physically halt feature deployments when the budget hits zero.
 - [ ] Burn Rate alerts notify the team when they are consuming the budget too rapidly.
+
+## Tools
+- Nobl9
+- Datadog SLOs
+- Prometheus (with SLO recording rules)
+
+## References
+- [Google SRE Book - Error Budgets](https://sre.google/sre-book/embracing-risk/#error-budgets)
+- [The Site Reliability Workbook - Implementing SLOs](https://sre.google/workbook/implementing-slos/)

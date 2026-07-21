@@ -20,9 +20,11 @@ metadata:
 
 ## 🚫 Anti-Patterns
 
-- **Trusting the Client**: Implementing price validation strictly in React JS, believing a user won't just curl the API directly with `{"price": -50.00}` to steal money.
-- **Roll Your Own Crypto**: Writing a custom hashing function instead of using industry-standard `bcrypt` or `Argon2` for passwords.
-- **String Concatenation SQL**: `SELECT * FROM users WHERE email = '` + req.body.email + `'`. (The ultimate suicide method for a database).
+| ID | Anti-Pattern | Why It's Dangerous |
+|----|---|---|
+| **P0** | **String Concatenation SQL** — `SELECT * FROM users WHERE email = '` + req.body.email + `'`. | Direct SQL injection; database compromise. |
+| **P0** | **Trusting the Client** — Price validation only in React, not on server. | Attackers bypass UI and call APIs directly. |
+| **P1** | **Roll Your Own Crypto** — Custom hashing instead of bcrypt/Argon2. | Custom crypto is always breakable; data breach guaranteed. |
 
 ---
 
@@ -30,6 +32,15 @@ metadata:
 
 1. Familiarity with the OWASP Top 10.
 2. A mature ORM/Query Builder (e.g., Prisma, Hibernate, SQLAlchemy) or standard parameterization libraries.
+
+### Required Tools
+
+| Tool | Purpose |
+|------|--------|
+| `grep_search` | Scan codebase for raw SQL concatenation, `dangerouslySetInnerHTML`, hardcoded secrets. |
+| `view_file` | Read authentication/authorization code for IDOR checks. |
+| `run_command` | Execute security linters (eslint-plugin-security, bandit, gosec). |
+| `replace_file_content` | Apply security fixes (parameterize queries, add sanitization). |
 
 ---
 
@@ -73,3 +84,14 @@ A feature is considered baseline-secure when:
 - [ ] All database interactions explicitly utilize Parameterization/ORMs.
 - [ ] Resource requests (GET/PUT/DELETE) explicitly verify that the requesting user owns/has permission to the specific Resource ID.
 - [ ] User-submitted data reflecting back onto the screen is strictly passed through an escaping mechanism.
+- [ ] Session tokens stored in HttpOnly, Secure, SameSite cookies.
+- [ ] Rate limiting applied to authentication endpoints.
+
+---
+
+## 📚 References
+
+- [Code Review Security Skill](../code-review-security/SKILL.md) — PR-level security audit.
+- [Performance Guardrails Skill](../performance-guardrails/SKILL.md) — Rate limiting patterns.
+- OWASP Top 10: https://owasp.org/www-project-top-ten/
+- OWASP Cheat Sheet Series: https://cheatsheetseries.owasp.org/

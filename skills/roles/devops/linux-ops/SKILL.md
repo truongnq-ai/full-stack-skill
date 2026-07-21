@@ -28,3 +28,19 @@ next_checks: ["<check 1>"]
 
 ## References
 - [Examples (Input/Output)](references/examples.md)
+
+## Anti-Patterns
+- Logging in as `root` directly instead of using `sudo`.
+- Modifying configuration files without backups or version control.
+- Leaving unnecessary ports open in the firewall.
+
+## Tools
+- SSH, tmux
+- htop, strace, tcpdump
+- systemd
+- iptables, ufw
+
+## Verification
+- Verify SSH key authentication is used instead of passwords.
+- Check system load and memory usage.
+- Ensure critical services are enabled and running via systemd.

@@ -105,3 +105,12 @@ A GitHub Action configuration is complete when:
 - [ ] Concurrency cancels redundant runs to save CI money.
 - [ ] Dependencies are explicitly cached.
 - [ ] Third-party Actions are scoped with minimum permissions and safely version-pinned.
+
+## Tools
+- GitHub Actions
+- act (for local testing)
+- GitHub CLI (gh)
+
+## References
+- [GitHub Actions Documentation](https://docs.github.com/en/actions)
+- [Awesome Actions](https://github.com/sdras/awesome-actions)

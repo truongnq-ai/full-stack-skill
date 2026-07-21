@@ -99,3 +99,13 @@ A standard Dockerfile is complete when:
 - [ ] The base image is explicitly pinned to a major/minor version tag, avoiding `:latest`.
 - [ ] The final process executes under a non-root `USER`.
 - [ ] A `.dockerignore` file exists alongside it.
+
+## Tools
+- Docker
+- Hadolint
+- Buildx
+- Dive
+
+## References
+- [Dockerfile Best Practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+- [CIS Docker Benchmark](https://www.cisecurity.org/benchmark/docker)

@@ -80,3 +80,13 @@ An operational dashboard is complete when:
 - [ ] It fits on a standard 1080p monitor without scrolling to see the core RED metrics.
 - [ ] Variables/Dropdowns allow switching between `Prod` and `Staging` effortlessly.
 - [ ] Direct visual thresholds (red dotted lines) exist on charts to indicate SLA limits.
+
+## Tools
+- Grafana
+- Datadog Dashboards
+- Kibana
+
+## References
+- [Grafana Dashboard Best Practices](https://grafana.com/docs/grafana/latest/dashboards/best-practices/)
+- [The USE Method](http://www.brendangregg.com/usemethod.html)
+- [The RED Method](https://www.weave.works/blog/the-red-method-key-metrics-for-microservices-architecture/)

@@ -87,3 +87,12 @@ A Blameless RCA is complete when:
 - [ ] The document is published and shared transparently with the entire engineering organization.
 - [ ] The root cause identifies a systemic or tooling failure, entirely avoiding the phrase "human error."
 - [ ] At least one concrete Action Item is created in the PM tracker to prevent identical recurrence.
+
+## Tools
+- Confluence, Notion
+- Google Docs (for collaboration)
+- Jira (for action items)
+
+## References
+- [Google SRE Book - Postmortem Culture](https://sre.google/sre-book/postmortem-culture/)
+- [Etsy's Debriefing Facilitation Guide](https://extfiles.etsy.com/DebriefingFacilitationGuide.pdf)

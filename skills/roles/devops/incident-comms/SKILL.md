@@ -30,3 +30,19 @@ next_checks: ["<check 1>"]
 
 ## References
 - [Examples (Input/Output)](references/examples.md)
+
+## Anti-Patterns
+- Keeping stakeholders in the dark during an ongoing incident.
+- Providing overly technical details to business stakeholders.
+- Failing to establish a clear communication channel or incident commander.
+
+## Tools
+- Slack/Microsoft Teams
+- PagerDuty, Opsgenie
+- Statuspage
+- Jira Service Management
+
+## Verification
+- Verify an incident communication channel is automatically created upon incident declaration.
+- Check that a status page is updated promptly during simulated incidents.
+- Review post-incident communication for clarity and timeliness.

@@ -20,9 +20,11 @@ metadata:
 
 ## 🚫 Anti-Patterns
 
-- **Outsourcing Linting to CI**: Pushing unformatted code and waiting 10 minutes for GitHub Actions to fail, fixing a typo, pushing again, and waiting another 10 minutes. Run it locally.
-- **Title: "updates"**: Calling a PR "Fixed some stuff". (PR titles auto-generate Release Notes; they must be semantic).
-- **The Mega-Diff**: Submitting a 2,000-line PR without any contextual comments, forcing the reviewer to guess how the architecture works.
+| ID | Anti-Pattern | Why It's Dangerous |
+|----|---|---|
+| **P0** | **The Mega-Diff** — Submitting a 2,000-line PR without contextual comments. | Reviewer cannot safely review; bugs sneak through. |
+| **P1** | **Outsourcing Linting to CI** — Pushing unformatted code and waiting 10 min for CI to fail. | Wastes CI minutes and reviewer time on trivial issues. |
+| **P1** | **Title: "updates"** — Calling a PR "Fixed some stuff". | PR titles auto-generate Release Notes; ambiguity is permanent. |
 
 ---
 
@@ -30,6 +32,15 @@ metadata:
 
 1. Working local git branch pushed to origin.
 2. Standard PR Templates in `.github/PULL_REQUEST_TEMPLATE.md`.
+
+### Required Tools
+
+| Tool | Purpose |
+|------|--------|
+| `run_command` | Run linters, tests, and build locally before pushing. |
+| `call_mcp_tool` → `github/create_pull_request` | Create the PR with semantic title and ticket links. |
+| `grep_search` | Search for leftover debug artifacts (console.log, debugger). |
+| `view_file` | Self-review the diff before requesting human review. |
 
 ---
 
@@ -73,3 +84,15 @@ A PR is ready for human review when:
 - [ ] The author has completed an inline self-review finding zero leftover debug artifacts.
 - [ ] Automated tests and linters pass 100%.
 - [ ] The PR body contains a clear summary, ticket links, and (if applicable) visual UI evidence.
+- [ ] PR title follows semantic format (e.g., `feat(auth): enable OAuth`).
+- [ ] CI pipeline is green before assigning reviewer.
+
+---
+
+## 📚 References
+
+- [Code Review Etiquette Skill](../code-review-etiquette/SKILL.md) — How reviewers should respond.
+- [Implementation Workflow Skill](../implementation-workflow/SKILL.md) — The full dev loop.
+- [Handover to QA Skill](../handover-to-qa/SKILL.md) — Next step after PR merge.
+- Conventional Commits: https://www.conventionalcommits.org/
+- Keep a Changelog: https://keepachangelog.com/

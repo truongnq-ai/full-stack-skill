@@ -1,6 +1,7 @@
 ---
 name: po-feature-discovery
 description: Product Manager feature discovery and PRD generation. Activates for product specs, requirements gathering, and market analysis. Inspired by MetaGPT Product Manager.
+category: roles
 metadata:
   labels: [po, product-manager, prd, requirements, discovery, metagpt]
   triggers:
@@ -84,3 +85,31 @@ When the user requests market analysis or competitor research:
 - [ ] Are user stories in the correct format?
 - [ ] Are requirements prioritized using P0/P1/P2?
 - [ ] Is the output saved as a `.md` artifact (e.g., `PRD.md`)?
+
+---
+
+## ⚠️ Error Handling
+
+| Issue | Cause | Fallback Action |
+|-------|-------|-----------------|
+| Search returns no results | Network issue or niche topic | Acknowledge gap; ask user for manual competitor data |
+| Template not found | `references/prd-template.md` missing | Use built-in PRD structure from this skill |
+| Stakeholder gives vague answers | Unclear requirements | Re-ask with constrained options (a/b/c format) |
+| Conflicting requirements | Multiple stakeholders | Document both perspectives; escalate to PO lead |
+
+---
+
+## 🛠️ Tools
+- `view_file`, `write_to_file` (file-based PRD management)
+- `search_web` (market research and competitor analysis)
+- Mermaid (competitive quadrant charts, user flow diagrams)
+- Notion, Confluence, Google Docs (collaborative PRD editing)
+- Figma, FigJam (UI/UX design drafts)
+
+---
+
+## 📚 References
+- [PRD Template](references/prd-template.md)
+- [Marty Cagan — Inspired](https://www.svpg.com/inspired-how-to-create-products-customers-love/)
+- [Strategyzer — Value Proposition Canvas](https://www.strategyzer.com/library/the-value-proposition-canvas)
+- [Lenny's Newsletter — Writing Great PRDs](https://www.lennysnewsletter.com/p/how-to-write-a-great-prd)

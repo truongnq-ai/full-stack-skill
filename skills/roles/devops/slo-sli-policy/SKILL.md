@@ -28,3 +28,18 @@ next_checks: ["<check 1>"]
 
 ## References
 - [Examples (Input/Output)](references/examples.md)
+
+## Anti-Patterns
+- Setting SLOs that are too strict and unachievable.
+- Measuring SLIs that do not reflect the user experience.
+- Not acting on SLO violations.
+
+## Tools
+- Prometheus, Grafana
+- Datadog, Nobl9
+- Google Cloud SLO Monitoring
+
+## Verification
+- Verify SLIs are accurately tracking user journeys.
+- Check that error budgets are calculated correctly.
+- Ensure alerts are triggered when error budgets are depleted.

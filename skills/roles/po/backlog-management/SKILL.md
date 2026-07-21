@@ -1,6 +1,7 @@
 ---
 name: po-backlog-management
 description: Product Manager backlog management, prioritization, and sprint planning. Ensures requirements pool is maintained and sprint capacity is respected. Inspired by MetaGPT Product Manager.
+category: roles
 metadata:
   labels: [po, product-manager, backlog, sprint, prioritization, metagpt]
   triggers:
@@ -74,3 +75,28 @@ Create or update `sprint-plan.md` (or `task.md`) with:
 - [ ] Is the backlog sorted by priority (P0 -> P1 -> P2)?
 - [ ] Do all sprint tasks have clear acceptance criteria?
 - [ ] Were dependencies checked before assigning sprint tasks?
+
+---
+
+## ⚠️ Error Handling
+
+| Issue | Cause | Fallback Action |
+|-------|-------|-----------------|
+| No backlog file | First-time project setup | Create `backlog.md` from PRD requirements pool |
+| Conflicting priorities | Multiple stakeholders disagree | Escalate to PO lead; document both perspectives |
+| Capacity exceeded | Too many P0 items for sprint | Negotiate scope with stakeholders; defer P1/P2 items |
+
+---
+
+## 🛠️ Tools
+- Jira, Linear, Azure DevOps (backlog management)
+- Notion, Confluence (documentation and sprint records)
+- `view_file`, `write_to_file` (file-based backlogs)
+- Mermaid (dependency graphs)
+
+---
+
+## 📚 References
+- [Scrum Guide — Product Backlog](https://scrumguides.org/scrum-guide.html#product-backlog)
+- [Mountain Goat Software — Product Backlog](https://www.mountaingoatsoftware.com/agile/scrum/artifacts/product-backlog)
+- [INVEST Principle](https://www.agilealliance.org/glossary/invest/)

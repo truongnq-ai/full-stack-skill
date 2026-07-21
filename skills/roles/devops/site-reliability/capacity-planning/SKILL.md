@@ -78,3 +78,13 @@ A Capacity Plan is structurally sound when:
 - [ ] A definitive `RPS-to-Node` mathematical ratio has been established.
 - [ ] Database Connection limits have been audited against the maximum planned Web node count.
 - [ ] Pre-warming automation is scheduled if the traffic pattern represents a "Spike" rather than a "Gradual Curve".
+
+## Tools
+- Prometheus
+- AWS Auto Scaling
+- Kubernetes HPA/VPA
+- Karpenter
+
+## References
+- [Google SRE Book - Capacity Planning](https://sre.google/sre-book/capacity-planning/)
+- [Kubernetes Autoscaling](https://kubernetes.io/docs/concepts/workloads/autoscaling/)

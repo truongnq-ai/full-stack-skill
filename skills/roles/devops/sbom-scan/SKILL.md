@@ -28,3 +28,18 @@ next_checks: ["<check 1>"]
 
 ## References
 - [Examples (Input/Output)](references/examples.md)
+
+## Anti-Patterns
+- Generating SBOMs but never analyzing them for vulnerabilities.
+- Not integrating SBOM generation into the build pipeline.
+- Ignoring transitive dependencies in the SBOM.
+
+## Tools
+- Syft, Grype
+- Trivy
+- Dependency-Track
+
+## Verification
+- Generate an SBOM for an image and verify its contents.
+- Run a vulnerability scan against the SBOM.
+- Check that the SBOM is signed and stored securely.

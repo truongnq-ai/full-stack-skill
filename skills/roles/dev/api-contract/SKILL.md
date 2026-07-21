@@ -20,9 +20,11 @@ metadata:
 
 ## 🚫 Anti-Patterns
 
-- **Code-First Generation**: Writing the backend Python code first, auto-generating the Swagger spec from it, and giving it to the Frontend team 2 weeks later. (This creates a massive bottleneck).
-- **Breaking Changes in V1**: Modifying an existing `GET /users` payload by deleting the `last_name` field, instantly crashing iOS apps currently installed on user phones.
-- **The "200 OK" Error**: Returning `HTTP 200 OK` with a JSON body `{"error": "User not found"}`. (Always use proper HTTP Status Codes like `404`).
+| ID | Anti-Pattern | Why It's Dangerous |
+|----|---|---|
+| **P0** | **The "200 OK" Error** — `HTTP 200 OK` with body `{"error": "User not found"}`. | Clients can't distinguish success from failure programmatically. |
+| **P0** | **Breaking Changes in V1** — Deleting a field from an existing endpoint. | Crashes deployed mobile apps instantly. |
+| **P1** | **Code-First Generation** — Writing backend first, auto-generating Swagger later. | Frontend team blocked for weeks; bottleneck in delivery. |
 
 ---
 
@@ -30,6 +32,16 @@ metadata:
 
 1. OpenAPI Specification (OAS 3.0+) or GraphQL Schema standard.
 2. A mocking tool (e.g., Postman Mock Server, Stoplight).
+
+### Required Tools
+
+| Tool | Purpose |
+|------|--------|
+| `write_to_file` | Create OpenAPI YAML/JSON spec files. |
+| `view_file` | Read existing API contracts and schemas. |
+| `grep_search` | Find existing endpoints and route definitions. |
+| `call_mcp_tool` → `github/create_pull_request` | Submit the API spec for cross-team review. |
+| `run_command` | Run contract testing tools (Pact, Dredd). |
 
 ---
 
@@ -80,3 +92,15 @@ API Contract generation is successful when:
 - [ ] A formal OpenAPI/Swagger or GraphQL definition is written and peer-reviewed.
 - [ ] Proper HTTP semantics (Status Codes, Verbs) are strictly enforced.
 - [ ] Frontend developers can begin working immediately against a Mock server without waiting for Backend code.
+- [ ] Contract tests (Pact/Dredd) integrated into CI pipeline.
+- [ ] Versioning policy defined for breaking changes.
+
+---
+
+## 📚 References
+
+- [Design Review Checklist Skill](../design-review-checklist/SKILL.md) — Reviewing API design at the architectural level.
+- [Security Basics Skill](../security-basics/SKILL.md) — Ensuring API inputs are validated.
+- [Implementation Workflow Skill](../implementation-workflow/SKILL.md) — Coding the API after contract approval.
+- OpenAPI Specification: https://spec.openapis.org/oas/v3.1.0
+- Pact contract testing: https://docs.pact.io/

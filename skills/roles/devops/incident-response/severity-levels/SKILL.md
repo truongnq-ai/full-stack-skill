@@ -81,3 +81,12 @@ Incident Severity triage is complete when:
 - [ ] The bug/incident is explicitly stamped with `SEV-\d`.
 - [ ] If SEV-1 or SEV-2, active personnel have been alerted via defined paging paths bypassing email (e.g., SMS/Phone call).
 - [ ] Stakeholders understand *why* the severity was chosen based on the objective matrix (No emotional arguments).
+
+## Tools
+- Jira Service Management
+- Zendesk
+- PagerDuty
+
+## References
+- [Atlassian Incident Severity Levels](https://www.atlassian.com/incident-management/kpis/severity-levels)
+- [PagerDuty Severity Levels](https://support.pagerduty.com/docs/incident-priority)

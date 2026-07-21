@@ -86,3 +86,13 @@ Log Aggregation is functionally sound when:
 - [ ] All production logs are emitted as strictly parsed JSON.
 - [ ] A single `trace_id` can be searched in the SIEM tool to view the entire journey across 3 different microservices.
 - [ ] Passwords and API keys do not exist in the centralized log search interface.
+
+## Tools
+- Elasticsearch, Logstash, Kibana (ELK)
+- Fluentd
+- Loki
+- Datadog Log Management
+
+## References
+- [12-Factor App - Logs](https://12factor.net/logs)
+- [Fluentd Best Practices](https://docs.fluentd.org/deployment/best-practices)
