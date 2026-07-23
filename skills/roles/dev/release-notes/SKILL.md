@@ -8,6 +8,9 @@ metadata:
     priority: low
     confidence: 0.9
     keywords: [release notes, write changelog, document release, what changed]
+    file_patterns: ["CHANGELOG.md", "RELEASE_NOTES.md", "**/releases/**"]
+    context: ["user asks to write release notes", "user prepares a release", "user asks what changed in a version"]
+    negative: ["user asks about deployment process", "user asks about git tagging"]
 ---
 
 # 📝 Release Notes & Changelogs
@@ -20,11 +23,9 @@ metadata:
 
 ## 🚫 Anti-Patterns
 
-| ID | Anti-Pattern | Why It's Dangerous |
-|----|---|---|
-| **P0** | **The Git Log Dump** — Copy-pasting raw commit messages as release notes. | Users can't understand technical jargon; notes are useless. |
-| **P1** | **The Undersell** — A 400% speed improvement described as "Backend improvements." | Stakeholders don't realize the value delivered. |
-| **P1** | **Over-promising** — Documenting a 1% feature flag dark-launch as "Released." | Users expect functionality that doesn't exist for them. |
+- **The Git Log Dump**: Copy/pasting raw git commit messages into the release notes (`fix: off-by-one error in util`, `chore: bump webpack`). The user has no idea what that means.
+- **The Undersell**: Fixing a massive 5-year-old architectural bottleneck that speeds up the app by 400%, and writing: "Backend improvements."
+- **Over-promising**: Documenting a feature as "Released" when it is currently hidden behind a 1% Feature Flag dark-launch.
 
 ---
 
@@ -32,15 +33,6 @@ metadata:
 
 1. The project's merged PRs or Jira ticket scope.
 2. Standard `KeepAChangelog` format.
-
-### Required Tools
-
-| Tool | Purpose |
-|------|--------|
-| `call_mcp_tool` → `github/list_commits` | Fetch merged commits for the release period. |
-| `call_mcp_tool` → `github/list_pull_requests` | List merged PRs with descriptions. |
-| `write_to_file` | Generate `CHANGELOG.md` or release notes artifact. |
-| `view_file` | Read PR descriptions for user-facing context. |
 
 ---
 
@@ -69,6 +61,18 @@ Translate Developer-speak into User-speak.
 ### Step 4 — Visuals Win
 If it is a major UI enhancement, the Release Note should include a GIF, a before/after screenshot, or a link to a 60-second Loom video demonstrating the new behavior.
 
+> **⏸️ Checkpoint**:
+> "Release notes đã draft xong với [N] features, [M] fixes, [K] breaking changes. Bạn có muốn review trước khi publish không? (Y/N)"
+
+---
+
+## 🛠️ Tooling & Execution
+
+- **Gather Changes**: Use `call_mcp_tool` → `github/list_commits` to list commits since last release.
+- **Read PRs**: Use `call_mcp_tool` → `github/list_pull_requests` to find merged PRs.
+- **Write Notes**: Use `write_to_file` to create/update `CHANGELOG.md`.
+- **Screenshots**: Use `browser_subagent` to capture UI changes for visual evidence.
+
 ---
 
 ## ⚠️ Error Handling (Fallback)
@@ -86,14 +90,10 @@ Release notes are complete when:
 - [ ] They are segmented into standard categories (Features, Fixes, Breaking).
 - [ ] Technical jargon is translated into explicit user or business value.
 - [ ] Breaking changes (especially for APIs) contain explicit migration instructions for the consumer.
-- [ ] Visual evidence (screenshots/GIFs) included for UI changes.
-- [ ] Audience-appropriate tone (internal vs external).
 
 ---
 
-## 📚 References
+## 📚 Cross-References
 
-- [PR Checklist Skill](../pr-checklist/SKILL.md) — Ensuring PRs have human-readable descriptions.
-- [Feature Flag Practice](../feature-flag-practice/SKILL.md) — Clarifying dark-launched vs released features.
-- Keep a Changelog: https://keepachangelog.com/
-- Conventional Commits: https://www.conventionalcommits.org/
+- `roles/dev/pr-checklist/SKILL.md` — PR titles feed into release notes generation.
+- `roles/dev/api-contract/SKILL.md` — Breaking API changes must be documented with migration guides.

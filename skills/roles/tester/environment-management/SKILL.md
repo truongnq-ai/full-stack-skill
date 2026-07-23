@@ -3,11 +3,12 @@ name: QA Environment Management
 description: Establishes safe protocols for seeding, cleansing, and isolating data in staging/QA environments to prevent testing collisions.
 category: roles/qa
 metadata:
-  labels: [qa, environment, test-data, devops-lite, staging]
+  labels: [qa, environment, test-data, devops-lite, staging, tester]
   triggers:
     priority: medium
-    confidence: 0.8
-    keywords: [refresh env, seed db, clear data, staging setup]
+    confidence: 0.85
+    keywords: [refresh env, seed db, clear data, staging setup, reset env]
+    context: ["user asks to reset the testing database", "user asks to seed data"]
 ---
 
 # 🌍 QA Environment Management
@@ -29,9 +30,10 @@ metadata:
 
 ## 🛠 Prerequisites & Tooling
 
-1. `curl`, `npm`, or `docker` access to trigger database seeding.
-2. Distinct visibility of current Environment Variables (`NODE_ENV=staging` or `APP_ENV=qa`).
-3. Explicit confirmation that the target DB hostname does NOT contain `prod`, `live`, or `primary`.
+1. Distinct visibility of current Environment Variables (`NODE_ENV=staging` or `APP_ENV=qa`).
+2. Explicit confirmation that the target DB hostname does NOT contain `prod`, `live`, or `primary`.
+
+**Required Tools**: Use `run_command` with `npm`, `docker`, or `curl` access to trigger database dropping, migrating, and seeding. Use `grep_search` to verify `.env` safety.
 
 ---
 
@@ -69,6 +71,9 @@ Ensure the seed script includes standard QA profiles:
 Make a simple `curl` to the health-check endpoint or execute a simple query to assert the DB has 10 users populated.
 Announce Environment Unlock. Tests may now proceed in parallel safely.
 
+> **⏸️ Checkpoint**: 
+> "Môi trường Staging đã được Reset và Seed data thành công. Các tester có thể bắt đầu chạy Test Suite. Bạn có muốn tôi chạy bộ Regression Test tự động ngay không? (Y/N)"
+
 ---
 
 ## ⚠️ Error Handling (Fallback)
@@ -88,3 +93,10 @@ Environment reset is verified when:
 - [ ] Database drop, migration, and seeding processes exited with code `0`.
 - [ ] Core seeded user accounts are proven to exist via a basic data query.
 - [ ] Team broadcast was sent out indicating "Environment Fresh and Ready".
+
+---
+
+## 📚 Cross-References
+
+- **Test Data Management**: `roles/tester/test-data-management/SKILL.md` (How to define the seed content)
+- **QA Release Readiness**: `roles/tester/handover-to-devops/SKILL.md` (Often requires an env reset first)

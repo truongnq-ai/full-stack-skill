@@ -81,4 +81,4 @@ Stacks: `html-tailwind`, `react`, `nextjs`, `vue`, `svelte`, `swiftui`, `react-n
 
 > **⏸️ Checkpoint**: Xin phép user trước khi hoàn tất.
 
-> **Required Skill**: [design-uiux](file:///D:/GitHub/skill/full-stack-skill/skills/roles/dev/design-uiux/SKILL.md)
+> **Required Skill**: `skills/common/architecture-diagramming/SKILL.md`

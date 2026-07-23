@@ -3,11 +3,12 @@ name: Test Data Management (TDM)
 description: Securely provisions, masks, and manages the lifecycle of test data in lower environments to prevent PII leakage and test collision.
 category: roles/qa
 metadata:
-  labels: [qa, test-data, pii, masking, security, provisioning]
+  labels: [qa, test-data, pii, masking, security, provisioning, tester]
   triggers:
     priority: critical
-    confidence: 0.9
-    keywords: [test data, mock data, tdm, pii, mask data, seed db]
+    confidence: 0.95
+    keywords: [test data, mock data, tdm, pii, mask data, seed db, manage data]
+    context: ["user asks to create mock data", "user asks for test data for a feature"]
 ---
 
 # 🗄️ Test Data Management (TDM)
@@ -30,6 +31,8 @@ metadata:
 
 1. Familiarity with the Data Privacy Policies (e.g., GDPR/CCPA).
 2. Access to the environment's Database Seeding scripts (e.g., `npm run db:seed`).
+
+**Required Tools**: Use `run_command` to invoke seed scripts, or `write_to_file` to create mock JSON files if no DB seed script exists.
 
 ---
 
@@ -57,6 +60,9 @@ Log into the application or query the database directly to confirm the required 
 Write a small markdown summary if handing off to a manual tester:
 `Testing Accounts available: admin_test@app.com, blocked_test@app.com`.
 
+> **⏸️ Checkpoint**: 
+> "Test Data cho kịch bản này đã được chuẩn bị xong. Bạn có muốn tôi ghi lại credentials vào file `task.md` hoặc truyền cho Automation Script không? (Y/N)"
+
 ---
 
 ## ⚠️ Error Handling (Fallback)
@@ -75,3 +81,10 @@ A Data Management request is finished when:
 - [ ] All required data personas exist and are accessible.
 - [ ] Automated tests securely create/destroy their own isolated data without polluting the master pool.
 - [ ] No real-world PII (Personally Identifiable Information) exists unmasked in the target environment.
+
+---
+
+## 📚 Cross-References
+
+- **Environment Management**: `roles/tester/environment-management/SKILL.md` (To setup the DB before seeding)
+- **Automation E2E**: `roles/tester/automation-e2e/SKILL.md` (To actually use the data)

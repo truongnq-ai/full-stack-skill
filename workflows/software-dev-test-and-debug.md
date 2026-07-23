@@ -9,7 +9,7 @@ un_command (debugger/test runner), log viewing tools.
 
 ## Step 1 - Bug Reproduction and Isolation
 Run the application locally or view test logs to isolate the error.
-- **Skills**: skills/roles/dev/debugging-workflow/SKILL.md
+- **Skills**: skills/roles/dev/production-debugging/SKILL.md
 - **Fallback**: If the bug cannot be reproduced, ask the user for exact input data or environment state.
 
 ## Step 2 - Write Failing Test
@@ -27,4 +27,4 @@ Run the newly added test and the full test suite.
 ## Step 5 - Finalize
 - **Exit Criteria**: Bug is fixed, regression test is merged, and pipeline is green.
 
-> **Required Skill**: [test-and-debug](file:///D:/GitHub/skill/full-stack-skill/skills/roles/dev/test-and-debug/SKILL.md)
+> **Required Skill**: `skills/roles/dev/production-debugging/SKILL.md`

@@ -40,4 +40,4 @@ Phân tích nguyên nhân gốc rễ (Root Cause) của một lỗi báo cáo t�
 
 > **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
 
-> **Required Skill**: [investigate-ticket](file:///D:/GitHub/skill/full-stack-skill/skills/roles/support/investigate-ticket/SKILL.md)
+> **Required Skill**: `skills/roles/support/investigate-ticket/SKILL.md`

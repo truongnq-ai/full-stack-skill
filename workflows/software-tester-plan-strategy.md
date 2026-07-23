@@ -36,4 +36,4 @@ Xây dựng kế hoạch kiểm thử (Test Plan) chi tiết dựa trên PRD và
 
 > **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
 
-> **Required Skill**: [plan-strategy](file:///D:/GitHub/skill/full-stack-skill/skills/roles/tester/plan-strategy/SKILL.md)
+> **Required Skill**: `skills/roles/tester/test-strategy/SKILL.md`

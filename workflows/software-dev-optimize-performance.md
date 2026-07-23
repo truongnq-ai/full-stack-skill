@@ -8,7 +8,7 @@ description: Dev audits and optimizes web/app performance — measures baseline,
 >
 > **Out of scope**: Does not fix functional bugs — use `software-dev-fix-bug`. Does not refactor architecture — use `software-dev-audit-codebase`.
 >
-> **Activates skills**: `skills/roles/dev/performance-guardrails/SKILL.md`, `skills/common/performance-engineering/SKILL.md`
+> **Activates skills**: `skills/roles/dev/performance-engineering/SKILL.md`, `skills/common/performance-engineering/SKILL.md`
 
 ---
 
@@ -101,4 +101,4 @@ Save to `docs/performance-report.md`:
 - [ ] Delta verified (Lighthouse ≥95, LCP <2.5s)
 - [ ] `docs/performance-report.md` saved
 
-> **Required Skill**: [optimize-performance](file:///D:/GitHub/skill/full-stack-skill/skills/roles/dev/optimize-performance/SKILL.md)
+> **Required Skill**: `skills/roles/dev/performance-engineering/SKILL.md`

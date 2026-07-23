@@ -24,4 +24,4 @@ Monitor error rates immediately post-deployment.
 ## Step 4 - Output
 - **Exit Criteria**: Application is successfully deployed to production, traffic is routed correctly, and health checks pass.
 
-> **Required Skill**: [deploy-and-release](file:///D:/GitHub/skill/full-stack-skill/skills/roles/devops/deploy-and-release/SKILL.md)
+> **Required Skill**: `skills/roles/devops/deploy-and-release/SKILL.md`

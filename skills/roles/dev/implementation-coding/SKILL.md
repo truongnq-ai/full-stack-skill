@@ -1,140 +1,134 @@
 ---
-name: dev-implementation-coding
-description: >-
-  Senior Developer implementation skill using OpenHands CodeAct methodology —
-  write code, run it, read logs, and self-correct iteratively. Covers context
-  gathering, precise code injection, build verification, and task tracking.
+name: Implementation & Coding (CodeAct)
+description: The autonomous agent execution model for writing, testing, and self-correcting code — inspired by the CodeAct methodology of iterative Build-Run-Fix loops.
+category: roles/dev
 metadata:
-  labels: [dev, coding, implementation, codeact, openhands, feature]
-  priority: P0
-  version: 2.0
+  labels: [dev, coding, implementation, codeact, execution, build]
   triggers:
+    priority: critical
     confidence: 0.95
-    keywords:
-      - write code
-      - implement feature
-      - fix bug
-      - refactor
-      - execute task
-      - build feature
-      - code this
-    file_patterns: ["src/**/*", "task.md"]
-    context:
-      - user asks to build or implement a feature
-      - user assigns a development task
-    negative:
-      - user asks to write PRD or requirements
-      - user asks for system design diagrams
-      - user asks to review code (use code-review-etiquette)
+    keywords: [write code, implement feature, fix bug, refactor, execute task, code this, build this]
+    file_patterns: ["src/**/*", "task.md", "lib/**/*", "app/**/*"]
+    context: ["user asks to build the app", "user assigns a dev task", "user asks to code a feature"]
+    negative: ["user asks to write PRD", "user asks for system design diagrams", "user asks for architecture review"]
 ---
 
-# 💻 Developer — Implementation & Coding (CodeAct)
+# 💻 Implementation & Coding (CodeAct Agent)
 
-> **Use this skill when**: assigned a coding task — implement a feature,
-> fix a bug, refactor code — using the autonomous CodeAct methodology
-> (write → run → read logs → self-correct).
+> **Use this skill when**: you are assigned a coding task and must write, execute, and verify code autonomously — iterating through Build-Run-Fix loops until the feature works. Trigger: `/dev-code`.
 >
-> **Out of scope**: Writing PRDs or requirements. System design diagrams.
-> Code review (use `code-review-etiquette`).
-
----
-
-## 🎯 Role & Persona
-
-You are a **Senior Full-Stack Engineer / CodeAct Agent**.
-Your job is NOT just to dump a block of code. Your job is to implement,
-test, and verify.
-**Golden Rule**: Never assume code works on the first try. Always run a
-command to verify syntax, compilation, or tests.
+> **Out of scope**: The human developer's daily workflow and git hygiene (`implementation-workflow/SKILL.md`). This skill governs *how the AI agent writes and verifies code*, not the surrounding process (branching, PR creation, handover).
 
 ---
 
 ## 🚫 Anti-Patterns
 
-| ID | Anti-Pattern | Why It's Dangerous |
-|----|---|---|
-| **P0** | **Fire and Forget** — Writing code and telling the user "Please run this to see if it works." | Agent must verify its own output; shifts burden to user. |
-| **P0** | **Overwriting Files Blindly** — Using `write_to_file` to rewrite an entire file to change one line. | Destroys existing code, comments, and formatting. |
-| **P1** | **Ignoring Logs** — Running a command that fails and not reading stderr. | Errors compound; debugging becomes impossible. |
-| **P1** | **No Context Gathering** — Writing code without reading the surrounding codebase first. | Code doesn't match existing patterns, conventions, or imports. |
-| **P2** | **Monolithic Commits** — Implementing everything in one giant diff. | Impossible to review, revert, or bisect. |
+- **Fire and Forget**: Writing a block of code and telling the user "Please run this to see if it works." YOU must try to verify it by running the build/test command.
+- **Overwriting Files Blindly**: Using `write_to_file` to replace an entire 500-line file just to change 3 lines. Always use `replace_file_content` or `multi_replace_file_content` for surgical edits.
+- **Ignoring Logs**: A command fails, and the agent immediately asks the user for help instead of reading the stderr output, diagnosing the root cause, and retrying.
+- **Coding Without Context**: Writing a new utility function without first checking if an identical function already exists in `src/utils/` or `src/shared/`. Always read before writing.
+- **The Assumption Loop**: Assuming a file exists, a package is installed, or a type is defined without verifying. Use `view_file` or `grep_search` to confirm before coding against it.
 
 ---
 
-## 🛠️ Tools & Execution
+## 🛠 Prerequisites & Tooling
 
-### Required Tools
+1. Access to the codebase via `view_file`, `grep_search`, `list_dir`.
+2. Ability to run build/test commands via `run_command`.
+3. A `task.md` or explicit user instruction defining what to implement.
 
-| Tool | Purpose |
-|------|---------|
-| `view_file` | Read existing code to understand patterns and context. |
-| `grep_search` | Find related functions, imports, and usage patterns. |
-| `replace_file_content` | Inject code precisely into existing files (single edit). |
-| `multi_replace_file_content` | Make multiple non-contiguous edits in the same file. |
-| `write_to_file` | Create new files only (never for editing existing files). |
-| `run_command` | Execute builds, tests, linters to verify code. |
-| `list_dir` | Understand project structure before creating new files. |
+---
 
-### Execution Workflow
+## 🔄 Execution Workflow
 
-#### Step 1 — Context Gathering
-- Use `view_file` and `grep_search` to understand the surrounding codebase.
-- Read existing patterns: naming conventions, imports, file structure.
-- Do NOT start coding without understanding the context.
+### Step 1 — Context Gathering (Read Before Write)
 
-#### Step 2 — Code Implementation (CodeAct Loop)
+Before writing a single line:
+1. Use `view_file` to read surrounding files (the module you're modifying, its imports, its tests).
+2. Use `grep_search` to check for existing patterns (e.g., "How does this codebase handle errors? What ORM patterns are used?").
+3. Use `list_dir` to understand the project structure.
+
+**Rule**: Spend 30% of effort on reading, 70% on writing. Never code blind.
+
+### Step 2 — Implement with Surgical Precision
+
+- Use `replace_file_content` for single-block edits.
+- Use `multi_replace_file_content` for multiple non-contiguous edits in the same file.
+- Use `write_to_file` only for brand-new files (ensure the directory exists).
+- Follow existing code patterns — naming conventions, import styles, error handling patterns already established in the codebase.
+
+### Step 3 — The Self-Correction Loop (Build-Run-Fix)
+
+After writing code, immediately verify:
+1. **Build**: Run `run_command` with the project's build step (`npm run build`, `tsc --noEmit`, `go build ./...`).
+2. **Read Output**: If errors appear, read the stderr/stdout carefully.
+3. **Fix**: Apply corrections based on the error messages.
+4. **Retry**: Repeat up to 3 times. If stuck after 3 attempts, explain the issue to the user with the exact error log.
+
 ```
-REPEAT:
-  1. Write/modify code using precise replace tools.
-  2. Run build/test command via run_command.
-  3. Read stdout/stderr.
-  4. If errors: analyze → fix → go to step 1.
-  5. If success: proceed to next piece.
-UNTIL: feature is complete and all tests pass.
+Code → Build → Error? → Read log → Fix → Build → Error? → Read log → Fix → Build → ✅ Pass
+                                                                                    ↓
+                                                                            (3 failures) → Escalate to user
 ```
 
-#### Step 3 — Self-Correction (Max 3 Retries)
-- If build/test fails, read the error log immediately.
-- Analyze root cause and apply fix.
-- Retry up to 3 times before escalating to user.
+### Step 4 — Run Tests
 
-#### Step 4 — Task Tracking
-- Update `task.md` marking completed items as `[x]`.
-- Leave checkpoint for user review.
+After the build passes:
+1. Run the test suite: `run_command` → `npm test` / `pytest` / `go test ./...`
+2. If tests fail, read the assertion errors and fix the code.
+3. If a test file doesn't exist for the new code, create one following `unit-test-best-practices/SKILL.md`.
+
+### Step 5 — Update Task Tracker
+
+If working from a `task.md`:
+- Mark the current task as `[x]` completed.
+- Add any follow-up items discovered during implementation.
 
 > **⏸️ Checkpoint**:
-> "Tính năng đã được code xong. Build passes, [N] tests green.
-> Bạn có muốn tôi tiếp tục triển khai unit test không? (Y/N)"
+> "Tính năng đã được code xong. Build passed, [N] tests passed. Bạn có muốn tôi tiếp tục với unit tests / integration / PR preparation không? (Y/N)"
 
 ---
 
-## ⚠️ Error Handling
+## 🛠️ Tooling & Execution
+
+| Action | Tool | Example |
+|--------|------|---------|
+| Read code | `view_file` | `view_file src/services/UserService.ts` |
+| Search patterns | `grep_search` | `grep_search "createUser" src/` |
+| Edit existing file | `replace_file_content` | Single block replacement |
+| Edit multiple sections | `multi_replace_file_content` | Multiple non-contiguous edits |
+| Create new file | `write_to_file` | New module or test file |
+| Build/compile | `run_command` | `npm run build`, `tsc --noEmit` |
+| Run tests | `run_command` | `npm test`, `pytest -v` |
+| Check structure | `list_dir` | Understand project layout |
+
+---
+
+## ⚠️ Error Handling (Fallback)
 
 | Scenario | Condition | Fallback Action |
 |----------|-----------|-----------------|
-| Build fails 3 times | Same error persists after 3 fix attempts. | STOP. Present the error log to the user with analysis. Ask for guidance. |
-| Missing dependency | Import or package not found. | Check `package.json`/`requirements.txt`. Add the dependency if it's standard. Ask user if it's an unusual package. |
-| Conflicting patterns | Existing code uses two different patterns for the same thing. | Follow the most recent pattern. Note the inconsistency for future refactoring. |
-| Test environment missing | No test framework configured. | Set up a minimal test configuration first. Then proceed with implementation. |
+| Build Failure Loop | Code fails to compile after 3 fix attempts | Stop trying. Present the exact error log to the user with your analysis of the root cause. Ask for guidance. Do not keep guessing. |
+| Missing Dependencies | `import` fails because a package is not installed | Check `package.json` / `requirements.txt` first. If the dependency is genuinely missing, ask the user before running `npm install` — never silently install packages. |
+| Type Errors in Unfamiliar Codebase | TypeScript strict mode produces complex generic errors | Use `grep_search` to find how similar types are used elsewhere in the codebase. Follow the existing pattern rather than inventing a new one. |
+| Conflicting Patterns | The codebase has two different patterns for the same thing (e.g., callbacks and promises mixed) | Follow the NEWER pattern. If unclear which is newer, ask the user which pattern to follow. |
 
 ---
 
-## ✅ Verification Checklist
+## ✅ Done Criteria / Verification
 
-- [ ] Existing code read and understood before modification.
-- [ ] Precise replace tools used (not full file rewrites).
-- [ ] Build/compilation passes after changes.
-- [ ] Tests run and pass (or new tests written).
-- [ ] Error logs read and addressed (no ignored failures).
-- [ ] `task.md` updated reflecting completed work.
-- [ ] Code follows existing project conventions and patterns.
+A coding task is complete when:
+
+- [ ] Existing code was read and understood before modifications were made.
+- [ ] Surgical edit tools were used (not full file overwrites).
+- [ ] The build step passes with zero errors.
+- [ ] Relevant tests pass (or new tests were created).
+- [ ] The task is marked `[x]` in `task.md` if applicable.
 
 ---
 
-## 📚 References
+## 📚 Cross-References
 
-- [Implementation Workflow Skill](../implementation-workflow/SKILL.md) — The developer daily loop from ticket to merge.
-- [Unit Test Best Practices](../unit-test-best-practices/SKILL.md) — Writing tests for new features.
-- [PR Checklist Skill](../pr-checklist/SKILL.md) — Preparing code for review.
-- [Performance Guardrails Skill](../performance-guardrails/SKILL.md) — Writing efficient code from the start.
-- OpenHands CodeAct: https://docs.all-hands.dev/
+- `roles/dev/implementation-workflow/SKILL.md` — The human developer's daily git/branch workflow surrounding this coding activity.
+- `roles/dev/unit-test-best-practices/SKILL.md` — How to write the tests that verify this code.
+- `roles/dev/pr-checklist/SKILL.md` — What to do after coding is complete (self-review, PR prep).

@@ -3,11 +3,12 @@ name: UAT Process Guidelines
 description: Orchestrates the User Acceptance Testing phase, translating deep technical workflows into business-friendly, scenario-based validations for pure non-technical Stakeholders.
 category: roles/qa
 metadata:
-  labels: [qa, uat, user-acceptance, stakeholder-signoff, post-qa]
+  labels: [qa, uat, user-acceptance, stakeholder-signoff, post-qa, tester]
   triggers:
     priority: medium
-    confidence: 0.9
-    keywords: [uat, user acceptance test, client testing, stakeholder approval]
+    confidence: 0.95
+    keywords: [uat, user acceptance test, client testing, stakeholder approval, run uat]
+    context: ["user asks to prepare for UAT", "user asks for stakeholder sign-off"]
 ---
 
 # 🧑‍💼 UAT Process Guidelines (User Acceptance)
@@ -28,9 +29,11 @@ metadata:
 
 ## 🛠 Prerequisites & Tooling
 
-1. A locked Staging Environment populated with safe, mocked UAT Demo Data (`test-data-management/SKILL.md`).
+1. A locked Staging Environment populated with safe, mocked UAT Demo Data (`roles/tester/test-data-management/SKILL.md`).
 2. The initial PRD (Product Requirement Document) or Business Brief.
-3. Formally executed `roles/qa/qa-gates/SKILL.md` (QA MUST be green before UAT starts).
+3. Formally executed `roles/tester/qa-gates/SKILL.md` (QA MUST be green before UAT starts).
+
+**Required Tools**: Use `write_to_file` to generate the `UAT-Playbook.md` artifact.
 
 ---
 
@@ -65,6 +68,9 @@ Triage strictly:
 ### Step 5 — Formal Stakeholder Sign-Off
 Obtain the literal written approval from the Sponsor ("Approved to deploy"). Log this into the Release Readiness certificate.
 
+> **⏸️ Checkpoint**: 
+> "Bản tài liệu UAT Playbook cho các Stakeholder đã hoàn tất. Bạn có muốn tôi ghi file này thành `UAT-Playbook-[Version].md` để gửi cho khách hàng không? (Y/N)"
+
 ---
 
 ## ⚠️ Error Handling (Fallback)
@@ -84,3 +90,10 @@ UAT Phase is closed when:
 - [ ] At least one designated stakeholder completes the Playbook.
 - [ ] All resulting feedback is strictly triaged into `Defect` vs `Change Request`.
 - [ ] Explicit final approval is documented in the tracker.
+
+---
+
+## 📚 Cross-References
+
+- **Test Data Management**: `roles/tester/test-data-management/SKILL.md` (To seed the UAT environment)
+- **QA Gates**: `roles/tester/qa-gates/SKILL.md` (Must pass QA exit gate before UAT starts)

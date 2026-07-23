@@ -8,6 +8,9 @@ metadata:
     priority: high
     confidence: 0.95
     keywords: [feature flag, toggle, dark launch, feature split, split testing]
+    file_patterns: ["**/feature*.*", "**/toggle*.*", "**/flags/**"]
+    context: ["user asks about trunk-based development", "user wants to hide unfinished feature", "user asks about A/B testing"]
+    negative: ["user asks about DevOps flag infrastructure setup", "user asks about deployment strategy"]
 ---
 
 # ⛳ Feature Flag Practice
@@ -20,11 +23,9 @@ metadata:
 
 ## 🚫 Anti-Patterns
 
-| ID | Anti-Pattern | Why It's Dangerous |
-|----|---|---|
-| **P0** | **Flag Hoarding** — Leaving a flag in production 2 years after 100% rollout. | Dead code masking as tech debt; state space explodes. |
-| **P1** | **Nested Flags** — `if (flagA && flagB && !flagC)`. | State space explodes; impossible to QA all combinations. |
-| **P1** | **The Long-Lived Branch** — Keeping `feature/new-checkout` alive for 3 weeks. | 500 merge conflicts when you finally merge. |
+- **The Long-Lived Branch**: Refusing to use Flags, and keeping `feature/new-checkout` alive for 3 weeks. When you finally try to merge it, you spend 4 days fighting 500 merge conflicts.
+- **Nested Flags**: Checking `if (flagA && flagB && !flagC)`. State space explodes, making the code impossible to QA.
+- **Flag Hoarding**: Leaving a feature flag in the codebase 2 years after the feature was released to 100% of users. It is now dead code masking as technical debt.
 
 ---
 
@@ -32,16 +33,6 @@ metadata:
 
 1. A Feature Flag evaluation SDK (LaunchDarkly, Split.io, or even a simple `process.env`).
 2. Trunk-Based Development mindset.
-
-### Required Tools
-
-| Tool | Purpose |
-|------|--------|
-| `write_to_file` | Create FeatureService abstraction wrapper. |
-| `view_file` | Read existing flag usage patterns. |
-| `grep_search` | Find all instances of a specific flag to plan cleanup. |
-| `run_command` | Verify builds work with flag toggled ON and OFF. |
-| `replace_file_content` | Inject flag checks into existing code paths. |
 
 ---
 
@@ -75,6 +66,18 @@ The moment you create a Pull Request introducing a new Feature Flag `enable-v2-a
 3. Put it in the sprint backlog for exactly 2 weeks after the planned 100% rollout date.
 *If you skip this step, the codebase will rot.*
 
+> **⏸️ Checkpoint**:
+> "Feature flag `[flag-name]` đã được implement với abstraction layer + default false. Cleanup ticket đã tạo. Bạn có muốn tôi tạo PR không? (Y/N)"
+
+---
+
+## 🛠️ Tooling & Execution
+
+- **Create Flag Service**: Use `write_to_file` to create `FeatureService.ts` wrapper.
+- **Search Existing Flags**: Use `grep_search` to find all existing feature flag usages in the codebase.
+- **Verify Default**: Use `run_command` → `npm test` to verify the flag defaults to `false`.
+- **Audit Stale Flags**: Use `grep_search` for flag names and cross-reference with the feature flag dashboard.
+
 ---
 
 ## ⚠️ Error Handling (Fallback)
@@ -92,15 +95,11 @@ A Feature Flag implementation is considered mature when:
 - [ ] Code is merged to `main` daily without breaking production.
 - [ ] A dedicated cleanup ticket is already scheduled in the project management tracker.
 - [ ] The flag SDK is abstracted behind a domain-specific interface, not littered as raw strings.
-- [ ] Default fallback is `false` (safe/legacy state).
-- [ ] No nested flags (max 1 flag per code path).
 
 ---
 
-## 📚 References
+## 📚 Cross-References
 
-- [Release Notes Skill](../release-notes/SKILL.md) — Clarifying dark-launched vs released features.
-- [Implementation Workflow Skill](../implementation-workflow/SKILL.md) — Trunk-based development with flags.
-- [Refactor & Tech Debt Skill](../refactor-techdebt/SKILL.md) — Flag cleanup as tech debt.
-- Martin Fowler on Feature Toggles: https://martinfowler.com/articles/feature-toggles.html
-- LaunchDarkly best practices: https://launchdarkly.com/blog/best-practices-for-feature-flags/
+- `roles/dev/implementation-workflow/SKILL.md` — Feature flags enable daily merges in the implementation loop.
+- `roles/dev/refactor-techdebt/SKILL.md` — Flag cleanup is tech debt management.
+- `roles/dev/handover-to-qa/SKILL.md` — Notify QA which flags are active on the test environment.

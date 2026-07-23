@@ -3,11 +3,12 @@ name: Flake Control & Quarantine
 description: Processes for identifying, quarantining, and resolving flaky automated E2E tests to restore CI pipeline trust.
 category: roles/qa
 metadata:
-  labels: [qa, automation, flaky-tests, ci-cd, reliability]
+  labels: [qa, automation, flaky-tests, ci-cd, reliability, tester]
   triggers:
     priority: high
-    confidence: 0.9
-    keywords: [flaky test, test fails sometimes, quarantine, fix automation]
+    confidence: 0.95
+    keywords: [flaky test, test fails sometimes, quarantine, fix automation, flake]
+    context: ["user asks to investigate a test that fails randomly", "user asks to quarantine a test"]
 ---
 
 # 🍂 Flake Control & Quarantine
@@ -30,7 +31,9 @@ metadata:
 
 1. The exact Test ID or test name that fluctuated.
 2. CI/CD logs (e.g., GitHub Action traces, Playwright video artifacts).
-3. Access to `roles/qa/bug-reporting-standard/SKILL.md` to track the technical debt.
+3. Access to `roles/tester/bug-reporting-standard/SKILL.md` to track the technical debt.
+
+**Required Tools**: Use `run_command` with stress-testing flags (`--repeat-each 20`) to replicate the flake locally. Use `write_to_file` to edit the test script to add quarantine tags.
 
 ---
 
@@ -53,9 +56,12 @@ Investigate the Flake:
 - **Network Latency**: Did an API call take 3000ms but the test timeout was brutally set to 2000ms? (Fix: Implement explicit `waitForResponse`).
 
 ### Step 4 — Refactoring & Un-Quarantine
-Rewrite the test using dynamic assertions (refer to `roles/qa/automation-e2e/SKILL.md`).
+Rewrite the test using dynamic assertions (refer to `roles/tester/automation-e2e/SKILL.md`).
 Re-run the stress test (`--repeat-each 20`).
 If it passes 20/20, remove the `.skip()` tag, commit the fix, and close the Flake Bug ticket.
+
+> **⏸️ Checkpoint**: 
+> "Test bị Flake đã được cô lập (Quarantine) và đưa vào báo cáo Bug. Bạn có muốn tôi tiến hành Root Cause Analysis trên Test Case này để tìm ra nguyên nhân không ổn định không? (Y/N)"
 
 ---
 
@@ -75,3 +81,10 @@ Flake Control is complete when:
 - [ ] The flaky test is quarantined (skipped) to unblock the main branch CI.
 - [ ] A formal Tech Debt `BUG-XXX` ticket is issued explicitly stating the Flake behavior.
 - [ ] The test is stress-tested post-refactor (minimum 20 iterations pass cleanly) before re-entering active execution rotation.
+
+---
+
+## 📚 Cross-References
+
+- **Automation E2E**: `roles/tester/automation-e2e/SKILL.md` (To rewrite the test properly)
+- **Root Cause Analysis**: `roles/tester/rca-lite/SKILL.md` (To figure out why it flaked)

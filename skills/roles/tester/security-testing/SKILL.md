@@ -3,11 +3,12 @@ name: Web Security Testing Basics
 description: Baseline checks for common web vulnerabilities (XSS, SQLi, Auth bypass) during standard feature regression.
 category: roles/qa
 metadata:
-  labels: [qa, security, penetration-testing, owasp]
+  labels: [qa, security, penetration-testing, owasp, tester]
   triggers:
     priority: medium
-    confidence: 0.8
-    keywords: [security test, penetration, owasp, xss, sqli]
+    confidence: 0.85
+    keywords: [security test, penetration, owasp, xss, sqli, hack test]
+    context: ["user asks to check security", "user asks for basic vulnerability testing"]
 ---
 
 # 🕵️‍♀️ Web Security Testing Basics
@@ -30,6 +31,8 @@ metadata:
 
 1. Application UI and API documentation (e.g., Postman Collection).
 2. A basic proxy tool (e.g., Burp Suite Community or Chrome Network Tab) to intercept and manipulate requests.
+
+**Required Tools**: Use `run_command` with `curl` or Postman CLI to inject malicious payloads.
 
 ---
 
@@ -62,6 +65,9 @@ For any dashboard passing an ID in the API (`GET /api/receipts/102`):
 4. Forward the request.
 *Assertion*: The Backend MUST recalculate the price from the trusted database ID, completely ignoring the client-supplied price.
 
+> **⏸️ Checkpoint**: 
+> "Quét bảo mật cơ bản đã hoàn thành. Nếu có phát hiện lỗ hổng XSS/SQLi/IDOR, bạn có muốn tôi log lỗi này thành Bug Mức Độ Nghiêm Trọng Cao (Critical) không? (Y/N)"
+
 ---
 
 ## ⚠️ Error Handling (Fallback)
@@ -80,3 +86,10 @@ A basic security sweep is complete when:
 - [ ] All new text inputs have been explicitly tested against script injection tags.
 - [ ] At least one attempt was made to bypass Authorization (IDOR) on new endpoints.
 - [ ] Any successful exploits are immediately escalated as S1/Blocker bugs, halting the deployment gate.
+
+---
+
+## 📚 Cross-References
+
+- **API Testing**: `roles/tester/api-testing/SKILL.md` (For deep API-level injection)
+- **Bug Reporting Standard**: `roles/tester/bug-reporting-standard/SKILL.md` (To report any exploits found)

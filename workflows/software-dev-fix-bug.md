@@ -114,4 +114,4 @@ Save to `docs/debug/debug-[YYYY-MM-DD]-[slug].md`:
 - [ ] Tests pass (or regression test created)
 - [ ] `docs/debug/` report saved
 
-> **Required Skill**: [fix-bug](file:///D:/GitHub/skill/full-stack-skill/skills/roles/dev/fix-bug/SKILL.md)
+> **Required Skill**: `skills/roles/dev/production-debugging/SKILL.md`

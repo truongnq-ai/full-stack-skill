@@ -107,4 +107,4 @@ Generate health dashboard: 🟢/🟡/🔴 per dimension (delivery, debt, coverag
 
 > **⏸️ Checkpoint**: Xin phép user trước khi hoàn tất.
 
-> **Required Skill**: [report-standup](file:///D:/GitHub/skill/full-stack-skill/skills/roles/pm/report-standup/SKILL.md)
+> **Required Skill**: `skills/roles/pm/report-standup/SKILL.md`

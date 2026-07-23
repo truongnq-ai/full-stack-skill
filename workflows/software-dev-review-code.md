@@ -81,4 +81,4 @@ For each BLOCKER/MAJOR: _"Was there an active skill that should have prevented t
 
 > **⏸️ Checkpoint**: Xin phép user trước khi hoàn tất.
 
-> **Required Skill**: [review-code](file:///D:/GitHub/skill/full-stack-skill/skills/roles/dev/review-code/SKILL.md)
+> **Required Skill**: `skills/roles/dev/code-review-etiquette/SKILL.md`

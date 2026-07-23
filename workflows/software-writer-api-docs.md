@@ -24,4 +24,4 @@ description: Shell workflow cho software-writer-api-docs
 
 > **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
 
-> **Required Skill**: [api-docs](file:///D:/GitHub/skill/full-stack-skill/skills/roles/writer/api-docs/SKILL.md)
+> **Required Skill**: `skills/roles/writer/api-docs/SKILL.md`

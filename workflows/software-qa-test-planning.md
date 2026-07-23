@@ -8,12 +8,12 @@ description: "Plan testing, design Test Cases (Boundary, Decision Table...), pre
 
 ## Step 1 - Requirement Analysis for Testability
 Analyze requirements and ensure they are testable. Identify gaps.
-- **Skills**: skills/roles/tester/coverage-model/SKILL.md
+- **Skills**: skills/roles/tester/coverage-traceability/SKILL.md
 - **Fallback**: If requirements are untestable, escalate back to BA/Dev.
 
 ## Step 2 - Test Case Design
 Create test cases using formal design techniques.
-- **Skills**: skills/roles/tester/test-case-design/boundary-value/SKILL.md, skills/roles/tester/test-case-design/decision-table/SKILL.md, skills/roles/tester/test-case-design/equivalence-partition/SKILL.md
+- **Skills**: skills/roles/tester/test-case-design/SKILL.md, skills/roles/tester/test-case-design/SKILL.md, skills/roles/tester/test-case-design/SKILL.md
 
 ## Step 3 - Test Data and Environment Setup
 Provision test data in the lower environments.
@@ -25,4 +25,4 @@ Provision test data in the lower environments.
 ## Step 5 - Output
 - **Exit Criteria**: Test cases are designed and synced to Zephyr, test data is seeded, and environment is green.
 
-> **Required Skill**: [test-planning](file:///D:/GitHub/skill/full-stack-skill/skills/roles/qa/test-planning/SKILL.md)
+> **Required Skill**: `skills/roles/tester/test-plan-template/SKILL.md`

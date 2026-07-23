@@ -8,6 +8,9 @@ metadata:
     priority: medium
     confidence: 0.95
     keywords: [design review, architecture review, system design, technical spec]
+    file_patterns: ["docs/rfc/**", "docs/design/**", "**/spec/**"]
+    context: ["user submits a technical spec", "user asks for architecture review", "user proposes a new system design"]
+    negative: ["user asks for line-by-line code review", "user asks to implement code"]
 ---
 
 # 📐 Design Review Checklist
@@ -20,11 +23,9 @@ metadata:
 
 ## 🚫 Anti-Patterns
 
-| ID | Anti-Pattern | Why It's Dangerous |
-|----|---|---|
-| **P0** | **Coding Without a Design** — Skipping the spec for a 3-month project. | Misaligned architecture discovered at QA; costly rewrite. |
-| **P1** | **The Echo Chamber** — Only asking junior devs who can't challenge constraints. | Fundamental flaws go undetected until production. |
-| **P1** | **Buzzword Driven Development** — Kafka + Redis + K8s for a 5-user internal tool. | Over-engineered; maintenance cost dwarfs value. |
+- **Coding Without a Design**: Skipping the spec entirely for a 3-month project, resulting in a misaligned architecture that has to be rewritten entirely by QA phase.
+- **The Echo Chamber**: Reviewing your own architectural design or only asking Junior developers who lack the experience to challenge the fundamental constraints.
+- **Buzzword Driven Development**: Approving a design that uses Kafka, Redis, and Kubernetes for an internal tool that expects 5 users a day.
 
 ---
 
@@ -32,15 +33,6 @@ metadata:
 
 1. A written Technical Specification or System Design Document.
 2. Architecture Diagrams (C4 model, Entity-Relationship mapping, Sequence diagrams).
-
-### Required Tools
-
-| Tool | Purpose |
-|------|--------|
-| `view_file` | Read the Technical Spec and architecture documents. |
-| `grep_search` | Search codebase for existing patterns that the design should align with. |
-| `write_to_file` | Generate design review artifact with go/no-go decision. |
-| `ask_question` | Present design trade-offs to the team for decision. |
 
 ---
 
@@ -69,6 +61,18 @@ Review the boundaries.
 - How will the team know if this feature is broken in production? What Logs/Metrics are being emitted?
 - What is the step-by-step deployment plan? Can it be rolled back safely?
 
+> **⏸️ Checkpoint**:
+> "Design review hoàn tàt: [N] concerns, [M] approved sections. Bạn có muốn tôi document kết quả Go/No-Go không? (Y/N)"
+
+---
+
+## 🛠️ Tooling & Execution
+
+- **Read Spec**: Use `view_file` to read the submitted technical spec or RFC document.
+- **Diagram Analysis**: Use `view_file` on architecture diagrams (Mermaid, C4).
+- **Schema Check**: Use `call_mcp_tool` → `postgres/query` or `mysql/mysql_query` to verify existing schema if needed.
+- **Cross-Reference**: Use `grep_search` to find related API contracts or existing implementations.
+
 ---
 
 ## ⚠️ Error Handling (Fallback)
@@ -86,15 +90,12 @@ A Design Review is complete when:
 - [ ] All major scalability and security constraints have been challenged and documented.
 - [ ] Database schema choices and API contracts have been explicitly approved.
 - [ ] A formal "Go / No-Go" decision is recorded, unblocking development.
-- [ ] Observability and rollback plan reviewed.
-- [ ] PII/compliance implications assessed.
 
 ---
 
-## 📚 References
+## 📚 Cross-References
 
-- [API Contract Skill](../api-contract/SKILL.md) — Reviewing API design specifics.
-- [Architecture Decision Records](../architecture-decision-records/SKILL.md) — Documenting design decisions.
-- [Security Basics Skill](../security-basics/SKILL.md) — Security review checklist.
-- C4 Model: https://c4model.com/
-- "Designing Data-Intensive Applications" by Martin Kleppmann.
+- `roles/dev/api-contract/SKILL.md` — API contracts are validated during design review.
+- `roles/dev/architecture-decision-records/SKILL.md` — Major decisions from this review are recorded as ADRs.
+- `roles/dev/security-basics/SKILL.md` — Security & compliance is a mandatory review dimension.
+- `roles/dev/performance-engineering/SKILL.md` — Scalability concerns raised here feed into performance guardrails.

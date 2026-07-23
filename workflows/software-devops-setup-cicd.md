@@ -26,4 +26,4 @@ Push verified artifacts to the designated container registry.
 - **Skills**: skills/roles/devops/artifact-registry/SKILL.md
 - **Exit Criteria**: Pipeline is fully functional, artifacts are pushed, and no critical vulnerabilities exist in the SBOM.
 
-> **Required Skill**: [setup-cicd](file:///D:/GitHub/skill/full-stack-skill/skills/roles/devops/setup-cicd/SKILL.md)
+> **Required Skill**: `skills/roles/devops/setup-cicd/SKILL.md`

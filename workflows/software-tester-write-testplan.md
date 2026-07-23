@@ -8,7 +8,7 @@ description: QA creates comprehensive test plan from acceptance criteria — map
 >
 > **Out of scope**: Does not execute tests — use `software-qa-execute-testplan`. Does not gather requirements — use `software-ba-gather-requirements`.
 >
-> **Activates skills**: `skills/roles/tester/test-plan-template/SKILL.md`, `skills/roles/tester/test-strategy/SKILL.md`, `skills/roles/tester/traceability-matrix/SKILL.md`
+> **Activates skills**: `skills/roles/tester/test-plan-template/SKILL.md`, `skills/roles/tester/test-strategy/SKILL.md`, `skills/roles/tester/coverage-traceability/SKILL.md`
 
 ---
 
@@ -47,7 +47,7 @@ AC Reference: [AC-NNN]
 ## Step 3 — Build Traceability Matrix
 
 ```
-view_file skills/roles/tester/traceability-matrix/SKILL.md
+view_file skills/roles/tester/coverage-traceability/SKILL.md
 ```
 
 | AC ID | Test Case IDs | Coverage |
@@ -91,4 +91,4 @@ Save to `docs/qa/test-plan-[feature].md`:
 - [ ] Traceability matrix shows 100% coverage
 - [ ] `docs/qa/test-plan-[feature].md` saved
 
-> **Required Skill**: [write-testplan](file:///D:/GitHub/skill/full-stack-skill/skills/roles/tester/write-testplan/SKILL.md)
+> **Required Skill**: `skills/roles/tester/test-plan-template/SKILL.md`

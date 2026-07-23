@@ -9,7 +9,7 @@ un_command (linters/profilers).
 
 ## Step 1 - Debt Identification and Profiling
 Profile the codebase or read lint/performance reports to identify bottlenecks and boundary violations.
-- **Skills**: skills/roles/dev/performance-optimization/SKILL.md, skills/roles/dev/code-ownership-boundaries/SKILL.md
+- **Skills**: skills/roles/dev/performance-engineering/SKILL.md, skills/roles/dev/code-ownership-boundaries/SKILL.md
 - **Fallback**: If profiler is unavailable, rely on static analysis via grep_search.
 
 ## Step 2 - Refactoring Strategy Checkpoint

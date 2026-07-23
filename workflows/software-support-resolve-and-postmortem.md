@@ -22,4 +22,4 @@ Follow up on prevention tasks and add them to the backlog.
 ## Step 4 - Output
 - **Exit Criteria**: RCA published, data patched, and preventive action items created.
 
-> **Required Skill**: [resolve-and-postmortem](file:///D:/GitHub/skill/full-stack-skill/skills/roles/support/resolve-and-postmortem/SKILL.md)
+> **Required Skill**: `skills/roles/support/resolve-and-postmortem/SKILL.md`

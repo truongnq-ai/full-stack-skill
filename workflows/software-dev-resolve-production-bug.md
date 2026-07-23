@@ -41,4 +41,4 @@ Phân tích lỗi (Crash/Exception) xảy ra trên môi trường Production, t�
 
 > **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
 
-> **Required Skill**: [resolve-production-bug](file:///D:/GitHub/skill/full-stack-skill/skills/roles/dev/resolve-production-bug/SKILL.md)
+> **Required Skill**: `skills/roles/dev/production-debugging/SKILL.md`

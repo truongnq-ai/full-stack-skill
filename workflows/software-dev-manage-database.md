@@ -8,7 +8,7 @@ description: Dev manages database operations — schema design, migration manage
 >
 > **Out of scope**: Does not handle DB infrastructure provisioning — use `software-devops-setup-infra`. Does not cover application ORM config — use `software-dev-review-code`.
 >
-> **Activates skills**: `skills/common/system-design/SKILL.md`
+> **Activates skills**: `skills/roles/dev/database-migration-strategy/SKILL.md` `skills/common/system-design/SKILL.md`
 
 ---
 
@@ -109,4 +109,4 @@ Save to `docs/db/db-operation-[YYYY-MM-DD]-[slug].md`.
 - [ ] Backup taken before destructive operations
 - [ ] Report saved to `docs/db/`
 
-> **Required Skill**: [manage-database](file:///D:/GitHub/skill/full-stack-skill/skills/roles/dev/manage-database/SKILL.md)
+> **Required Skill**: `skills/roles/dev/database-migration-strategy/SKILL.md`

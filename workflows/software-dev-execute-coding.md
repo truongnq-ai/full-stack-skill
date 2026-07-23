@@ -8,7 +8,7 @@ description: DEV executes the technical implementation plan, writes code, and pe
 >
 > **Out of scope**: Does not plan the architecture — use `/software-dev-technical-planning`. Does not deploy — use `/software-devops-deploy-release`.
 >
-> **Activates skills**: `skills/roles/dev/implementation-coding/SKILL.md`, `skills/roles/dev/unit-testing/SKILL.md`, and any framework-specific skill (e.g., React, Python).
+> **Activates skills**: `skills/roles/dev/implementation-coding/SKILL.md`, `skills/roles/dev/unit-test-best-practices/SKILL.md`, and any framework-specific skill (e.g., React, Python).
 
 ---
 
@@ -45,7 +45,7 @@ For each component/file:
 
 ## Step 4 — Unit Testing
 
-Apply `skills/roles/dev/unit-testing/SKILL.md`:
+Apply `skills/roles/dev/unit-test-best-practices/SKILL.md`:
 1. Write unit tests covering the newly added or modified logic.
 2. Ensure edge cases identified in the PRD/Requirements are tested.
 3. Run the tests.
@@ -69,4 +69,4 @@ pytest
 
 > **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
 
-> **Required Skill**: [execute-coding](file:///D:/GitHub/skill/full-stack-skill/skills/roles/dev/execute-coding/SKILL.md)
+> **Required Skill**: `skills/roles/dev/implementation-coding/SKILL.md`

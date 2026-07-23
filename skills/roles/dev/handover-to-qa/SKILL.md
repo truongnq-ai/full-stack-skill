@@ -8,6 +8,9 @@ metadata:
     priority: medium
     confidence: 0.95
     keywords: [handover to qa, ready for test, merge to staging, test this]
+    file_patterns: ["**/staging/**", "**/test/**"]
+    context: ["user says feature is done", "user asks to hand over to QA", "PR merged to staging"]
+    negative: ["user asks QA to write tests", "user asks about test automation"]
 ---
 
 # 🏈 Handover to QA (Developer Duty)
@@ -20,11 +23,9 @@ metadata:
 
 ## 🚫 Anti-Patterns
 
-| ID | Anti-Pattern | Why It's Dangerous |
-|----|---|---|
-| **P0** | **The Ghost Deploy** — Merging code, dragging the Jira ticket to "Ready for QA", and going to lunch without telling anyone. | QA spends 4 hours figuring out which environment it's on. |
-| **P0** | **The Broken Build Handover** — Handing over a feature that crashes on boot in Staging because you only tested on localhost. | QA is completely blocked; trust in the dev process erodes. |
-| **P1** | **"Just test the Happy Path"** — Assuming QA magically knows the edge cases you discovered during coding. | Edge cases go untested; bugs ship to production. |
+- **The Ghost Deploy**: Merging code, dragging the Jira ticket to "Ready for QA", and going out to lunch without telling anyone. QA spends 4 hours figuring out which environment it's on.
+- **"Just test the Happy Path"**: Assuming QA magically knows the edge cases you discovered during coding but forgot to document.
+- **The Broken Build Handover**: Handing over a feature that instantly crashes on boot in the Staging environment because you only tested it on `localhost`.
 
 ---
 
@@ -32,16 +33,6 @@ metadata:
 
 1. A Staging environment successfully updated with your feature branch code.
 2. Jira (or equivalent ticket tracker) integrated with your Git provider.
-
-### Required Tools
-
-| Tool | Purpose |
-|------|--------|
-| `run_command` | Verify staging build is running (curl health check). |
-| `call_mcp_tool` → `github/create_issue` | Create QA ticket with handover payload. |
-| `call_mcp_tool` → `ssh/ssh_exec` | Check staging environment health. |
-| `view_file` | Read the PR description and acceptance criteria. |
-| `write_to_file` | Generate handover checklist artifact. |
 
 ---
 
@@ -67,6 +58,18 @@ Provide them with test credentials or exact database seed scripts in the handove
 ### Step 4 — Standby for Triage
 When QA begins testing, remain highly responsive. The first 30 minutes of QA testing often reveal environmental blockers (wrong API keys, missing DB columns). Responding in 5 minutes saves hours of QA downtime.
 
+> **⏸️ Checkpoint**:
+> "Handover payload đã chuẩn bị xong: environment URL, test data, known blindspots. Bạn có muốn tôi post comment lên Jira ticket không? (Y/N)"
+
+---
+
+## 🛠️ Tooling & Execution
+
+- **Verify Staging**: Use `call_mcp_tool` → `ssh/ssh_exec` to check if the staging deployment is healthy.
+- **Test Data Setup**: Use `call_mcp_tool` → `postgres/query` or `mysql/mysql_query` to seed test data.
+- **Read Deployment**: Use `call_mcp_tool` → `github/list_commits` to confirm the latest merge is deployed.
+- **Browser Check**: Use `browser_subagent` to verify the feature renders correctly on staging.
+
 ---
 
 ## ⚠️ Error Handling (Fallback)
@@ -84,14 +87,11 @@ A feature is successfully handed over when:
 - [ ] The code is physically running on the designated QA environment.
 - [ ] A written summary including explicitly seeded Test Data is attached to the ticket.
 - [ ] A formal ping/notification is sent to the assigned QA engineer.
-- [ ] Staging health check passes (no 500 errors on boot).
-- [ ] Known blindspots documented in the handover comment.
 
 ---
 
-## 📚 References
+## 📚 Cross-References
 
-- [Implementation Workflow Skill](../implementation-workflow/SKILL.md) — Dev loop before handover.
-- [PR Checklist Skill](../pr-checklist/SKILL.md) — Author checks before requesting review.
-- [Unit Test Best Practices](../unit-test-best-practices/SKILL.md) — Ensure tests pass before handover.
-- Industry reference: "Definition of Done" in Scrum Guide by Schwaber & Sutherland.
+- `roles/dev/pr-checklist/SKILL.md` — PR must pass author checklist before reaching QA.
+- `roles/dev/implementation-workflow/SKILL.md` — The coding phase that precedes this handover.
+- `roles/dev/feature-flag-practice/SKILL.md` — Notify QA about active feature flags on staging.

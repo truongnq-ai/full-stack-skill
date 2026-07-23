@@ -118,4 +118,4 @@ Save to `docs/specs/stories-[feature_name].md`:
 - [ ] Execution order recommended
 - [ ] `docs/specs/stories-[feature_name].md` saved
 
-> **Required Skill**: [split-stories](file:///D:/GitHub/skill/full-stack-skill/skills/roles/ba/split-stories/SKILL.md)
+> **Required Skill**: `skills/roles/ba/story-splitting/SKILL.md`

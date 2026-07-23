@@ -100,4 +100,4 @@ Assign based on: S1/S2 → immediate sprint, S3 → next sprint, S4 → backlog.
 
 > **⏸️ Checkpoint**: Xin phép user trước khi hoàn tất.
 
-> **Required Skill**: [report-bug](file:///D:/GitHub/skill/full-stack-skill/skills/roles/tester/report-bug/SKILL.md)
+> **Required Skill**: `skills/roles/tester/bug-reporting-standard/SKILL.md`

@@ -3,11 +3,12 @@ name: Root Cause Analysis (Lite)
 description: Facilitates quick, effective 5-Whys investigations into Escaping Defects to improve QA coverage in future sprints.
 category: roles/qa
 metadata:
-  labels: [qa, rca, root-cause, escaping-defects, retrospective]
+  labels: [qa, rca, root-cause, escaping-defects, retrospective, tester]
   triggers:
     priority: medium
-    confidence: 0.8
-    keywords: [rca, root cause, 5 whys, bug slipped, post-mortem lite]
+    confidence: 0.85
+    keywords: [rca, root cause, 5 whys, bug slipped, post-mortem lite, do rca]
+    context: ["user asks to find the root cause", "user asks why a bug happened"]
 ---
 
 # 🔍 Root Cause Analysis (RCA Lite)
@@ -30,7 +31,9 @@ metadata:
 
 1. The referenced Bug Report ID that slipped to production (e.g., `BUG-808`).
 2. Familiarity with the `5 Whys` framework.
-3. Access to `skills/common/id-registry/SKILL.md` to map new safety Action Items.
+3. Access to `roles/ba/id-registry/SKILL.md` to map new safety Action Items.
+
+**Required Tools**: Use `write_to_file` to generate the RCA document in `docs/incidents/`.
 
 ---
 
@@ -74,6 +77,9 @@ Create `docs/incidents/RCA-BUG-808.md`.
 - `[ ]` **(DevOps)** Re-provision Docker images to force UTF-8 strictness locally.
 ```
 
+> **⏸️ Checkpoint**: 
+> "Báo cáo Root Cause Analysis (RCA Lite) đã được sinh ra. Bạn có muốn tôi tự động tạo các task (Action Items) vào file `task.md` để ngăn chặn lỗi này tái diễn không? (Y/N)"
+
 ### Step 5 — Implement
 Immediately trigger the QA agent to write the missing Test Cases referenced in the Action Items.
 
@@ -95,3 +101,10 @@ RCA is complete when:
 - [ ] A formalized RCA document is saved in `docs/incidents/`.
 - [ ] At least 3 tiers of `Why` have been established, moving from Code -> Testing -> Process.
 - [ ] At least ONE actionable task is created for QA to permanently plug the testing hole (e.g., a new Test Case).
+
+---
+
+## 📚 Cross-References
+
+- **Bug Reporting Standard**: `roles/tester/bug-reporting-standard/SKILL.md` (The source of the defect)
+- **Test Case Design**: `roles/tester/test-case-design/SKILL.md` (To implement the fix)

@@ -8,7 +8,7 @@ description: DEV technical planning - analyzing requirements, reviewing source c
 >
 > **Out of scope**: Does not execute code — use `software-dev-execute-coding`.
 >
-> **Activates skills**: `skills/roles/dev/requirement-handover/SKILL.md`, `skills/roles/dev/technical-design/SKILL.md`
+> **Activates skills**: `skills/roles/dev/error-handling-architecture/SKILL.md` `skills/roles/dev/handover-to-qa/SKILL.md`, `skills/roles/dev/architecture-decision-records/SKILL.md`
 
 ---
 
@@ -74,4 +74,4 @@ Save to `docs/implementation_plan.md`:
 
 > **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
 
-> **Required Skill**: [technical-planning](file:///D:/GitHub/skill/full-stack-skill/skills/roles/dev/technical-planning/SKILL.md)
+> **Required Skill**: `skills/roles/dev/architecture-decision-records/SKILL.md`

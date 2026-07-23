@@ -34,4 +34,4 @@ Phối hợp với PO để dịch các mục tiêu kinh doanh (Product Goals) t
 
 > **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
 
-> **Required Skill**: [define-metrics](file:///D:/GitHub/skill/full-stack-skill/skills/roles/bda/define-metrics/SKILL.md)
+> **Required Skill**: `skills/roles/bda/metrics-analysis/SKILL.md`

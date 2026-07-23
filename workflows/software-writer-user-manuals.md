@@ -24,4 +24,4 @@ description: Shell workflow cho software-writer-user-manuals
 
 > **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
 
-> **Required Skill**: [user-manuals](file:///D:/GitHub/skill/full-stack-skill/skills/roles/writer/user-manuals/SKILL.md)
+> **Required Skill**: `skills/roles/writer/user-manuals/SKILL.md`

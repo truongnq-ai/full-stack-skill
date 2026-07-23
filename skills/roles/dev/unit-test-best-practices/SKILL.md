@@ -8,6 +8,9 @@ metadata:
     priority: high
     confidence: 0.95
     keywords: [unit test, write tests, jest, pytest, test coverage]
+    file_patterns: ["**/*.test.*", "**/*.spec.*", "**/tests/**", "**/__tests__/**"]
+    context: ["user asks to write tests", "user asks about test coverage", "user asks about TDD"]
+    negative: ["user asks about E2E testing", "user asks about integration testing", "user asks about Cypress"]
 ---
 
 # 🧪 Unit Test Best Practices
@@ -20,11 +23,9 @@ metadata:
 
 ## 🚫 Anti-Patterns
 
-| ID | Anti-Pattern | Why It's Dangerous |
-|----|---|---|
-| **P0** | **The 100% Coverage Lie** — Tests that execute functions for coverage but check zero assertions. | Tests pass even if the function returns wrong results. |
-| **P1** | **Testing the Framework** — Verifying `Array.push()` adds items. | Wastes time; Microsoft/Facebook already tested their frameworks. |
-| **P1** | **Hard-coded Fragility** — `expect(timestamp).toBe('2025-01-01')`. Passes today, fails tomorrow. | Non-deterministic tests erode trust in the suite. |
+- **Testing the Framework**: Writing a test to verify that `Array.push()` adds an item to an array, or that the React DOM mounts. (The Microsoft/Facebook engineers already tested that. Test YOUR business logic).
+- **The 100% Coverage Lie**: Writing tests that execute functions to achieve 100% Line Coverage, but checking absolutely no `expect()` assertions. (The test passes even if the function returns the wrong math).
+- **Hard-coded Fragility**: Testing `expect(timestamp).toBe('2025-01-01')`. The test passes today and fails tomorrow.
 
 ---
 
@@ -32,16 +33,6 @@ metadata:
 
 1. A fast test runner (Jest, Vitest, PyTest, JUnit).
 2. Mocking libraries for intercepting IO operations.
-
-### Required Tools
-
-| Tool | Purpose |
-|------|--------|
-| `run_command` | Execute test suites and view results. |
-| `write_to_file` | Create new test files. |
-| `view_file` | Read the source function to understand what to test. |
-| `grep_search` | Find existing tests for the module under test. |
-| `replace_file_content` | Add test cases to existing test files. |
 
 ---
 
@@ -71,6 +62,19 @@ Test names should read like English sentences explaining the Business Value.
 - *Bad*: `test('calculate function')`
 - *Good*: `it('should return a 5% tax rate when the user is located in Virginia')`
 
+> **⏸️ Checkpoint**:
+> "Unit tests đã viết xong: [N] test cases cover [M] edge cases. All pass. Bạn có muốn tôi kiểm tra coverage report không? (Y/N)"
+
+---
+
+## 🛠️ Tooling & Execution
+
+- **Run Tests**: Use `run_command` → `npm test` / `pytest -v` / `go test ./...`.
+- **Coverage Report**: Use `run_command` → `npm test -- --coverage` to generate coverage data.
+- **Watch Mode**: Use `run_command` → `npm test -- --watch` for iterative development.
+- **Create Test Files**: Use `write_to_file` to create `*.test.ts` / `*.spec.ts` files.
+- **Find Untested Code**: Use `grep_search` to find functions without corresponding test files.
+
 ---
 
 ## ⚠️ Error Handling (Fallback)
@@ -88,15 +92,11 @@ Unit tests are production-ready when:
 - [ ] They execute completely offline with zero I/O or Database dependencies.
 - [ ] They utilize the Arrange-Act-Assert structure.
 - [ ] They verify edge cases (nulls, negatives, boundaries), not just the happy path.
-- [ ] Test names read like English sentences describing business behavior.
-- [ ] No flaky tests relying on real clocks or random data.
 
 ---
 
-## 📚 References
+## 📚 Cross-References
 
-- [Implementation Coding Skill](../implementation-coding/SKILL.md) — CodeAct loop includes test verification.
-- [Refactor & Tech Debt Skill](../refactor-techdebt/SKILL.md) — Characterization tests for legacy code.
-- [Performance Guardrails Skill](../performance-guardrails/SKILL.md) — Performance benchmark tests.
-- "Unit Testing Principles, Practices, and Patterns" by Vladimir Khorikov.
-- Jest documentation: https://jestjs.io/docs/getting-started
+- `roles/dev/refactor-techdebt/SKILL.md` — Characterization tests are the safety net for refactoring.
+- `roles/dev/implementation-workflow/SKILL.md` — TDD is an optional but recommended step in the workflow.
+- `roles/dev/implementation-coding/SKILL.md` — Step 4 covers running tests after code implementation.

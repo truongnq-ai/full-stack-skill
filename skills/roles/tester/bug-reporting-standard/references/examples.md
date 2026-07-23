@@ -1,12 +1,21 @@
-# Examples — Bug Reporting
+# Examples — Bug Reporting Standard
 
-## Example 1 — Crash on login
+## Example 1: High Quality Bug Report
+```markdown
+# [BUG-104] Checkout button disabled for returning users
 
-**Input**
-"App crashes"
+**Severity**: S2 (High)
+**Environment**: Staging (v1.4.2)
 
-**Output**
-"Steps: 1) open app 2) login... Expected: dashboard, Actual: crash. Severity: Critical"
+### Steps to Reproduce:
+1. Log in with a returning user account (`test_user@example.com`).
+2. Add "Mechanical Keyboard" to the cart.
+3. Navigate to `/cart`.
 
-**Why**
-- Complete repro + impact.
+**Expected**: The 'Proceed to Checkout' button is blue and clickable.
+**Actual**: The button is greyed out (`disabled` attribute is present).
+
+**Logs/Evidence**:
+- Screenshot attached: `cart_disabled.png`
+- Console Error: `TypeError: Cannot read properties of undefined (reading 'loyaltyPoints')`
+```

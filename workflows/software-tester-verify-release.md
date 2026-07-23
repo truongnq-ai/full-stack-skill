@@ -8,7 +8,7 @@ description: QA verifies release readiness — confirms all tests pass, blockers
 >
 > **Out of scope**: Does not deploy — use `software-devops-deploy-release`. Does not fix bugs — use `software-dev-fix-bug`.
 >
-> **Activates skills**: `skills/roles/tester/release-readiness/SKILL.md`, `skills/roles/tester/qa-gates/SKILL.md`, `skills/roles/tester/uat-process/SKILL.md`
+> **Activates skills**: `skills/roles/tester/handover-to-devops/SKILL.md`, `skills/roles/tester/qa-gates/SKILL.md`, `skills/roles/tester/uat-process/SKILL.md`
 
 ---
 
@@ -91,4 +91,4 @@ Save to `docs/qa/release-signoff-[version].md`:
 - [ ] `docs/qa/release-signoff-*.md` saved
 - [ ] GO/NO-GO decision documented
 
-> **Required Skill**: [verify-release](file:///D:/GitHub/skill/full-stack-skill/skills/roles/tester/verify-release/SKILL.md)
+> **Required Skill**: `skills/roles/tester/handover-to-devops/SKILL.md`

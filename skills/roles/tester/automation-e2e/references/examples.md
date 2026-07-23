@@ -1,12 +1,11 @@
 # Examples — Automation E2E
 
-## Example 1 — Stable locator
+## Example 1: Stable Locators
+**Bad Practice**: `page.locator('.btn-primary > span')`
+**Good Practice**: `page.getByRole('button', { name: 'Submit Order' })`
+**Why**: CSS classes change frequently during redesigns, but accessibility roles and labels remain stable.
 
-**Input**
-"page.click('.btn-123')"
-
-**Output**
-"page.getByRole('button', { name: /save/i }).click()"
-
-**Why**
-- Stable selector.
+## Example 2: Dynamic Wait
+**Bad Practice**: `await page.waitForTimeout(5000);`
+**Good Practice**: `await expect(page.getByText('Payment Successful')).toBeVisible({ timeout: 10000 });`
+**Why**: Hardcoded sleeps slow down the test suite and cause flakes on slow CI environments. Dynamic assertions resolve as soon as the element appears.

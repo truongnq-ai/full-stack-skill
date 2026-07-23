@@ -102,4 +102,4 @@ Invoke the `writing-plans` skill or transition to the standard planning workflow
 
 > **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
 
-> **Required Skill**: [brainstorm-idea](file:///D:/GitHub/skill/full-stack-skill/skills/roles/team/brainstorm-idea/SKILL.md)
+> **Required Skill**: `skills/roles/team/brainstorm-idea/SKILL.md`

@@ -38,4 +38,4 @@ Tạo ra một bộ Prompt ổn định, chống được jailbreak, chống hal
 
 > **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
 
-> **Required Skill**: [prompt-engineering](file:///D:/GitHub/skill/full-stack-skill/skills/roles/dev/prompt-engineering/SKILL.md)
+> **Required Skill**: `skills/common/context-optimization/SKILL.md`

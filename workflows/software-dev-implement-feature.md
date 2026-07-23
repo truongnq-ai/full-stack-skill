@@ -14,7 +14,7 @@ Read the handover document or Jira ticket.
 
 ## Step 2 - Test-First Implementation
 Write failing unit tests defining the expected behavior.
-- **Skills**: skills/roles/dev/test-first-discipline/SKILL.md
+- **Skills**: skills/roles/dev/unit-test-best-practices/SKILL.md
 - Run the test suite using 
 un_command (e.g., 
 pm test, pytest) to verify they fail.
@@ -32,4 +32,4 @@ Run the test suite again. Ensure all tests pass.
 ## Step 5 - Output and Exit
 - **Exit Criteria**: Code is successfully written, tests pass, feature flag is configured, and changes are committed.
 
-> **Required Skill**: [implement-feature](file:///D:/GitHub/skill/full-stack-skill/skills/roles/dev/implement-feature/SKILL.md)
+> **Required Skill**: `skills/roles/dev/implementation-workflow/SKILL.md`

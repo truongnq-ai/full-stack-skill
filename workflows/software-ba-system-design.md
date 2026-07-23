@@ -45,4 +45,4 @@ Chuyển đổi các yêu cầu nghiệp vụ (Business Requirements / PRD) thà
 
 > **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
 
-> **Required Skill**: [system-design](file:///D:/GitHub/skill/full-stack-skill/skills/roles/ba/system-design/SKILL.md)
+> **Required Skill**: `skills/roles/ba/system-design-uml/SKILL.md`

@@ -3,11 +3,12 @@ name: QA Master Test Plan Definition
 description: Creates a formal strategy artifact governing what will be tested, what is excluded, and the resources required for a specific release iteration.
 category: roles/qa
 metadata:
-  labels: [qa, testing, test-plan, strategy, documentation]
+  labels: [qa, testing, test-plan, strategy, documentation, tester]
   triggers:
     priority: high
-    confidence: 0.8
-    keywords: [test plan, qa plan, test strategy sheet, master test plan]
+    confidence: 0.85
+    keywords: [test plan, qa plan, test strategy sheet, master test plan, write plan]
+    context: ["user asks to write a test plan", "user asks what we will test for this release"]
 ---
 
 # 📋 QA Master Test Plan
@@ -30,6 +31,8 @@ metadata:
 
 1. The Epic or Master Requirements (e.g., `docs/specs/EPIC-05.md`).
 2. Familiarity with the project's overall `test-strategy/SKILL.md`.
+
+**Required Tools**: Use `view_file` to ingest requirements and `write_to_file` to output the final plan.
 
 ---
 
@@ -80,6 +83,9 @@ Generate the formal markdown file at `docs/qa/plans/Plan-[Feature_Name].md`.
 - **Manual**: Required for Mobile Safari testing.
 ```
 
+> **⏸️ Checkpoint**: 
+> "Bản Master Test Plan cho Release này đã hoàn tất. Bạn có muốn tôi tiến hành bóc tách nó thành các Test Case chi tiết không? (Y/N)"
+
 ---
 
 ## ⚠️ Error Handling (Fallback)
@@ -98,3 +104,10 @@ A Formal Test Plan is complete when:
 - [ ] Clear In-Scope and Out-Of-Scope boundaries are mapped.
 - [ ] Browser, device, and API environment targets are explicitly listed.
 - [ ] Suspension and Exit Gate criteria are rigorously defined.
+
+---
+
+## 📚 Cross-References
+
+- **Test Case Design**: `roles/tester/test-case-design/SKILL.md` (The next step after planning)
+- **QA Gates**: `roles/tester/qa-gates/SKILL.md` (To define the exit criteria properly)

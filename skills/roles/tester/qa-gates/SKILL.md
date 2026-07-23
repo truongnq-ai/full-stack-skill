@@ -3,11 +3,12 @@ name: QA Gates & Milestones
 description: Defines the required entry and exit criteria for code moving through the testing lifecycle.
 category: roles/qa
 metadata:
-  labels: [qa, quality-gates, SDLC, process, lifecycle]
+  labels: [qa, quality-gates, SDLC, process, lifecycle, tester]
   triggers:
     priority: high
-    confidence: 0.8
-    keywords: [qa gates, entry criteria, exit criteria, definition of done]
+    confidence: 0.85
+    keywords: [qa gates, entry criteria, exit criteria, definition of done, ready to test]
+    context: ["user asks if a feature is ready to release", "user asks to check QA gates"]
 ---
 
 # 🚧 QA Quality Gates
@@ -30,6 +31,8 @@ metadata:
 
 1. Familiarity with the project's Definition of Done (DoD).
 2. Read-access to CI pipeline statuses, PR descriptions, and `task.md`.
+
+**Required Tools**: Use `call_mcp_tool` for `github` to check PR status, or `run_command` with `git` to verify branches locally.
 
 ---
 
@@ -60,6 +63,9 @@ Generate waiver entry in `task.md`:
 ### Step 4 — Gate Stamp
 If all criteria are met, apply the official `QA PASSED` label via GitHub MCP or write the status cleanly into the system of record.
 
+> **⏸️ Checkpoint**: 
+> "Quality Gate (Exit) đã pass toàn bộ criteria. Tính năng đã sẵn sàng để release. Bạn có muốn tôi dán nhãn `QA PASSED` lên Pull Request không? (Y/N)"
+
 ---
 
 ## ⚠️ Error Handling (Fallback)
@@ -78,3 +84,10 @@ A QA Gate evaluation is complete when:
 - [ ] Every checkbox in the target Gate (Entry or Exit) has been evaluated as True/False.
 - [ ] Failures actively Halt the state transition (e.g., kicking the ticket back to To Do).
 - [ ] Accepted risk/bypass logic is explicitly documented as a Formal Waiver.
+
+---
+
+## 📚 Cross-References
+
+- **Handover to DevOps**: `roles/tester/handover-to-devops/SKILL.md` (Executed immediately after Exit Gate passes)
+- **Quality Assurance Protocol**: `roles/tester/quality-assurance/SKILL.md` (The philosophy demanding these gates)

@@ -26,4 +26,4 @@ Formulate review comments. Ensure tone is polite and actionable.
 Submit the approved review via GitHub MCP.
 - **Exit Criteria**: PR is either Approved or marked as "Changes Requested" with clear actionable items.
 
-> **Required Skill**: [code-review](file:///D:/GitHub/skill/full-stack-skill/skills/roles/dev/code-review/SKILL.md)
+> **Required Skill**: `skills/roles/dev/code-review-etiquette/SKILL.md`

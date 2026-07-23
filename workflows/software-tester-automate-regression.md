@@ -37,4 +37,4 @@ Tạo hoặc cập nhật bộ script tự động hóa (Regression suite) để
 
 > **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
 
-> **Required Skill**: [automate-regression](file:///D:/GitHub/skill/full-stack-skill/skills/roles/tester/automate-regression/SKILL.md)
+> **Required Skill**: `skills/roles/tester/automation-e2e/SKILL.md`

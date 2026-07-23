@@ -1,12 +1,10 @@
 # Examples — Bug Triage
 
-## Example 1 — Severity
+## Example 1: Severity vs Priority
+**Bug**: A typo on the "About Us" page.
+**Triage**: Severity = S4 (Minor). Priority = P3 (Low).
+**Why**: Does not impact functionality or revenue.
 
-**Input**
-"Crash on login"
-
-**Output**
-"Severity: Critical, Priority: P0"
-
-**Why**
-- User blocked completely.
+**Bug**: Checkout crashes for 1% of users on Firefox.
+**Triage**: Severity = S2 (High). Priority = P1 (Urgent).
+**Why**: Core revenue-generating path is broken. Needs immediate fix in the current sprint.

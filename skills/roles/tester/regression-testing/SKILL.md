@@ -3,11 +3,12 @@ name: Regression Testing Strategy
 description: Master protocol for building, executing, and maintaining the suite of tests that protect legacy functionality against new code changes.
 category: roles/qa
 metadata:
-  labels: [qa, regression, safeguard, suite-maintenance]
+  labels: [qa, regression, safeguard, suite-maintenance, tester]
   triggers:
     priority: critical
     confidence: 0.95
-    keywords: [regression, test suite, broke old feature, backwards compatibility]
+    keywords: [regression, test suite, broke old feature, backwards compatibility, run regression]
+    context: ["user asks to run regression testing", "user wants to ensure old features aren't broken"]
 ---
 
 # 🛡️ Regression Testing Strategy
@@ -30,6 +31,8 @@ metadata:
 
 1. `npm run test:e2e` or equivalent command suite available.
 2. The Master Regression Test Case list (`docs/qa/regression-suite.md`).
+
+**Required Tools**: Use `run_command` to execute the automated suite (e.g. `npm run test:e2e -- --grep "@regression"`). Use `view_file` to read the list of manual regression tests.
 
 ---
 
@@ -56,7 +59,10 @@ Every sprint, audit the Regression suite. If a test is failing because the Busin
 If the feature was removed, explicitly Delete the test case to maintain a lean, high-velocity suite.
 
 ### Step 5 — Regression Sign-Off
-Update the release or run documentation with the definitive pass rate. Revert to `roles/qa/handover-to-devops/SKILL.md` to finalize the deployment if the suite is green.
+Update the release or run documentation with the definitive pass rate.
+
+> **⏸️ Checkpoint**: 
+> "Quá trình Regression Testing đã hoàn tất. Suite test automation đã pass 100%. Bạn có muốn tôi tiến hành thực hiện Handoff cho DevOps để chuẩn bị release không? (Y/N)"
 
 ---
 
@@ -76,3 +82,10 @@ Regression testing is considered complete when:
 - [ ] Automated E2E tags mapped to `@regression` run to 100% completion.
 - [ ] Zero pre-existing P1/P2 functionality has degraded (or it has been documented via Bug IDs).
 - [ ] No deprecated or "Won't Fix" features are lingering in the test baseline causing false-negative CI failures.
+
+---
+
+## 📚 Cross-References
+
+- **DevOps Handoff**: `roles/tester/handover-to-devops/SKILL.md` (To exit the regression phase)
+- **Bug Reporting**: `roles/tester/bug-reporting-standard/SKILL.md` (If regression breaks)

@@ -8,6 +8,9 @@ metadata:
     priority: medium
     confidence: 0.95
     keywords: [update dependencies, bump versions, npm install, upgrade libraries]
+    file_patterns: ["package.json", "package-lock.json", "go.mod", "requirements.txt", "pom.xml", "yarn.lock"]
+    context: ["user asks to update a library", "Dependabot PR opened", "user asks about version bumps"]
+    negative: ["user asks to install a brand new dependency", "user asks about architecture"]
 ---
 
 # 📦 Dependency Update Policy
@@ -20,11 +23,9 @@ metadata:
 
 ## 🚫 Anti-Patterns
 
-| ID | Anti-Pattern | Why It's Dangerous |
-|----|---|---|
-| **P0** | **The Yolo Bump** — `npm update` with all 45 libraries in one massive PR. | One bad lib breaks everything; impossible to bisect. |
-| **P1** | **Stagnation Fear** — Never updating because "it works right now." | 3 years later, a 15-major-version leap breaks everything irreparably. |
-| **P1** | **Ignoring the Changelog** — Upgrading Major version without reading release notes. | Deprecated/renamed APIs cause runtime crashes in production. |
+- **The Yolo Bump**: Running `npm update` locally, throwing all 45 updated libraries into a single massive PR, and clicking merge hoping the E2E tests catch everything.
+- **Stagnation Fear**: Never updating dependencies because "it works right now." Three years later, you need to upgrade Node.js, and the resulting leap across 15 major versions breaks the entire application irreparably.
+- **Ignoring the Changelog**: Upgrading a Major version (e.g., `v2` to `v3`) without reading the library's release notes, completely oblivious to renamed functions or deprecated APIs.
 
 ---
 
@@ -32,15 +33,6 @@ metadata:
 
 1. Heavy reliance on `roles/qa/regression-testing/SKILL.md`. (You cannot safely update dependencies without a high-coverage test suite).
 2. Automated dependency trackers (e.g., GitHub Dependabot, Renovate).
-
-### Required Tools
-
-| Tool | Purpose |
-|------|--------|
-| `view_file` | Read `package.json`, `go.mod`, `requirements.txt` to inventory deps. |
-| `grep_search` | Search for deprecated API usage after major bumps. |
-| `run_command` | Execute test suites and build after version bumps. |
-| `call_mcp_tool` → `github/list_pull_requests` | Review Dependabot/Renovate PRs. |
 
 ---
 
@@ -68,6 +60,19 @@ For Major version leaps:
 Never delete `package-lock.json` or `yarn.lock` to "fix an installation issue".
 The lockfile guarantees deterministic builds across the entire team and the CI environment. Commit the updated lockfile generated strictly by the specific tracked update.
 
+> **⏸️ Checkpoint**:
+> "Dependency update plan: [N] patches (auto-merge), [M] minors (E2E required), [K] majors (manual review). Bạn có muốn tôi bắt đầu với patches không? (Y/N)"
+
+---
+
+## 🛠️ Tooling & Execution
+
+- **Check Outdated**: Use `run_command` → `npm outdated` / `pip list --outdated` to list stale dependencies.
+- **Read Changelogs**: Use `read_url_content` to read library release notes before major bumps.
+- **Update**: Use `run_command` → `npm update <package>` for targeted updates.
+- **Verify**: Use `run_command` → `npm test` / `npm run build` to verify post-update stability.
+- **Search CVEs**: Use `grep_search` on `npm audit` output to identify security vulnerabilities.
+
 ---
 
 ## ⚠️ Error Handling (Fallback)
@@ -86,15 +91,11 @@ A Dependency Update operation is successful when:
 - [ ] Major, Minor, and Patch bumps are treated with mathematically distinct risk profiles.
 - [ ] Updates are deployed via isolated atomic PRs (One library per PR).
 - [ ] The application successfully compiles and passes 100% of the regression test suite.
-- [ ] Lockfiles committed (never deleted to "fix" install issues).
-- [ ] Major bump changelogs read and deprecated APIs updated.
 
 ---
 
-## 📚 References
+## 📚 Cross-References
 
-- [Security Basics Skill](../security-basics/SKILL.md) — CVE-driven emergency patches.
-- [Refactor & Tech Debt Skill](../refactor-techdebt/SKILL.md) — For abandoned library extraction.
-- [PR Checklist Skill](../pr-checklist/SKILL.md) — Preparing the update PR.
-- Semantic Versioning: https://semver.org/
-- Renovate documentation: https://docs.renovatebot.com/
+- `roles/dev/security-basics/SKILL.md` — Dependency vulnerabilities are a security concern.
+- `roles/dev/unit-test-best-practices/SKILL.md` — Test suite is the safety net for dependency updates.
+- `roles/dev/pr-checklist/SKILL.md` — Dependency update PRs follow the same checklist.

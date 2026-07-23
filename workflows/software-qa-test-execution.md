@@ -9,7 +9,7 @@ un_command (Cypress/Playwright), report generator.
 
 ## Step 1 - Automated Test Execution
 Run the automated E2E and integration suites.
-- **Skills**: skills/roles/tester/automation-testing/SKILL.md, skills/roles/tester/automation-e2e/SKILL.md
+- **Skills**: skills/roles/tester/automation-e2e/SKILL.md, skills/roles/tester/automation-e2e/SKILL.md
 - **Fallback**: If the CI environment fails to spin up, run tests locally using 
 un_command.
 
@@ -24,9 +24,9 @@ Analyze failing tests to determine if they are flaky or real bugs.
 
 ## Step 4 - Daily Reporting
 Generate and send out the daily test execution report.
-- **Skills**: skills/roles/tester/daily-test-report/SKILL.md
+- **Skills**: skills/roles/tester/execution-checklist/SKILL.md
 
 ## Step 5 - Finalize Run
 - **Exit Criteria**: Automation completed, flakes quarantined, manual tests executed, and report dispatched.
 
-> **Required Skill**: [test-execution](file:///D:/GitHub/skill/full-stack-skill/skills/roles/qa/test-execution/SKILL.md)
+> **Required Skill**: `skills/roles/tester/execution-checklist/SKILL.md`

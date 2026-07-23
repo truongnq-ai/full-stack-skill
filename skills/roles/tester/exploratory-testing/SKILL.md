@@ -3,11 +3,12 @@ name: Exploratory Testing Strategy
 description: Guidance for structured, session-based exploratory testing to uncover edge cases outside the rigid test plan.
 category: roles/qa
 metadata:
-  labels: [qa, exploratory, edge-case, testing, manual]
+  labels: [qa, exploratory, edge-case, testing, manual, tester]
   triggers:
     priority: low
-    confidence: 0.8
-    keywords: [exploratory, poke around, monkey test, unscripted]
+    confidence: 0.85
+    keywords: [exploratory, poke around, monkey test, unscripted, explore]
+    context: ["user asks to do exploratory testing", "user asks to find weird edge cases manually"]
 ---
 
 # 🕵️‍♂️ Exploratory Testing Strategy
@@ -31,6 +32,8 @@ metadata:
 
 1. A stabilized, QA-approved feature deployment.
 2. An active session recording tool or a scratchpad ready (`docs/qa/exploratory-notes.md`).
+
+**Required Tools**: Use `write_to_file` to keep your running log of findings, and `run_command` if setting up local environments is needed.
 
 ---
 
@@ -65,6 +68,9 @@ Generate a brief markdown summary of the session:
 **Observations**: The websocket reconnects nicely, but the UI state doesn't reflect the reconnection without a hard refresh.
 ```
 
+> **⏸️ Checkpoint**: 
+> "Phiên kiểm thử Exploratory Testing đã hoàn thành. Một số lỗi đã được ghi nhận trong file debrief. Bạn có muốn tôi tiến hành log các lỗi này thành Bug Tickets chính thức không? (Y/N)"
+
 ---
 
 ## ⚠️ Error Handling (Fallback)
@@ -83,3 +89,10 @@ An exploratory session is complete when:
 - [ ] A specific Charter and Timebox were defined prior to start.
 - [ ] Any discovered defects were formally logged and converted into repeatable Test Cases for the future.
 - [ ] A session Debrief note is saved for PM/Lead review.
+
+---
+
+## 📚 Cross-References
+
+- **Bug Reporting Standard**: `roles/tester/bug-reporting-standard/SKILL.md` (To log the bugs found)
+- **Test Case Design**: `roles/tester/test-case-design/SKILL.md` (To convert edge cases into permanent tests)

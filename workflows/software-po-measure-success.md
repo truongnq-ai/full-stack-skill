@@ -45,4 +45,4 @@ metadata:
 
 > **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
 
-> **Required Skill**: [measure-success](file:///D:/GitHub/skill/full-stack-skill/skills/roles/po/measure-success/SKILL.md)
+> **Required Skill**: `skills/roles/po/measure-success/SKILL.md`

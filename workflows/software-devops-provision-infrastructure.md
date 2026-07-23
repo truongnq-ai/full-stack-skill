@@ -25,4 +25,4 @@ Generate the Terraform execution plan.
 Apply the changes and verify the new resources are healthy.
 - **Exit Criteria**: Infrastructure is provisioned, secured, and running as defined in the state file.
 
-> **Required Skill**: [provision-infrastructure](file:///D:/GitHub/skill/full-stack-skill/skills/roles/devops/provision-infrastructure/SKILL.md)
+> **Required Skill**: `skills/roles/devops/provision-infrastructure/SKILL.md`

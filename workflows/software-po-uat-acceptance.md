@@ -43,4 +43,4 @@ Kiểm tra chéo (cross-check) các tính năng đã được Engineering/QA ho�
 
 > **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
 
-> **Required Skill**: [uat-acceptance](file:///D:/GitHub/skill/full-stack-skill/skills/roles/po/uat-acceptance/SKILL.md)
+> **Required Skill**: `skills/roles/po/uat-acceptance/SKILL.md`

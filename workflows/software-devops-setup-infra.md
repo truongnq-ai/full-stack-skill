@@ -101,4 +101,4 @@ certbot --nginx -d <domain> --non-interactive --agree-tos -m <email>
 - [ ] SSL configured (if domain provided)
 - [ ] Secrets stored securely (not in git)
 
-> **Required Skill**: [setup-infra](file:///D:/GitHub/skill/full-stack-skill/skills/roles/devops/setup-infra/SKILL.md)
+> **Required Skill**: `skills/roles/devops/setup-infra/SKILL.md`

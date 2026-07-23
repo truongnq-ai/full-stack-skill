@@ -24,4 +24,4 @@ Perform routine backups, OS updates, and enforce policy as code.
 ## Step 4 - Output
 - **Exit Criteria**: Error budgets are updated, backups verified, and system health is within SLA.
 
-> **Required Skill**: [sre-operations](file:///D:/GitHub/skill/full-stack-skill/skills/roles/devops/sre-operations/SKILL.md)
+> **Required Skill**: `skills/roles/devops/sre-operations/SKILL.md`

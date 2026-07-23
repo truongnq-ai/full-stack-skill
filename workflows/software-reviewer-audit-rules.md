@@ -94,4 +94,4 @@ Proceed to report? (Y / N)"
 - [ ] Vague language flagged
 - [ ] Scored report generated
 
-> **Required Skill**: [audit-rules](file:///D:/GitHub/skill/full-stack-skill/skills/roles/reviewer/audit-rules/SKILL.md)
+> **Required Skill**: `skills/roles/reviewer/audit-rules/SKILL.md`

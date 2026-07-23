@@ -8,6 +8,9 @@ metadata:
     priority: high
     confidence: 0.95
     keywords: [pr checklist, before a pr, create pr, submit code]
+    file_patterns: [".github/PULL_REQUEST_TEMPLATE.md"]
+    context: ["user is about to create a PR", "user asks what to check before submitting code"]
+    negative: ["user asks to review someone else's PR", "user asks about PR approval process"]
 ---
 
 # ✅ Pull Request Checklist (Author)
@@ -20,11 +23,9 @@ metadata:
 
 ## 🚫 Anti-Patterns
 
-| ID | Anti-Pattern | Why It's Dangerous |
-|----|---|---|
-| **P0** | **The Mega-Diff** — Submitting a 2,000-line PR without contextual comments. | Reviewer cannot safely review; bugs sneak through. |
-| **P1** | **Outsourcing Linting to CI** — Pushing unformatted code and waiting 10 min for CI to fail. | Wastes CI minutes and reviewer time on trivial issues. |
-| **P1** | **Title: "updates"** — Calling a PR "Fixed some stuff". | PR titles auto-generate Release Notes; ambiguity is permanent. |
+- **Outsourcing Linting to CI**: Pushing unformatted code and waiting 10 minutes for GitHub Actions to fail, fixing a typo, pushing again, and waiting another 10 minutes. Run it locally.
+- **Title: "updates"**: Calling a PR "Fixed some stuff". (PR titles auto-generate Release Notes; they must be semantic).
+- **The Mega-Diff**: Submitting a 2,000-line PR without any contextual comments, forcing the reviewer to guess how the architecture works.
 
 ---
 
@@ -32,15 +33,6 @@ metadata:
 
 1. Working local git branch pushed to origin.
 2. Standard PR Templates in `.github/PULL_REQUEST_TEMPLATE.md`.
-
-### Required Tools
-
-| Tool | Purpose |
-|------|--------|
-| `run_command` | Run linters, tests, and build locally before pushing. |
-| `call_mcp_tool` → `github/create_pull_request` | Create the PR with semantic title and ticket links. |
-| `grep_search` | Search for leftover debug artifacts (console.log, debugger). |
-| `view_file` | Self-review the diff before requesting human review. |
 
 ---
 
@@ -67,6 +59,19 @@ Take a screenshot or a 10-second screen-recording GIF showcasing the new compone
 ### Step 5 — Verify CI Greens
 Do not assign a human reviewer until the automated CI pipeline (Linters, Unit Tests, SonarQube) glows green. Human time is too expensive to catch syntax errors.
 
+> **⏸️ Checkpoint**:
+> "Self-review hoàn tàt: 0 debug artifacts, CI green, PR body đầy đủ. Bạn có muốn tôi assign reviewer không? (Y/N)"
+
+---
+
+## 🛠️ Tooling & Execution
+
+- **Self-Review**: Use `view_file` on the diff to check for leftover debug artifacts.
+- **Search Debug Leftovers**: Use `grep_search` → `console.log|debugger|TODO:` across changed files.
+- **Create PR**: Use `call_mcp_tool` → `github/create_pull_request` with semantic title and ticket link.
+- **CI Status**: Use `call_mcp_tool` → `github/get_pull_request_status` to verify CI is green.
+- **Screenshots**: Use `browser_subagent` to capture UI screenshots for the PR body.
+
 ---
 
 ## ⚠️ Error Handling (Fallback)
@@ -84,15 +89,11 @@ A PR is ready for human review when:
 - [ ] The author has completed an inline self-review finding zero leftover debug artifacts.
 - [ ] Automated tests and linters pass 100%.
 - [ ] The PR body contains a clear summary, ticket links, and (if applicable) visual UI evidence.
-- [ ] PR title follows semantic format (e.g., `feat(auth): enable OAuth`).
-- [ ] CI pipeline is green before assigning reviewer.
 
 ---
 
-## 📚 References
+## 📚 Cross-References
 
-- [Code Review Etiquette Skill](../code-review-etiquette/SKILL.md) — How reviewers should respond.
-- [Implementation Workflow Skill](../implementation-workflow/SKILL.md) — The full dev loop.
-- [Handover to QA Skill](../handover-to-qa/SKILL.md) — Next step after PR merge.
-- Conventional Commits: https://www.conventionalcommits.org/
-- Keep a Changelog: https://keepachangelog.com/
+- `roles/dev/implementation-workflow/SKILL.md` — The coding workflow that produces this PR.
+- `roles/dev/code-review-etiquette/SKILL.md` — What happens after you submit: the reviewer's protocol.
+- `roles/dev/handover-to-qa/SKILL.md` — After PR merge, the QA handover process.

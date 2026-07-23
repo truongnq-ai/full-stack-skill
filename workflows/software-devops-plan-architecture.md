@@ -37,4 +37,4 @@ Thiết kế và triển khai cơ sở hạ tầng (Infrastructure as Code), thi
 
 > **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
 
-> **Required Skill**: [plan-architecture](file:///D:/GitHub/skill/full-stack-skill/skills/roles/devops/plan-architecture/SKILL.md)
+> **Required Skill**: `skills/roles/devops/plan-architecture/SKILL.md`

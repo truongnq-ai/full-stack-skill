@@ -8,7 +8,7 @@ description: QA executes test plan — runs functional, regression, and smoke te
 >
 > **Out of scope**: Does not write test plan — use `software-qa-write-testplan`. Does not fix bugs — use `software-dev-fix-bug`.
 >
-> **Activates skills**: `skills/roles/tester/execution-checklist/SKILL.md`, `skills/roles/tester/regression-testing/SKILL.md`
+> **Activates skills**: `skills/roles/tester/environment-management/SKILL.md`, `skills/roles/tester/test-data-management/SKILL.md` `skills/roles/tester/execution-checklist/SKILL.md`, `skills/roles/tester/regression-testing/SKILL.md`
 
 ---
 
@@ -101,4 +101,4 @@ Save to `docs/qa/execution-[feature]-[date].md`:
 - [ ] `docs/qa/execution-*.md` report saved
 - [ ] Go/No-Go recommendation provided
 
-> **Required Skill**: [execute-testplan](file:///D:/GitHub/skill/full-stack-skill/skills/roles/tester/execute-testplan/SKILL.md)
+> **Required Skill**: `skills/roles/tester/execution-checklist/SKILL.md`

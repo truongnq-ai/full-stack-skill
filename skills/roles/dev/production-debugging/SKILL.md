@@ -1,139 +1,137 @@
 ---
-name: dev-production-debugging
-description: >-
-  Diagnoses production incidents by tracing stacktraces to exact code lines,
-  cross-referencing Git history, checking historical issues, and proposing
-  evidence-based hotfixes. Uses SSH MCP for live log access and GitHub MCP
-  for issue correlation.
+name: Production Debugging & Root Cause Analysis
+description: Systematic protocol for diagnosing production incidents — from stacktrace triage through log correlation to verified hotfix, using the Scientific Method.
+category: roles/dev
 metadata:
-  labels: [dev, debugging, production, log-analysis, hotfix, incident]
-  priority: P0
-  version: 2.0
+  labels: [dev, debugging, production, log-analysis, hotfix, rca, incident]
   triggers:
-    confidence: 0.9
-    keywords:
-      - debug production
-      - fix bug
-      - read stacktrace
-      - root cause analysis
-      - production error
-      - hotfix
-      - crash in production
-    context:
-      - user provides a stacktrace or error log
-      - system crashed in production
-      - user reports a production bug
-    negative:
-      - user asks to debug local development issues
-      - user asks to set up monitoring (use devops/monitoring)
+    priority: critical
+    confidence: 0.95
+    keywords: [debug production, fix bug, read stacktrace, root cause analysis, production error, 500 error, crash]
+    file_patterns: ["*.log", "logs/**", "**/error/**"]
+    context: ["user provides a stacktrace", "system crashed in production", "user reports a production bug"]
+    negative: ["user asks to write new feature code", "user asks about performance optimization"]
 ---
 
-# 🐛 Developer — Production Debugging
+# 🐛 Production Debugging & Root Cause Analysis
 
-> **Use this skill when**: a production error occurs and you need to trace
-> the stacktrace to the exact line of code, find the root cause, and
-> propose an evidence-based hotfix.
+> **Use this skill when**: a production system is crashing, returning errors, or behaving incorrectly — and you need to trace the root cause from logs/stacktraces, identify the offending code, and propose a verified fix. Trigger: `/dev-debug-prod`.
 >
-> **Out of scope**: Setting up monitoring/alerting (use `devops/monitoring`).
-> Local development debugging. Incident response coordination (use
-> `support/handle-production-incident`).
-
----
-
-## 🎯 Role & Persona
-
-You are a **Senior Reliability Engineer**. You do not guess why a bug happened.
-You prove it.
-**Golden Rule**: Trace the exact line from the stacktrace. Find the commit that
-introduced it before proposing a fix.
+> **Out of scope**: Preventing bugs before they reach production (`unit-test-best-practices/SKILL.md`, `performance-guardrails/SKILL.md`). DevOps incident response and infrastructure recovery (`roles/devops/incident-runbook/SKILL.md`). This skill covers the *developer's code-level diagnostic process*.
 
 ---
 
 ## 🚫 Anti-Patterns
 
-| ID | Anti-Pattern | Why It's Dangerous |
-|----|---|---|
-| **P0** | **Guessing** — Proposing a fix without reading the source file where the exception was thrown. | Fix may address symptoms, not root cause; bug recurs. |
-| **P0** | **Ignoring historical issues** — Not checking GitHub issues for known bugs before debugging from scratch. | Wastes hours rediscovering a known, documented issue. |
-| **P1** | **Reading entire log files** — Loading a 1GB production log into memory. | Agent/tool crashes; server performance degraded. |
-| **P1** | **Fixing without tests** — Applying a hotfix without writing a regression test. | Same bug returns in the next release. |
-| **P2** | **Fixing too much** — Refactoring 500 lines while applying a 2-line hotfix. | Scope creep increases risk during an active incident. |
+- **The Guess-and-Pray Fix**: Proposing a code change without actually tracing the stacktrace to the exact line of failure. "I think it might be a null pointer, let me add a null check everywhere" is not debugging — it's gambling.
+- **Ignoring Historical Context**: Spending 4 hours debugging a crash that was reported and fixed 3 months ago but regressed because someone reverted the fix PR. Always check issue history first.
+- **The Log Flood**: Adding 50 `console.log` statements to production code, deploying, and hoping one of them reveals the issue. Use structured logging with correlation IDs instead.
+- **Fixing Symptoms, Not Causes**: The API returns a 500 error because a database query times out. The developer adds a `try/catch` that returns a 200 with an empty array. The user sees no data. The bug is "fixed" in the error dashboard but the actual problem (missing index) remains.
+- **Deploying Untested Hotfixes**: Writing a fix and pushing it directly to production without running the test suite. The fix resolves bug A but introduces bug B.
 
 ---
 
-## 🛠️ Tools & Execution
+## 🛠 Prerequisites & Tooling
 
-### Required Tools
+1. Access to production logs (via SSH, CloudWatch, Datadog, or similar).
+2. Access to the codebase and git history.
+3. A staging environment to reproduce and test the fix before deploying.
 
-| Tool | Purpose |
-|------|---------|
-| `view_file` | Read the exact function/file referenced in the stacktrace. |
-| `grep_search` | Search codebase for related error patterns or the failing function. |
-| `call_mcp_tool` → `ssh/ssh_exec` | Read live server logs via `tail` or `grep` with context flags. |
-| `call_mcp_tool` → `github/search_issues` | Check if this error was reported before. |
-| `call_mcp_tool` → `github/list_commits` | Find the commit that introduced the bug. |
-| `run_command` | Run unit tests to verify the hotfix locally. |
-| `replace_file_content` | Apply the minimal hotfix to the affected code. |
+---
 
-### Execution Workflow
+## 🔄 Execution Workflow
 
-#### Step 1 — Stacktrace Triage
-- Parse the stacktrace. Extract: file name, line number, error type.
-- Use `view_file` to read the exact function at that line.
+### Step 1 — Observe: Gather Evidence (Do NOT Hypothesize Yet)
 
-#### Step 2 — Log Analysis (MCP-First)
-- If user points to a live server: use `ssh/ssh_exec` with `tail -n 500` or `grep -C 50 "ERROR"`.
-- Do NOT read entire log files. Use targeted grep with context.
+Collect all available evidence before forming any theory:
+1. **Stacktrace**: Parse the provided stacktrace. Identify the exact file name, function, and line number.
+2. **Logs**: Read the surrounding log context (±50 lines around the error).
+   - Use `call_mcp_tool` → `ssh/ssh_exec` to run `grep -C 50 "ERROR" /var/log/app.log | tail -200` on the production server.
+   - Or use `call_mcp_tool` → `ssh/sftp_read` to read specific log files.
+3. **Frequency**: Is this a one-time occurrence or repeating? Check error rates in monitoring.
+4. **Timing**: When did it start? Correlate with recent deployments (`call_mcp_tool` → `github/list_commits`).
 
-#### Step 3 — Historical Context
-- Use `github/search_issues` to check if this error was reported before.
-- Use `github/list_commits` to find the recent commit that modified the failing function.
+### Step 2 — Hypothesize: Form a Theory
 
-#### Step 4 — Root Cause Identification
-Document the root cause chain:
+Based on the evidence, form exactly ONE testable hypothesis:
+- "The NullPointerException on line 42 of `OrderService.ts` is caused by a missing null check when the user has no shipping address."
+
+Cross-reference the code:
+- Use `view_file` to read the exact function where the error occurred.
+- Use `grep_search` to find related usages and potential similar issues.
+
+### Step 3 — Historical Context Check
+
+Before writing any fix, check if this issue was seen before:
+- Use `call_mcp_tool` → `github/search_issues` with the error message as query.
+- Use `call_mcp_tool` → `github/list_commits` to find the commit that introduced or last modified the failing code.
+
+If the bug was previously fixed and regressed, understand WHY it regressed before re-applying the same fix.
+
+### Step 4 — Experiment: Reproduce & Fix
+
+1. **Reproduce**: Try to reproduce the error in the staging environment with the same input data.
+2. **Write the Fix**: Apply the minimal, surgical fix. Do NOT refactor surrounding code — hotfix scope must be laser-focused.
+3. **Write/Update Test**: Add a test case that reproduces the exact bug scenario and verifies the fix.
+4. **Verify**: Run the full test suite to ensure no regressions.
+
 ```
-Error: NullReferenceException at UserService.ts:142
-← Caused by: user.profile is null when account is in "pending" state
-← Introduced by: commit abc123 (2026-07-15) which removed the null check
+Evidence → Hypothesis → Reproduce → Fix → Test → Verify → Deploy
 ```
 
-#### Step 5 — Hotfix Proposal
-- Apply the minimal fix using `replace_file_content`.
-- Write a regression test covering the exact failure case.
-- Run the test to verify the fix.
+### Step 5 — Document & Prevent
+
+After the fix is deployed:
+1. Update the issue/ticket with the Root Cause Analysis (RCA): What failed? Why? How was it fixed?
+2. Identify the systemic gap: Was there a missing test? A missing validation? A race condition?
+3. Create a follow-up ticket to address the systemic issue (not just the symptom).
 
 > **⏸️ Checkpoint**:
-> "Root cause identified: [description]. Hotfix ready with regression test.
-> Bạn có muốn tôi áp dụng hotfix và chạy test không? (Y/N)"
+> "Tôi đã tìm ra root cause: [mô tả]. Đã viết hotfix + unit test. Bạn có muốn tôi tạo PR với hotfix này không? (Y/N)"
 
 ---
 
-## ⚠️ Error Handling
+## 🛠️ Tooling & Execution
+
+| Action | Tool | Example |
+|--------|------|---------|
+| Read production logs | `call_mcp_tool` → `ssh/ssh_exec` | `grep -C 50 "ERROR" /var/log/app.log` |
+| Read log files | `call_mcp_tool` → `ssh/sftp_read` | Read specific log file |
+| Read source code | `view_file` | Read the failing function |
+| Search codebase | `grep_search` | Find related patterns |
+| Check git history | `call_mcp_tool` → `github/list_commits` | Find introducing commit |
+| Search issues | `call_mcp_tool` → `github/search_issues` | Check if reported before |
+| Run tests | `run_command` | `npm test`, `pytest -v` |
+| Build verification | `run_command` | `npm run build` |
+
+---
+
+## ⚠️ Error Handling (Fallback)
 
 | Scenario | Condition | Fallback Action |
 |----------|-----------|-----------------|
-| Log file too large | Server log > 1GB. | Use `grep -C 50 "ERROR_PATTERN"` or `tail -n 500` via SSH. Never read the entire file. |
-| No SSH access | SSH MCP not configured for the server. | Ask user for relevant log excerpts. Fall back to local codebase analysis only. |
-| Cannot reproduce | Error only occurs under specific production conditions. | Document the conditions. Add defensive logging at the suspected failure point. Deploy to staging for observation. |
-| Multiple root causes | Stacktrace shows cascading failures. | Isolate and fix the primary failure first. Document secondary issues as separate tickets. |
+| Cannot Reproduce | Bug occurs in production but not in staging | Compare environment configurations (env vars, DB data, feature flags). Use production logs to reconstruct the exact input that triggered the bug. If still unreproducible, add targeted structured logging and wait for the next occurrence. |
+| Log File Too Large | Production log file exceeds 1GB | Do NOT read the entire file. Use `grep` with context flags (`-C 50`) or `tail -n 1000` via SSH MCP. Filter by timestamp range and error level. |
+| Multi-Service Cascade | Error originates in Service A but manifests in Service B | Trace the correlation ID across services. Start from the service that FIRST logged the error, not the one the user reported. |
+| Cannot Identify Root Cause | After 90 minutes of investigation, no clear root cause found | Escalate. Bring in a second pair of eyes (senior dev or platform engineer). Document everything you've found so far to avoid duplicate investigation work. |
 
 ---
 
-## ✅ Verification Checklist
+## ✅ Done Criteria / Verification
 
-- [ ] Exact line of code traced from the stacktrace.
-- [ ] Historical issues checked (GitHub search executed).
-- [ ] Root cause documented with commit reference.
-- [ ] Hotfix is minimal — no scope creep during incident.
-- [ ] Regression test written covering the exact failure case.
-- [ ] Test passes with the hotfix applied.
-- [ ] User checkpoint reached before deploying hotfix.
+A production bug is properly resolved when:
+
+- [ ] The exact line of code causing the failure has been traced from the stacktrace.
+- [ ] Historical context has been checked (GitHub issues, prior commits).
+- [ ] The fix has been tested with a new test case that reproduces the original bug.
+- [ ] The full test suite passes with zero regressions.
+- [ ] A Root Cause Analysis (RCA) is documented on the ticket.
 
 ---
 
-## 📚 References
+## 📚 Cross-References
 
-- [Implementation Coding Skill](../implementation-coding/SKILL.md) — CodeAct methodology for applying fixes.
-- [Unit Test Best Practices](../unit-test-best-practices/SKILL.md) — Writing regression tests.
-- [Security Basics Skill](../security-basics/SKILL.md) — Check if the bug has security implications.
-- [PR Checklist Skill](../pr-checklist/SKILL.md) — Preparing the hotfix PR.
+- `roles/dev/handover-to-qa/SKILL.md` — After hotfix, hand over to QA for verification.
+- `roles/dev/refactor-techdebt/SKILL.md` — If the root cause is systemic, schedule a follow-up refactor.
+- `roles/dev/unit-test-best-practices/SKILL.md` — Write the regression test for this bug.
+- `roles/devops/incident-runbook/SKILL.md` — If the incident requires infrastructure-level response.

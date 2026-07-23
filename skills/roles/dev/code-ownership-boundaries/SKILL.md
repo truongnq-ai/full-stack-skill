@@ -8,6 +8,9 @@ metadata:
     priority: medium
     confidence: 0.95
     keywords: [code ownership, codeowners, who owns this, module boundaries]
+    file_patterns: [".github/CODEOWNERS", "CODEOWNERS"]
+    context: ["user asks who owns a directory", "user wants to set up code ownership"]
+    negative: ["user asks about coding style", "user asks about branch protection without ownership context"]
 ---
 
 # 🛡️ Code Ownership Boundaries
@@ -20,11 +23,9 @@ metadata:
 
 ## 🚫 Anti-Patterns
 
-| ID | Anti-Pattern | Why It's Dangerous |
-|----|---|---|
-| **P0** | **Cross-Domain Leakage** — Frontend directly querying the Database bypassing Backend domain logic. | Breaks encapsulation; changes cascade unpredictably. |
-| **P1** | **Tragedy of the Commons** — Shared `src/utils/` with no owner becomes a 5,000-line dump. | Quality degrades; no one takes responsibility. |
-| **P1** | **The Lone Wolf Silo** — One developer requires God-approval for all changes in their domain. | Bus factor = 1; team blocked during vacations. |
+- **Tragedy of the Commons**: A shared `src/utils/` folder that everyone throws garbage into because "nobody owns it", turning it into a 5,000-line dumping ground.
+- **The Lone Wolf Silo**: One developer secretly owns the entire Payment processing folder and requires their explicit God-approval, blocking updates when they go on vacation.
+- **Cross-Domain Leakage**: The Frontend team directly querying the Database via Next.js server components without going through the Backend team's isolated domain logic.
 
 ---
 
@@ -32,16 +33,6 @@ metadata:
 
 1. `CODEOWNERS` GitHub/GitLab mechanism integrated into the repository.
 2. Defined Teams mapped in the Version Control system (e.g., `@org/backend-auth`).
-
-### Required Tools
-
-| Tool | Purpose |
-|------|--------|
-| `write_to_file` | Create/update `.github/CODEOWNERS` file. |
-| `view_file` | Read existing CODEOWNERS and repository structure. |
-| `list_dir` | Audit repository directories for boundary mapping. |
-| `grep_search` | Find cross-domain imports that violate boundaries. |
-| `call_mcp_tool` → `github/get_file_contents` | Read CODEOWNERS from remote repository. |
 
 ---
 
@@ -73,7 +64,19 @@ If a Mobile developer submits a PR that touches `#auth-team` logic, it physicall
 
 ### Step 4 — Define Shared Spaces
 Spaces like `src/design-system` or `src/common/types` are inherently shared.
-Designate an overarching "Architecture Guild" or "Core Team" to be the strict owner of these directories to violently guard against feature-bloat entering the common utility folders.
+Designate an overarching "Architecture Guild" or "Core Team" to be the strict owner of these directories to guard against feature-bloat entering the common utility folders.
+
+> **⏸️ Checkpoint**:
+> "CODEOWNERS file đã được draft xong với [N] domain mappings. Bạn có muốn tôi tạo PR để team review không? (Y/N)"
+
+---
+
+## 🛠️ Tooling & Execution
+
+- **Create CODEOWNERS**: Use `write_to_file` to create `.github/CODEOWNERS`.
+- **Audit Structure**: Use `list_dir` to map the repository directory structure.
+- **Verify Ownership**: Use `grep_search` on CODEOWNERS to check if a directory is covered.
+- **PR Submission**: Use `call_mcp_tool` → `github/create_pull_request` for approval.
 
 ---
 
@@ -93,15 +96,10 @@ Code Ownership is structurally sound when:
 - [ ] Every directory in the application maps to a declared Team in the `CODEOWNERS` file.
 - [ ] PRs modifying external domains automatically ping the required domain-experts for review.
 - [ ] Direct database or state-store cross-reads across domains are strictly prohibited in the Architecture code reviews.
-- [ ] Shared spaces (`utils/`, `common/`) have designated Architecture Guild ownership.
-- [ ] No orphaned directories without owners.
 
 ---
 
-## 📚 References
+## 📚 Cross-References
 
-- [Architecture Decision Records](../architecture-decision-records/SKILL.md) — Documenting boundary decisions.
-- [Design Review Checklist Skill](../design-review-checklist/SKILL.md) — Reviewing domain boundaries.
-- [API Contract Skill](../api-contract/SKILL.md) — Cross-domain communication contracts.
-- GitHub CODEOWNERS docs: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
-- "Team Topologies" by Skelton & Pais — Team interaction modes.
+- `roles/dev/design-review-checklist/SKILL.md` — Boundary enforcement is reviewed during design reviews.
+- `roles/dev/pr-checklist/SKILL.md` — PRs must respect ownership boundaries before submission.

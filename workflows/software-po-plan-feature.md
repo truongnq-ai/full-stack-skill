@@ -126,4 +126,4 @@ Initialize `task.md` from approved plan:
 - [ ] `task.md` initialized with all checklist items
 - [ ] First task marked as in progress
 
-> **Required Skill**: [plan-feature](file:///D:/GitHub/skill/full-stack-skill/skills/roles/po/plan-feature/SKILL.md)
+> **Required Skill**: `skills/roles/po/plan-feature/SKILL.md`

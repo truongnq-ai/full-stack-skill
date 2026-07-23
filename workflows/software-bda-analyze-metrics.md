@@ -79,4 +79,4 @@ Save to `docs/reports/bda-analysis-[feature_name]-[date].md`:
 
 > **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
 
-> **Required Skill**: [analyze-metrics](file:///D:/GitHub/skill/full-stack-skill/skills/roles/bda/analyze-metrics/SKILL.md)
+> **Required Skill**: `skills/roles/bda/metrics-analysis/SKILL.md`

@@ -22,4 +22,4 @@ Prepare the handover manifest.
 Notify the DevOps team or trigger the deployment pipeline manually.
 - **Exit Criteria**: Handover manifest approved, artifacts verified, and DevOps notified.
 
-> **Required Skill**: [handover-to-devops](file:///D:/GitHub/skill/full-stack-skill/skills/roles/qa/handover-to-devops/SKILL.md)
+> **Required Skill**: `skills/roles/tester/handover-to-devops/SKILL.md`

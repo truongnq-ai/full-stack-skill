@@ -3,11 +3,12 @@ name: Quality Assurance Master Protocol
 description: The baseline, overarching hub for QA processes, defining the mindset, shifting-left philosophy, and entry points into all other QA operational sub-skills.
 category: roles/qa
 metadata:
-  labels: [qa, quality-assurance, index, philosophy, shift-left]
+  labels: [qa, quality-assurance, index, philosophy, shift-left, tester]
   triggers:
     priority: critical
     confidence: 0.95
-    keywords: [qa overview, qa protocol, quality assurance index]
+    keywords: [qa overview, qa protocol, quality assurance index, how to test, tester role]
+    context: ["user asks to act as a tester", "user asks how we do QA"]
 ---
 
 # 🛡️ Quality Assurance Master Protocol
@@ -28,8 +29,10 @@ metadata:
 
 ## 🛠 Prerequisites & Tooling
 
-1. Complete directory access to all `/roles/qa` sub-skills.
+1. Complete directory access to all `/roles/tester` sub-skills.
 2. Integration with BA Skills (Requirement parsing) and DevOps Skills (Pipeline triggers).
+
+**Required Tools**: Use `view_file` to read related SDLC documentation, and `run_command` if needed to execute overarching checks.
 
 ---
 
@@ -62,6 +65,9 @@ When operating as QA, select the right tool for the exact lifecycle phase:
 - Investigate process holes for escaped bugs `(rca-lite/SKILL.md)`.
 - Manage the ultimate Release Gate `(handover-to-devops/SKILL.md)`.
 
+> **⏸️ Checkpoint**: 
+> "Tôi đã thiết lập xong chiến lược QA (Shift-Left) cho dự án này. Bạn có muốn tôi bắt đầu giai đoạn Test Planning (lập kế hoạch kiểm thử) không? (Y/N)"
+
 ### Principle 3 — Absolute Objectivity
 When evaluating a Quality Gate, QA is immune to business deadline pressure. If a feature fails to meet the `qa-gates/SKILL.md` baseline, it is Rejected. Overrides must come explicitly from the Project Management/Product Owner via a logged `Waiver`.
 
@@ -82,3 +88,10 @@ Adherence to the Master Protocol is met when:
 - [ ] All QA activity is actively mapping against documented specifications (No guessing logic).
 - [ ] Overlap with DevOps (Infrastructure) and Dev (Unit Tests) is minimized.
 - [ ] At all times, the system provides an auditable paper trail of Defects, Action Items, and formal Approvals/Rejections.
+
+---
+
+## 📚 Cross-References
+
+- **BA Handover**: `roles/ba/handover-to-dev/SKILL.md` (Where QA begins)
+- **DevOps Deploy**: `roles/devops/deploy-release/SKILL.md` (Where QA ends)

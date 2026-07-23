@@ -8,6 +8,9 @@ metadata:
     priority: medium
     confidence: 0.95
     keywords: [refactor, fix tech debt, clean up code, legacy code]
+    file_patterns: ["src/**/*", "lib/**/*"]
+    context: ["user encounters messy legacy code", "user asks to clean up a module", "user reports high cyclomatic complexity"]
+    negative: ["user asks to add new features", "user asks for architecture redesign"]
 ---
 
 # 🧹 Refactor & Tech Debt Strategy
@@ -20,11 +23,9 @@ metadata:
 
 ## 🚫 Anti-Patterns
 
-| ID | Anti-Pattern | Why It's Dangerous |
-|----|---|---|
-| **P0** | **Refactoring Without Tests** — Gutting a legacy billing function without writing a test first. | You will break something and not know until a customer screams. |
-| **P1** | **The Grand Rewrite** — "This app is garbage, rewriting in Rust." 6-month freeze that usually fails. | Feature delivery halts; business loses patience. |
-| **P1** | **The "While I'm Here" Tangent** — Doing a CSS ticket but refactoring the DB connector. | Scope creep destabilizes the PR; review becomes impossible. |
+- **The Grand Rewrite**: Declaring "This Node app is garbage, I'm rewriting the entire thing in Rust." A massive, 6-month halted feature-freeze that usually fails and gets cancelled.
+- **Refactoring Without Tests**: Gutting a legacy billing function without writing a test first. You will break something, and you will not know until a customer screams.
+- **The "While I'm Here" Tangent**: Doing a CSS ticket, but taking a detour to refactor the database connector because it looked ugly, completely destabilizing the PR.
 
 ---
 
@@ -32,16 +33,6 @@ metadata:
 
 1. `roles/dev/unit-test-best-practices/SKILL.md` (Tests are the safety net).
 2. Deep understanding of the Strangler Fig Architectural pattern for major refactors.
-
-### Required Tools
-
-| Tool | Purpose |
-|------|--------|
-| `grep_search` | Find instances of the pattern to refactor across codebase. |
-| `view_file` | Read legacy code to understand current behavior. |
-| `run_command` | Execute characterization tests before and after refactor. |
-| `replace_file_content` | Apply mechanical refactors surgically. |
-| `multi_replace_file_content` | Rename symbols across multiple locations. |
 
 ---
 
@@ -69,6 +60,19 @@ For system-wide refactors (e.g., migrating an entire API from Express.js to Nest
 Never combine the migration with a new feature.
 Create a dedicated Agile Epic for "V2 API Migration". Use Feature Flags (`feature-flag-practice/SKILL.md`) to dark-launch the new refactored system and dual-write traffic to compare outputs before flipping the switch.
 
+> **⏸️ Checkpoint**:
+> "Refactor hoàn tàt: Characterization tests pass, cyclomatic complexity giảm từ [X] xuống [Y]. Bạn có muốn tôi tạo PR không? (Y/N)"
+
+---
+
+## 🛠️ Tooling & Execution
+
+- **Read Legacy Code**: Use `view_file` to understand the current implementation.
+- **Find Patterns**: Use `grep_search` to find all usages of the function being refactored.
+- **Complexity Metrics**: Use `run_command` to run complexity analyzers (e.g., `npx complexity-report`).
+- **Test Verification**: Use `run_command` → `npm test` to run characterization tests before and after.
+- **Surgical Edits**: Use `replace_file_content` / `multi_replace_file_content` for precise refactoring.
+
 ---
 
 ## ⚠️ Error Handling (Fallback)
@@ -86,15 +90,11 @@ A Refactor operation is successful when:
 - [ ] External behavior of the API/UI is 100% physically identical to the user.
 - [ ] Internal Cyclomatic Complexity (the number of nested IF statements) has been reduced.
 - [ ] An automated test suite was strictly utilized as a safety net during the code transformation.
-- [ ] Characterization tests pass identically before and after refactor.
-- [ ] Refactor is in a dedicated PR (no mixed feature + refactor changes).
 
 ---
 
-## 📚 References
+## 📚 Cross-References
 
-- [Unit Test Best Practices](../unit-test-best-practices/SKILL.md) — Writing characterization tests.
-- [Feature Flag Practice](../feature-flag-practice/SKILL.md) — Dark-launching refactored code.
-- [Architecture Decision Records](../architecture-decision-records/SKILL.md) — Documenting major refactor decisions.
-- Industry reference: "Working Effectively with Legacy Code" by Michael Feathers.
-- Strangler Fig Pattern: https://martinfowler.com/bliki/StranglerFigApplication.html
+- `roles/dev/unit-test-best-practices/SKILL.md` — Tests are the safety net for refactoring.
+- `roles/dev/feature-flag-practice/SKILL.md` — Dark-launching refactored systems.
+- `roles/dev/implementation-coding/SKILL.md` — The CodeAct execution model for applying refactors.

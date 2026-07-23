@@ -113,4 +113,4 @@ Save to `docs/deploy/deploy-[YYYY-MM-DD]-[env].md`:
 - [ ] No crash-loop detected
 - [ ] `docs/deploy/` report saved
 
-> **Required Skill**: [deploy-release](file:///D:/GitHub/skill/full-stack-skill/skills/roles/devops/deploy-release/SKILL.md)
+> **Required Skill**: `skills/roles/devops/deploy-release/SKILL.md`

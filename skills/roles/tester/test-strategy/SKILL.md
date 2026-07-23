@@ -3,11 +3,12 @@ name: Overarching Test Strategy (The Pyramid)
 description: The baseline architecture of the project's testing methodology, outlining the balance of Unit, Integration, and E2E testing to maximize coverage and minimize CI time.
 category: roles/qa
 metadata:
-  labels: [qa, strategy, test-pyramid, architecture]
+  labels: [qa, strategy, test-pyramid, architecture, tester]
   triggers:
     priority: high
     confidence: 0.95
-    keywords: [test strategy, the pyramid, testing architecture, how we test]
+    keywords: [test strategy, the pyramid, testing architecture, how we test, define strategy]
+    context: ["user asks to define a master test strategy", "user asks for the testing pyramid"]
 ---
 
 # 🧗 Overarching Test Strategy
@@ -30,6 +31,8 @@ metadata:
 
 1. Complete understanding of Martin Fowler's "Test Pyramid".
 2. Ability to review the current CI/CD script (e.g., looking at `npm test` vs `npm run cypress`).
+
+**Required Tools**: Use `list_dir` and `grep_search` to audit the current repository's test files to establish a baseline.
 
 ---
 
@@ -77,6 +80,9 @@ We optimize for CI feedback speed. If a behavior can be tested at the Unit level
 - **Owner**: QA Automation Team.
 ```
 
+> **⏸️ Checkpoint**: 
+> "Bản dự thảo Master Test Strategy đã được tạo. Bạn có muốn tôi ghi file `docs/qa/Master-Strategy.md` vào source code ngay không? (Y/N)"
+
 ---
 
 ## ⚠️ Error Handling (Fallback)
@@ -95,3 +101,10 @@ A Test Strategy is considered complete when:
 - [ ] A definitive split (Volume ratio) is established between Unit, API, and E2E layers.
 - [ ] Explicit ownership for writing and maintaining each layer is documented.
 - [ ] The Strategy is published directly into the project's root `/docs` repository for visibility.
+
+---
+
+## 📚 Cross-References
+
+- **Test Plan Template**: `roles/tester/test-plan-template/SKILL.md` (For sprint-level planning, which inherits from this macro strategy)
+- **E2E Automation**: `roles/tester/automation-e2e/SKILL.md` (Execution rules for the top of the pyramid)

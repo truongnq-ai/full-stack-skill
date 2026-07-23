@@ -92,4 +92,4 @@ curl -X POST http://localhost:<port>/<endpoint> -H "Authorization: Bearer <token
 - [ ] Error codes defined as string constants
 - [ ] Integration tests saved as curl scripts
 
-> **Required Skill**: [design-api](file:///D:/GitHub/skill/full-stack-skill/skills/roles/dev/design-api/SKILL.md)
+> **Required Skill**: `skills/roles/dev/api-contract/SKILL.md`

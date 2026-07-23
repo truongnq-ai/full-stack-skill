@@ -23,7 +23,7 @@ description: Reviewer audits AI agent skills — quick review, deep battle test,
 ## Step 2 — Quick Review (Single Skill)
 
 ```bash
-f="path/to/SKILL.md"
+f="roles/reviewer/audit-skills/SKILL.md"
 echo "Lines: $(wc -l < $f)"
 grep -c 'Use this skill when\|triggers:' $f
 grep -c 'Anti-Pattern\|anti-pattern' $f
@@ -104,4 +104,4 @@ Ask: (1) Fix critical now? (2) Generate task.md? (3) Deep-dive category? (4) Run
 
 > **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
 
-> **Required Skill**: [audit-skills](file:///D:/GitHub/skill/full-stack-skill/skills/roles/reviewer/audit-skills/SKILL.md)
+> **Required Skill**: `skills/roles/reviewer/audit-skills/SKILL.md`

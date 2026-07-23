@@ -35,4 +35,4 @@ Tạo ra bản đặc tả gắn sự kiện (Tracking Plan) chuẩn kỹ thuậ
 
 > **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
 
-> **Required Skill**: [setup-tracking](file:///D:/GitHub/skill/full-stack-skill/skills/roles/bda/setup-tracking/SKILL.md)
+> **Required Skill**: `skills/roles/bda/report-generation/SKILL.md`

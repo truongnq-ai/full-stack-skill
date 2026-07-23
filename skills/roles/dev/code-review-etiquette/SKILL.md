@@ -8,6 +8,9 @@ metadata:
     priority: critical
     confidence: 0.95
     keywords: [code review, pr review, review etiquette, how to review]
+    file_patterns: [".github/PULL_REQUEST_TEMPLATE.md"]
+    context: ["user is reviewing a PR", "user asks how to give code review feedback"]
+    negative: ["user asks for security-specific review", "user asks to write code"]
 ---
 
 # 🤝 Code Review Etiquette & Philosophy
@@ -20,12 +23,10 @@ metadata:
 
 ## 🚫 Anti-Patterns
 
-| ID | Anti-Pattern | Why It's Dangerous |
-|----|---|---|
-| **P0** | **The Rubber Stamp (LGTM)** — Approving a 4,000-line PR after 2 minutes. | Bugs, security flaws, and tech debt slip through. |
-| **P0** | **Toxic Phrasing** — "Why did you do this? This is terribly inefficient." | Assumes incompetence; destroys team morale and psychological safety. |
-| **P1** | **Nitpick Torture** — Blocking a SEV-2 bug fix over quote style. | Delays critical fixes; linter should handle style. |
-| **P2** | **The Infinite Ping-Pong** — 15 rounds of PR comments over 4 days instead of a 5-min Zoom call. | Destroys velocity; architectural disagreements need live discussion. |
+- **The Rubber Stamp (LGTM)**: Approving a 4,000-line PR after looking at it for 2 minutes with a simple "LGTM" (Looks Good To Me) because you don't want to deal with it.
+- **Nitpick Torture**: Blocking a critical SEV-2 bug-fix PR because the author used double quotes instead of single quotes on line 42. (Let the Linter handle style; Humans review Logic).
+- **Toxic Phrasing**: Leaving comments like "Why did you do this? This is terribly inefficient." (Assumes incompetence instead of missing context).
+- **The Infinite Ping-Pong**: Sending a PR back and forth 15 times over 4 days instead of just jumping on a 5-minute Zoom call to resolve the fundamental architectural disagreement.
 
 ---
 
@@ -33,15 +34,6 @@ metadata:
 
 1. A clear separation of concerns (Linters MUST run automatically before human review).
 2. The team's `roles/common/communication-contract/SKILL.md`.
-
-### Required Tools
-
-| Tool | Purpose |
-|------|--------|
-| `call_mcp_tool` → `github/get_pull_request` | Read PR metadata and description. |
-| `call_mcp_tool` → `github/get_pull_request_files` | View changed files for review. |
-| `call_mcp_tool` → `github/create_pull_request_review` | Submit prefixed review comments. |
-| `view_file` | Read specific files for deeper logic analysis. |
 
 ---
 
@@ -68,6 +60,18 @@ Never demand a change without explaining the rationale or providing a link to th
 ### Step 4 — Respond to PRs Rapidly
 Code Review is a Tier-1 activity. If a teammate requests a review, prioritize it over writing your own new code. Stale PRs cause nasty merge conflicts and destroy velocity. Aim for < 4 hours latency.
 
+> **⏸️ Checkpoint**:
+> "Review hoàn tàt với [N] comments ([X] BLOCKER, [Y] NIT, [Z] PRAISE). Bạn có muốn tôi submit review lên GitHub không? (Y/N)"
+
+---
+
+## 🛠️ Tooling & Execution
+
+- **Fetch PR**: Use `call_mcp_tool` → `github/get_pull_request` and `github/get_pull_request_files`.
+- **Read Changes**: Use `view_file` to read specific modified files.
+- **Submit Review**: Use `call_mcp_tool` → `github/create_pull_request_review` with categorized comments.
+- **Check History**: Use `call_mcp_tool` → `github/get_pull_request_comments` for existing discussion.
+
 ---
 
 ## ⚠️ Error Handling (Fallback)
@@ -86,15 +90,11 @@ A high-quality code review session is complete when:
 - [ ] All comments are strictly prefixed (e.g., `[BLOCKER]`, `[NIT]`).
 - [ ] Zero comments target the author's ability or intent.
 - [ ] If the PR contains > 3 complex fundamental flaws, the Reviewer proactively scheduled a live sync instead of typing a wall of text.
-- [ ] Response time < 4 hours from review request.
-- [ ] Praise comments included for well-crafted code.
 
 ---
 
-## 📚 References
+## 📚 Cross-References
 
-- [PR Checklist Skill](../pr-checklist/SKILL.md) — Author-side checks before requesting review.
-- [Code Review Security Skill](../code-review-security/SKILL.md) — Security-focused review.
-- [Architecture Decision Records](../architecture-decision-records/SKILL.md) — For resolving architectural disagreements.
-- Google Engineering Practices: https://google.github.io/eng-practices/review/
-- "Implementing Code Review" by SmartBear: https://smartbear.com/learn/code-review/best-practices-for-peer-code-review/
+- `roles/dev/code-review-security/SKILL.md` — Security-specific review that complements this etiquette.
+- `roles/dev/pr-checklist/SKILL.md` — The author's pre-flight checklist before requesting review.
+- `roles/dev/architecture-decision-records/SKILL.md` — Escalation path for architectural disagreements.

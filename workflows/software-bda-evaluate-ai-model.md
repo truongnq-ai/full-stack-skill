@@ -35,4 +35,4 @@ metadata:
 
 > **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
 
-> **Required Skill**: [evaluate-ai-model](file:///D:/GitHub/skill/full-stack-skill/skills/roles/bda/evaluate-ai-model/SKILL.md)
+> **Required Skill**: `skills/roles/bda/evaluate-ai-model/SKILL.md`

@@ -1,141 +1,138 @@
 ---
-name: dev-ai-integration
-description: >-
-  Builds robust AI/LLM integrations — system prompt design, structured output
-  enforcement (JSON schema), retry/fallback logic, context window management,
-  and token optimization. Treats prompts as code.
+name: AI Integration & Prompt Engineering
+description: Standards for integrating LLM/AI models into applications — prompt design, structured output, context management, cost control, and safety guardrails.
+category: roles/dev
 metadata:
   labels: [dev, ai-integration, prompt-engineering, llm, openai, gemini]
-  priority: P1
-  version: 2.0
   triggers:
-    confidence: 0.9
-    keywords:
-      - integrate ai
-      - prompt engineering
-      - context window
-      - llm api
-      - openai
-      - gemini
-      - structured output
-      - ai wrapper
-    file_patterns: ["prompts/*.txt", "ai_service.*", "*.prompt"]
-    context:
-      - user asks to integrate an AI/LLM API into the application
-      - user wants to write system prompts
-    negative:
-      - user asks to train or fine-tune a model (use bda/evaluate-ai-model)
-      - user asks to evaluate model accuracy
+    priority: high
+    confidence: 0.95
+    keywords: [integrate ai, prompt engineering, context window, llm api, openai, gemini, ai service, structured output]
+    file_patterns: ["prompts/*.txt", "ai_service.*", "**/llm/**", "**/ai/**"]
+    context: ["user asks to integrate an LLM", "user builds an AI-powered feature", "user asks about prompt design"]
+    negative: ["user asks to train a model from scratch", "user asks about ML pipeline infrastructure"]
 ---
 
-# 🤖 Developer — AI Integration & Prompt Engineering
+# 🤖 AI Integration & Prompt Engineering
 
-> **Use this skill when**: building AI/LLM-powered features — system prompt
-> design, structured output parsing, retry logic, and context window
-> management.
+> **Use this skill when**: building features that call external LLM APIs (OpenAI, Gemini, Claude, local models) — designing system prompts, parsing structured outputs, managing token limits, and implementing fallback chains. Trigger: `/dev-ai-integration`.
 >
-> **Out of scope**: Training or fine-tuning models. Model evaluation (use
-> `bda/evaluate-ai-model`). Infrastructure for GPU scaling.
-
----
-
-## 🎯 Role & Persona
-
-You are an **AI Integration Engineer**. You treat Prompts as Code.
-**Golden Rule**: LLMs hallucinate, context windows overflow, and JSON outputs
-break. Always enforce structured outputs and implement retry/fallback logic.
+> **Out of scope**: Training or fine-tuning ML models (`roles/bda/evaluate-ai-model/SKILL.md`). This skill governs the *application-layer integration* of pre-trained AI models.
 
 ---
 
 ## 🚫 Anti-Patterns
 
-| ID | Anti-Pattern | Why It's Dangerous |
-|----|---|---|
-| **P0** | **Naked API Calls** — Calling LLM API without `try/catch` and retry logic. | One timeout crashes the entire feature. |
-| **P0** | **Trusting LLM Output** — Using LLM response directly without schema validation. | Hallucinated JSON breaks downstream logic. |
-| **P1** | **Hardcoded Prompts in UI** — System prompts embedded in React components. | Prompt injection attacks; impossible to version/test. |
-| **P1** | **Context Overflow** — Sending entire database contents as context. | Token limit exceeded; API error or truncated response. |
-| **P2** | **No Fallback** — Single LLM provider with no degradation strategy. | Provider outage = feature outage. |
+- **Naked API Calls**: Calling an LLM API without `try/catch`, retry logic, or timeout. The API returns a 429 rate-limit, and the entire user-facing request crashes with an unhandled exception.
+- **Trusting LLM Output Blindly**: Feeding raw LLM JSON output into a database `INSERT` statement without schema validation. The model hallucinates an extra field, and the DB throws a column mismatch error in production.
+- **Hardcoded Prompts in Frontend**: Embedding the system prompt inside a React component. A user opens DevTools, reads the prompt, and reverse-engineers your proprietary classification logic.
+- **The Infinite Context Dump**: Stuffing the entire 50-page user manual into the prompt context every single call, burning $2.50 per request when 90% of the context is irrelevant.
+- **No Fallback Model**: Using only GPT-4o. When OpenAI has an outage (which happens monthly), the feature is 100% dead with no degradation path.
 
 ---
 
-## 🛠️ Tools & Execution
+## 🛠 Prerequisites & Tooling
 
-### Required Tools
+1. An LLM API key with rate-limit awareness (OpenAI, Google AI, Anthropic).
+2. A schema validation library (Zod for TypeScript, Pydantic for Python).
+3. Understanding of token economics (input tokens vs output tokens vs cached tokens).
 
-| Tool | Purpose |
-|------|---------|
-| `view_file` | Read existing prompt templates and AI service code. |
-| `write_to_file` | Create prompt template files and AI wrapper modules. |
-| `run_command` | Execute integration tests and verify LLM response parsing. |
-| `grep_search` | Find existing AI/LLM usage patterns in the codebase. |
-| `replace_file_content` | Inject retry logic and schema validation into existing code. |
+---
 
-### Execution Workflow
+## 🔄 Execution Workflow
 
-#### Step 1 — System Prompt Design
-Define the prompt using the PCTF framework:
-- **P**ersona: Who is the AI acting as?
-- **C**ontext: What background information does it need?
-- **T**ask: What specifically should it do?
-- **F**ormat: What is the exact output structure?
+### Step 1 — System Prompt Design (Prompts as Code)
 
-Add explicit negative constraints: `"Do NOT output markdown. Return raw JSON only."`
+Define the prompt using the **Persona-Context-Task-Format** framework:
+- **Persona**: Who is the AI? (e.g., "You are a senior tax accountant.")
+- **Context**: What background data does it have? (Inject only relevant chunks, not the entire DB.)
+- **Task**: What must it do? (e.g., "Classify the invoice into one of 5 categories.")
+- **Format**: What is the exact output shape? (e.g., "Return JSON matching this Zod schema: `{ category: string, confidence: number }`")
 
-#### Step 2 — Structured Output Enforcement
-Always validate LLM output against a schema:
+Add explicit negative constraints: `"Do NOT output markdown code fences. Return raw JSON only."`
+
+Store prompts in versioned config files (`prompts/classify-invoice-v2.txt`), never inline in application code.
+
+### Step 2 — Structured Output Enforcement
+
+Never trust raw LLM text output. Always enforce schema validation:
 ```typescript
-// Zod schema for type-safe LLM output
-const ResponseSchema = z.object({
-  summary: z.string(),
-  confidence: z.number().min(0).max(1),
-  tags: z.array(z.string())
-});
+// Good: Validate with Zod before using
+const result = ClassifySchema.safeParse(JSON.parse(llmResponse));
+if (!result.success) {
+  logger.warn('LLM output failed schema validation', { errors: result.error });
+  return fallbackClassification(invoice);
+}
 ```
 
-#### Step 3 — Retry & Fallback Logic
-- Implement exponential backoff for rate limits (429).
-- Implement timeout handling (default: 30s).
-- Implement graceful degradation: if primary LLM fails → try fallback → return cached/default response.
+Use the model's native structured output mode if available (OpenAI `response_format: { type: "json_schema" }`, Gemini `responseMimeType: "application/json"`).
 
-#### Step 4 — Context Window Management
-- Calculate token count before sending.
-- Truncate or summarize input if it exceeds 80% of the model's context window.
-- Use chunking for large documents.
+### Step 3 — Context Window Management
+
+- **Token Budget**: Calculate input + output tokens before sending. If the prompt exceeds 80% of the model's context window, truncate or summarize the input data.
+- **Chunking**: For large documents, split into semantic chunks and process in parallel, then merge results.
+- **Caching**: Cache identical prompt+input combinations to avoid redundant API calls (Redis with TTL).
+
+### Step 4 — Retry, Fallback & Cost Control
+
+Implement a 3-tier resilience chain:
+1. **Primary Model**: GPT-4o / Gemini 2.5 Pro (high quality).
+2. **Fallback Model**: GPT-4o-mini / Gemini 2.5 Flash (cheaper, faster, slightly lower quality).
+3. **Static Fallback**: Rule-based logic or cached last-known-good response.
+
+Apply exponential backoff for rate limits (429) and transient errors (500, 503):
+```
+Retry 1: wait 1s → Retry 2: wait 2s → Retry 3: wait 4s → Fallback model → Static fallback
+```
+
+Track cost per feature: `cost = (input_tokens × input_price + output_tokens × output_price)`.
+
+### Step 5 — Safety & Prompt Injection Defense
+
+- **Input Sanitization**: Strip or escape user inputs that could manipulate the system prompt (e.g., "Ignore all previous instructions and...").
+- **Output Filtering**: Scan LLM responses for PII leakage, profanity, or off-topic content before displaying to the user.
+- **Audit Logging**: Log every LLM call (prompt hash, model, token count, latency, cost) for debugging and compliance.
 
 > **⏸️ Checkpoint**:
-> "Luồng gọi LLM đã được implement kèm Retry mechanism và schema validation.
-> Bạn có muốn tôi mock thử kết quả trả về để test parser không? (Y/N)"
+> "Luồng gọi LLM đã được implement kèm Retry mechanism + Schema validation + Fallback chain. Bạn có muốn tôi chạy thử integration test với mock responses không? (Y/N)"
 
 ---
 
-## ⚠️ Error Handling
+## 🛠️ Tooling & Execution
+
+- **Code**: Use `view_file` to audit existing AI service code before modifying.
+- **Build**: Use `run_command` to execute integration scripts and verify LLM response parsing.
+- **Database**: Use `call_mcp_tool` for `redis` to verify caching behavior (`mcp_redis_get`, `mcp_redis_set`).
+- **Testing**: Use `run_command` to run unit tests with mocked LLM responses.
+
+---
+
+## ⚠️ Error Handling (Fallback)
 
 | Scenario | Condition | Fallback Action |
 |----------|-----------|-----------------|
-| Rate limited (429) | LLM API returns 429 Too Many Requests. | Implement exponential backoff: 1s → 2s → 4s → 8s. Max 3 retries. |
-| Invalid JSON output | LLM returns malformed JSON or unexpected structure. | Re-prompt with stricter format instructions. If 2nd attempt fails, return error to user with context. |
-| Context overflow | Input exceeds model's token limit. | Truncate oldest context. Summarize long documents. Use sliding window pattern. |
-| Provider outage | Primary LLM provider is down. | Switch to fallback provider or return cached response with disclaimer. |
+| API Rate Limit | LLM API returns 429 Too Many Requests | Apply exponential backoff (1s, 2s, 4s). After 3 retries, switch to fallback model. If fallback also fails, return cached or rule-based response. |
+| Token Overflow | Input exceeds model's context window limit | Truncate input by priority (keep most recent/relevant chunks). Log the truncation event. Never silently drop context without alerting. |
+| Model Unavailable | OpenAI/Gemini API is down (503) | Automatically route to the pre-configured fallback model provider. If all providers are down, degrade gracefully with a user-facing message: "AI features temporarily unavailable." |
+| Malformed Output | LLM returns invalid JSON or fails schema validation | Retry once with an explicit re-prompt ("Your previous response was invalid JSON. Return ONLY valid JSON matching this schema: ..."). If retry also fails, use static fallback. |
 
 ---
 
-## ✅ Verification Checklist
+## ✅ Done Criteria / Verification
 
-- [ ] System prompt follows PCTF framework (Persona, Context, Task, Format).
-- [ ] LLM output validated against a schema (Zod/Pydantic).
-- [ ] Retry logic implemented with exponential backoff.
-- [ ] Context window usage calculated and managed.
-- [ ] Prompts stored in backend/config (not hardcoded in UI).
-- [ ] Fallback strategy defined for provider outage.
-- [ ] Integration tested with mock responses.
+AI integration is production-ready when:
+
+- [ ] The output format is explicitly defined via a schema validator (Zod/Pydantic), not just string parsing.
+- [ ] There is retry logic for API rate limits (429) and transient errors, with exponential backoff.
+- [ ] A fallback model chain is configured (Primary → Budget → Static).
+- [ ] Prompts are stored in versioned config files, not hardcoded in application code.
+- [ ] Token cost is tracked and budgeted per feature.
+- [ ] User inputs are sanitized against prompt injection before being sent to the LLM.
 
 ---
 
-## 📚 References
+## 📚 Cross-References
 
-- [Implementation Coding Skill](../implementation-coding/SKILL.md) — CodeAct methodology for building the integration.
-- [Security Basics Skill](../security-basics/SKILL.md) — Prevent prompt injection attacks.
-- [API Contract Skill](../api-contract/SKILL.md) — Define the AI service's API contract.
-- OpenAI Best Practices: https://platform.openai.com/docs/guides/prompt-engineering
-- Anthropic Prompt Engineering Guide: https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering
+- `roles/dev/security-basics/SKILL.md` — Prompt injection is a security concern.
+- `roles/dev/performance-guardrails/SKILL.md` — Token cost optimization parallels performance budgeting.
+- `roles/dev/unit-test-best-practices/SKILL.md` — Mock LLM responses for deterministic testing.

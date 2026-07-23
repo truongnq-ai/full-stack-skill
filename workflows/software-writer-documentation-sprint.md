@@ -23,4 +23,4 @@ Review content for clarity, tone, and technical accuracy.
 ## Step 4 - Output
 - **Exit Criteria**: Documentation is merged, published, and accessible to end-users/developers.
 
-> **Required Skill**: [documentation-sprint](file:///D:/GitHub/skill/full-stack-skill/skills/roles/writer/documentation-sprint/SKILL.md)
+> **Required Skill**: `skills/roles/writer/documentation-sprint/SKILL.md`

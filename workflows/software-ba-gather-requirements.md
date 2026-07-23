@@ -8,7 +8,7 @@ description: BA elicits requirements from stakeholders through structured interv
 >
 > **Out of scope**: Does not write PRD — use `software-po-plan-feature`. Does not split stories — use `software-ba-split-stories`. Does not design API — use `software-dev-design-api`.
 >
-> **Activates skills**: `skills/roles/ba/requirement-analysis/SKILL.md`, `skills/roles/ba/system-design-uml/SKILL.md`, `skills/roles/tester/business-analysis/SKILL.md`
+> **Activates skills**: `skills/roles/ba/requirement-analysis/SKILL.md`, `skills/roles/ba/system-design-uml/SKILL.md`, `skills/roles/ba/business-analysis/SKILL.md`
 
 ---
 
@@ -41,7 +41,7 @@ Conduct structured discovery covering:
 
 ## Step 3 — Deep Analysis
 
-Apply `skills/roles/tester/business-analysis/SKILL.md`:
+Apply `skills/roles/ba/business-analysis/SKILL.md`:
 
 - **Atomic Decomposition**: Split acceptance criteria into single-condition logic units
 - **Variable Identification**: Extract toggles, market rules, user roles
@@ -109,4 +109,4 @@ Save to `docs/specs/requirements-[feature_name].md`:
 - [ ] Edge cases documented with expected behavior
 - [ ] Zero open questions remaining (or explicitly flagged as blockers)
 
-> **Required Skill**: [gather-requirements](file:///D:/GitHub/skill/full-stack-skill/skills/roles/ba/gather-requirements/SKILL.md)
+> **Required Skill**: `skills/roles/ba/requirement-analysis/SKILL.md`

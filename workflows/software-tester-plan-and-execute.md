@@ -8,7 +8,7 @@ description: Tester creates test plans, executes UI/API tests, and reports bugs 
 >
 > **Out of scope**: Does not fix bugs — use `software-dev-fix-bug`.
 >
-> **Activates skills**: `skills/roles/tester/test-planning/SKILL.md`, `skills/roles/tester/api-testing/SKILL.md`, `skills/roles/tester/manual-testing/SKILL.md`
+> **Activates skills**: `skills/roles/tester/test-plan-template/SKILL.md`, `skills/roles/tester/api-testing/SKILL.md`, `skills/roles/tester/exploratory-testing/SKILL.md`
 
 ---
 
@@ -75,4 +75,4 @@ Notify the DEV team for triage.
 
 > **🔄 Fallback**: Nếu gặp lỗi, log lại chi tiết và hỏi ý kiến user.
 
-> **Required Skill**: [plan-and-execute](file:///D:/GitHub/skill/full-stack-skill/skills/roles/tester/plan-and-execute/SKILL.md)
+> **Required Skill**: `skills/roles/tester/test-plan-template/SKILL.md`

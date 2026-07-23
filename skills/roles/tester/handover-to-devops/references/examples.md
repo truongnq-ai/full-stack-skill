@@ -1,9 +1,13 @@
-# Examples — QA to DevOps Handover
+# Examples — Handover to DevOps
 
-## Example 1 — Release handover
+## Example 1: QA Release Certificate
+**Version**: `v2.4.0-rc1`
+**QA Sign-off**: ✅ APPROVED
 
-**Input**
-"Ready to release"
+**Checklist Verified**:
+- [x] Regression Suite passed 100%.
+- [x] 0 Open S1/S2 Bugs.
+- [x] Performance tests match SLAs.
+- [x] UAT Sign-off obtained from `@ProductOwner`.
 
-**Output**
-"Attach QA report + readiness checklist."
+**DevOps Action**: Proceed with Production deployment.

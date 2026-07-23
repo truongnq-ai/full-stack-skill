@@ -3,11 +3,12 @@ name: Bug Reporting Standard
 description: Enforces a strict, reproducible, and developer-friendly template for logging software defects.
 category: roles/qa
 metadata:
-  labels: [qa, bug-report, defect, testing]
+  labels: [qa, bug-report, defect, testing, tester]
   triggers:
     priority: critical
     confidence: 0.95
-    keywords: [report bug, log defect, issue found, broken feature]
+    keywords: [report bug, log defect, issue found, broken feature, bug report]
+    context: ["user asks to report a bug", "user found a defect"]
 ---
 
 # 🐛 Bug Reporting Standard
@@ -29,8 +30,10 @@ metadata:
 
 ## 🛠 Prerequisites & Tooling
 
-1. Use `skills/common/id-registry/SKILL.md` to assign a standard tracking ID (e.g., `BUG-104`).
+1. Use `roles/ba/id-registry/SKILL.md` (or general tracking system) to assign a standard tracking ID (e.g., `BUG-104`).
 2. Identify the target markdown file or issue tracker integration point (e.g., `docs/qa/bugs/BUG-104.md`).
+
+**Required Tools**: Use `write_to_file` to draft the markdown defect report. Use `call_mcp_tool` for `jira` if logging directly into a SaaS issue tracker.
 
 ---
 
@@ -79,7 +82,10 @@ Link the bug to the User Story or Test Case it violates.
 Example: `> Violates Acceptance Criteria 3 of [US-042]`
 
 ### Step 4 — Triage Handoff
-Notify the QA Lead or Dev Manager to prioritize the bug using `skills/roles/qa/bug-triage/SKILL.md`.
+Notify the QA Lead or Dev Manager to prioritize the bug using `roles/tester/bug-triage/SKILL.md`.
+
+> **⏸️ Checkpoint**: 
+> "Bug Report (BUG-104) đã được khởi tạo theo chuẩn Markdown. Bạn có muốn tôi gọi MCP Jira để tạo ticket trực tiếp trên hệ thống không? (Y/N)"
 
 ---
 
@@ -100,3 +106,10 @@ A bug is considered successfully reported when:
 - [ ] Steps to reproduce are numbered and executable by a naive third party.
 - [ ] Both Expected and Actual results are explicitly defined.
 - [ ] Logs, snippets, or screenshots are attached if relevant.
+
+---
+
+## 📚 Cross-References
+
+- **Bug Triage**: `roles/tester/bug-triage/SKILL.md` (Next step: classifying the logged bug)
+- **Root Cause Analysis**: `roles/tester/rca-lite/SKILL.md` (For deep diving into why the bug happened)

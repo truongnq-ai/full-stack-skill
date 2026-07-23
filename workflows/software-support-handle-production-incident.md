@@ -24,4 +24,4 @@ Joint L3/Dev investigation into production logs to apply temporary mitigations.
 ## Step 4 - Output
 - **Exit Criteria**: Temporary mitigation is in place, service is restored (even if degraded), and incident is handed over to resolution phase.
 
-> **Required Skill**: [handle-production-incident](file:///D:/GitHub/skill/full-stack-skill/skills/roles/support/handle-production-incident/SKILL.md)
+> **Required Skill**: `skills/roles/support/handle-production-incident/SKILL.md`
