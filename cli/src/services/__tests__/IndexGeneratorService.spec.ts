@@ -64,7 +64,10 @@ describe('IndexGeneratorService', () => {
       // Branch coverage for parseSkill catch block (line 148)
       (fs.readFile as any).mockRejectedValue(new Error('Parse error'));
       (fs.pathExists as any).mockResolvedValue(true);
-      (fs.readdir as any).mockResolvedValue(['skill']);
+      (fs.readdir as any).mockImplementation(async (p: string) => {
+        if (p.endsWith('common')) return ['skill'];
+        return [];
+      });
       (fs.stat as any).mockImplementation(async () => ({
         isDirectory: () => true,
       }));
@@ -75,7 +78,10 @@ describe('IndexGeneratorService', () => {
 
     it('should skip skills with invalid frontmatter', async () => {
       (fs.pathExists as any).mockResolvedValue(true);
-      (fs.readdir as any).mockResolvedValue(['invalid-skill']);
+      (fs.readdir as any).mockImplementation(async (p: string) => {
+        if (p.endsWith('common')) return ['invalid-skill'];
+        return [];
+      });
       (fs.stat as any).mockImplementation(async () => ({
         isDirectory: () => true,
       }));
@@ -90,7 +96,10 @@ describe('IndexGeneratorService', () => {
         if (p.endsWith('SKILL.md')) return false;
         return true;
       });
-      (fs.readdir as any).mockResolvedValue(['skill']);
+      (fs.readdir as any).mockImplementation(async (p: string) => {
+        if (p.endsWith('common')) return ['skill'];
+        return [];
+      });
       (fs.stat as any).mockImplementation(async () => ({
         isDirectory: () => true,
       }));
