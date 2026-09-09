@@ -93,8 +93,8 @@
       }
     },
     "common": {
-      "version": "1.5.4",
-      "last_updated": "2026-02-25",
+      "version": "1.6.0",
+      "last_updated": "2026-09-09",
       "tag_prefix": "common-v",
       "token_metrics": {
         "total_skills": 49,
