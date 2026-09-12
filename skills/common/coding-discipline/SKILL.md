@@ -46,6 +46,14 @@ next_checks: ["<check 1>"]
 
 Every coding task must follow a disciplined workflow. Never skip analysis or execute without scope confirmation.
 
+<EXTREMELY-IMPORTANT>
+If you think there is even a 1% chance a skill might apply to what you are doing, you ABSOLUTELY MUST invoke the skill.
+
+IF A SKILL APPLIES TO YOUR TASK, YOU DO NOT HAVE A CHOICE. YOU MUST USE IT.
+
+This is not negotiable. You cannot rationalize your way out of this.
+</EXTREMELY-IMPORTANT>
+
 ## Mandatory FSM
 
 ```
@@ -92,6 +100,24 @@ Every coding task must follow a disciplined workflow. Never skip analysis or exe
 - ❌ Run side-effect commands (DB migrate, deploy, restart) without confirmation
 - ❌ Start coding a complex multi-step task without first running the `writing-plans` skill to create a structured TDD plan
 
+
+## Red Flags (LLM Rationalizations)
+
+These thoughts mean STOP—you're rationalizing and bypassing discipline:
+
+| Thought | Reality |
+|---------|---------|
+| "This is just a simple question" | Questions are tasks. Check for skills. |
+| "I need more context first" | Skill check comes BEFORE clarifying questions. |
+| "Let me explore the codebase first" | Skills tell you HOW to explore. Check first. |
+| "I can check git/files quickly" | Files lack conversation context. Check for skills. |
+| "Let me gather information first" | Skills tell you HOW to gather information. |
+| "This doesn't need a formal skill" | If a skill exists, use it. |
+| "This doesn't count as a task" | Action = task. Check for skills. |
+| "The skill is overkill" | Simple things become complex. Use it. |
+| "I'll just do this one thing first" | Check BEFORE doing anything. |
+| "This feels productive" | Undisciplined action wastes time. Skills prevent this. |
+| "I know what that means" | Knowing the concept ≠ using the skill. Invoke it. |
 
 ## References
 
