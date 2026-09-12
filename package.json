@@ -1,6 +1,6 @@
 {
   "name": "full-stack-skill-root",
-  "version": "2026.09.09",
+  "version": "2026.09.12",
   "private": true,
   "packageManager": "pnpm@10.0.0",
   "scripts": {
