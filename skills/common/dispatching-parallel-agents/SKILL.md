@@ -1,6 +1,11 @@
 ---
 name: dispatching-parallel-agents
 description: Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies
+metadata:
+  labels: [subagent, parallel, independent, bulk, fix]
+  triggers:
+    priority: medium
+    keywords: [parallel, independent, bulk, fix multiple, multiple bugs, multiple tests]
 ---
 
 # Dispatching Parallel Agents
@@ -112,7 +117,7 @@ Do NOT just increase timeouts - find the real issue.
 Return: Summary of what you found and what you fixed.
 ```
 
-## Common Mistakes
+## 🚫 Anti-Patterns
 
 **❌ Too broad:** "Fix all the tests" - agent gets lost
 **✅ Specific:** "Fix agent-tool-abort.test.ts" - focused scope
