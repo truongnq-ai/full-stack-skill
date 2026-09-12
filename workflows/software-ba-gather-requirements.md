@@ -8,7 +8,7 @@ description: BA elicits requirements from stakeholders through structured interv
 >
 > **Out of scope**: Does not write PRD — use `software-po-plan-feature`. Does not split stories — use `software-ba-split-stories`. Does not design API — use `software-dev-design-api`.
 >
-> **Activates skills**: `skills/roles/ba/requirement-analysis/SKILL.md`, `skills/roles/ba/system-design-uml/SKILL.md`, `skills/roles/ba/business-analysis/SKILL.md`
+> **Activates skills**: `skills/roles/ba/requirement-analysis/SKILL.md`, `skills/roles/ba/system-design-uml/SKILL.md`, `skills/roles/ba/business-analysis/SKILL.md`, `skills/common/questioning/SKILL.md`
 
 ---
 
@@ -17,6 +17,7 @@ description: BA elicits requirements from stakeholders through structured interv
 ```
 view_file skills/roles/ba/requirement-analysis/SKILL.md
 view_file skills/roles/ba/system-design-uml/SKILL.md
+view_file skills/common/questioning/SKILL.md
 ```
 
 > **Fallback**: If skill files missing, use manual protocol: (1) identify actors, (2) define interactions, (3) map constraints, (4) validate edge cases.
