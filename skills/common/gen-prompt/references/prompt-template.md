@@ -31,6 +31,7 @@ Use this canonical template when outputting the refined prompt for any AI Agent 
   - `[tên-skill-chuyên-môn-2]`: Tiêu chuẩn bảo mật / test cho bước tương ứng
 
 ### 📋 5. Kế hoạch thực thi (Step-by-Step Breakdown)
+> ⚠️ **Mutation Gate**: Nếu task thuộc loại Write/Mutate (sửa code, cập nhật doc, thay đổi config, deploy), bước đầu tiên PHẢI là "Phân tích & Lập plan chi tiết" sử dụng `common/writing-plans` hoặc `/software-dev-plan-implementation`, và plan PHẢI được user phê duyệt trước khi thực thi bất kỳ file nào. Task Read-only (phân tích, kiểm tra, báo cáo) được thực thi trực tiếp.
 1. **Bước 1: [Tên bước]** — `[skill/workflow tương ứng]`
    - [Hành động cụ thể]
 2. **Bước 2: [Tên bước]** — `[skill/workflow tương ứng]`

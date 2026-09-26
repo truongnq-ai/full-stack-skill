@@ -33,6 +33,14 @@ workflow_ref: gen-prompt
 
 > **Goal**: Transform ambiguous, raw user prompts into unambiguous, structured 6-part execution prompts with isolated input resources and explicit skills from `@truongnq-ai/full-stack-skill`.
 
+<HARD-GATE>
+This skill is OUTPUT-ONLY. When activated:
+1. Do NOT execute the raw prompt's request (no file writes, no code generation, no codebase/document modification).
+2. Do NOT combine prompt generation with task execution in the same session.
+3. The ONLY output is the refined 6-block execution prompt rendered in a Markdown code block.
+4. After outputting the prompt, STOP and wait for the user to copy it into a new session for execution.
+</HARD-GATE>
+
 ## Core Pipeline
 
 1. **Clarify First**: If the raw prompt is missing objective, resources, targets, or scope, **DO NOT GUESS**. Activate `workflows/question.md` or ask clarifying questions without limits until context is complete.
@@ -55,6 +63,7 @@ Every refined prompt must output these exact 6 blocks:
 ## Anti-Patterns
 
 - **No premature execution**: Do NOT write application code or modify codebase while generating prompt; only produce the execution specification.
+- **No skipping planning for mutations**: If the task involves Write/Mutate actions (editing code, updating docs, modifying configs, deploying), Block 5 MUST instruct the executor to create an implementation plan (`common/writing-plans` or `/software-dev-plan-implementation`) for user approval BEFORE any file modification. Read-only tasks (analyze, report, review, audit) may execute directly.
 - **No silent guessing**: Do ask clarifying questions whenever constraints, tech stack, or business goals are ambiguous; never assume.
 - **No arbitrary question limits**: Do ask as many clarifying questions as necessary to achieve complete clarity.
 - **No missing resources**: Do explicitly list reference files, schemas, and mock data; never let the agent guess inputs.
@@ -69,4 +78,6 @@ Every refined prompt must output these exact 6 blocks:
 - [ ] Each execution step bound to specific skills from `full-stack-skill`?
 - [ ] Ambiguities clarified before prompt generation?
 - [ ] Output formatted using canonical template?
+- [ ] HARD-GATE enforced: prompt generation did NOT trigger any file modification or code execution?
+- [ ] Mutation tasks: Block 5 includes mandatory planning step with user approval gate?
 - [ ] SKILL.md under 100 lines?

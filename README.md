@@ -27,7 +27,8 @@ A **CLI + Skill Registry** that automatically distributes high-density coding st
 - Your framework's architecture patterns (Next.js App Router, NestJS modules, Flutter BLoC...)
 - Language-specific best practices (TypeScript strict mode, Go idioms, Swift concurrency...)
 - Security standards, testing conventions, performance engineering guidelines
-- Common workflows (code review, architecture audit, feature planning...)
+- Prompt compilation & standardization (`/gen-prompt` 6-block execution contracts)
+- 76+ production workflows across BA, DEV, QA, DevOps, and Technical Writing
 
 ---
 
@@ -177,15 +178,16 @@ Registry (GitHub)  ──→  CLI (init/sync)  ──→  Your Project
 
 ## 📂 Skill Categories
 
-| Category      | Skills                                                     | Count      |
-| ------------- | ---------------------------------------------------------- | ---------- |
-| **Frontend**  | React, Next.js, Angular, React Native                      | 54+ skills |
-| **Backend**   | NestJS, Spring Boot, Golang, Laravel                       | 84+ skills |
-| **Mobile**    | Flutter, Android, iOS (Swift)                              | 90+ skills |
-| **Languages** | TypeScript, JavaScript, Dart, Java, Kotlin, PHP, Swift, Go | 50+ skills |
-| **Common**    | Best practices, security, debugging, TDD, code review      | 26+ skills |
-| **Database**  | PostgreSQL, MongoDB, Redis                                 | 3+ skills  |
-| **Roles**     | BA, QA, DevOps, Writer, Reviewer                           | 6 roles    |
+| Category      | Skills                                                     | Count       |
+| ------------- | ---------------------------------------------------------- | ----------- |
+| **Frontend**  | React, Next.js, Angular, React Native                      | 54+ skills  |
+| **Backend**   | NestJS, Spring Boot, Golang, Laravel                       | 84+ skills  |
+| **Mobile**    | Flutter, Android, iOS (Swift)                              | 90+ skills  |
+| **Languages** | TypeScript, JavaScript, Dart, Java, Kotlin, PHP, Swift, Go | 50+ skills  |
+| **Common**    | Prompt compiler, parallel agents, security, TDD, debugging | 53+ skills  |
+| **Database**  | PostgreSQL, MongoDB, Redis                                 | 3+ skills   |
+| **Roles**     | BA, QA, DevOps, Writer, Reviewer                           | 6 roles     |
+| **Workflows** | BA, DEV, QA, DevOps, Writer, Reviewer SOPs                  | 76 workflows|
 
 ---
 

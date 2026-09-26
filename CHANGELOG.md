@@ -2,6 +2,50 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2026.09.26 — Feature: Prompt Compiler (/gen-prompt) & Ops Workflows
+
+### Added
+- **Prompt Compiler (`common/gen-prompt`)**: Standardizes raw prompts into canonical 6-part execution contracts bound to specific skills.
+  - Added 6-block template (`skills/common/gen-prompt/references/prompt-template.md`).
+  - Added 2-level task taxonomy (`skills/common/gen-prompt/references/task-taxonomy.md`) covering 6 Domains and 42 Capability Clusters + GEN-00 Fallback.
+  - Added primary workflow `/gen-prompt` (`workflows/gen-prompt.md`) with 7-step SOP.
+- **DevOps Backup & Migration Strategy (`roles/devops/backup-migration-strategy`)**:
+  - Skill and examples for DB dumps (Postgres, MySQL, Mongo), data integrity checksums, and cloud sync (`skills/roles/devops/backup-migration-strategy/`).
+  - Workflow `/software-devops-backup-and-migrate` (`workflows/software-devops-backup-and-migrate.md`).
+- **Git Workflow & Branching (`/software-dev-git-workflow`)**: Conventional Commits, PR lifecycle, conflict resolution, worktrees, and release tagging (`workflows/software-dev-git-workflow.md`).
+- **DevOps OS Administration (`/software-devops-os-admin`)**: Windows PowerShell/WSL2 and Linux systemd/cron/resource operations (`workflows/software-devops-os-admin.md`).
+
+### Changed
+- **Hardened Prompt Compiler (`common/gen-prompt` v1.6.1)**:
+  - Added `<HARD-GATE>` to enforce OUTPUT-ONLY contract, preventing premature task execution.
+  - Added Mutation Gate in prompt template, requiring explicit implementation plan before mutations.
+  - Bumped `common` skill category to `v1.6.1`.
+- **Overhaul 4 Core Workflows**: Upgraded from shell stubs to complete production SOPs:
+  - `/software-qa-advanced-testing`: Load/stress testing (k6, autocannon) & security probing (OWASP ZAP).
+  - `/software-writer-api-docs`: OpenAPI 3.0 / Swagger spec generation and contract verification.
+  - `/software-writer-infra-docs`: ADR templates, deployment runbooks, and C4 Mermaid diagrams.
+  - `/software-writer-user-manuals`: End-user guides, tutorials, and FAQ standards.
+- **CLI Engine**:
+  - `cli/src/index.ts`: Dynamically imports version from `package.json` instead of hardcoded string.
+  - `cli/src/services/validation/rules.ts`: Normalizes CRLF line endings (`\r\n` -> `\n`) for Windows compatibility in frontmatter validation.
+
+---
+
+## 2026.09.12 — Feature: Parallel Agents & Planning Hardening
+
+### Added
+- **Bulk Bug Fixing Workflow (`/software-dev-fix-bulk`)**: Orchestrates parallel subagents for independent bugfixes without state collision.
+- **Parallel Agent Dispatching (`common/dispatching-parallel-agents`)**: Standards for spawning and supervising isolated subagents.
+- **Technical Implementation Planning (`/software-dev-plan-implementation`)**: Structured impact analysis and pre-coding TDD task planning.
+- **Impact Analysis (`common/impact-analysis`)**: Risk assessment and blast radius evaluation.
+- **Interactive Questioning & Plan Review**: Added `/question` (`common/questioning`) and `/review-plan` (`common/review-plan`) workflows and skills.
+
+### Changed
+- `common/coding-discipline`: Hardened 7-step discipline FSM with mandatory pre-execution checkpoints.
+- `workflows/software-ba-gather-requirements`: Integrated structured interview and scenario decomposition.
+
+---
+
 ## 2026.04.07 — Feature: Superpowers Skill Integration
 
 ### Added

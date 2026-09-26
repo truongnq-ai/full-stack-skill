@@ -1,5 +1,5 @@
 ---
-description: "Transform a raw, underspecified prompt into a structured 6-block execution contract bound to workflows and skills from full-stack-skill."
+description: "OUTPUT-ONLY — Transform a raw prompt into a structured 6-block execution contract. Does NOT execute the prompt; user must copy the output to a new session."
 ---
 
 # 🚀 Generate Prompt Workflow (`/gen-prompt`)
@@ -81,7 +81,7 @@ Define the boundaries and success metrics:
 
 ---
 
-## Step 7 — Output Execution Prompt & Checkpoint
+## Step 7 — Output Execution Prompt & STOP (Output-Only Gate)
 
 Render the refined prompt inside a Markdown code block using the canonical 6-block template:
 
@@ -115,5 +115,9 @@ Render the refined prompt inside a Markdown code block using the canonical 6-blo
 - [ ] Không gây ảnh hưởng ngoài phạm vi
 ```
 
-> **⏸️ Checkpoint**: Present the formatted execution prompt to the user for review.
-> Ask: *"Prompt đã được chuẩn hóa theo Ma trận 2 Cấp (Primary Workflow + Supporting Skills). Anh có muốn điều chỉnh thêm điểm nào không, hay bắt đầu thực thi ngay?"*
+<HARD-GATE>
+**⏸️ STOP — Output-Only Gate**: This workflow's job is DONE after rendering the prompt above.
+- Do NOT proceed to execute the refined prompt in this same session.
+- Do NOT modify any files, write any code, or take any implementation action.
+- Present the prompt and ask: *"Prompt đã được chuẩn hóa. Anh hãy copy prompt trên vào session IDE mới để thực thi. Anh có muốn điều chỉnh thêm điểm nào trước khi sử dụng không?"*
+</HARD-GATE>
