@@ -2,6 +2,7 @@
 import { Command } from 'commander';
 import dotenv from 'dotenv';
 import pc from 'picocolors';
+import pkg from '../package.json';
 import { AddRoleCommand } from './commands/add-role';
 import { DoctorCommand } from './commands/doctor';
 import { FeedbackCommand } from './commands/feedback';
@@ -39,7 +40,7 @@ program
     'Full-Stack Skill — AI agent coding standards for your entire team.\n' +
     'Distributes high-density skills to Cursor, Claude Code, Copilot, Antigravity, and more.',
   )
-  .version('2026.03.28');
+  .version(pkg.version);
 
 // ── Global help: show supported stacks + quick start ────────────────────
 program.addHelpText('after', `

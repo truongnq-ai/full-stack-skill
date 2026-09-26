@@ -33,7 +33,8 @@ export class FrontmatterRule implements ValidationRule {
 
   async validate(content: string, filePath?: string): Promise<RuleResult> {
     const result: RuleResult = { passed: true, errors: [], warnings: [] };
-    const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+    const normalizedContent = content.replace(/\r\n/g, '\n');
+    const frontmatterMatch = normalizedContent.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
 
     if (!frontmatterMatch) {
       return {

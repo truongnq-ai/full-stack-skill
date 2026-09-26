@@ -54,12 +54,14 @@ next_checks: ["<check 1>"]
 
 ## Size Limits
 
-| File type         | Limit     | If exceeded                       |
-| ----------------- | --------- | --------------------------------- |
-| Workflow `.md`    | 80 lines  | Extract detail to `references/`   |
-| SKILL.md          | 100 lines | Extract examples to `references/` |
-| Table rows        | 8         | Extract to `references/`          |
-| Inline code block | 10 lines  | Extract to `references/`          |
+> Aligned with `/software-reviewer-audit-workflows` S5 standard.
+
+| File type         | Limit      | If exceeded                       |
+| ----------------- | ---------- | --------------------------------- |
+| Workflow `.md`    | 150 lines  | Extract detail to `references/`   |
+| SKILL.md          | 100 lines  | Extract examples to `references/` |
+| Table rows        | 8          | Extract to `references/`          |
+| Inline code block | 10 lines   | Extract to `references/`          |
 
 ## Workflow Structure (Required order)
 

@@ -97,10 +97,10 @@
       "last_updated": "2026-09-09",
       "tag_prefix": "common-v",
       "token_metrics": {
-        "total_skills": 49,
-        "total_tokens": 38505,
-        "avg_tokens_per_skill": 786,
-        "largest_skill": "systematic-debugging (1492 tokens)"
+        "total_skills": 52,
+        "total_tokens": 42395,
+        "avg_tokens_per_skill": 815,
+        "largest_skill": "dispatching-parallel-agents (1560 tokens)"
       }
     },
     "golang": {
