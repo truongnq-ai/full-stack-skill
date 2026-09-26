@@ -64,3 +64,23 @@ export class SyncError extends CliError {
         this.name = 'SyncError';
     }
 }
+
+/**
+ * Error thrown when the GitHub API rate limit is exceeded.
+ * Contains the reset timestamp and limit so the CLI can display actionable guidance.
+ */
+export class RateLimitError extends CliError {
+    constructor(
+        public readonly resetAt: Date,
+        public readonly limit: number,
+    ) {
+        const resetStr = resetAt.toLocaleTimeString();
+        super(
+            `GitHub API rate limit exceeded (${limit}/hour). Resets at ${resetStr}.`,
+            'RATE_LIMIT_ERROR',
+            'Set GITHUB_TOKEN env var to increase limit from 60 to 5,000/hour.\n' +
+            '  → Create a token at https://github.com/settings/tokens (scope: public_repo)',
+        );
+        this.name = 'RateLimitError';
+    }
+}

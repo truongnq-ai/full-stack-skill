@@ -68,10 +68,19 @@ describe('SyncService', () => {
     const mockDetectionService = {
       detectAgents: vi.fn().mockResolvedValue({}),
     };
+    const mockCacheService = {
+      load: vi.fn().mockResolvedValue({ version: 1, entries: {} }),
+      save: vi.fn().mockResolvedValue(undefined),
+      getCacheKey: vi.fn().mockReturnValue('mock-key'),
+      isTreeUnchanged: vi.fn().mockReturnValue(false),
+      getChangedFiles: vi.fn().mockImplementation((_key: string, tree: any[]) => tree),
+      setEntry: vi.fn(),
+    };
 
     (syncService as any).githubService = mockGithubService;
     (syncService as any).configService = mockConfigService;
     (syncService as any).detectionService = mockDetectionService;
+    (syncService as any).cacheService = mockCacheService;
 
     vi.spyOn(console, 'log').mockImplementation(() => { });
     vi.spyOn(console, 'error').mockImplementation(() => { });

@@ -1,5 +1,6 @@
 import inquirer from 'inquirer';
 import pc from 'picocolors';
+import { RateLimitError } from '../errors';
 import { ConfigService } from '../services/ConfigService';
 import { DetectionService } from '../services/DetectionService';
 import { SyncService } from '../services/SyncService';
@@ -27,7 +28,7 @@ export class SyncCommand {
    * Executes the synchronization flow.
    * Reconciles dependencies, fetches skills and workflows from the registry, and updates AGENTS.md.
    */
-  async run(options: { yes?: boolean; dryRun?: boolean } = {}) {
+  async run(options: { yes?: boolean; dryRun?: boolean; forceRefresh?: boolean } = {}) {
     const startTime = Date.now();
     try {
       if (options.dryRun) {
@@ -103,16 +104,18 @@ export class SyncCommand {
 
       // 4. Assemble skills from remote registry
       const enabledCategories = Object.keys(config.skills);
+      const forceRefresh = options.forceRefresh || false;
       const skills = await this.syncService.assembleSkills(
         enabledCategories,
         config,
+        forceRefresh,
       );
 
       // 4b. Assemble workflows
-      const workflows = await this.syncService.assembleWorkflows(config);
+      const workflows = await this.syncService.assembleWorkflows(config, forceRefresh);
 
       // 4c. Assemble rules
-      const rules = await this.syncService.assembleRules(config);
+      const rules = await this.syncService.assembleRules(config, forceRefresh);
 
       // 5. Write skills, workflows, and rules to target
       await this.syncService.writeSkills(skills, config, options.dryRun);
@@ -136,6 +139,11 @@ export class SyncCommand {
       ));
       console.log(pc.gray(`   📊 ${enabledCategories.length} categories · ${totalSkills} skills · ${agents} agent(s) · ${elapsed}s`));
     } catch (error) {
+      if (error instanceof RateLimitError) {
+        console.error(pc.red(`\n🚫 ${error.message}`));
+        console.error(pc.yellow(`💡 ${error.suggestion}`));
+        return;
+      }
       if (error instanceof Error) {
         console.error(pc.red('❌ Sync failed:'), error.message);
       } else {

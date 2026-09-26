@@ -143,6 +143,10 @@ const syncCmd = program
     '--dry-run',
     'Preview changes without writing any files',
   )
+  .option(
+    '--force-refresh',
+    'Ignore cache and re-download all files',
+  )
   .action(async (options) => {
     const sync = new SyncCommand();
     await sync.run(options);
@@ -151,7 +155,7 @@ const syncCmd = program
 syncCmd.addHelpText('after', `
 ${pc.cyan('How it works:')}
   1. Reads .skillsrc to know your tech stack and agents
-  2. Downloads skill files from the registry (versioned)
+  2. Downloads skill files from the registry (versioned, with incremental caching)
   3. Writes to agent directories (.cursor/skills/, .agent/skills/...)
   4. Generates AGENTS.md as a skill index for your AI
 
@@ -159,6 +163,7 @@ ${pc.cyan('Examples:')}
   $ fss sync                        Download and apply all skills
   $ fss sync --dry-run              Preview what would change (no writes)
   $ fss sync -y                     Auto-confirm version updates
+  $ fss sync --force-refresh        Bypass cache, re-download everything
 `);
 
 // ── doctor ──────────────────────────────────────────────────────────────

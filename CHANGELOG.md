@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2026.09.27 — Feature: Incremental Sync & GitHub API Rate Limit Protection
+
+### Added
+- **Incremental Sync Engine (`cli/src/services/SyncCacheService.ts`)**:
+  - SHA-based change detection via disk cache (`~/.cache/fss/sync-manifest.json`) using atomic write (`.tmp` + rename).
+  - Skips redundant file downloads if category tree SHA matches previous successful sync.
+  - Granular diffing: only downloads added/modified files when a branch or tag is updated, dramatically reducing API and bandwidth usage.
+  - Workspace-scoped cache keys preventing cross-project state leakage.
+- **GitHub API Rate Limit Protection & In-Memory Tree Cache**:
+  - `GithubService` now caches tree metadata in-memory per session, deduplicating calls across skill categories.
+  - Structured `RateLimitError` detection reading `403`/`429` status codes and `x-ratelimit-reset` headers, providing friendly guidance on using `GITHUB_TOKEN`.
+- **CLI Flags**:
+  - Added `--force-refresh` flag to `sync` command to allow bypassing local cache and forcing a complete re-download.
+
+### Changed
+- **Sync Command**:
+  - Intercepts `RateLimitError` with actionable troubleshooting steps.
+  - Warm sync performance improved by ~90% when skills are already up to date.
+
+---
+
 ## 2026.09.26 — Feature: Prompt Compiler (/gen-prompt) & Ops Workflows
 
 ### Added

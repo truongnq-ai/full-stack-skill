@@ -13,17 +13,22 @@ import { ConfigService } from './ConfigService';
 import { DetectionService } from './DetectionService';
 import { GithubService } from './GithubService';
 import { IndexGeneratorService } from './IndexGeneratorService';
+import { SyncCacheService } from './SyncCacheService';
 import { MarkdownUtils } from './utils/MarkdownUtils';
 
 /**
  * Service responsible for synchronizing agent skills and workflows from a remote registry
  * to the local workspace. It handles dependency reconciliation, folder identification,
  * and writing files to appropriate agent search paths.
+ *
+ * Supports incremental sync via SyncCacheService: compares tree SHAs and file SHAs
+ * to skip unchanged content and only download files that actually changed.
  */
 export class SyncService {
   private configService = new ConfigService();
   private detectionService = new DetectionService();
   private githubService = new GithubService(process.env.GITHUB_TOKEN);
+  private cacheService = new SyncCacheService();
 
   /**
    * Reconciles configuration based on detected project dependencies.
@@ -119,6 +124,7 @@ export class SyncService {
   async assembleSkills(
     categories: string[],
     config: SkillConfig,
+    forceRefresh = false,
   ): Promise<CollectedSkill[]> {
     const collected: CollectedSkill[] = [];
     const githubMatch = GithubService.parseGitHubUrl(config.registry);
@@ -129,10 +135,12 @@ export class SyncService {
     }
 
     const { owner, repo } = githubMatch;
+    await this.cacheService.load();
 
     for (const category of categories) {
       const catConfig = config.skills[category];
       const ref = catConfig.ref || 'main';
+      const cacheKey = this.cacheService.getCacheKey(process.cwd(), owner, repo, ref);
 
       console.log(pc.gray(`  - Discovering ${category} (${ref})...`));
 
@@ -141,6 +149,17 @@ export class SyncService {
         console.log(pc.red(`    ❌ Failed to fetch ${category}@${ref}.`));
         continue;
       }
+
+      // Incremental: skip downloads if tree SHA unchanged
+      if (!forceRefresh && this.cacheService.isTreeUnchanged(cacheKey, treeData.sha)) {
+        console.log(pc.gray(`    ✓ ${category} (${ref}) — unchanged, skipping downloads`));
+        continue;
+      }
+
+      // Determine which files actually changed
+      const changedPaths = forceRefresh
+        ? null
+        : new Set(this.cacheService.getChangedFiles(cacheKey, treeData.tree).map(f => f.path));
 
       const foldersToSync = this.identifyFoldersToSync(
         category,
@@ -156,11 +175,20 @@ export class SyncService {
           category,
           absOrRelSkill,
           treeData.tree,
+          changedPaths,
         );
         if (skill) collected.push(skill);
       }
+
+      // Update cache entry after successful fetch for this category
+      this.cacheService.setEntry(cacheKey, {
+        treeSha: treeData.sha,
+        syncedAt: new Date().toISOString(),
+        fileShas: SyncCacheService.buildFileShaMap(treeData.tree),
+      });
     }
 
+    await this.cacheService.save();
     return collected;
   }
 
@@ -270,7 +298,7 @@ export class SyncService {
   /**
    * Assembles workflows from the remote registry.
    */
-  async assembleWorkflows(config: SkillConfig): Promise<CollectedSkill[]> {
+  async assembleWorkflows(config: SkillConfig, forceRefresh = false): Promise<CollectedSkill[]> {
     if (!config.workflows) return [];
 
     // Only sync workflows if Antigravity or OpenClaw agent is enabled
@@ -295,9 +323,24 @@ export class SyncService {
       return [];
     }
 
+    // Incremental: skip if tree unchanged
+    await this.cacheService.load();
+    const cacheKey = this.cacheService.getCacheKey(process.cwd(), owner, repo, `workflows@${ref}`);
+    if (!forceRefresh && this.cacheService.isTreeUnchanged(cacheKey, treeData.sha)) {
+      console.log(pc.gray(`    ✓ Workflows (${ref}) — unchanged, skipping downloads`));
+      return [];
+    }
+
+    // Determine changed workflow files
+    const changedPaths = forceRefresh
+      ? null
+      : new Set(this.cacheService.getChangedFiles(cacheKey, treeData.tree).map(f => f.path));
+
     const workflowFiles = treeData.tree.filter((f) => {
       if (!f.path.startsWith('workflows/') || !f.path.endsWith('.md'))
         return false;
+      // Skip unchanged files in incremental mode
+      if (changedPaths && !changedPaths.has(f.path)) return false;
 
       if (typeof config.workflows === 'boolean') return config.workflows;
       if (Array.isArray(config.workflows)) {
@@ -309,6 +352,14 @@ export class SyncService {
     const files = await this.githubService.downloadFilesConcurrent(
       workflowFiles.map((f) => ({ owner, repo, ref, path: f.path })),
     );
+
+    // Update cache
+    this.cacheService.setEntry(cacheKey, {
+      treeSha: treeData.sha,
+      syncedAt: new Date().toISOString(),
+      fileShas: SyncCacheService.buildFileShaMap(treeData.tree),
+    });
+    await this.cacheService.save();
 
     if (files.length > 0) {
       console.log(pc.gray(`    + Fetched ${files.length} workflows`));
@@ -377,7 +428,7 @@ export class SyncService {
   /**
    * Assembles rules from the remote registry (.agent/rules/*.md).
    */
-  async assembleRules(config: SkillConfig): Promise<CollectedSkill[]> {
+  async assembleRules(config: SkillConfig, forceRefresh = false): Promise<CollectedSkill[]> {
     if (config.rules === false || config.rules === undefined) return [];
 
     // Only sync rules if Antigravity or OpenClaw agent is enabled
@@ -402,14 +453,36 @@ export class SyncService {
       return [];
     }
 
+    // Incremental: skip if tree unchanged
+    await this.cacheService.load();
+    const cacheKey = this.cacheService.getCacheKey(process.cwd(), owner, repo, `rules@${ref}`);
+    if (!forceRefresh && this.cacheService.isTreeUnchanged(cacheKey, treeData.sha)) {
+      console.log(pc.gray(`    ✓ Rules (${ref}) — unchanged, skipping downloads`));
+      return [];
+    }
+
+    // Determine changed rule files
+    const changedPaths = forceRefresh
+      ? null
+      : new Set(this.cacheService.getChangedFiles(cacheKey, treeData.tree).map(f => f.path));
+
     const ruleFiles = treeData.tree.filter(
       (f) =>
-        f.path.startsWith('rules/') && f.path.endsWith('.md'),
+        f.path.startsWith('rules/') && f.path.endsWith('.md') &&
+        (!changedPaths || changedPaths.has(f.path)),
     );
 
     const files = await this.githubService.downloadFilesConcurrent(
       ruleFiles.map((f) => ({ owner, repo, ref, path: f.path })),
     );
+
+    // Update cache
+    this.cacheService.setEntry(cacheKey, {
+      treeSha: treeData.sha,
+      syncedAt: new Date().toISOString(),
+      fileShas: SyncCacheService.buildFileShaMap(treeData.tree),
+    });
+    await this.cacheService.save();
 
     if (files.length > 0) {
       console.log(pc.gray(`    + Fetched ${files.length} rules`));
@@ -656,6 +729,7 @@ export class SyncService {
     category: string,
     absOrRelSkill: string,
     tree: GitHubTreeItem[],
+    changedPaths: Set<string> | null = null,
   ): Promise<CollectedSkill | null> {
     // absOrRelSkill can be multi-segment: "ba/requirements-elicitation" for roles
     // or a simple name: "hooks" for flat categories
@@ -669,7 +743,14 @@ export class SyncService {
         const rel = f.path.replace(prefix, '');
         return rel === 'SKILL.md' || /^(references|scripts|assets)\//.test(rel);
       })
+      .filter((f) => {
+        // Incremental: only download files that changed (or all if no cache)
+        if (!changedPaths) return true;
+        return changedPaths.has(f.path);
+      })
       .map((f) => ({ owner, repo, ref, path: f.path }));
+
+    if (downloadTasks.length === 0) return null;
 
     const files =
       await this.githubService.downloadFilesConcurrent(downloadTasks);
@@ -677,7 +758,7 @@ export class SyncService {
 
     console.log(
       pc.gray(
-        `    + Fetched ${category}/${absOrRelSkill} (${files.length} files)`,
+        `    + Fetched ${category}/${absOrRelSkill} (${files.length} file${files.length > 1 ? 's' : ''})`,
       ),
     );
 

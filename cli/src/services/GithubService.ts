@@ -1,4 +1,5 @@
 import pc from 'picocolors';
+import { RateLimitError } from '../errors';
 import { GitHubTreeResponse } from '../models/types';
 import { IRegistryProvider } from './IRegistryProvider';
 
@@ -10,6 +11,11 @@ import { IRegistryProvider } from './IRegistryProvider';
 export class GithubService implements IRegistryProvider {
   private baseUrl = 'https://api.github.com';
   private rawBaseUrl = 'https://raw.githubusercontent.com';
+
+  /** In-memory cache for tree responses within a single session */
+  private treeCache = new Map<string, GitHubTreeResponse | null>();
+  /** In-memory cache for repo info within a single session */
+  private repoInfoCache = new Map<string, { default_branch: string } | null>();
 
   constructor(private token?: string) { }
 
@@ -35,15 +41,27 @@ export class GithubService implements IRegistryProvider {
     repo: string,
     ref: string,
   ): Promise<GitHubTreeResponse | null> {
+    const cacheKey = `${owner}/${repo}@${ref}`;
+    if (this.treeCache.has(cacheKey)) {
+      return this.treeCache.get(cacheKey) ?? null;
+    }
+
     const url = `${this.baseUrl}/repos/${owner}/${repo}/git/trees/${ref}?recursive=1`;
     try {
       const res = await fetch(url, { headers: this.headers });
       if (!res.ok) {
-        if (res.status === 404) return null;
+        if (res.status === 404) {
+          this.treeCache.set(cacheKey, null);
+          return null;
+        }
+        this.throwIfRateLimited(res);
         throw new Error(`GitHub API Error: ${res.status} ${res.statusText}`);
       }
-      return (await res.json()) as GitHubTreeResponse;
+      const result = (await res.json()) as GitHubTreeResponse;
+      this.treeCache.set(cacheKey, result);
+      return result;
     } catch (error) {
+      if (error instanceof RateLimitError) throw error;
       console.error(pc.red(`Failed to fetch repo tree: ${error}`));
       return null;
     }
@@ -107,12 +125,24 @@ export class GithubService implements IRegistryProvider {
     owner: string,
     repo: string,
   ): Promise<{ default_branch: string } | null> {
+    const cacheKey = `${owner}/${repo}`;
+    if (this.repoInfoCache.has(cacheKey)) {
+      return this.repoInfoCache.get(cacheKey) ?? null;
+    }
+
     const url = `${this.baseUrl}/repos/${owner}/${repo}`;
     try {
       const res = await fetch(url, { headers: this.headers });
-      if (!res.ok) return null;
-      return (await res.json()) as { default_branch: string };
+      if (!res.ok) {
+        this.throwIfRateLimited(res);
+        this.repoInfoCache.set(cacheKey, null);
+        return null;
+      }
+      const result = (await res.json()) as { default_branch: string };
+      this.repoInfoCache.set(cacheKey, result);
+      return result;
     } catch (error) {
+      if (error instanceof RateLimitError) throw error;
       console.error(pc.red(`Failed to fetch repo info: ${error}`));
       return null;
     }
@@ -164,6 +194,25 @@ export class GithubService implements IRegistryProvider {
     const m = url.match(/github\.com\/([^/]+)\/([^/]+)/i);
     if (!m) return null;
     return { owner: m[1], repo: m[2].replace(/\.git$/, '') };
+  }
+
+  // ─── Rate Limit Detection ──────────────────────────────────────────────
+
+  /**
+   * Checks if a response indicates a rate limit error and throws RateLimitError.
+   * @throws {RateLimitError} when remaining requests is 0
+   */
+  private throwIfRateLimited(res: Response): void {
+    if (res.status === 403 || res.status === 429) {
+      const remaining = res.headers.get('x-ratelimit-remaining');
+      const resetEpoch = res.headers.get('x-ratelimit-reset');
+      const limit = res.headers.get('x-ratelimit-limit');
+
+      if (remaining === '0' && resetEpoch) {
+        const resetAt = new Date(Number(resetEpoch) * 1000);
+        throw new RateLimitError(resetAt, Number(limit) || 60);
+      }
+    }
   }
 
   // ─── IRegistryProvider Adapter Methods ────────────────────────────────
